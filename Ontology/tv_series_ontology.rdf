@@ -79,6 +79,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBiography -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBiography">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBirthDate -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBirthDate">
@@ -94,6 +104,16 @@
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorName">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBiography -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBiography">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -129,6 +149,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDuration">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinished -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinished">
@@ -139,12 +169,12 @@
     
 
 
-    <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotDate -->
+    <!-- http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotDate">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -193,15 +223,15 @@
     <owl:Class rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBiography"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBirthDate"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -211,7 +241,61 @@
                 <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBirthDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">A short actor biography</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBiography"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The name of the actor</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorName"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">A list of tv shows where the actor appears</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The birth date of the actor</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActorBirthDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
@@ -252,16 +336,16 @@
     <owl:Class rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorName"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBirthDate"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBirthDate"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorName"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -270,7 +354,61 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBiography"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The name of the creator</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorName"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The birth date of the creator</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBirthDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">A short biography of the creator</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreatorBiography"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">A list of tv shows created by this creator</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
@@ -383,6 +521,41 @@
     <owl:Class rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre">
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeasonNumber"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinished"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
@@ -390,8 +563,9 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDuration"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -401,34 +575,103 @@
                 <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
+    </owl:Class>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The duration, in minutes, of the tv show. Assuming that we can have a tv show that has not aired yet, therefore we don&apos;t know what is the episode duration</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDuration"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">Boolean value signalling if the show has already finished or not</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinished"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">List of actors that appear in the tv show</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The year when the pilot episode aired. Basically the year when the tv show started</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The title of the tv show</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">List of creators of the tv show</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">Brief description/summary of the tv show</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment rdf:datatype="&xsd;string">The current season number of the given tv show. If the tv show has not aired yet then no season number is registered</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeasonNumber"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotDate"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
