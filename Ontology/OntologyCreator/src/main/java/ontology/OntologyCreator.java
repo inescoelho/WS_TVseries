@@ -1,7 +1,6 @@
 package ontology;
 
 
-import com.github.jsonldjava.utils.Obj;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.RDFS;
@@ -15,10 +14,6 @@ public class OntologyCreator {
 
     private String namespace;
     private OntModel ontologyModel;
-
-    private HashMap<String, DatatypeProperty> datatypeProperties;
-    private HashMap<String, ObjectProperty> objectProperties;
-    private HashMap<String, OntClass> ontologyClasses;
 
     private HashMap<String, Individual> actorsList;
     private HashMap<String, Individual> creatorsList;
@@ -37,10 +32,6 @@ public class OntologyCreator {
         actorsList = new HashMap<>();
         creatorsList = new HashMap<>();
         seriesList = new HashMap<>();
-
-        // Get Properties and classes
-        loadProperties();
-        loadClasses();
     }
 
     public void createOntologyModel() {
@@ -52,58 +43,26 @@ public class OntologyCreator {
         ontologyModel.read(filePath, type);
     }
 
-    private void loadProperties() {
-        datatypeProperties = new HashMap<>();
-        objectProperties = new HashMap<>();
-
-        List<DatatypeProperty> datatypePropertyList = ontologyModel.listDatatypeProperties().toList();
-        List<ObjectProperty> objectPropertyList = ontologyModel.listObjectProperties().toList();
-
-        for (DatatypeProperty datatypeProperty : datatypePropertyList) {
-            datatypeProperties.put(datatypeProperty.getLocalName(), datatypeProperty);
-        }
-
-        for (ObjectProperty objectProperty : objectPropertyList) {
-            objectProperties.put(objectProperty.getLocalName(), objectProperty);
-        }
-    }
-
-    private void loadClasses() {
-        ontologyClasses = new HashMap<>();
-        List<OntClass> ontClassList = ontologyModel.listClasses().toList();
-
-        /* The following code was suggested by Intellij instead of:
-
-            for(OntClass currentClass : ontClassList) {
-                if(currentClass.getLocalName() != null) {
-                    ontologyClasses.put(currentClass.getLocalName(), currentClass);
-                }
-            }
-         */
-        ontClassList.stream().filter(currentClass -> currentClass.getLocalName() != null)
-                             .forEach(currentClass -> ontologyClasses.put(currentClass.getLocalName(), currentClass));
-    }
-
     public void createSeries(String title, String description, boolean hasFinished, int duration, int seasonNumber,
                              int pilotYear, ArrayList<String> genres) {
         String trimedName = title.replaceAll(" ", "_").toLowerCase();
 
         Individual newSeries = ontologyModel.createIndividual(namespace + trimedName,
-                                                              ontologyModel.getOntClass("SeriesGenre"));
+                                                              ontologyModel.getOntClass(namespace + "SeriesGenre"));
 
         // Make this series extend its genres
         for (String currentGenre : genres) {
-            OntClass currentClass = ontologyClasses.get(currentGenre);
+            OntClass currentClass = ontologyModel.getOntClass(namespace + currentGenre);
             newSeries.addProperty(RDFS.subClassOf, currentClass);
         }
 
         // Add series properties
-        newSeries.addLiteral(datatypeProperties.get("hasTitle"), title);
-        newSeries.addLiteral(datatypeProperties.get("hasDescription"), description);
-        newSeries.addLiteral(datatypeProperties.get("hasFinished"), hasFinished);
-        newSeries.addLiteral(datatypeProperties.get("hasEpisodeDuration"), duration);
-        newSeries.addLiteral(datatypeProperties.get("hasSeasonNumber"), seasonNumber);
-        newSeries.addLiteral(datatypeProperties.get("hasPilotYear"), pilotYear);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasTitle"), title);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasDescription"), description);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasFinished"), hasFinished);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasEpisodeDuration"), duration);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), seasonNumber);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), pilotYear);
 
         // Add series to series list
         seriesList.put(title, newSeries);
@@ -125,16 +84,16 @@ public class OntologyCreator {
 
         if (actor) {
             newIndividual = ontologyModel.createIndividual(namespace + trimedName,
-                                                           ontologyModel.getOntClass("Actor"));
+                                                           ontologyModel.getOntClass(namespace + "Actor"));
         } else {
             newIndividual = ontologyModel.createIndividual(namespace + trimedName,
-                                                           ontologyModel.getOntClass("Creator"));
+                                                           ontologyModel.getOntClass(namespace + "Creator"));
         }
 
         // Add actor properties
-        newIndividual.addLiteral(datatypeProperties.get("hasActorName"), name);
-        newIndividual.addLiteral(datatypeProperties.get("hasActorBiography"), biography);
-        newIndividual.addLiteral(datatypeProperties.get("hasActorBirthDate"), birthDate);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorName"), name);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorBiography"), biography);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorBirthDate"), birthDate);
 
         if (actor) {
             // Add actor to actor's list
@@ -163,15 +122,15 @@ public class OntologyCreator {
     }
 
     private boolean addActorCreatorToSeries(boolean addActor, Individual series, Individual actorOrCreator) {
-        ObjectProperty property, inverseProperty;
+        Property property, inverseProperty;
 
         // Get property and its inverse
         if (addActor) {
-            property = objectProperties.get("hasSeriesAppearance");
-            inverseProperty = objectProperties.get("hasActor");
+            property = ontologyModel.getProperty(namespace + "hasSeriesAppearance");
+            inverseProperty = ontologyModel.getProperty(namespace + "hasActor");
         } else {
-            property = objectProperties.get("hasSeriesCreated");
-            inverseProperty = objectProperties.get("hasCreator");
+            property = ontologyModel.getProperty(namespace + "hasSeriesCreated");
+            inverseProperty = ontologyModel.getProperty(namespace + "hasCreator");
         }
 
         if (series == null || actorOrCreator == null || property == null || inverseProperty == null) {
