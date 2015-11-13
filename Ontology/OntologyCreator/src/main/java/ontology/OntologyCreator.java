@@ -1,13 +1,17 @@
 package ontology;
 
-import org.apache.jena.ontology.*;
+import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.*;
-import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.RDF;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * OntologyCreator class, responsible for managing an ontology, making use of the Apache Jena framework. For more
@@ -18,8 +22,8 @@ import java.util.*;
  *  - namespace     --> The namespace of the ontology
  *  - ontologyModel --> Apache Jena's representation of an ontology model. In our case it contains the representation
  *                      of an ontology model loaded from a given file
- *  - actorsList    --> A map of type "<String, Individual>", representing all the actors in the ontology
- *  - creatorsList  --> A map of type "<String, Individual>", representing all the series creators in the ontology
+ *  - peopleList    --> A map of type "<String, Individual>", representing all the actors and series creators in the
+ *                      ontology
  *  - seriesList    --> A map of type "<String, Individual>", representing all the series in the ontology
  *
  */
@@ -28,8 +32,7 @@ public class OntologyCreator {
     private String namespace;
     private OntModel ontologyModel;
 
-    private HashMap<String, Individual> actorsList;
-    private HashMap<String, Individual> creatorsList;
+    private HashMap<String, Individual> peopleList;
     private HashMap<String, Individual> seriesList;
 
     // FIXME: MAJOR PROBLEM HERE: IN THE WAY I AM THINKING WE WILL NEED TO ASSURE THAT WE DO NOT HAVE ACTORS, CREATORS
@@ -47,8 +50,7 @@ public class OntologyCreator {
         // Get ontology namespace
         namespace = ontologyModel.getNsPrefixURI("");
 
-        actorsList = new HashMap<>();
-        creatorsList = new HashMap<>();
+        peopleList = new HashMap<>();
         seriesList = new HashMap<>();
     }
 
@@ -73,23 +75,77 @@ public class OntologyCreator {
      * Creates a new tv series and adds it to the ontology
      * @param title The tile of the series
      * @param description A brief description of the series
+     * @param duration The average duration, in minutes, of each episode of the series
      * @param hasFinished A boolean value, signalling if the series has already finished
+     * @param genres The genres of the series
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    public boolean createSeries(String title, String description, int duration, boolean hasFinished,
+                                ArrayList<String> genres) {
+
+        return createSeries(title, description, duration, -1, hasFinished, -1, genres);
+    }
+
+    /**
+     * Creates a new tv series and adds it to the ontology
+     * @param title The tile of the series
+     * @param description A brief description of the series
      * @param duration The average duration, in minutes, of each episode of the series
      * @param seasonNumber The current series' season number (-1 if series has not started)
+     * @param hasFinished A boolean value, signalling if the series has already finished
+     * @param genres The genres of the series
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    public boolean createSeries(String title, String description, int duration, int seasonNumber, boolean hasFinished,
+                                ArrayList<String> genres) {
+        return createSeries(title, description, duration, seasonNumber, hasFinished, -1, genres);
+    }
+
+    /**
+     * Creates a new tv series and adds it to the ontology
+     * @param title The tile of the series
+     * @param description A brief description of the series
+     * @param duration The average duration, in minutes, of each episode of the series
+     * @param hasFinished A boolean value, signalling if the series has already finished
      * @param pilotYear The year when the series' pilot episode aired (-1 if no pilot has aired)
      * @param genres The genres of the series
+     * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public void createSeries(String title, String description, boolean hasFinished, int duration, int seasonNumber,
+    public boolean createSeries(String title, String description, int duration, boolean hasFinished, int pilotYear,
+                                ArrayList<String> genres) {
+        return createSeries(title, description, duration, -1, hasFinished, pilotYear, genres);
+    }
+
+    /**
+     * Creates a new tv series and adds it to the ontology
+     * @param title The tile of the series
+     * @param description A brief description of the series
+     * @param duration The average duration, in minutes, of each episode of the series
+     * @param seasonNumber The current series' season number (-1 if series has not started)
+     * @param hasFinished A boolean value, signalling if the series has already finished
+     * @param pilotYear The year when the series' pilot episode aired (-1 if no pilot has aired)
+     * @param genres The genres of the series
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    public boolean createSeries(String title, String description, int duration, int seasonNumber, boolean hasFinished,
                              int pilotYear, ArrayList<String> genres) {
         String trimedName = title.replaceAll(" ", "_").toLowerCase();
 
         Individual newSeries = ontologyModel.createIndividual(namespace + trimedName,
                                                               ontologyModel.getOntClass(namespace + "SeriesGenre"));
 
+        if (newSeries == null) {
+            return false;
+        }
+
         // Make this series extend its genres
         for (String currentGenre : genres) {
             OntClass currentClass = ontologyModel.getOntClass(namespace + currentGenre);
-            newSeries.addProperty(RDFS.subClassOf, currentClass);
+
+            // Do not add genres not supported in the ontology
+            if (currentClass != null) {
+                newSeries.addProperty(RDF.type, currentClass);
+            }
         }
 
         // Add series properties
@@ -110,6 +166,7 @@ public class OntologyCreator {
         seriesList.put(title, newSeries);
 
         System.out.println("Created series " + newSeries.getLocalName());
+        return true;
     }
 
     /**
@@ -117,9 +174,10 @@ public class OntologyCreator {
      * @param creatorName The name of the creator
      * @param biography A small biography of the creator
      * @param birthDate The creator's date of birth
+     * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public void createCreator(String creatorName, String biography, String birthDate) {
-        createPerson(false, creatorName, biography, birthDate);
+    public boolean createCreator(String creatorName, String biography, String birthDate) {
+        return createPerson(false, creatorName, biography, birthDate);
     }
 
     /**
@@ -127,9 +185,10 @@ public class OntologyCreator {
      * @param actorName The name of the actor
      * @param biography A small biography of the actor
      * @param birthDate The actor's date of birth
+     * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public void createActor(String actorName, String biography, String birthDate) {
-        createPerson(true, actorName, biography, birthDate);
+    public boolean createActor(String actorName, String biography, String birthDate) {
+        return createPerson(true, actorName, biography, birthDate);
     }
 
     /**
@@ -138,10 +197,11 @@ public class OntologyCreator {
      * @param name The name of the person
      * @param biography A small biography of the person
      * @param birthDate The person's date of birth
+     * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    private void createPerson(boolean actor, String name, String biography, String birthDate) {
+    private boolean createPerson(boolean actor, String name, String biography, String birthDate) {
         String trimedName = name.replaceAll(" ", "_").toLowerCase();
-        Individual newIndividual;
+        Individual newIndividual = null;
 
         if (actor) {
             newIndividual = ontologyModel.createIndividual(namespace + trimedName,
@@ -151,19 +211,63 @@ public class OntologyCreator {
                                                            ontologyModel.getOntClass(namespace + "Creator"));
         }
 
+        if (newIndividual == null) {
+            return false;
+        }
+
         // Add actor properties
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate);
 
+        // Add person to the list
+        peopleList.put(name, newIndividual);
+
         if (actor) {
-            // Add actor to actor's list
-            actorsList.put(name, newIndividual);
             System.out.println("Created actor " + newIndividual.getLocalName());
         } else {
-            creatorsList.put(name, newIndividual);
             System.out.println("Created creator " + newIndividual.getLocalName());
         }
+
+        return true;
+    }
+
+    /**
+     * Make an instance of the Actor class also an instance of the Creator class
+     * @param individualName The name of the actor
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    public boolean makeActorCreator(String individualName) {
+
+        Individual individual = peopleList.get(individualName);
+        OntClass creatorClass = ontologyModel.getOntClass(namespace + "Creator");
+
+        if (!individual.hasProperty(RDF.type, creatorClass)) {
+            individual.addProperty(RDF.type, creatorClass);
+            return true;
+        }
+
+        // Is already of type creator
+        return false;
+    }
+
+    /**
+     * Make an instance of the Creator class also an instance of the Actor class
+     * @param individualName The name of the creator
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    public boolean makeCreatorActor(String individualName) {
+
+        Individual individual = peopleList.get(individualName);
+        OntClass actorClass = ontologyModel.getOntClass(namespace + "Actor");
+
+        if (!individual.hasProperty(RDF.type, actorClass)) {
+            individual.addProperty(RDF.type, actorClass);
+            return true;
+        }
+
+        // Is already of type creator
+        return false;
     }
 
     /**
@@ -176,7 +280,7 @@ public class OntologyCreator {
     public boolean addSeriesToActor(String seriesName, String actorName) {
         // Get actor and series
         Individual series = seriesList.get(seriesName);
-        Individual actor = actorsList.get(actorName);
+        Individual actor = peopleList.get(actorName);
 
         return addActorCreatorToSeries(true, series, actor);
     }
@@ -191,7 +295,7 @@ public class OntologyCreator {
     public boolean addSeriesToCreator(String seriesName, String creatorName) {
         // Get creator and series
         Individual series = seriesList.get(seriesName);
-        Individual creator = creatorsList.get(creatorName);
+        Individual creator = peopleList.get(creatorName);
 
         return addActorCreatorToSeries(false, series, creator);
     }
@@ -209,11 +313,11 @@ public class OntologyCreator {
 
         // Get property and its inverse
         if (addActor) {
-            property = ontologyModel.getProperty(namespace + "hasSeriesAppearance");
-            inverseProperty = ontologyModel.getProperty(namespace + "hasActor");
+            property = ontologyModel.getProperty(namespace + "hasActor");
+            inverseProperty = ontologyModel.getProperty(namespace + "hasSeriesAppearance");
         } else {
-            property = ontologyModel.getProperty(namespace + "hasSeriesCreated");
-            inverseProperty = ontologyModel.getProperty(namespace + "hasCreator");
+            property = ontologyModel.getProperty(namespace + "hasCreator");
+            inverseProperty = ontologyModel.getProperty(namespace + "hasSeriesCreated");
         }
 
         if (series == null || actorOrCreator == null || property == null || inverseProperty == null) {

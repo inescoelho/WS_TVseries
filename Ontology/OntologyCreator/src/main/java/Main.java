@@ -2,10 +2,8 @@ import loader.FileLoader;
 import ontology.OntologyCreator;
 import org.apache.log4j.varia.NullAppender;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -27,7 +25,7 @@ public class Main {
         genres.add("Comedy");
 
         // Create series, acotr and creators
-        ontologyCreator.createSeries("The Big Bang Theory", "TV Show about physicists", false, 20, 9, 2007, genres);
+        ontologyCreator.createSeries("The Big Bang Theory", "TV Show about physicists", 20, 9, false, 2007, genres);
         ontologyCreator.createActor("Jim Parsons", "Major star in The Big Bang Theory", "24/03/1973");
         ontologyCreator.createCreator("Chuck Lorre", "Co-creator of The Big Bang Theory", "18/10/1952");
         ontologyCreator.createCreator("Bill Prady", "Co-creator of The Big Bang Theory", "07/06/1960");
