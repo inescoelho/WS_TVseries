@@ -60,6 +60,9 @@ public class Main {
         System.out.println("Added series to creator? " + result);
         result = ontologyCreator.addSeriesToCreator("The Big Bang Theory", "Bill Prady");
         System.out.println("Added series to creator? " + result);
+
+
+        ontologyCreator.writeModelToFile("MyTest.rdf", "RDF/XML");
     }
 
     private static void testFileLoader() {
