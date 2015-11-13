@@ -24,11 +24,13 @@ public class Main {
         ArrayList<String> genres = new ArrayList<>();
         genres.add("Comedy");
 
-        // Create series, acotr and creators
-        ontologyCreator.createSeries("The Big Bang Theory", "TV Show about physicists", 20, 9, false, 2007, genres);
-        ontologyCreator.createActor("Jim Parsons", "Major star in The Big Bang Theory", "24/03/1973");
-        ontologyCreator.createCreator("Chuck Lorre", "Co-creator of The Big Bang Theory", "18/10/1952");
-        ontologyCreator.createCreator("Bill Prady", "Co-creator of The Big Bang Theory", "07/06/1960");
+        // Create series, actor and creators
+        // FIXME: DO NOT FORGET PERSON ID IS nm0232998 AND MOVIE ID IS tt0232998!!!!!
+        ontologyCreator.createSeries("tt0898266", "The Big Bang Theory", "TV Show about physicists", 20, 9, false, 2007,
+                                     genres);
+        ontologyCreator.createActor("nm1433588", "Jim Parsons", "Major star in The Big Bang Theory", "24/03/1973");
+        ontologyCreator.createCreator("nm0521143", "Chuck Lorre", "Co-creator of The Big Bang Theory", "18/10/1952");
+        ontologyCreator.createCreator("nm0695080", "Bill Prady", "Co-creator of The Big Bang Theory", "07/06/1960");
 
         // Add series to cast
         boolean result = ontologyCreator.addSeriesToActor("The Big Bang Theory", "Jim Parsons");
