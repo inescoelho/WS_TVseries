@@ -26,30 +26,11 @@ public class Main {
         ArrayList<String> genres = new ArrayList<>();
         genres.add("Comedy");
 
-        String jimParsonsBirthDateString = "March 24, 1973";
-        String chuckLorreBirthDateString = "October 18, 1952";
-        String billPradyBirthDateString = "June 07, 1960";
-
-        SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
-
-        Date jimParsonsBirthDate = format.parse(jimParsonsBirthDateString);
-        Date chuckLorreBirthDate = format.parse(chuckLorreBirthDateString);
-        Date billPradyBirthDate = format.parse(billPradyBirthDateString);
-
-        Calendar jimParsonsBirthDateCalendar = Calendar.getInstance();
-        jimParsonsBirthDateCalendar.setTime(jimParsonsBirthDate);
-
-        Calendar chuckLorreBirthDateCalendar = Calendar.getInstance();
-        chuckLorreBirthDateCalendar.setTime(chuckLorreBirthDate);
-
-        Calendar billPradyBirthDateCalendar = Calendar.getInstance();
-        billPradyBirthDateCalendar.setTime(billPradyBirthDate);
-
         // Create series, acotr and creators
         ontologyCreator.createSeries("The Big Bang Theory", "TV Show about physicists", false, 20, 9, 2007, genres);
-        ontologyCreator.createActor("Jim Parsons", "Major star in The Big Bang Theory", jimParsonsBirthDateCalendar);
-        ontologyCreator.createCreator("Chuck Lorre", "Co-creator of The Big Bang Theory", chuckLorreBirthDateCalendar);
-        ontologyCreator.createCreator("Bill Prady", "Co-creator of The Big Bang Theory", billPradyBirthDateCalendar);
+        ontologyCreator.createActor("Jim Parsons", "Major star in The Big Bang Theory", "24/03/1973");
+        ontologyCreator.createCreator("Chuck Lorre", "Co-creator of The Big Bang Theory", "18/10/1952");
+        ontologyCreator.createCreator("Bill Prady", "Co-creator of The Big Bang Theory", "07/06/1960");
 
         // Add series to cast
         boolean result = ontologyCreator.addSeriesToActor("The Big Bang Theory", "Jim Parsons");

@@ -118,7 +118,7 @@ public class OntologyCreator {
      * @param biography A small biography of the creator
      * @param birthDate The creator's date of birth
      */
-    public void createCreator(String creatorName, String biography, Calendar birthDate) {
+    public void createCreator(String creatorName, String biography, String birthDate) {
         createPerson(false, creatorName, biography, birthDate);
     }
 
@@ -128,7 +128,7 @@ public class OntologyCreator {
      * @param biography A small biography of the actor
      * @param birthDate The actor's date of birth
      */
-    public void createActor(String actorName, String biography, Calendar birthDate) {
+    public void createActor(String actorName, String biography, String birthDate) {
         createPerson(true, actorName, biography, birthDate);
     }
 
@@ -139,7 +139,7 @@ public class OntologyCreator {
      * @param biography A small biography of the person
      * @param birthDate The person's date of birth
      */
-    private void createPerson(boolean actor, String name, String biography, Calendar birthDate) {
+    private void createPerson(boolean actor, String name, String biography, String birthDate) {
         String trimedName = name.replaceAll(" ", "_").toLowerCase();
         Individual newIndividual;
 
@@ -152,9 +152,9 @@ public class OntologyCreator {
         }
 
         // Add actor properties
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorName"), name);
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorBiography"), biography);
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasActorBirthDate"), birthDate);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate);
 
         if (actor) {
             // Add actor to actor's list
