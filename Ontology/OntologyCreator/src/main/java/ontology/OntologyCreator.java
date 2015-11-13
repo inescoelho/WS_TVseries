@@ -1,6 +1,5 @@
 package ontology;
 
-
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.RDFS;
@@ -10,6 +9,20 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.*;
 
+/**
+ * OntologyCreator class, responsible for managing an ontology, making use of the Apache Jena framework. For more
+ * information please see https://jena.apache.org/index.html
+ *
+ * The class has the following attributes:
+ *
+ *  - namespace     --> The namespace of the ontology
+ *  - ontologyModel --> Apache Jena's representation of an ontology model. In our case it contains the representation
+ *                      of an ontology model loaded from a given file
+ *  - actorsList    --> A map of type "<String, Individual>", representing all the actors in the ontology
+ *  - creatorsList  --> A map of type "<String, Individual>", representing all the series creators in the ontology
+ *  - seriesList    --> A map of type "<String, Individual>", representing all the series in the ontology
+ *
+ */
 public class OntologyCreator {
 
     private String namespace;
@@ -22,6 +35,11 @@ public class OntologyCreator {
     // FIXME: MAJOR PROBLEM HERE: IN THE WAY I AM THINKING WE WILL NEED TO ASSURE THAT WE DO NOT HAVE ACTORS, CREATORS
     //        AND SERIES WITH THE SAME NAME
 
+    /**
+     * Simple class constructor, which loads the ontology schema from a file
+     * @param filePath The path to the file containing the ontology schema
+     * @param type The format of the file (RDF, OWL, Turtle...)
+     */
     public OntologyCreator(String filePath, String type) {
         // Read ontology from file
         createOntologyModel(filePath, type);
@@ -34,15 +52,33 @@ public class OntologyCreator {
         seriesList = new HashMap<>();
     }
 
+    /**
+     * Creates a default ontology model
+     */
     public void createOntologyModel() {
         ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     }
 
+    /**
+     * Creates an ontology model with the schema stored in a given file
+     * @param filePath The path to the file containing the ontology schema
+     * @param type The format of the file (RDF, OWL, Turtle...)
+     */
     public void createOntologyModel(String filePath, String type) {
         createOntologyModel();
         ontologyModel.read(filePath, type);
     }
 
+    /**
+     * Creates a new tv series and adds it to the ontology
+     * @param title The tile of the series
+     * @param description A brief description of the series
+     * @param hasFinished A boolean value, signalling if the series has already finished
+     * @param duration The average duration, in minutes, of each episode of the series
+     * @param seasonNumber The current series' season number (-1 if series has not started)
+     * @param pilotYear The year when the series' pilot episode aired (-1 if no pilot has aired)
+     * @param genres The genres of the series
+     */
     public void createSeries(String title, String description, boolean hasFinished, int duration, int seasonNumber,
                              int pilotYear, ArrayList<String> genres) {
         String trimedName = title.replaceAll(" ", "_").toLowerCase();
@@ -61,8 +97,14 @@ public class OntologyCreator {
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasDescription"), description);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasFinished"), hasFinished);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasEpisodeDuration"), duration);
-        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), seasonNumber);
-        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), pilotYear);
+
+        if (seasonNumber >= 0) {
+            newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), seasonNumber);
+        }
+
+        if (pilotYear >= 0) {
+            newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), pilotYear);
+        }
 
         // Add series to series list
         seriesList.put(title, newSeries);
@@ -70,14 +112,33 @@ public class OntologyCreator {
         System.out.println("Created series " + newSeries.getLocalName());
     }
 
+    /**
+     * Creates a new tv series creator and adds it to the ontology
+     * @param creatorName The name of the creator
+     * @param biography A small biography of the creator
+     * @param birthDate The creator's date of birth
+     */
     public void createCreator(String creatorName, String biography, Calendar birthDate) {
         createPerson(false, creatorName, biography, birthDate);
     }
 
+    /**
+     * Creates a new actor and adds it to the ontology
+     * @param actorName The name of the actor
+     * @param biography A small biography of the actor
+     * @param birthDate The actor's date of birth
+     */
     public void createActor(String actorName, String biography, Calendar birthDate) {
         createPerson(true, actorName, biography, birthDate);
     }
 
+    /**
+     * Creates a new person (either a creator or an actor) and adds it to the ontology
+     * @param actor A boolean value, signalling if the person to be created is a creator or an actor
+     * @param name The name of the person
+     * @param biography A small biography of the person
+     * @param birthDate The person's date of birth
+     */
     private void createPerson(boolean actor, String name, String biography, Calendar birthDate) {
         String trimedName = name.replaceAll(" ", "_").toLowerCase();
         Individual newIndividual;
@@ -105,6 +166,13 @@ public class OntologyCreator {
         }
     }
 
+    /**
+     * Adds a link (property) between an actor and a tv series
+     * @param seriesName The name of the series
+     * @param actorName The name of the actor
+     * @return A boolean value signalling if any errors occurred (link between the two entities already exists, for
+     *         example) or if everything went well
+     */
     public boolean addSeriesToActor(String seriesName, String actorName) {
         // Get actor and series
         Individual series = seriesList.get(seriesName);
@@ -113,6 +181,13 @@ public class OntologyCreator {
         return addActorCreatorToSeries(true, series, actor);
     }
 
+    /**
+     * Adds a link (property) between a creator and a tv series
+     * @param seriesName The name of the series
+     * @param creatorName The name of the creator
+     * @return A boolean value signalling if any errors occurred (link between the two entities already exists, for
+     *         example) or if everything went well
+     */
     public boolean addSeriesToCreator(String seriesName, String creatorName) {
         // Get creator and series
         Individual series = seriesList.get(seriesName);
@@ -121,6 +196,14 @@ public class OntologyCreator {
         return addActorCreatorToSeries(false, series, creator);
     }
 
+    /**
+     * Adds a link (property) between a tv series and a creator or an actor
+     * @param addActor A boolean value, signalling whether an actor or a creator will be processed
+     * @param series An instance of Jena's "Individual" class, representing the tv series
+     * @param actorOrCreator An instance of Jena's "Individual" class, representing the actor or the creator
+     * @return A boolean value signalling if any errors occurred (link between the two entities already exists, for
+     *         example) or if everything went well
+     */
     private boolean addActorCreatorToSeries(boolean addActor, Individual series, Individual actorOrCreator) {
         Property property, inverseProperty;
 
@@ -161,6 +244,12 @@ public class OntologyCreator {
         return true;
     }
 
+    /**
+     * Saves the current ontology to a given file, with the given format
+     * @param filePath The path where the file should be saved
+     * @param type The format of the file
+     * @return A boolean value, signalling if any errors occurred, or if everything went well
+     */
     public boolean writeModelToFile(String filePath, String type) {
         try {
             OutputStream out = new FileOutputStream(filePath);
@@ -173,41 +262,11 @@ public class OntologyCreator {
         return false;
     }
 
+    /**
+     * Returns the ontology's namespace
+     * @return The ontology's namespace
+     */
     public String getNamespace() {
         return namespace;
-    }
-
-    public void printStatements() {
-
-        // print out the predicate, subject and object of each statement
-        StmtIterator iter = ontologyModel.listStatements();
-        while (iter.hasNext()) {
-            Statement stmt      = iter.nextStatement();  // get next statement
-            Resource subject   = stmt.getSubject();     // get the subject
-            Property  predicate = stmt.getPredicate();   // get the predicate
-            RDFNode   object    = stmt.getObject();      // get the object
-
-            System.out.print(subject.toString());
-            System.out.print(" " + predicate.toString() + " ");
-            if (object instanceof Resource) {
-                System.out.print(object.toString());
-            } else {
-                // object is a literal
-                System.out.print(" \"" + object.toString() + "\"");
-            }
-
-            System.out.println(" .");
-        }
-    }
-
-    public void printClasses() {
-        Iterator<OntClass> it = ontologyModel.listClasses();
-        OntClass class1 = it.next();
-
-        while (it.hasNext()) {
-            if (class1.getLocalName() != null)
-                System.out.println(class1.getLocalName());
-            class1 = it.next();
-        }
     }
 }
