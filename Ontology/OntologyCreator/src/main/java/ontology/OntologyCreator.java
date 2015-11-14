@@ -72,7 +72,7 @@ public class OntologyCreator {
 
     public boolean createSeries(String id, String title, String description, String storyline, int duration,
                                 ArrayList<String> genres) {
-        return createSeries(id, title, description, storyline, duration, genres, new int[]{-1, -1, -1});
+        return createSeries(id, title, description, storyline, duration, genres, new int[]{-1, -1});
     }
 
     /**
@@ -83,8 +83,7 @@ public class OntologyCreator {
      * @param storyline The storyline of the series
      * @param duration The average duration, in minutes, of each episode of the series
      * @param genres The genres of the series
-     * @param optionalParams An array of int values containing BY THIS ORDER the series' pilot year, finish year and
-     *                       current season number (-1 for each if no info is supplied)
+     * @param optionalParams An array of int values containing BY THIS ORDER the series' pilot year and finish year
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
     public boolean createSeries(String id, String title, String description, String storyline, int duration,
@@ -117,16 +116,12 @@ public class OntologyCreator {
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasEpisodeDuration"), duration);
 
         // Add optional properties
-        if (optionalParams.length == 3) {
+        if (optionalParams.length == 2) {
             if (optionalParams[0] != -1) {
                 newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), optionalParams[0]);
             }
             if (optionalParams[1] != -1) {
                 newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasFinishYear"), optionalParams[1]);
-            }
-
-            if (optionalParams[2] != -1) {
-                newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), optionalParams[2]);
             }
         }
 

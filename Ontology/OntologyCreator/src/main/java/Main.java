@@ -24,7 +24,7 @@ public class Main {
         ArrayList<String> genres = new ArrayList<>();
         genres.add("Comedy");
 
-        int[] optionalParams = {2007, -1, 20};
+        int[] optionalParams = {2007, -1};
 
         // Create series, actor and creators
         // FIXME: DO NOT FORGET PERSON ID IS like "nm0232998" AND MOVIE ID IS like "tt0232998"!!!!!
