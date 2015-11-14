@@ -5,39 +5,28 @@ import java.util.ArrayList;
 /**
  * Created by user on 09/11/2015.
  */
-public class Serie {
+public class Series {
+    private String seriesId;
     private String title;
     private String description;
+    private String storyline;
     private ArrayList<Person> creatorList;
     private ArrayList<Person> actorList;
     private String seasonNumber;
     private String startYear;
     private String finishYear;
-    private boolean hasFinished;
 
-    public  Serie()
+    public  Series(String id)
     {
+        setSeriesId(id);
         title = "";
         description = "";
+        setStoryline("");
         creatorList = new ArrayList<Person>();
         actorList = new ArrayList<Person>();
         seasonNumber = "";
         startYear = "";
         finishYear = "";
-        hasFinished = false;
-    }
-
-    public Serie(String ttl, String desc, ArrayList<Person> creatL, ArrayList<Person> actL, String sn,
-                 String start, String finish, boolean isFinish)
-    {
-        title = ttl;
-        description = desc;
-        creatorList = creatL;
-        actorList = actL;
-        seasonNumber = sn;
-        startYear = start;
-        finishYear = finish;
-        hasFinished = isFinish;
     }
 
     public String getTitle() {
@@ -84,14 +73,6 @@ public class Serie {
         return startYear;
     }
 
-    public boolean isHasFinished() {
-        return hasFinished;
-    }
-
-    public void setHasFinished(boolean hasFinished) {
-        this.hasFinished = hasFinished;
-    }
-
     public void setStartYear(String startYear) {
         this.startYear = startYear;
     }
@@ -102,5 +83,21 @@ public class Serie {
 
     public void setFinishYear(String finishYear) {
         this.finishYear = finishYear;
+    }
+
+    public String getStoryline() {
+        return storyline;
+    }
+
+    public void setStoryline(String storyline) {
+        this.storyline = storyline;
+    }
+
+    public String getSeriesId() {
+        return seriesId;
+    }
+
+    public void setSeriesId(String seriesId) {
+        this.seriesId = seriesId;
     }
 }
