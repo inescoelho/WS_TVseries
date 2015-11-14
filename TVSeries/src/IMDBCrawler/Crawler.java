@@ -69,20 +69,24 @@ public class Crawler {
                 auxSeriesURL = seriesURL + "/technical";
                 this.getDuration(auxSeriesURL, series);
 
+                // get series creators list
+                auxSeriesURL = seriesURL + "/fullcredits";
+                this.getCreators(auxSeriesURL, series);
+
             } catch (IOException var12) {
                 System.out.println("Timeout while connecting to :" + seriesURL + "!");
             }
 
             //System.out.println(series.toString());
 
-           //break;
+           break;
         }
 
-        //list series by genre
+/*        //list series by genre
         for (Genre genre: this.getGenreList()
              ) {
             System.out.println(genre.toString());
-        }
+        }*/
     }
 
     public void getGenre(Document doc, Series series){
@@ -228,7 +232,6 @@ public class Crawler {
                 result = true;
                 break;
             }
-
         }
 
         //create new genre and add series to the new genre series list
@@ -240,5 +243,86 @@ public class Crawler {
         }
 
         return;
+    }
+
+    private void getCreators(String auxSeriesURL, Series series) {
+        Document doc;
+
+        try {
+            doc = Jsoup.connect(auxSeriesURL).userAgent("Mozilla").get();
+
+            Element table = doc.select("table").get(1);
+            Elements rows = table.select("tr");
+            //System.out.println(rows);
+
+            for (Element row: rows)
+            {
+                Elements columns = row.select("td");
+
+                boolean isCreator = false;
+                for (Element column: columns)
+                {
+                    String aux = column.toString();
+                    if (aux.contains("creator"))
+                        isCreator = true;
+                }
+
+                if (isCreator)
+                {
+                    Element creatorRef = row.select("td").get(0);
+
+                    //get IMDB id
+                    String absHref = (creatorRef.select("a")).attr("href");
+                    String id = absHref.substring(8,15);
+
+                    //get name
+                    String creator = creatorRef.toString();
+                    //remove </a> and </td> tag
+                    creator = creator.replace(" </a> </td>", "");
+                    int stop=0;
+                    for (int i=0; i< creator.length()-1; i++)
+                        stop = creator.lastIndexOf('>');
+                    creator = creator.substring(stop+2);
+
+                    Person person = new Person(creator, absHref);
+                    this.getPersonData(id);
+                    System.out.println(creator + " id " + id);
+                }
+            }
+
+        } catch (IOException var12) {
+            System.out.println("Timeout while connecting to :" + auxSeriesURL + "!");
+        }
+    }
+
+    private void getPersonData(String id) {
+        Document doc;
+        String url = "http://www.imdb.com/name/nm" + id + "/bio";
+
+        try {
+            doc = Jsoup.connect(url).userAgent("Mozilla").get();
+
+            //get birthday
+            Elements table = doc.select("table#overviewTable");
+            Elements row = table.select("tr");
+            Elements column = row.select("td");
+            String date = column.toString();
+            date = date.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
+            System.out.println(date);
+
+            //get bio
+            Elements el = doc.select("h4.li_group");
+            for(Element elAux : el)
+            {
+                if (elAux.toString().contains("Mini Bio"))
+                {
+                    Element el2 = elAux.nextElementSibling();
+                    System.out.println(el2);
+                }
+            }
+
+        } catch (IOException var12) {
+            System.out.println("Timeout while connecting to :" + url + "!");
+        }
     }
 }

@@ -6,14 +6,16 @@ import java.util.ArrayList;
  * Created by user on 09/11/2015.
  */
 public class Person {
+    private String id;
     private String name;
+    private String biography;
     private date birthday;
     private ArrayList<Series> series;
 
-    Person (String nm, date bd)
+    public Person (String nm, String identif)
     {
         setName(nm);
-        setBirthday(bd);
+        setId(identif);
     }
 
     public String getName() {
@@ -38,5 +40,21 @@ public class Person {
 
     public void setSeries(ArrayList<Series> series) {
         this.series = series;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String identif) {
+        this.id = identif;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
     }
 }
