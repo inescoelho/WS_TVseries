@@ -5,6 +5,7 @@ import data.Person;
 import data.Series;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -70,8 +71,11 @@ public class Crawler {
             auxSeriesURL = seriesURL + "/plotsummary";
             this.getStoryline(auxSeriesURL, series);
 
-            System.out.println("Title: " + series.getTitle() + " start: " + series.getStartYear() + " finished: "
-                    + series.getFinishYear() + " Description: " + series.getDescription() + " Storyline: " + series.getStoryline());
+            // get series duration
+            auxSeriesURL = seriesURL + "/technical";
+            this.getDuration(auxSeriesURL, series);
+
+            System.out.println(series.toString());
 
            break;
         }
@@ -137,6 +141,25 @@ public class Crawler {
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
         }
+    }
 
+    private void getDuration(String url, Series series) {
+        Document doc;
+        String duration;
+
+        try {
+            doc = Jsoup.connect(url).userAgent("Mozilla").get();
+
+            Element table = doc.select("table").get(0);
+            Element row = table.select("tr").get(0);
+            Element column = row.select("td").get(1);
+
+            duration = column.toString();
+            duration = duration.replace("<td>", "");
+            duration = duration.replace("</td>", "");
+            series.setDuration(duration);
+        } catch (IOException var12) {
+            System.out.println("Timeout while connecting to :" + url + "!");
+        }
     }
 }

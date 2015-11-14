@@ -15,6 +15,7 @@ public class Series {
     private String seasonNumber;
     private String startYear;
     private String finishYear;
+    private String duration;
 
     public  Series(String id)
     {
@@ -27,6 +28,7 @@ public class Series {
         seasonNumber = "";
         startYear = "";
         finishYear = "";
+        setDuration("");
     }
 
     public String getTitle() {
@@ -99,5 +101,27 @@ public class Series {
 
     public void setSeriesId(String seriesId) {
         this.seriesId = seriesId;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        String result;
+
+        result = "Title: " + this.getTitle() +
+                " Start: " + this.getStartYear() +
+                " Finished: "  + this.getFinishYear() +
+                " Duration: " + this.getDuration() + "\n" +
+                " Description: " + this.getDescription() + "\n" +
+                " Storyline: " + this.getStoryline();
+
+        return result;
     }
 }
