@@ -2,6 +2,7 @@ package IMDBCrawler;
 
 import data.Genre;
 import data.Person;
+import data.Serie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -10,15 +11,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 /**
- * Created by user on 09/11/2015.
+ * Crawls the IMDB website in order to retrieve information for each serie on the hashmap
  */
 public class Crawler {
+    /**
+     * list of series genres, each genre contains a list with series that are categorized as such
+     */
     private ArrayList<Genre> genreList;
+    /**
+     * Map the series name with the respective IMDB id
+     */
     private HashMap<String, String> fileNameMap;
 
+    /**
+     * Class constructor
+     * @param map list of series name and IMDB ids
+     */
     public Crawler(HashMap<String, String> map) {
         genreList = new ArrayList<>();
         fileNameMap = map;
@@ -28,17 +38,17 @@ public class Crawler {
     {
         String mainURL = "http://www.imdb.com/title/tt";
         String serieURL;
-        String title;
+        String title = "";
         String description;
         ArrayList<Person> creatorList;
         ArrayList<Person> actorList;
         String seasonNumber;
-        String pilotDate;
-        boolean hasFinished;
+        String yearStart = "";
+        String yearFinished = "";
+        boolean hasFinished = false;
 
 
         Document doc;
-        Elements aux;
         for (Map.Entry<String, String> entry : fileNameMap.entrySet())
         {
             serieURL = mainURL + entry.getValue();
@@ -48,31 +58,64 @@ public class Crawler {
                 System.out.println(">>>\n>>>FETCHING " + serieURL + "\n>>>");
                 doc = Jsoup.connect(serieURL).userAgent("Mozilla").get();
 
-                title = this.getTitle(doc);
+                Serie serie = new Serie();
+                this.getTitleAndDate(doc, serie);
 
-                System.out.print(title);
+                System.out.println("Title: " + serie.getTitle() + " start: " + serie.getStartYear() + " finished: "
+                        + serie.getFinishYear()  + " Has Finished: " + serie.isHasFinished());
 
             } catch (IOException var12) {
                 System.out.println("Timeout while connecting to :" + serieURL + "!");
             }
 
-            break;
+            //break;
         }
     }
 
-    public String getTitle(Document doc)
+    public void getTitleAndDate(Document doc, Serie serie)
     {
         Elements el = doc.select("meta[name=title]");
-        String aux = el.attr("content");
+        String content = el.attr("content");
+        String[] aux = content.split(" ");
 
+        boolean isTitle = true;
+        boolean isDate = false;
+        String title = "";
+        String date = "";
+        for (int i = 0; i < aux.length; i++)
+        {
 
-        System.out.println(aux);
+            if (isTitle)
+            {
+                if (aux[i].equals("(TV"))
+                    isTitle = false;
+                else
+                    title += aux[i] + " ";
+            }
+            else
+            {
+                if (aux[i].equals("Series"))
+                    isDate = true;
 
-        StringTokenizer st = new StringTokenizer(aux, " (TV Series ");
+                else if (isDate)
+                {
+                    date += aux[i];
+                    isDate = false;
+                }
+            }
+        }
 
-        System.out.println(st.nextElement());
-        System.out.println(st.nextElement());
+        serie.setTitle(title);
+        serie.setStartYear(date.substring(0,4));
 
-        return aux;
+        if (date.length()>5)
+        {
+            serie.setFinishYear(date.substring(5,9));
+            serie.setHasFinished(true);
+        }
+        else
+            serie.setHasFinished(false);
+
+        return;
     }
 }

@@ -11,18 +11,33 @@ public class Serie {
     private ArrayList<Person> creatorList;
     private ArrayList<Person> actorList;
     private String seasonNumber;
-    private date pilotDate;
+    private String startYear;
+    private String finishYear;
     private boolean hasFinished;
 
-    public Serie(String ttl, String desc, ArrayList<Person> creatL, ArrayList<Person> actL, String sn, date pd, boolean finish)
+    public  Serie()
+    {
+        title = "";
+        description = "";
+        creatorList = new ArrayList<Person>();
+        actorList = new ArrayList<Person>();
+        seasonNumber = "";
+        startYear = "";
+        finishYear = "";
+        hasFinished = false;
+    }
+
+    public Serie(String ttl, String desc, ArrayList<Person> creatL, ArrayList<Person> actL, String sn,
+                 String start, String finish, boolean isFinish)
     {
         title = ttl;
         description = desc;
         creatorList = creatL;
         actorList = actL;
         seasonNumber = sn;
-        pilotDate = pd;
-        hasFinished = finish;
+        startYear = start;
+        finishYear = finish;
+        hasFinished = isFinish;
     }
 
     public String getTitle() {
@@ -65,12 +80,8 @@ public class Serie {
         this.seasonNumber = seasonNumber;
     }
 
-    public date getPilotDate() {
-        return pilotDate;
-    }
-
-    public void setPilotDate(date pilotDate) {
-        this.pilotDate = pilotDate;
+    public String getStartYear() {
+        return startYear;
     }
 
     public boolean isHasFinished() {
@@ -79,5 +90,17 @@ public class Serie {
 
     public void setHasFinished(boolean hasFinished) {
         this.hasFinished = hasFinished;
+    }
+
+    public void setStartYear(String startYear) {
+        this.startYear = startYear;
+    }
+
+    public String getFinishYear() {
+        return finishYear;
+    }
+
+    public void setFinishYear(String finishYear) {
+        this.finishYear = finishYear;
     }
 }
