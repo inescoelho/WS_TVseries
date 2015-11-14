@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Genre {
     private String type;
-    private ArrayList<Serie> series;
+    private ArrayList<Series> series;
 
     public Genre(String tp)
     {
@@ -23,11 +23,11 @@ public class Genre {
         this.type = type;
     }
 
-    public ArrayList<Serie> getSeries() {
+    public ArrayList<Series> getSeries() {
         return series;
     }
 
-    public void setSeries(ArrayList<Serie> series) {
+    public void setSeries(ArrayList<Series> series) {
         this.series = series;
     }
 }

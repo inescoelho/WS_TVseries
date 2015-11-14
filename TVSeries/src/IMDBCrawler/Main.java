@@ -1,7 +1,7 @@
 package IMDBCrawler;
 
 /**
- * Created by user on 08/11/2015.
+ * Loads the list of tv series to analyze and starts the IMDB crawler on that list
  */
 public class Main {
 
@@ -10,6 +10,7 @@ public class Main {
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
 
+        //load tv series list from cvs file
         boolean result = fileLoader.loadIDsFromFile("TV_Show_Series.csv");
 
         if (result) {
@@ -19,12 +20,8 @@ public class Main {
             return;
         }
 
-        //crawler.getIMDBdata();
-        String name = "Segurança Nacional (TV Series 2011– ) - IMDb";
-        String[] aux = name.split(" ");
-        for (int i = 0; i < aux.length; i++)
-        {
+        //get data from IMDB
+        crawler.getIMDBdata();
 
-        }
     }
 }

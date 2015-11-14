@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Person {
     private String name;
     private date birthday;
-    private ArrayList<Serie> series;
+    private ArrayList<Series> series;
 
     Person (String nm, date bd)
     {
@@ -32,11 +32,11 @@ public class Person {
         this.birthday = birthday;
     }
 
-    public ArrayList<Serie> getSeries() {
+    public ArrayList<Series> getSeries() {
         return series;
     }
 
-    public void setSeries(ArrayList<Serie> series) {
+    public void setSeries(ArrayList<Series> series) {
         this.series = series;
     }
 }
