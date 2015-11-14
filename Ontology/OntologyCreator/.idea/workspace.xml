@@ -5,9 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java" afterPath="$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/tv_series_ontology.rdf" afterPath="$PROJECT_DIR$/src/main/resources/tv_series_ontology.rdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../catalog-v001.xml" afterPath="$PROJECT_DIR$/../catalog-v001.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tv_series_ontology.rdf" afterPath="$PROJECT_DIR$/../tv_series_ontology.rdf" />
     </list>
     <ignored path="OntologyCreator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,18 +31,18 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.653847">
+            <state vertical-scroll-proportion="0.0">
               <caret line="27" column="90" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4116223">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,15 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OntologyCreator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="OntologyCreator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="107" selection-start-line="72" selection-start-column="99" selection-end-line="72" selection-end-column="107" />
+            <state vertical-scroll-proportion="0.7042424">
+              <caret line="184" column="94" selection-start-line="184" selection-start-column="94" selection-end-line="184" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2082#2083#0" expanded="true" />
-                <element signature="e#2168#2169#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,6 +137,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,9 +254,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -739,12 +734,13 @@
       <workItem from="1447441606686" duration="4830000" />
       <workItem from="1447514946163" duration="2685000" />
       <workItem from="1447527192457" duration="35000" />
-      <workItem from="1447531373020" duration="100000" />
+      <workItem from="1447531373020" duration="112000" />
+      <workItem from="1447542544040" duration="868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22937000" />
+    <option name="totallyTimeSpent" value="23817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -830,6 +826,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="107" selection-start-line="72" selection-start-column="99" selection-end-line="72" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="90" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -853,8 +877,6 @@
           <caret line="74" column="90" selection-start-line="74" selection-start-column="90" selection-end-line="74" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -883,8 +905,6 @@
           <caret line="74" column="90" selection-start-line="74" selection-start-column="90" selection-end-line="74" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -913,8 +933,6 @@
           <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -943,8 +961,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -973,15 +989,13 @@
           <caret line="194" column="13" selection-start-line="194" selection-start-column="13" selection-end-line="194" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.653847">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="90" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
           <folding />
         </state>
@@ -1025,22 +1039,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="107" selection-start-line="72" selection-start-column="99" selection-end-line="72" selection-end-column="107" />
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4116223">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.7042424">
+          <caret line="184" column="94" selection-start-line="184" selection-start-column="94" selection-end-line="184" selection-end-column="94" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

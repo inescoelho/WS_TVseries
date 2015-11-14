@@ -109,7 +109,7 @@ public class OntologyCreator {
         }
 
         // Add series properties
-        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeriesId"), id);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeriesId"), "tt" + id);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasTitle"), title);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasDescription"), description);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasStoryline"), storyline);
@@ -182,7 +182,7 @@ public class OntologyCreator {
         }
 
         // Add actor properties
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), id);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), "nm" + id);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate);
