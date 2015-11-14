@@ -17,13 +17,7 @@ import java.util.Map;
  * Crawls the IMDB website in order to retrieve information for each serie on the hashmap
  */
 public class Crawler {
-    /**
-     * list of series genres, each genre contains a list with series that are categorized as such
-     */
     private ArrayList<Genre> genreList;
-    /**
-     * Map the series name with the respective IMDB id
-     */
     private HashMap<String, String> fileNameMap;
 
     /**
@@ -32,8 +26,8 @@ public class Crawler {
      * @param map list of series name and IMDB ids
      */
     public Crawler(HashMap<String, String> map) {
-        genreList = new ArrayList<>();
-        fileNameMap = map;
+        setGenreList(new ArrayList<>());
+        setFileNameMap(map);
     }
 
     public void getIMDBdata() {
@@ -51,33 +45,67 @@ public class Crawler {
         boolean hasFinished = false;
         Document doc;
 
-        for (Map.Entry<String, String> entry : fileNameMap.entrySet()) {
+        for (Map.Entry<String, String> entry : getFileNameMap().entrySet()) {
 
             series = new Series(entry.getValue());
             seriesURL = mainURL + entry.getValue();
             System.out.printf("Name : %s ID: %s URL: %s %n", entry.getKey(), entry.getValue(), seriesURL);
 
-            //get series title, description, start and end year
             try {
                 doc = Jsoup.connect(seriesURL).userAgent("Mozilla").get();
 
+                //get series genre
+                this.getGenre(doc, series);
+
+                //get series title, description, start and end year
                 this.getTitleAndDate(doc, series);
                 this.getDescription(doc, series);
+
+                // get series storyline
+                auxSeriesURL = seriesURL + "/plotsummary";
+                this.getStoryline(auxSeriesURL, series);
+
+                // get series duration
+                auxSeriesURL = seriesURL + "/technical";
+                this.getDuration(auxSeriesURL, series);
+
             } catch (IOException var12) {
                 System.out.println("Timeout while connecting to :" + seriesURL + "!");
             }
 
-            // get series storyline
-            auxSeriesURL = seriesURL + "/plotsummary";
-            this.getStoryline(auxSeriesURL, series);
+            //System.out.println(series.toString());
 
-            // get series duration
-            auxSeriesURL = seriesURL + "/technical";
-            this.getDuration(auxSeriesURL, series);
+           //break;
+        }
 
-            System.out.println(series.toString());
+        //list series by genre
+        for (Genre genre: this.getGenreList()
+             ) {
+            System.out.println(genre.toString());
+        }
+    }
 
-           break;
+    public void getGenre(Document doc, Series series){
+        String genre;
+
+        Elements list = doc.select("div[itemprop=genre]");
+        Elements links = list.select("a");
+
+        for (Element link : links)
+        {
+            genre = link.toString();
+
+            //remove <a> tag
+            int start=0, stop=0;
+            for (int i=0; i< genre.length()-1; i++)
+            {
+                start = genre.lastIndexOf('<');
+                stop = genre.indexOf('>');
+            }
+            genre = genre.substring(stop+1, start);
+
+            //add series to the respective genre
+            addSeriesToGenre(genre, series);
         }
     }
 
@@ -161,5 +189,56 @@ public class Crawler {
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
         }
+    }
+
+    /**
+     * list of series genres, each genre contains a list with series that are categorized as such
+     */
+    public ArrayList<Genre> getGenreList() {
+        return genreList;
+    }
+
+    public void setGenreList(ArrayList<Genre> genreList) {
+        this.genreList = genreList;
+    }
+
+    /**
+     * Map the series name with the respective IMDB id
+     */
+    public HashMap<String, String> getFileNameMap() {
+        return fileNameMap;
+    }
+
+    public void setFileNameMap(HashMap<String, String> fileNameMap) {
+        this.fileNameMap = fileNameMap;
+    }
+
+    private void addSeriesToGenre (String genre, Series series)
+    {
+        ArrayList<Genre> list = this.getGenreList();
+        boolean result = false;
+
+        //check if genre is on the list
+        for(Genre genreInList : list)
+        {
+            //add serie to genre
+            if (genreInList.getType().equals(genre))
+            {
+                genreInList.getSeries().add(series);
+                result = true;
+                break;
+            }
+
+        }
+
+        //create new genre and add series to the new genre series list
+        if(!result)
+        {
+            Genre newGenre = new Genre(genre);
+            newGenre.getSeries().add(series);
+            list.add(newGenre);
+        }
+
+        return;
     }
 }

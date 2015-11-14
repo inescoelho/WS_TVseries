@@ -30,4 +30,14 @@ public class Genre {
     public void setSeries(ArrayList<Series> series) {
         this.series = series;
     }
+
+    @Override
+    public String toString() {
+        String result = "Type " + this.getType() + "\n";
+        for (Series series: this.getSeries()
+             ) {
+            result += "\t" + series.getTitle() + "\n";
+        }
+        return result;
+    }
 }
