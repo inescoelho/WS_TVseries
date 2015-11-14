@@ -4,21 +4,21 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class that retrieves the tv shows names and movie id's from a 2-column .csv file (stored in the resources folder of
- * this project) and stores them in the "fileNameList" ArrayList<String[]>
+ * this project) and stores them in the "fileNameMap" HashMap
  */
 public class FileLoader {
 
-    private ArrayList<String[]> fileNameList;
+    private HashMap<String, String> fileNameMap;
 
     /**
      * Class constructor
      */
     public FileLoader() {
-        fileNameList = new ArrayList<>();
+        fileNameMap = new HashMap<>();
     }
 
     /**
@@ -35,6 +35,7 @@ public class FileLoader {
             URL fileURL = classLoader.getResource(filePath);
 
             if (fileURL == null) {
+                System.out.print("NO FILE");
                 return false;
             }
 
@@ -42,21 +43,22 @@ public class FileLoader {
 
             while ( (line = bufferedReader.readLine()) != null ){
                 currentLine = line.split(",");
-                fileNameList.add(currentLine);
+                fileNameMap.put(currentLine[0], currentLine[1]);
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.print("ERRO");
             return false;
         }
         return true;
     }
 
     /**
-     * Simple getter for the "fileNameList" ArrayList
-     * @return The "fileNameList" ArrayList
+     * Simple getter for the "fileNameMap" HashMap
+     * @return The "fileNameMap" HashMap
      */
-    public ArrayList<String[]> getFileNameList() {
-        return fileNameList;
+    public HashMap<String, String> getFileNameMap() {
+        return fileNameMap;
     }
 
 }
