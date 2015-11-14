@@ -24,10 +24,12 @@ public class Main {
         ArrayList<String> genres = new ArrayList<>();
         genres.add("Comedy");
 
+        int[] optionalParams = {2007, -1, 20};
+
         // Create series, actor and creators
-        // FIXME: DO NOT FORGET PERSON ID IS nm0232998 AND MOVIE ID IS tt0232998!!!!!
-        ontologyCreator.createSeries("tt0898266", "The Big Bang Theory", "TV Show about physicists", 20, 9, false, 2007,
-                                     genres);
+        // FIXME: DO NOT FORGET PERSON ID IS like "nm0232998" AND MOVIE ID IS like "tt0232998"!!!!!
+        ontologyCreator.createSeries("tt0898266", "The Big Bang Theory", "TV Show about physicists",
+                                     "Lol this is a storyline", 20, genres, optionalParams);
         ontologyCreator.createActor("nm1433588", "Jim Parsons", "Major star in The Big Bang Theory", "24/03/1973");
         ontologyCreator.createCreator("nm0521143", "Chuck Lorre", "Co-creator of The Big Bang Theory", "18/10/1952");
         ontologyCreator.createCreator("nm0695080", "Bill Prady", "Co-creator of The Big Bang Theory", "07/06/1960");

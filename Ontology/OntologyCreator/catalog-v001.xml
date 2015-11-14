@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1447447892415" name="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology" uri="src/main/resources/tv_series_ontology.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1447447892415" name="shadowed:http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology" uri="target/classes/tv_series_ontology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1447516449131" name="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology" uri="src/main/resources/tv_series_ontology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1447516449131" name="shadowed:http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology" uri="target/classes/tv_series_ontology.rdf"/>
     </group>
 </catalog>

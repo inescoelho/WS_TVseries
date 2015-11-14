@@ -70,20 +70,9 @@ public class OntologyCreator {
         ontologyModel.read(filePath, type);
     }
 
-    /**
-     * Creates a new tv series and adds it to the ontology
-     * @param id The id of the series
-     * @param title The tile of the series
-     * @param description A brief description of the series
-     * @param duration The average duration, in minutes, of each episode of the series
-     * @param hasFinished A boolean value, signalling if the series has already finished
-     * @param genres The genres of the series
-     * @return A boolean value signalling if any errors occurred or if everything went well
-     */
-    public boolean createSeries(String id, String title, String description, int duration, boolean hasFinished,
+    public boolean createSeries(String id, String title, String description, String storyline, int duration,
                                 ArrayList<String> genres) {
-
-        return createSeries(id, title, description, duration, -1, hasFinished, -1, genres);
+        return createSeries(id, title, description, storyline, duration, genres, new int[]{-1, -1, -1});
     }
 
     /**
@@ -91,47 +80,16 @@ public class OntologyCreator {
      * @param id The id of the series
      * @param title The tile of the series
      * @param description A brief description of the series
+     * @param storyline The storyline of the series
      * @param duration The average duration, in minutes, of each episode of the series
-     * @param seasonNumber The current series' season number (-1 if series has not started)
-     * @param hasFinished A boolean value, signalling if the series has already finished
      * @param genres The genres of the series
+     * @param optionalParams An array of int values containing BY THIS ORDER the series' pilot year, finish year and
+     *                       current season number (-1 for each if no info is supplied)
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean createSeries(String id, String title, String description, int duration, int seasonNumber,
-                                boolean hasFinished, ArrayList<String> genres) {
-        return createSeries(id, title, description, duration, seasonNumber, hasFinished, -1, genres);
-    }
+    public boolean createSeries(String id, String title, String description, String storyline, int duration,
+                                ArrayList<String> genres, int[] optionalParams) {
 
-    /**
-     * Creates a new tv series and adds it to the ontology
-     * @param id The id of the series
-     * @param title The tile of the series
-     * @param description A brief description of the series
-     * @param duration The average duration, in minutes, of each episode of the series
-     * @param hasFinished A boolean value, signalling if the series has already finished
-     * @param pilotYear The year when the series' pilot episode aired (-1 if no pilot has aired)
-     * @param genres The genres of the series
-     * @return A boolean value signalling if any errors occurred or if everything went well
-     */
-    public boolean createSeries(String id, String title, String description, int duration, boolean hasFinished,
-                                int pilotYear, ArrayList<String> genres) {
-        return createSeries(id, title, description, duration, -1, hasFinished, pilotYear, genres);
-    }
-
-    /**
-     * Creates a new tv series and adds it to the ontology
-     * @param id The id of the series
-     * @param title The tile of the series
-     * @param description A brief description of the series
-     * @param duration The average duration, in minutes, of each episode of the series
-     * @param seasonNumber The current series' season number (-1 if series has not started)
-     * @param hasFinished A boolean value, signalling if the series has already finished
-     * @param pilotYear The year when the series' pilot episode aired (-1 if no pilot has aired)
-     * @param genres The genres of the series
-     * @return A boolean value signalling if any errors occurred or if everything went well
-     */
-    public boolean createSeries(String id, String title, String description, int duration, int seasonNumber,
-                                boolean hasFinished, int pilotYear, ArrayList<String> genres) {
         String trimedName = title.replaceAll(" ", "_").toLowerCase();
 
         Individual newSeries = ontologyModel.createIndividual(namespace + trimedName,
@@ -155,15 +113,21 @@ public class OntologyCreator {
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeriesId"), id);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasTitle"), title);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasDescription"), description);
-        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasFinished"), hasFinished);
+        newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasStoryline"), storyline);
         newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasEpisodeDuration"), duration);
 
-        if (seasonNumber >= 0) {
-            newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), seasonNumber);
-        }
+        // Add optional properties
+        if (optionalParams.length == 3) {
+            if (optionalParams[0] != -1) {
+                newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), optionalParams[0]);
+            }
+            if (optionalParams[1] != -1) {
+                newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasFinishYear"), optionalParams[1]);
+            }
 
-        if (pilotYear >= 0) {
-            newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasPilotYear"), pilotYear);
+            if (optionalParams[2] != -1) {
+                newSeries.addLiteral(ontologyModel.getProperty(namespace + "hasSeasonNumber"), optionalParams[2]);
+            }
         }
 
         // Add series to series list
