@@ -3,6 +3,7 @@ package IMDBCrawler;
 import data.Genre;
 import data.Person;
 import data.Series;
+import data.Date;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,14 +38,6 @@ public class Crawler {
         String seriesURL;
         String auxSeriesURL;
         Series series;
-        String title = "";
-        String description;
-        ArrayList<Person> creatorList;
-        ArrayList<Person> actorList;
-        String seasonNumber;
-        String yearStart = "";
-        String yearFinished = "";
-        boolean hasFinished = false;
         Document doc;
 
         for (Map.Entry<String, String> entry : getFileNameMap().entrySet()) {
@@ -79,21 +72,21 @@ public class Crawler {
                 System.out.println("Timeout while connecting to :" + seriesURL + "!");
             }
 
-            //System.out.println(series.toString());
+            System.out.println(series.toString());
 
             seriesList.add(series);
 
-            break;
+            //break;
         }
 
-/*        //list series by genre
+        //list series by genre
         for (Genre genre: this.getGenreList()
              ) {
             System.out.println(genre.toString());
-        }*/
+        }
     }
 
-    public void getGenre(Document doc, Series series){
+    private void getGenre(Document doc, Series series){
         String genre;
 
         Elements list = doc.select("div[itemprop=genre]");
@@ -104,12 +97,8 @@ public class Crawler {
             genre = link.toString();
 
             //remove <a> tag
-            int start=0, stop=0;
-            for (int i=0; i< genre.length()-1; i++)
-            {
-                start = genre.lastIndexOf('<');
-                stop = genre.indexOf('>');
-            }
+            int start = genre.lastIndexOf('<');
+            int stop = genre.indexOf('>');
             genre = genre.substring(stop+1, start);
 
             //add series to the respective genre
@@ -117,7 +106,7 @@ public class Crawler {
         }
     }
 
-    public void getTitleAndDate(Document doc, Series series) {
+    private void getTitleAndDate(Document doc, Series series) {
         Elements el = doc.select("meta[name=title]");
         String content = el.attr("content");
         String[] aux = content.split(" ");
@@ -150,7 +139,7 @@ public class Crawler {
             series.setFinishYear(date.substring(5, 9));
     }
 
-    public void getDescription(Document doc, Series series) {
+    private void getDescription(Document doc, Series series) {
         Elements el = doc.select("meta[name=description]");
         String content = el.attr("content");
         String[] aux = content.split("\\.");
@@ -158,7 +147,7 @@ public class Crawler {
         series.setDescription(aux[aux.length-1] + ".");
     }
 
-    public void getStoryline(String url, Series series) {
+    private void getStoryline(String url, Series series) {
         Document doc;
         String storyline;
 
@@ -166,7 +155,6 @@ public class Crawler {
             doc = Jsoup.connect(url).userAgent("Mozilla").get();
 
             Elements el = doc.getElementsByClass("plotSummary").select("*");
-
 
             storyline = el.get(0).toString();
             storyline = storyline.replace("<p class=\"plotSummary\"> ", "");
@@ -281,16 +269,16 @@ public class Crawler {
 
                     //get name
                     String creator = creatorRef.toString();
-                    //remove </a> and </td> tag
+                    //remove unwanted tags
                     creator = creator.replace(" </a> </td>", "");
-                    int stop=0;
-                    for (int i=0; i< creator.length()-1; i++)
-                        stop = creator.lastIndexOf('>');
+                    int stop= creator.lastIndexOf('>');
                     creator = creator.substring(stop+2);
 
-                    Person person = new Person(creator, absHref);
-                    this.getPersonData(id);
-                    System.out.println(creator + " id " + id);
+                    Person person = new Person(creator, id);
+                    this.getPersonData(id, person);
+
+                    //System.out.println(person.toString());
+                    series.getCreatorList().add(person);
                 }
             }
 
@@ -299,9 +287,11 @@ public class Crawler {
         }
     }
 
-    private void getPersonData(String id) {
+    private void getPersonData(String id, Person person) {
         Document doc;
         String url = "http://www.imdb.com/name/nm" + id + "/bio";
+        Date birthday = null;
+        String bio;
 
         try {
             doc = Jsoup.connect(url).userAgent("Mozilla").get();
@@ -310,9 +300,10 @@ public class Crawler {
             Elements table = doc.select("table#overviewTable");
             Elements row = table.select("tr");
             Elements column = row.select("td");
-            String date = column.toString();
-            date = date.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
-            System.out.println(date);
+            if(column.size() > 0)
+                birthday = this.convertToDate(column.toString());
+            person.setBirthday(birthday);
+            //System.out.println(birthday);
 
             //get bio
             Elements el = doc.select("h4.li_group");
@@ -321,13 +312,65 @@ public class Crawler {
                 if (elAux.toString().contains("Mini Bio"))
                 {
                     Element el2 = elAux.nextElementSibling();
-                    System.out.println(el2);
+                    bio = el2.toString();
+                    bio = bio.replace("\n", "");
+
+                    boolean existTags = true;
+                    while(existTags)
+                    {
+                        int start = bio.indexOf('<');
+                        int stop = bio.indexOf('>');
+                        if (start == -1 && stop == -1)
+                            existTags = false;
+                        else
+                            bio = bio.replace(bio.substring(start, stop+1), "");
+                    }
+                    person.setBiography(bio);
+                   // System.out.println(bio);
                 }
             }
 
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
         }
+    }
+
+    private Date convertToDate(String info) {
+        String date;
+        String day = "";
+        String month = "";
+        String year = "";
+        Date birthday = null;
+
+        //clean first tag
+        info = info.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
+        //remove second tag
+        int stop = info.indexOf('>') + 1;
+        info = info.substring(stop);
+
+        if (info.toString().contains("birth_monthday") && info.toString().contains("birth_year"))
+        {
+            //get day and month
+            stop = info.indexOf('<');
+            date = info.substring(0, stop);
+            date = date.replace("&nbsp;", " ");
+            String[] dayMonth = date.split(" ");
+            day = dayMonth[0];
+            month = dayMonth[1];
+
+            //clean other tags
+            info = info.replace("</a>", "");
+            stop = info.indexOf('>') + 1;
+            info = info.substring(stop);
+
+            //get year
+            year = info.substring(0, 4);
+            System.out.println(year);
+
+            birthday = new Date(day, month, year);
+        }
+
+        return birthday;
     }
 
     public ArrayList<Series> getSeriesList() {

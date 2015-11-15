@@ -9,7 +9,7 @@ public class Person {
     private String id;
     private String name;
     private String biography;
-    private date birthday;
+    private Date birthday;
     private ArrayList<Series> series;
 
     public Person (String nm, String identif)
@@ -26,11 +26,11 @@ public class Person {
         this.name = name;
     }
 
-    public date getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(date birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -56,5 +56,15 @@ public class Person {
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+
+    @Override
+    public String toString() {
+        String result = "Name: " + name + "\n" +
+                        "ID: " + id + "\n" +
+                        "Birthday " + this.getBirthday() + "\n" +
+                        "Biography " + this.getBiography();
+
+        return result;
     }
 }

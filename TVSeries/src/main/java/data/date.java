@@ -1,15 +1,69 @@
 package data;
 
-public class date {
+public class Date {
     private int day;
     private int month;
     private int year;
 
-    public date(int d, int m, int y)
+
+    public Date(String y)
     {
-        setDay(d);
-        setMonth(m);
-        setYear(y);
+        day = 0;
+        month = 0;
+        setYear(Integer.parseInt(y));
+    }
+
+
+    public Date(String d, String m, String y)
+    {
+        setDay(Integer.parseInt(d));
+        setMonth(this.transformToMonth(m));
+        setYear(Integer.parseInt(y));
+    }
+
+    private int transformToMonth(String m) {
+        int month = 1;
+
+        switch (m)
+        {
+            case "January":
+                month = 1;
+                break;
+            case "February":
+                month = 2;
+                break;
+            case "March":
+                month = 3;
+                break;
+            case "April":
+                month = 4;
+                break;
+            case "May":
+                month = 5;
+                break;
+            case "June":
+                month = 6;
+                break;
+            case "July":
+                month = 7;
+                break;
+            case "August":
+                month = 8;
+                break;
+            case "September":
+                month = 9;
+                break;
+            case "October":
+                month = 10;
+                break;
+            case "November":
+                month = 11;
+                break;
+            case "December":
+                month = 12;
+                break;
+        }
+        return month;
     }
 
     public int getDay() {

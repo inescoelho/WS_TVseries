@@ -10,7 +10,6 @@ public class Series {
     private String storyline;
     private ArrayList<Person> creatorList;
     private ArrayList<Person> actorList;
-    private String seasonNumber;
     private String startYear;
     private String finishYear;
     private String duration;
@@ -24,7 +23,6 @@ public class Series {
         setStoryline("");
         creatorList = new ArrayList<>();
         actorList = new ArrayList<>();
-        seasonNumber = "";
         startYear = "";
         finishYear = "";
         setDuration("");
@@ -61,14 +59,6 @@ public class Series {
 
     public void setActorList(ArrayList<Person> actorList) {
         this.actorList = actorList;
-    }
-
-    public String getSeasonNumber() {
-        return seasonNumber;
-    }
-
-    public void setSeasonNumber(String seasonNumber) {
-        this.seasonNumber = seasonNumber;
     }
 
     public String getStartYear() {
@@ -120,8 +110,9 @@ public class Series {
                 " Finished: "  + this.getFinishYear() +
                 " Duration: " + this.getDuration() + "\n" +
                 " Description: " + this.getDescription() + "\n" +
-                " Storyline: " + this.getStoryline();
-
+                " Storyline: " + this.getStoryline() + "\n" +
+                " Creators: " + this.getCreatorList().toString() +
+                " Actors: " + this.getActorList().toString();
         return result;
     }
 
