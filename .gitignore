@@ -1,7 +1,5 @@
-TVSeries/.idea/*
-
 TVSeries/target/*
 
 TVSeries/out/*
 
-IMDBHandler/.idea/*
+GlassFishTest/out/*
