@@ -1,5 +1,6 @@
 package ontology;
 
+import data.Person;
 import data.Series;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
@@ -11,9 +12,7 @@ import org.apache.jena.vocabulary.RDF;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -108,7 +107,7 @@ public class OntologyCreator {
      * @param finishYear The year when the series last aired (-1 if series has not finish yet)
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean createSeries(String id, String title, String description, String storyline, int duration,
+    private boolean createSeries(String id, String title, String description, String storyline, int duration,
                                 ArrayList<String> genres, int startYear, int finishYear) {
 
         String trimedName = title.replaceAll(" ", "_").toLowerCase();
@@ -154,26 +153,21 @@ public class OntologyCreator {
 
     /**
      * Creates a new tv series creator and adds it to the ontology
-     * @param id The id of the creator
-     * @param creatorName The name of the creator
-     * @param biography A small biography of the creator
-     * @param birthDate The creator's date of birth
+     * @param creator The creator to be created
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean createCreator(String id, String creatorName, String biography, String birthDate) {
-        return createPerson(false, id, creatorName, biography, birthDate);
+    public boolean createCreator(Person creator) {
+        return createPerson(false, creator.getId(), creator.getName(), creator.getBiography(),
+                            creator.getBirthday().toString());
     }
 
     /**
      * Creates a new actor and adds it to the ontology
-     * @param id The id of the actor
-     * @param actorName The name of the actor
-     * @param biography A small biography of the actor
-     * @param birthDate The actor's date of birth
+     * @param actor The actor to be created
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean createActor(String id, String actorName, String biography, String birthDate) {
-        return createPerson(true, id, actorName, biography, birthDate);
+    public boolean createActor(Person actor) {
+        return createPerson(true, actor.getId(), actor.getName(), actor.getBiography(), actor.getBirthday().toString());
     }
 
     /**

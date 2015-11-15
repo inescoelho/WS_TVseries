@@ -130,6 +130,7 @@ public class Series {
     }
 
     public void addGenre(Genre genre) {
-        this.genres.add(genre.getType());
+        // Remove the whitespace
+        this.genres.add(genre.getType().replaceAll(" ", ""));
     }
 }

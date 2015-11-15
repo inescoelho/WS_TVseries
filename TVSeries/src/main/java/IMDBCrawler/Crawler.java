@@ -231,6 +231,8 @@ public class Crawler {
             if (genreInList.getType().equals(genre))
             {
                 genreInList.getSeries().add(series);
+                // Add genre to series
+                series.addGenre(genreInList);
                 result = true;
                 break;
             }
@@ -241,6 +243,8 @@ public class Crawler {
         {
             Genre newGenre = new Genre(genre);
             newGenre.getSeries().add(series);
+            // Add genre to series
+            series.addGenre(newGenre);
             list.add(newGenre);
         }
     }
