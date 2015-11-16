@@ -77,7 +77,7 @@ public class Crawler {
 
             //add series to list of series
             seriesList.add(series);
-            //System.out.println(series.toString());
+            System.out.println(series.toString());
 
             //break;
         }
@@ -279,7 +279,6 @@ public class Crawler {
 
                     Person person = new Person(creator, id);
                     this.getPersonData(id, person);
-                    person.getSeries().add(series);
 
                     //System.out.println(person.toString());
                     series.getCreatorList().add(person);
@@ -409,7 +408,6 @@ public class Crawler {
 
                 Person person = new Person(name, id);
                 this.getPersonData(id, person);
-                person.getSeries().add(series);
 
                 //System.out.println(person.toString());
                 series.getActorList().add(person);

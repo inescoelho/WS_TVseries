@@ -1,7 +1,5 @@
 package data;
 
-import java.util.ArrayList;
-
 /**
  * Created by user on 09/11/2015.
  */
@@ -10,7 +8,6 @@ public class Person {
     private String name;
     private String biography;
     private Date birthday;
-    private ArrayList<Series> series;
 
     public Person (String nm, String identif)
     {
@@ -32,14 +29,6 @@ public class Person {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-
-    public ArrayList<Series> getSeries() {
-        return series;
-    }
-
-    public void setSeries(ArrayList<Series> series) {
-        this.series = series;
     }
 
     public String getId() {

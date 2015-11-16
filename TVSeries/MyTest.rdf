@@ -26,6 +26,13 @@
     <hasPersonId>0740400</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#tina_fey">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#30_rock_"/>
+    <hasBiography>   Elizabeth Stamatina Fey was born in 1970 in Upper Darby, Pennsylvania, just west of Philadelphia, to Xenobia "Jeanne" (Xenakes), a brokerage employee, and Donald Henry Fey, who wrote grant proposals for universities. Her mother is Greek, born in Piraeus, while her father has German, Scottish, and English ancestry. Going by the name of Tina, Fey considered herself a "supernerd" during her high school and college years. She studied drama at the University of Virginia, and after graduating in 1992, she headed to Chicago, the ancestral home of American comedy. While working at a YMCA to support herself, she started Second City's first set of courses. After about nine months, a teacher told her to just skip ahead and audition for the more selective Second City Training Center. She failed but about eight weeks later, she re-auditioned and got into the year-long program. She ended up spending many years at The Second City in Chicago where many SNL cast members first started out. Then in 1995, Saturday Night Live (1975) came to The Second City's cast, including Fey's friend, Adam McKay, as a writer, searching for new talent. What they found was Tina Fey. When Adam was made Head writer, he suggested Fey should send a submission packet over the summer with six sketches, 10 pages each. Tina took the advice and sent them. After Lorne Michaels met her and saw her work she was offered a job a week later. She admitted that she was extremely nervous working in the legendary Studio 8H; being a foot shorter than everyone else, younger, and being one of the only female writers at the time. After a few years, Tina made history by becoming the first female head writer in the show's history. Tina also made her screen debut as a featured player during the 25th season by co-anchoring Weekend Update with Jimmy Fallon. Since Tina and Jimmy have taken over Weekend Update it has been considered the best ever. This year she made it to full fledged star by becoming a regular cast member, though she is hardly on the show, besides Update. And during the past two summers, Tina and Rachel Dratch performed their two-woman show to critical acclaim in both Chicago (1999) and New York (2000) and made their Aspen Comedy Festival Debut. Tina is married to Jeff Richmond, a Second City director and lives in New York City.   - IMDb Mini Biography By:  Rod Reece   </hasBiography>
+    <hasName>Tina Fey</hasName>
+    <hasPersonId>0275486</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sleepy_hollow_">
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#phillip_iscove"/>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
@@ -43,13 +50,6 @@
     <hasDescription> Ichabod Crane is resurrected and pulled two and a half centuries through time to unravel a mystery that dates all the way back to the founding fathers.</hasDescription>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
     <hasTitle>Sleepy Hollow </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#tina_fey">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#30_rock_"/>
-    <hasBiography>   Elizabeth Stamatina Fey was born in 1970 in Upper Darby, Pennsylvania, just west of Philadelphia, to Xenobia "Jeanne" (Xenakes), a brokerage employee, and Donald Henry Fey, who wrote grant proposals for universities. Her mother is Greek, born in Piraeus, while her father has German, Scottish, and English ancestry. Going by the name of Tina, Fey considered herself a "supernerd" during her high school and college years. She studied drama at the University of Virginia, and after graduating in 1992, she headed to Chicago, the ancestral home of American comedy. While working at a YMCA to support herself, she started Second City's first set of courses. After about nine months, a teacher told her to just skip ahead and audition for the more selective Second City Training Center. She failed but about eight weeks later, she re-auditioned and got into the year-long program. She ended up spending many years at The Second City in Chicago where many SNL cast members first started out. Then in 1995, Saturday Night Live (1975) came to The Second City's cast, including Fey's friend, Adam McKay, as a writer, searching for new talent. What they found was Tina Fey. When Adam was made Head writer, he suggested Fey should send a submission packet over the summer with six sketches, 10 pages each. Tina took the advice and sent them. After Lorne Michaels met her and saw her work she was offered a job a week later. She admitted that she was extremely nervous working in the legendary Studio 8H; being a foot shorter than everyone else, younger, and being one of the only female writers at the time. After a few years, Tina made history by becoming the first female head writer in the show's history. Tina also made her screen debut as a featured player during the 25th season by co-anchoring Weekend Update with Jimmy Fallon. Since Tina and Jimmy have taken over Weekend Update it has been considered the best ever. This year she made it to full fledged star by becoming a regular cast member, though she is hardly on the show, besides Update. And during the past two summers, Tina and Rachel Dratch performed their two-woman show to critical acclaim in both Chicago (1999) and New York (2000) and made their Aspen Comedy Festival Debut. Tina is married to Jeff Richmond, a Second City director and lives in New York City.   - IMDb Mini Biography By:  Rod Reece   </hasBiography>
-    <hasName>Tina Fey</hasName>
-    <hasPersonId>0275486</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#shonda_rhimes">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#scandal_"/>
@@ -115,10 +115,6 @@
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">53</hasEpisodeDuration>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Family">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elementar_">
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
     <hasStoryline>A modern take on the cases of Sherlock Holmes, with the detective now living in New York City. </hasStoryline>
@@ -132,18 +128,15 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <hasDescription> A modern take on the cases of Sherlock Holmes, with the detective now living in New York City.</hasDescription>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Family">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#andrew_w._marlowe">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#castle_"/>
     <hasBiography>   Andrew W. Marlowe is a writer and producer, known for O Homem Transparente (2000), Castle (2009) and Força Aérea 1 (1997).  </hasBiography>
     <hasName>Andrew W. Marlowe</hasName>
     <hasPersonId>0549256</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#james_l._brooks">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_simpsons_"/>
-    <hasBiography>   James L. Brooks was born on May 9, 1940 in North Bergen, New Jersey, USA. He is a writer and producer, known for Os Simpsons (1989), Os Simpsons: O Filme (2007) and Melhor É Impossível (1997). He has been married to Holly Holmberg Brooks since July 23, 1978. They have three children. He was previously married to Marianne Catherine Morrissey.  </hasBiography>
-    <hasName>James L. Brooks</hasName>
-    <hasPersonId>0000985</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#robert_rodat">
@@ -165,6 +158,11 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#linwood_boomer"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#agent_carter_">
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#stephen_mcfeely"/>
     <hasTitle>Agent Carter </hasTitle>
@@ -179,10 +177,12 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#christopher_markus"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jon_bokenkamp">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_blacklist_"/>
+    <hasBiography>   Jon Bokenkamp is a writer and producer, known for Tirar Vidas (2004), The Blacklist (2013) and A Chamada (2013).  </hasBiography>
+    <hasName>Jon Bokenkamp</hasName>
+    <hasPersonId>0092578</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mentes_criminosas_">
     <hasTitle>Mentes Criminosas </hasTitle>
@@ -198,15 +198,16 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jon_bokenkamp">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_blacklist_"/>
-    <hasBiography>   Jon Bokenkamp is a writer and producer, known for Tirar Vidas (2004), The Blacklist (2013) and A Chamada (2013).  </hasBiography>
-    <hasName>Jon Bokenkamp</hasName>
-    <hasPersonId>0092578</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Western">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A1"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ruptura_total_">
@@ -222,14 +223,6 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2008</hasPilotYear>
     <hasSeriesId>tt0903747</hasSeriesId>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#vince_gilligan"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person">
-    <owl:disjointWith rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:subClassOf rdf:nodeID="A0"/>
-    <rdfs:subClassOf rdf:nodeID="A1"/>
-    <rdfs:subClassOf rdf:nodeID="A2"/>
-    <rdfs:subClassOf rdf:nodeID="A3"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#investigação_criminal:_nova_orleães_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
@@ -299,13 +292,6 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <hasSeriesId>tt2372162</hasSeriesId>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#john_logan">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#penny_dreadful_"/>
-    <hasBiography>   John Logan was a playwright in Chicago for ten years before writing, on spec, his first screenplay, "Any Given Sunday." He won the 2010 Tony, Drama Desk, Drama League and Outer Critics Circle awards for his play RED, which premiered at the Donmar Warehouse in London and the Golden Theatre on Broadway.   - IMDb Mini Biography By:  Anonymous   </hasBiography>
-    <hasName>John Logan</hasName>
-    <hasPersonId>0517589</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#edward_kitsis">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#era_uma_vez_"/>
     <hasBiography>   Edward Kitsis is a producer and writer, known for TRON: O Legado (2010), Era Uma Vez (2011) and Perdidos (2004).  </hasBiography>
@@ -313,10 +299,12 @@
     <hasPersonId>0457736</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#john_logan">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#penny_dreadful_"/>
+    <hasBiography>   John Logan was a playwright in Chicago for ten years before writing, on spec, his first screenplay, "Any Given Sunday." He won the 2010 Tony, Drama Desk, Drama League and Outer Critics Circle awards for his play RED, which premiered at the Donmar Warehouse in London and the Golden Theatre on Broadway.   - IMDb Mini Biography By:  Anonymous   </hasBiography>
+    <hasName>John Logan</hasName>
+    <hasPersonId>0517589</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#penny_dreadful_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
@@ -358,14 +346,6 @@
     <hasPersonId>0319213</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#joss_whedon">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._"/>
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#firefly_"/>
-    <hasBiography>   Joss Whedon is the middle of five brothers - his younger brothers are Jed Whedon and Zack Whedon. Both his father, Tom Whedon and his grandfather, John Whedon were successful television writers. Joss' mother, Lee Stearns, was a history teacher and she also wrote novels as Lee Whedon. Whedon was raised in New York and was educated at Riverdale Country School, where his mother also taught. He also attended Winchester College in England for two years, before graduating with a film degree from Wesleyan University.After relocating to Los Angeles, Whedon landed his first TV writing job on "Roseanne", and moved on to script a season of "Parenthood". He then developed a film script which went on to become Buffy, Caçadora de Vampiros (1992). Whedon was very unhappy with the final film - his original script was extensively re-written and made lighter in tone. After this he earned screenwriting credits on such high profile productions as Alien: O Regresso (1997) and Toy Story: Os Rivais (1995), for which he was Oscar nominated. He also worked as a 'script doctor' on various features, notably Speed - Perigo a Alta Velocidade (1994). In 1997, Whedon had the opportunity to resurrect his character Buffy in a television series on The WB Network. This time, as showrunner and executive producer, he retained full artistic control. The series, "Buffy the Vampire Slayer" was a popular and critical hit, which ran for several seasons, the last two on UPN. Whedon also produced a spin-off series, "Angel", which was also successful. A foray in to sci-fi television followed with "Firefly", which developed a cult following, but did not stay on air long. It did find an audience on DVD and through re-runs, and a spin-off feature film Serenity (2005) was released in 2005.Other projects have included comic book writing, the sci-fi drama "Dollhouse" and the screenplay for Marvel blockbuster Os Vingadores (2012).   - IMDb Mini Biography By:  Anonymous   </hasBiography>
-    <hasName>Joss Whedon</hasName>
-    <hasPersonId>0923736</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#house_of_cards_">
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">51</hasEpisodeDuration>
@@ -375,6 +355,14 @@
     <hasSeriesId>tt1856010</hasSeriesId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#joss_whedon">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._"/>
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#firefly_"/>
+    <hasBiography>   Joss Whedon is the middle of five brothers - his younger brothers are Jed Whedon and Zack Whedon. Both his father, Tom Whedon and his grandfather, John Whedon were successful television writers. Joss' mother, Lee Stearns, was a history teacher and she also wrote novels as Lee Whedon. Whedon was raised in New York and was educated at Riverdale Country School, where his mother also taught. He also attended Winchester College in England for two years, before graduating with a film degree from Wesleyan University.After relocating to Los Angeles, Whedon landed his first TV writing job on "Roseanne", and moved on to script a season of "Parenthood". He then developed a film script which went on to become Buffy, Caçadora de Vampiros (1992). Whedon was very unhappy with the final film - his original script was extensively re-written and made lighter in tone. After this he earned screenwriting credits on such high profile productions as Alien: O Regresso (1997) and Toy Story: Os Rivais (1995), for which he was Oscar nominated. He also worked as a 'script doctor' on various features, notably Speed - Perigo a Alta Velocidade (1994). In 1997, Whedon had the opportunity to resurrect his character Buffy in a television series on The WB Network. This time, as showrunner and executive producer, he retained full artistic control. The series, "Buffy the Vampire Slayer" was a popular and critical hit, which ran for several seasons, the last two on UPN. Whedon also produced a spin-off series, "Angel", which was also successful. A foray in to sci-fi television followed with "Firefly", which developed a cult following, but did not stay on air long. It did find an audience on DVD and through re-runs, and a spin-off feature film Serenity (2005) was released in 2005.Other projects have included comic book writing, the sci-fi drama "Dollhouse" and the screenplay for Marvel blockbuster Os Vingadores (2012).   - IMDb Mini Biography By:  Anonymous   </hasBiography>
+    <hasName>Joss Whedon</hasName>
+    <hasPersonId>0923736</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#justin_roiland">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#rick_and_morty_"/>
@@ -434,13 +422,6 @@
     <hasPersonId>0458292</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#paul_scheuring">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#prison_break_"/>
-    <hasBiography>   Paul Scheuring was born in 1968. He is a writer and producer, known for Prison Break (2005), The Experiment (2010) and Um Homem à Parte (2003).  </hasBiography>
-    <hasName>Paul Scheuring</hasName>
-    <hasPersonId>0771228</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jess_e_os_rapazes_">
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elizabeth_meriwether"/>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
@@ -451,6 +432,19 @@
     <hasSeriesId>tt1826940</hasSeriesId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#paul_scheuring">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#prison_break_"/>
+    <hasBiography>   Paul Scheuring was born in 1968. He is a writer and producer, known for Prison Break (2005), The Experiment (2010) and Um Homem à Parte (2003).  </hasBiography>
+    <hasName>Paul Scheuring</hasName>
+    <hasPersonId>0771228</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#true_detective_">
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">55</hasEpisodeDuration>
@@ -465,12 +459,6 @@
     <hasTitle>True Detective </hasTitle>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ryan_murphy">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_horror_story_"/>
@@ -521,18 +509,18 @@
     <hasPersonId>0395271</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#gregory_thomas_garcia">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#o_meu_nome_é_earl_"/>
-    <hasBiography>   Attended Frostburg State University in Frostburg, Maryland and participated in the Warner Bros. Writing for Television courses, which ultimately opened the door for him as a writer in Hollywood.   - IMDb Mini Biography By:  K.D.   </hasBiography>
-    <hasName>Gregory Thomas Garcia</hasName>
-    <hasPersonId>0305228</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_x._cohen">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#futurama_"/>
     <hasBiography>   Cohen is a graduate of the University of California, Berkeley; he studied theoretical computer science. His real name is David 'S.' Cohen. He used that name when he worked on Os Simpsons (1989), but when he starting working on Futurama (1999), he joined the Writer's Guild (the TV writer's union). When he registered, there was already a David S. Cohen, and the union does not allow members to register with the same name. Cohen chose the letter X for his middle initial because he felt it was more 'sci-fi-ish.'   - IMDb Mini Biography By:  Omega Redd &amp;lt;omega@tds.net&amp;gt;   </hasBiography>
     <hasName>David X. Cohen</hasName>
     <hasPersonId>0169326</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#gregory_thomas_garcia">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#o_meu_nome_é_earl_"/>
+    <hasBiography>   Attended Frostburg State University in Frostburg, Maryland and participated in the Warner Bros. Writing for Television courses, which ultimately opened the door for him as a writer in Hollywood.   - IMDb Mini Biography By:  K.D.   </hasBiography>
+    <hasName>Gregory Thomas Garcia</hasName>
+    <hasPersonId>0305228</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#castle_">
@@ -599,18 +587,25 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_weitzman">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_dad!_"/>
-    <hasBiography>   Matt Weitzman is a writer and producer, known for American Dad! (2005), Family Guy (1999) and American Dad: The New CIA (2005).  </hasBiography>
-    <hasName>Matt Weitzman</hasName>
-    <hasPersonId>0963392</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  <rdf:Description rdf:nodeID="A4">
+    <owl:annotatedTarget rdf:nodeID="A5"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>List of creators of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#gary_glasberg">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#investigação_criminal:_nova_orleães_"/>
     <hasBiography>   Gary Glasberg is a producer and writer, known for NCIS: Investigação Criminal (2003), A Patologista (2001) and Investigação Criminal: Nova Orleães (2014).  </hasBiography>
     <hasName>Gary Glasberg</hasName>
     <hasPersonId>0321782</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_weitzman">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_dad!_"/>
+    <hasBiography>   Matt Weitzman is a writer and producer, known for American Dad! (2005), Family Guy (1999) and American Dad: The New CIA (2005).  </hasBiography>
+    <hasName>Matt Weitzman</hasName>
+    <hasPersonId>0963392</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mark_gatiss">
@@ -647,13 +642,6 @@
     <hasPersonId>0215299</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sydney_newman">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#doctor_who_"/>
-    <hasBiography>   Sydney Newman was born on April 1, 1917 in Toronto, Ontario, Canada as Sydney Cecil Newman. He was a writer and producer, known for Doctor Who (2005), Os Vingadores (1961) and Os Vingadores (1998). He was married to Elizabeth McRae. He died on October 30, 1997 in Toronto.  </hasBiography>
-    <hasName>Sydney Newman</hasName>
-    <hasPersonId>0628285</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hart_hanson">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ossos_"/>
     <hasBiography>   Hart Hanson was born on July 26, 1957 in Burlingame, California, USA as Hartwick David Hanson. He is a writer and producer, known for Ossos (2005), The Finder (2012) and Traders (1996).  </hasBiography>
@@ -661,9 +649,15 @@
     <hasPersonId>0361274</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sydney_newman">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#doctor_who_"/>
+    <hasBiography>   Sydney Newman was born on April 1, 1917 in Toronto, Ontario, Canada as Sydney Cecil Newman. He was a writer and producer, known for Doctor Who (2005), Os Vingadores (1961) and Os Vingadores (1998). He was married to Elizabeth McRae. He died on October 30, 1997 in Toronto.  </hasBiography>
+    <hasName>Sydney Newman</hasName>
+    <hasPersonId>0628285</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#brad_falchuk">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_horror_story_"/>
-    <hasBiography>   Brad Falchuk is a producer and writer, known for American Horror Story (2011), Glee (2009) and Scream Queens (2015).  </hasBiography>
     <hasName>Brad Falchuk</hasName>
     <hasPersonId>1004299</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
@@ -676,7 +670,7 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor">
-    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A6"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
@@ -688,6 +682,12 @@
     <hasName>Samuel Baum</hasName>
     <hasPersonId>1345603</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#j.j._abrams">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#perdidos_"/>
@@ -720,17 +720,10 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_groening">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#futurama_"/>
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_simpsons_"/>
     <hasBiography>   Growing up in Portland, Oregon, Matt Groening did not particularly like school, which is what originally turned him towards drawing. In the mid-1980s, he moved to Los Angeles and started drawing a comic strip named "Life in Hell", which eventually became published in the newspaper where he worked. In 1988, James L. Brooks, looking for a filler in the television show, The Tracey Ullman Show (1987), turned towards a framed "Life in Hell" strip on his wall and contacted Groening. The animated shorts that Groening created were Os Simpsons (1989).   - IMDb Mini Biography By:  Kevin Newcombe &amp;lt;bnewcom@ibm.net&amp;gt;   </hasBiography>
     <hasName>Matt Groening</hasName>
     <hasPersonId>0004981</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#grimm_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
@@ -748,6 +741,19 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
     <hasDescription> A homicide detective discovers he is a descendant of hunters who fight supernatural forces.</hasDescription>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#john_fawcett">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_"/>
+    <hasBiography>   John Fawcett was born on March 5, 1968 in Edmonton, Alberta, Canada. He is a director and producer, known for Tentadora Maldição (2000), Na Escuridão (2005) and Orphan Black (2013). He has been married to Laura Wood Fawcett since October 31, 1998. They have two children.  </hasBiography>
+    <hasName>John Fawcett</hasName>
+    <hasPersonId>0269502</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#pequenas_mentirosas_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
@@ -761,13 +767,6 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasPilotYear>
     <hasStoryline>Set in the fictional town of Rosewood, Pennsylvania, the series follows the lives of four girls, Aria Montgomery, Hanna Marin, Emily Fields, and Spencer Hastings, whose clique falls apart after the disappearance of their leader, Alison DiLaurentis. One year later, the estranged friends are reunited as they begin receiving messages from a mysterious figure named "A", who threatens to expose their deepest secrets, including ones they thought only Alison knew. At first, they think it's Alison herself, but after her body is found, the girls realize that someone else is planning on ruining their perfect lives. </hasStoryline>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#john_fawcett">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_"/>
-    <hasBiography>   John Fawcett was born on March 5, 1968 in Edmonton, Alberta, Canada. He is a director and producer, known for Tentadora Maldição (2000), Na Escuridão (2005) and Orphan Black (2013). He has been married to Laura Wood Fawcett since October 31, 1998. They have two children.  </hasBiography>
-    <hasName>John Fawcett</hasName>
-    <hasPersonId>0269502</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBiography">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
@@ -780,13 +779,6 @@
     <hasName>David Zuckerman</hasName>
     <hasPersonId>0958412</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <owl:annotatedTarget rdf:nodeID="A7"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>List of creators of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -806,12 +798,24 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
     <hasStoryline>A spin-off from The Vampire Diaries and set in New Orleans, The Originals centers on the Mikaelson siblings, otherwise known as the world's original vampires: Klaus (Joseph Morgan), Elijah (Daniel Gillies), and Rebekah (Claire Holt). Now Klaus must take down his protégé, Marcel (Charles Michael Davis), who is now in charge of New Orleans, in order to re-take his city, as he originally built New Orleans. Klaus departed from the city after being chased down by his father Mikael, while it was being constructed and Marcel took charge. As Klaus has returned after many years, his ego has provoked him to become the king of the city. "Every King needs an heir" says Klaus, accepting the unborn child. The child is a first to be born to a hybrid (part vampire, part werewolf) and a werewolf (Hayley). </hasStoryline>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#kevin_biegel">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#cougar_town_"/>
     <hasBiography>   Kevin Biegel is a writer and producer, known for Cougar Town (2009), Enlisted (2014) and Médicos e Estagiários (2001).  </hasBiography>
     <hasName>Kevin Biegel</hasName>
     <hasPersonId>0081334</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <owl:annotatedTarget rdf:nodeID="A9"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>The year when the pilot episode aired. Basically the year when the tv show started</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ncis:_investigação_criminal_">
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
@@ -975,18 +979,11 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2008</hasPilotYear>
     <hasTitle>O Mentalista </hasTitle>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <owl:annotatedTarget rdf:nodeID="A10"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <rdfs:comment>A list of tv shows created by this creator</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dave_krinsky">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#silicon_valley_"/>
+    <hasName>Dave Krinsky</hasName>
+    <hasPersonId>1015106</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_cleveland_show_">
     <hasDescription> The adventures of the Family Guy (1999) neighbor and deli owner, Cleveland Brown.</hasDescription>
@@ -1003,18 +1000,18 @@
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
     <hasTitle>The Cleveland Show </hasTitle>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dave_krinsky">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#silicon_valley_"/>
-    <hasName>Dave Krinsky</hasName>
-    <hasPersonId>1015106</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elize_morgan">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_"/>
     <hasBiography>   Elize Morgan is a writer and actress, known for Orphan Black (2013), The Gate (2012) and Pretty in Geek (2011).  </hasBiography>
     <hasName>Elize Morgan</hasName>
     <hasPersonId>3927959</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jonathan_nolan">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sob_suspeita_"/>
@@ -1023,18 +1020,18 @@
     <hasPersonId>0634300</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <owl:annotatedTarget rdf:nodeID="A11"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <rdfs:comment>A list of tv shows created by this creator</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#michael_hirst">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#vikings_"/>
     <hasBiography>   Michael Hirst was born on September 21, 1952 in Bradford, West Yorkshire, England. He is a writer and producer, known for Vikings (2013), Os Tudors (2007) and Elizabeth (1998).  </hasBiography>
     <hasName>Michael Hirst</hasName>
     <hasPersonId>0386694</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elizabeth_meriwether">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jess_e_os_rapazes_"/>
-    <hasBiography>   Elizabeth Meriwether is known for her work on Sexo Sem Compromisso (2011), Jess e os Rapazes (2011) and Twilight Cycles (2009).  </hasBiography>
-    <hasName>Elizabeth Meriwether</hasName>
-    <hasPersonId>2057975</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#futurama_">
@@ -1051,6 +1048,13 @@
     <hasSeriesId>tt0149460</hasSeriesId>
     <hasStoryline>Phillip Fry is a 25-year-old pizza delivery boy whose life is going nowhere. When he accidentally freezes himself on December 31, 1999, he wakes up 1,000 years in the future and has a chance to make a fresh start. He goes to work for the Planet Express Corporation, a futuristic delivery service that transports packages to all five quadrants of the universe. His companions include the delivery ship's captain, Leela, a beautiful one-eyed female alien who kicks some serious butt, and Bender, a robot with very human flaws. </hasStoryline>
     <hasDescription> Fry, a pizza guy is accidentally frozen in 1999 and thawed out New Year's Eve 2999.</hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elizabeth_meriwether">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jess_e_os_rapazes_"/>
+    <hasBiography>   Elizabeth Meriwether is known for her work on Sexo Sem Compromisso (2011), Jess e os Rapazes (2011) and Twilight Cycles (2009).  </hasBiography>
+    <hasName>Elizabeth Meriwether</hasName>
+    <hasPersonId>2057975</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_nix">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#espião_fora_de_jogo_"/>
@@ -1100,10 +1104,6 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <hasSeriesId>tt0285331</hasSeriesId>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#episodes_">
     <hasStoryline>British writer-producers Beverly and Sean Lincoln (&lt;a href="/name/nm0340067"&gt;Tamsin Greig&lt;/a&gt; and &lt;a href="/name/nm0542118"&gt;Stephen Mangan&lt;/a&gt;), have a wonderful marriage and a hit TV series to their credit. Things couldn't be better. Until Merc Lapidus (&lt;a href="/name/nm0659601"&gt;John Pankow&lt;/a&gt;), a Hollywood network executive, gushes over their series at a gala. Merc is certain that a remake of the show will go over well with an American audience. After making the Lincolns a lucrative offer, they pack up and ship out to the States. It doesn't take long for them to figure out that Hollywood is a place where deals are made and broken in the same breath. They soon find themselves holding on tight as creative control of their show starts to slip away from their hands. Merc ultimately dismisses the original star, an elder, distinguished, gentleman, for 'Friends' actor 'Matt LeBlanc', a charming, yet manipulative beast, with a grocery list of demands. Hollywood is not what the Lincolns had in mind, but Sean believes he can swim with the sharks. As for Beverly, she'd rather go back to the UK than deal with these Episodes. </hasStoryline>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">30</hasEpisodeDuration>
@@ -1116,10 +1116,9 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_crane"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#chuck_lorre">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dois_homens_e_meio_"/>
@@ -1140,13 +1139,6 @@
     <hasSeriesId>tt1442437</hasSeriesId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
     <hasTitle>Uma Família Muito Moderna </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <owl:annotatedTarget rdf:nodeID="A8"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>The year when the pilot episode aired. Basically the year when the tv show started</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#fringe_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -1172,13 +1164,6 @@
     <hasPersonId>1206844</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#stephen_carpenter">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#grimm_"/>
-    <hasBiography>   Stephen Carpenter is a writer and director, known for Grimm (2011), Ladrão e Polícia (1999) and Agente Acidental (2005).  </hasBiography>
-    <hasName>Stephen Carpenter</hasName>
-    <hasPersonId>0139461</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#marta_kauffman">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#friends_"/>
     <hasBiography>   Marta Kauffman was born on September 21, 1956 as Marta Fran Kauffman. She is a writer and producer, known for Friends (1994), Grace and Frankie (2015) and Friends: The One Before the Last One - Ten Years of Friends (2004). She has been married to Michael Skloff since 1984. They have three children.  </hasBiography>
@@ -1186,11 +1171,37 @@
     <hasPersonId>0442035</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#stephen_carpenter">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#grimm_"/>
+    <hasBiography>   Stephen Carpenter is a writer and director, known for Grimm (2011), Ladrão e Polícia (1999) and Agente Acidental (2005).  </hasBiography>
+    <hasName>Stephen Carpenter</hasName>
+    <hasPersonId>0139461</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_simon">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_wire_"/>
     <hasBiography>   David Simon was born in 1960. He is a writer and producer, known for Departamento de Homicídios (1993), The Wire (2002) and Treme (2010). He is married to Laura Lippman. They have one child.  </hasBiography>
     <hasName>David Simon</hasName>
     <hasPersonId>0800108</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <owl:annotatedTarget rdf:nodeID="A13"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>The title of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jed_whedon">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._"/>
+    <hasBiography>   Jed Whedon was born on July 18, 1975 in the USA as Jed Tucker Whedon. He is a writer and producer, known for Os Agentes S.H.I.E.L.D. (2013), Dollhouse (2009) and Commentary! The Musical (2008). He has been married to Maurissa Tancharoen since April 19, 2009.  </hasBiography>
+    <hasName>Jed Whedon</hasName>
+    <hasPersonId>1871590</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#núm3ros_">
@@ -1208,13 +1219,6 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jed_whedon">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._"/>
-    <hasBiography>   Jed Whedon was born on July 18, 1975 in the USA as Jed Tucker Whedon. He is a writer and producer, known for Os Agentes S.H.I.E.L.D. (2013), Dollhouse (2009) and Commentary! The Musical (2008). He has been married to Maurissa Tancharoen since April 19, 2009.  </hasBiography>
-    <hasName>Jed Whedon</hasName>
-    <hasPersonId>1871590</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#alex_gansa">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#segurança_nacional_"/>
@@ -1241,6 +1245,13 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#peter_gould">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#better_call_saul_"/>
+    <hasBiography>   Writer/Director Peter Gould was born and raised in the Chelsea neighborhood of Lower Manhattan where he was expelled from a number of tony, non-conformist private schools. After graduating with a B.A. in English from Sarah Lawrence College, Peter became a fixture on the New York Indie scene, working in every conceivable job on films ranging from the retro punk angst of Scott and Beth B. to the joyous exploitation of Troma ("The Toxic Avenger"). Finally landing in the semi-respectable world of television commercials, Peter quickly decided that he wanted to make films of his own. Moving west to the USC Graduate Production program, Peter devoted himself to writing and directing. Peter's memories of unhappy prep school experiences, Luis Buñuel movies and an abiding interest in women's feet percolated through his unconscious: the result was the short film script DIRTY LITTLE SECRETS. DIRTY LITTLE SECRETS is the story of a self-hating foot-fetishist who works as a department store trainee. The hero is forced to confront his worst fears and his greatest desires when he's assigned to ladies' shoes. Clearly, this was a film that Peter was destined to make since one of his earliest memories is of spying on his first grade teacher's toes during reading circle. Needless to say, Peter was kicked out of second grade. Through blood, sweat and some clever political maneuvering, Peter managed to get the unusual film concept past a skeptical USC faculty committee and selected out of a pool of several hundred scripts to be one of the year's major graduate productions. Peter was also granted the then-rare privilege of directing his own script. The finished film garnered a shelf-full of awards including the Nissan Focus Award and the Cine Golden Eagle. Kevin Thomas of the Los Angeles Times wrote that DIRTY LITTLE SECRETS "...displays a delicious sense of dark humor... painfully funny!" Peter and his film were selected to represent the university at the CILECT Film Festival in Karlovy Vary, Czech Republic, where the film won the Audience Award and was given the unique privilege of being both screened on Czech television and satirized in other student films. Additionally, Dirty Little Secrets won the Hiroshima International Film Festival and was featured on Entertainment Tonight. In the wake of all this attention, Peter was now officially "flavor of the month", complete with dueling talent agencies competing to represent him and an appearance in PREMIERE magazine. Peter was deluged with every low-budget low-concept T &amp;amp; A script in Hollywood. Dissatisfied with the quality of the material, Peter returned to screenwriting, turning out a series of highly-regarded, eccentric scripts. Peter's credits as a screenwriter include DOUBLE DRAGON, a $20 million action film that set off the video-game movie trend. He has also directed music videos and wrote and directed a best-selling home video for children. For the past five years, he has taught film production in the prestigious Peter Stark Producing Program at the U.S.C. School of Cinema-Television. He has also taught at the Art Center in Pasadena. Currently, Peter is preparing to direct his first feature film, a dark, quirky comedy that is scheduled to shoot in early 1997.   - IMDb Mini Biography By:  Anonymous   </hasBiography>
+    <hasName>Peter Gould</hasName>
+    <hasPersonId>0332467</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#como_defender_um_assassino_">
     <hasStoryline>A sexy, suspense-driven legal thriller about a group of ambitious law students and their brilliant, mysterious criminal defense professor. They become entangled in a murder plot that will shake the entire university and change the course of their lives. </hasStoryline>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
@@ -1255,25 +1266,11 @@
     <hasTitle>Como Defender Um Assassino </hasTitle>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#peter_gould">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#better_call_saul_"/>
-    <hasBiography>   Writer/Director Peter Gould was born and raised in the Chelsea neighborhood of Lower Manhattan where he was expelled from a number of tony, non-conformist private schools. After graduating with a B.A. in English from Sarah Lawrence College, Peter became a fixture on the New York Indie scene, working in every conceivable job on films ranging from the retro punk angst of Scott and Beth B. to the joyous exploitation of Troma ("The Toxic Avenger"). Finally landing in the semi-respectable world of television commercials, Peter quickly decided that he wanted to make films of his own. Moving west to the USC Graduate Production program, Peter devoted himself to writing and directing. Peter's memories of unhappy prep school experiences, Luis Buñuel movies and an abiding interest in women's feet percolated through his unconscious: the result was the short film script DIRTY LITTLE SECRETS. DIRTY LITTLE SECRETS is the story of a self-hating foot-fetishist who works as a department store trainee. The hero is forced to confront his worst fears and his greatest desires when he's assigned to ladies' shoes. Clearly, this was a film that Peter was destined to make since one of his earliest memories is of spying on his first grade teacher's toes during reading circle. Needless to say, Peter was kicked out of second grade. Through blood, sweat and some clever political maneuvering, Peter managed to get the unusual film concept past a skeptical USC faculty committee and selected out of a pool of several hundred scripts to be one of the year's major graduate productions. Peter was also granted the then-rare privilege of directing his own script. The finished film garnered a shelf-full of awards including the Nissan Focus Award and the Cine Golden Eagle. Kevin Thomas of the Los Angeles Times wrote that DIRTY LITTLE SECRETS "...displays a delicious sense of dark humor... painfully funny!" Peter and his film were selected to represent the university at the CILECT Film Festival in Karlovy Vary, Czech Republic, where the film won the Audience Award and was given the unique privilege of being both screened on Czech television and satirized in other student films. Additionally, Dirty Little Secrets won the Hiroshima International Film Festival and was featured on Entertainment Tonight. In the wake of all this attention, Peter was now officially "flavor of the month", complete with dueling talent agencies competing to represent him and an appearance in PREMIERE magazine. Peter was deluged with every low-budget low-concept T &amp;amp; A script in Hollywood. Dissatisfied with the quality of the material, Peter returned to screenwriting, turning out a series of highly-regarded, eccentric scripts. Peter's credits as a screenwriter include DOUBLE DRAGON, a $20 million action film that set off the video-game movie trend. He has also directed music videos and wrote and directed a best-selling home video for children. For the past five years, he has taught film production in the prestigious Peter Stark Producing Program at the U.S.C. School of Cinema-Television. He has also taught at the Art Center in Pasadena. Currently, Peter is preparing to direct his first feature film, a dark, quirky comedy that is scheduled to shoot in early 1997.   - IMDb Mini Biography By:  Anonymous   </hasBiography>
-    <hasName>Peter Gould</hasName>
-    <hasPersonId>0332467</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#howard_gordon">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#segurança_nacional_"/>
     <hasBiography>   Howard Gordon was born on March 31, 1961 in Queens, New York City, New York, USA. He is a producer and writer, known for 24 (2001), Segurança Nacional (2011) and Ficheiros Secretos (1993).  </hasBiography>
     <hasName>Howard Gordon</hasName>
     <hasPersonId>0330258</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#eric_kripke">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sobrenatural_"/>
-    <hasBiography>   Eric Kripke was born on April 24, 1974 in Toledo, Ohio, USA. He is a writer and producer, known for Sobrenatural (2005), Quem Tem Medo do Papão? (2005) and Revolution (2012).  </hasBiography>
-    <hasName>Eric Kripke</hasName>
-    <hasPersonId>0471392</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear">
@@ -1282,11 +1279,12 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#eric_kripke">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sobrenatural_"/>
+    <hasBiography>   Eric Kripke was born on April 24, 1974 in Toledo, Ohio, USA. He is a writer and producer, known for Sobrenatural (2005), Quem Tem Medo do Papão? (2005) and Revolution (2012).  </hasBiography>
+    <hasName>Eric Kripke</hasName>
+    <hasPersonId>0471392</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_flash_">
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#geoff_johns"/>
@@ -1312,18 +1310,15 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_simpsons_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <hasStoryline>The Simpsons is an animated sitcom about the antics of a dysfunctional family called the Simpsons (surprise surprise). Homer is the oafish unhealthy beer loving father, Marge is the hardworking homemaker wife, Bart is the ten year old underachiever (and proud of it), Lisa is the unappreciated eight year old genius, and Maggie is the cute, pacifier loving silent infant. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#james_l._brooks"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sam_simon"/>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1989</hasPilotYear>
-    <hasDescription> The satiric adventures of a working-class family in the misfit city of Springfield.</hasDescription>
-    <hasSeriesId>tt0096697</hasSeriesId>
-    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_groening"/>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
+    <hasStoryline>The Simpsons is an animated sitcom about the antics of a dysfunctional family called the Simpsons (surprise surprise). Homer is the oafish unhealthy beer loving father, Marge is the hardworking homemaker wife, Bart is the ten year old underachiever (and proud of it), Lisa is the unappreciated eight year old genius, and Maggie is the cute, pacifier loving silent infant. </hasStoryline>
+    <hasDescription> The satiric adventures of a working-class family in the misfit city of Springfield.</hasDescription>
     <hasTitle>Os Simpsons </hasTitle>
+    <hasSeriesId>tt0096697</hasSeriesId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dois_homens_e_meio_">
     <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasFinishYear>
@@ -1337,12 +1332,6 @@
     <hasSeriesId>tt0369179</hasSeriesId>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#lee_aronsohn"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sob_suspeita_">
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
@@ -1359,24 +1348,11 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jonathan_nolan"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#christopher_lloyd">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#uma_família_muito_moderna_"/>
     <hasBiography>   Christopher Lloyd was born on June 18, 1960 in Waterbury, Connecticut, USA as Christopher Walsh Lloyd. He is a producer and writer, known for Uma Família Muito Moderna (2009), O Psiquiatra da Rádio (1993) and Por Água Abaixo (2006). He has been married to Arleen Sorkin since 1995. They have two children.  </hasBiography>
     <hasName>Christopher Lloyd</hasName>
     <hasPersonId>0515941</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mike_judge">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#silicon_valley_"/>
-    <hasBiography>   Mike Judge was born on October 17, 1962 in Guayaquil, Ecuador as Michael Craig Judge. He is an actor and writer, known for O Insustentável Peso do Trabalho (1999), Terra de Idiotas (2006) and Beavis and Butt-Head Do America (1996).  </hasBiography>
-    <hasName>Mike Judge</hasName>
-    <hasPersonId>0431918</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#andrew_kreisberg">
@@ -1385,6 +1361,13 @@
     <hasBiography>   Andrew Kreisberg was born on April 23, 1971. He is a producer and writer, known for Arrow (2012), The Flash (2014) and Supergirl (2015).  </hasBiography>
     <hasName>Andrew Kreisberg</hasName>
     <hasPersonId>1132610</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mike_judge">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#silicon_valley_"/>
+    <hasBiography>   Mike Judge was born on October 17, 1962 in Guayaquil, Ecuador as Michael Craig Judge. He is an actor and writer, known for O Insustentável Peso do Trabalho (1999), Terra de Idiotas (2006) and Beavis and Butt-Head Do America (1996).  </hasBiography>
+    <hasName>Mike Judge</hasName>
+    <hasPersonId>0431918</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sobrenatural_">
@@ -1402,18 +1385,24 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
     <hasDescription> Two brothers follow their father's footsteps as "hunters" fighting evil supernatural beings of many kinds including monsters, demons, and gods that roam the earth.</hasDescription>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#matt_stone">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#south_park_"/>
     <hasBiography>   Matt Stone was born on May 26, 1971 in Houston, Texas, USA as Matthew Richard Stone. He is a writer and producer, known for South Park - O Filme (1999), South Park (1997) and Team America: Polícia Mundial (2004). He has been married to Angela Howard since 2008. They have two children.  </hasBiography>
     <hasName>Matt Stone</hasName>
     <hasPersonId>0001778</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A14">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jeffrey_lieber">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#perdidos_"/>
@@ -1441,8 +1430,8 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="A14"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="A15"/>
     <rdfs:subClassOf rdf:nodeID="A16"/>
     <rdfs:subClassOf rdf:nodeID="A17"/>
@@ -1451,6 +1440,12 @@
     <rdfs:subClassOf rdf:nodeID="A20"/>
     <rdfs:subClassOf rdf:nodeID="A21"/>
     <rdfs:subClassOf rdf:nodeID="A22"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -1473,13 +1468,6 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dan_harmon"/>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#justin_roiland"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sam_simon">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_simpsons_"/>
-    <hasBiography>   Sam Simon was born on June 6, 1955 in Los Angeles, California, USA as Samuel Michael Simon. He was a producer and writer, known for Os Simpsons (1989), Os Simpsons: O Filme (2007) and O Super-Forreta (1991). He was married to Jami Ferrell and Jennifer Tilly. He died on March 8, 2015 in Los Angeles, California.  </hasBiography>
-    <hasName>Sam Simon</hasName>
-    <hasPersonId>0800376</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#simon_barry">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#continuum_"/>
     <hasName>Simon Barry</hasName>
@@ -1492,16 +1480,16 @@
     <hasPersonId>1322753</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator">
-    <rdfs:subClassOf rdf:nodeID="A11"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator">
+    <rdfs:subClassOf rdf:nodeID="A7"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#scandal_">
     <hasStoryline>When you get into trouble there's only one person to call, Olivia Pope. Olivia is a professional 'fixer' who makes problems go away before anyone even knows they exist. For the moneyed, the powerful and even the President, Olivia is a legend in her field. Her spectacular success is mostly due to her unbreakable rule of always trust your gut. No matter how careful you are, when you do damage control for a living, you're bound to cause some damage to your own life. She and her crew eat, sleep, live and breathe crisis. Each week, as the team races against the clock to defuse intriguing new problems before they become full-blown disasters, they also have to deal with their own personal issues. They may call themselves 'gladiators in suits', but little by little, Olivia and her crew begin to reveal the chinks in their armor. </hasStoryline>
@@ -1514,18 +1502,6 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
     <hasDescription> A former White House Communications Director starts her own crisis management firm only to realize her clients are not the only ones with secrets.</hasDescription>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
-    <owl:annotatedTarget rdf:nodeID="A13"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>The title of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#doctor_who_">
     <hasDescription> The further adventures of the time traveling alien adventurer and his companions.</hasDescription>
@@ -1542,18 +1518,18 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Family"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#linwood_boomer">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#a_vida_é_injusta_"/>
     <hasBiography>   Linwood was the second youngest of four sons. He grew up with a strict mother, Eileen, and was enrolled in a gifted program at school. Linwood's first behind-the-scenes work was as writer and producer on the NBC series Silver Spoons (1982) (1985-86) and Night Court (1984) (1986-88). After developing an adaptation of the popular British sci-fi comedy "Red Dwarf" for American television that disappointingly didn't get past the pilot stage, Boomer moved on to the relatively short-lived sitcoms Flying Blind (1992) (Fox, 1992-93) and The Boys Are Back (1994) (CBS, 1994-95), writing episodes for both and serving as executive consultant of the former and co-executive producer of the latter. In 1996, he was one of the executive producers of the hit NBC sitcom 3º Calhau a Contar do Sol (1996) and the failed ABC entry Townies (1996). While he also served in the same capacity for the edgy but controversial animated series God, the Devil and Bob (2000) (NBC, 2000), he found immediate success with the envelope-pushing Fox family comedy A Vida é Injusta (2000) (2000- ). A mid-season replacement, "Malcolm" quickly won an audience with its boldly realistic yet off-kilter comedy focused on a struggling middle-class family of six: high-strung disciplinarian mother Lois (Jane Kaczmarek); dim but well-meaning father Hal (Bryan Cranston); smart aleck eldest son Francis (Christopher Masterson) consigned to military school; bullying second-eldest son Reese (Justin Berfield), reluctant boy genius Malcolm (Frankie Muniz); and just plain weird youngest child Dewey (Erik Per Sullivan. The series steered clear of the traditional sitcom trappings as it was shot in a single-camera style, with no laugh track and with frequent fourth wall-breaking commentary by the title hero. A Vida é Injusta (2000) set itself apart from its competitors with a fresh and consistently funny perspective and the remarkable performances by the entire cast. Perhaps this was in part because the show was loosely autobiographical for Boomer. Linwood continues to work behind the scenes on several TV show projects. He resides in Los Angeles.   - IMDb Mini Biography By:  Tai   </hasBiography>
     <hasName>Linwood Boomer</hasName>
     <hasPersonId>0095450</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Musical">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -1566,12 +1542,18 @@
     <hasPersonId>1363595</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#donald_p._bellisario">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ncis:_investigação_criminal_"/>
-    <hasBiography>   Donald P. Bellisario was born in North Charleroi in Pennsylvania. His father ran the tavern, where he grew up listening to the war stories of vets returning from WWII. He had a fifteen-year career in advertising before moving to Hollywood. He broke into television as the story editor for Baa Baa Black Sheep (1976). His most celebrated works to date are probably Magnum, P.I. (1980), Quantum Leap (1989), and JAG (1995). He has been married four times, and has seven children and eight grandchildren.   - IMDb Mini Biography By:  anonymous   </hasBiography>
-    <hasName>Donald P. Bellisario</hasName>
-    <hasPersonId>0069074</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  <rdf:Description rdf:nodeID="A2">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <owl:annotatedTarget rdf:nodeID="A24"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>List of actors that appear in the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
@@ -1587,6 +1569,13 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#maurissa_tancharoen"/>
     <hasSeriesId>tt2364582</hasSeriesId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#donald_p._bellisario">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ncis:_investigação_criminal_"/>
+    <hasBiography>   Donald P. Bellisario was born in North Charleroi in Pennsylvania. His father ran the tavern, where he grew up listening to the war stories of vets returning from WWII. He had a fifteen-year career in advertising before moving to Hollywood. He broke into television as the story editor for Baa Baa Black Sheep (1976). His most celebrated works to date are probably Magnum, P.I. (1980), Quantum Leap (1989), and JAG (1995). He has been married four times, and has seven children and eight grandchildren.   - IMDb Mini Biography By:  anonymous   </hasBiography>
+    <hasName>Donald P. Bellisario</hasName>
+    <hasPersonId>0069074</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sport">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -1616,6 +1605,12 @@
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Film-Noir">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#friends_">
     <hasDescription> Follows the lives of six 20-something friends living in Manhattan.</hasDescription>
@@ -1667,6 +1662,13 @@
     <hasPersonId>1315990</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ann_donahue">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#csi:_nova_iorque_"/>
+    <hasBiography>   Ann Donahue was born in 1955 as Ann M. Donahue. She is a producer and writer, known for CSI: Crime Sob Investigação (2000), CSI: Miami (2002) and CSI: Nova Iorque (2004).  </hasBiography>
+    <hasName>Ann Donahue</hasName>
+    <hasPersonId>0231929</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#arrow_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
@@ -1690,13 +1692,6 @@
     <hasBiography>   Carter Bays was born on August 12, 1975 in the USA as Carter L. Bays. He is a writer and producer, known for Foi Assim que Aconteceu (2005), Late Show with David Letterman (1993) and Lord of the Piercing (2002).  </hasBiography>
     <hasName>Carter Bays</hasName>
     <hasPersonId>0063215</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ann_donahue">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#csi:_nova_iorque_"/>
-    <hasBiography>   Ann Donahue was born in 1955 as Ann M. Donahue. She is a producer and writer, known for CSI: Crime Sob Investigação (2000), CSI: Miami (2002) and CSI: Nova Iorque (2004).  </hasBiography>
-    <hasName>Ann Donahue</hasName>
-    <hasPersonId>0231929</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sherlock_">
@@ -1729,19 +1724,6 @@
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#médicos_e_estagiários_">
-    <hasStoryline>In the unreal world of Sacred Heart Hospital, intern John "J.D" Dorian learns the ways of medicine, friendship and life. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasTitle>Médicos e Estagiários </hasTitle>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#bill_lawrence"/>
-    <hasDescription>D" Dorian learns the ways of medicine, friendship and life.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2001</hasPilotYear>
-    <hasSeriesId>tt0285403</hasSeriesId>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#vikings_">
     <hasTitle>Vikings </hasTitle>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
@@ -1756,11 +1738,18 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#michael_hirst"/>
     <hasSeriesId>tt2306299</hasSeriesId>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#médicos_e_estagiários_">
+    <hasStoryline>In the unreal world of Sacred Heart Hospital, intern John "J.D" Dorian learns the ways of medicine, friendship and life. </hasStoryline>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
+    <hasTitle>Médicos e Estagiários </hasTitle>
+    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasFinishYear>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
+    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#bill_lawrence"/>
+    <hasDescription>D" Dorian learns the ways of medicine, friendship and life.</hasDescription>
+    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
+    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2001</hasPilotYear>
+    <hasSeriesId>tt0285403</hasSeriesId>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_wire_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
@@ -1775,12 +1764,6 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <hasSeriesId>tt0306414</hasSeriesId>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">59</hasEpisodeDuration>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBiography"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dan_bucatinsky">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#web_therapy_"/>
@@ -1831,6 +1814,18 @@
     <hasPersonId>1471491</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBiography"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#shana_goldberg-meehan">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#joey_"/>
     <hasName>Shana Goldberg-Meehan</hasName>
@@ -1864,19 +1859,6 @@
     <hasTitle>Chuck </hasTitle>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#josh_schwartz"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#larry_david">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#seinfeld_"/>
-    <hasBiography>   Larry David was born on July 2, 1947 in Brooklyn, New York City, New York, USA as Lawrence Gene David. He is a writer and producer, known for Seinfeld (1989), Calma, Larry (1999) and Clear History (2013). He was previously married to Laurie Lennard.  </hasBiography>
-    <hasName>Larry David</hasName>
-    <hasPersonId>0202970</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesId"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#defesa_à_medida_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
@@ -1888,6 +1870,13 @@
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
     <hasStoryline>While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory. Mike and Harvey are a winning team. Even though Mike is a genius, he still has a lot to learn about law. And while Harvey may seem like an emotionless, cold-blooded shark, Mike's sympathy and concern for their cases and clients will help remind Harvey why he went into law in the first place. Mike's other allies in the office include the firm's best paralegal Rachel and Harvey's no-nonsense assistant Donna to help him serve justice. Proving to be an irrepressible duo and invaluable to the practice, Mike and Harvey must keep their secret from everyone including managing partner Jessica and Harvey's arch nemesis Louis, who seems intent on making Mike's life as difficult as possible. </hasStoryline>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#larry_david">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#seinfeld_"/>
+    <hasBiography>   Larry David was born on July 2, 1947 in Brooklyn, New York City, New York, USA as Lawrence Gene David. He is a writer and producer, known for Seinfeld (1989), Calma, Larry (1999) and Clear History (2013). He was previously married to Laurie Lennard.  </hasBiography>
+    <hasName>Larry David</hasName>
+    <hasPersonId>0202970</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#2_miúdas_nas_lonas_">
     <hasSeriesId>tt1845307</hasSeriesId>
@@ -1907,6 +1896,12 @@
     <hasName>Steven Moffat</hasName>
     <hasPersonId>0595590</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesId"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#marc_firek">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mr._sunshine_"/>
@@ -1965,25 +1960,12 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#julian_fellowes">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#downton_abbey_"/>
     <hasBiography>   Julian Fellowes was born on August 17, 1949 in Cairo, Egypt as Julian Alexander Fellowes. He is an actor and writer, known for Downton Abbey (2010), Gosford Park (2001) and O Turista (2010). He has been married to Emma Joy Kitchener-Fellowes since April 28, 1990. They have one child.  </hasBiography>
     <hasName>Julian Fellowes</hasName>
     <hasPersonId>0271501</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A25">
-    <owl:annotatedTarget rdf:nodeID="A24"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>List of actors that appear in the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_horror_story_">
     <hasDescription> An anthology series that centers on different characters and locations, including a haunted house, an insane asylum, a witch coven, a freak show, and a mysterious hotel.</hasDescription>
@@ -2012,6 +1994,12 @@
     <hasPersonId>1579753</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#family_guy_">
     <hasTitle>Family Guy </hasTitle>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_zuckerman"/>
@@ -2031,6 +2019,13 @@
     <hasName>Bill Prady</hasName>
     <hasPersonId>0695080</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <owl:annotatedTarget rdf:nodeID="A26"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>Brief description/summary of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#greg_berlanti">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_flash_"/>
@@ -2058,12 +2053,6 @@
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
     <hasDescription> A woman who moves into an apartment across the hall from two brilliant but socially awkward physicists shows them how little they know about life outside of the laboratory.</hasDescription>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#anatomia_de_grey_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <hasSeriesId>tt0413573</hasSeriesId>
@@ -2082,6 +2071,12 @@
     <hasName>Craig Thomas</hasName>
     <hasPersonId>0858657</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#spartacus_">
     <hasStoryline>The inspiration behind this series is the Thracian Gladiator Spartacus, who led a slave uprising against the Roman Republic. The Thracians had been persuaded by Claudius Glaber to serve as auxiliaries in the Roman legions in a campaign against the Getae, who had often plundered Thracian lands. However after Glaber reneges on the deal and switches his attentions from the Getae to attack Mithridates in Asia Minor, the Thracians feel betrayed and mutiny. Captured by Glaber, Spartacus is condemned to death as a Gladiator, whilst his wife Sura is condemned to slavery. Spartacus, however, proves to be a formidable gladiator, and defeats the four gladiators tasked with executing him. He becomes a favorite of the crowd, leading Senator Albinius to commute his death sentence to a life of slavery. Spartacus is purchased by Batiatus for gladiator training, who promises to help him find Sura if he proves himself in training. As the series develops, the story follows the betrayals and machinations of Roman life and a tale of one man's heroic quest for vengeance. </hasStoryline>
@@ -2121,6 +2116,10 @@
     <hasPersonId>0293480</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Music">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#seth_macfarlane">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_dad!_"/>
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#family_guy_"/>
@@ -2129,10 +2128,6 @@
     <hasName>Seth MacFarlane</hasName>
     <hasPersonId>0532235</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Music">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#diários_do_vampiro_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
@@ -2151,24 +2146,18 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#julie_plec"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_benioff">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#a_guerra_dos_tronos_"/>
     <hasBiography>   David Benioff was born in 1970 in New York City, New York, USA as David Friedman. He is a writer and producer, known for A Guerra dos Tronos (2011), A Última Hora (2002) and Tróia (2004). He has been married to Amanda Peet since September 30, 2006. They have three children.  </hasBiography>
     <hasName>David Benioff</hasName>
     <hasPersonId>1125275</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mr._robot_">
     <hasStoryline>Elliot Alderson is a young cyber-security engineer living in New York, who assumes the role of a vigilante hacker by night. Elliot meets a mysterious anarchist known as "Mr. Robot" who recruits Elliot to join his team of hackers, "fsociety". Elliot, who has a social anxiety disorder and connects to people by hacking them, is intrigued but uncertain if he wants to be part of the group. The show follows Mr. Robot's attempts to engage Elliot in his mission to destroy the corporation Elliot is paid to protect. Compelled by his personal beliefs, Elliot struggles to resist the chance to take down the multinational CEOs that are running (and ruining) the world. </hasStoryline>
@@ -2181,6 +2170,12 @@
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sam_esmail"/>
     <hasSeriesId>tt4158110</hasSeriesId>
     <hasTitle>Mr. Robot </hasTitle>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#damon_lindelof">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#perdidos_"/>
@@ -2202,17 +2197,18 @@
     <hasStoryline>The chaotic aftermath of an alien attack has left most of the world completely incapacitated. In the six months since the initial invasion, the few survivors have banded together outside major cities to begin the difficult task of fighting back. Each day is a test of survival as citizen soldiers work to protect the people in their care while also engaging in an insurgency campaign against the occupying alien force. </hasStoryline>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#bryan_fuller">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hannibal_"/>
+    <hasBiography>   Self professed Star Trek geek who watched and loved the Trek series "Deep Space Nine" and set out to write for them. At the time, Star Trek had an open script submission policy and Fuller contributed a spec, leading to a pitching opportunity. When he had sold a couple of stories to Deep Space Nine, Fuller was hired to be a full staff writer for sister Trek series "Voyager" in its fourth season. He worked on Voyager for the remainder of its seven-year run, working his way up to co-producer of the series.During the last year of Voyager, Fuller delivered the pilot spec for "Dead Like Me" to his agent who immediately sold it. "Dead Like Me" was canceled after two seasons, but Fuller was a trusted commodity at this point and moved on to create the short-lived but critically acclaimed "Wonderfalls".Fuller has had a meteoric career in television and has worked non-stop since first pitching to Deep Space Nine in 1993. He wrote and produced an animated movie with Mike Mignola called "The Amazing Screw-On Head". He then moved on to co-executive produce and write for "Heroes" which became a smash hit. Even though it got picked up for a second season Fuller left the show to create his critically acclaimed new show "Pushing Daisies".   - IMDb Mini Biography By:  A Kemp (updated by J. D.)   </hasBiography>
+    <hasName>Bryan Fuller</hasName>
+    <hasPersonId>0298188</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#joel_surnow">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#24_"/>
@@ -2221,12 +2217,11 @@
     <hasPersonId>0839695</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#bryan_fuller">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hannibal_"/>
-    <hasBiography>   Self professed Star Trek geek who watched and loved the Trek series "Deep Space Nine" and set out to write for them. At the time, Star Trek had an open script submission policy and Fuller contributed a spec, leading to a pitching opportunity. When he had sold a couple of stories to Deep Space Nine, Fuller was hired to be a full staff writer for sister Trek series "Voyager" in its fourth season. He worked on Voyager for the remainder of its seven-year run, working his way up to co-producer of the series.During the last year of Voyager, Fuller delivered the pilot spec for "Dead Like Me" to his agent who immediately sold it. "Dead Like Me" was canceled after two seasons, but Fuller was a trusted commodity at this point and moved on to create the short-lived but critically acclaimed "Wonderfalls".Fuller has had a meteoric career in television and has worked non-stop since first pitching to Deep Space Nine in 1993. He wrote and produced an animated movie with Mike Mignola called "The Amazing Screw-On Head". He then moved on to co-executive produce and write for "Heroes" which became a smash hit. Even though it got picked up for a second season Fuller left the show to create his critically acclaimed new show "Pushing Daisies".   - IMDb Mini Biography By:  A Kemp (updated by J. D.)   </hasBiography>
-    <hasName>Bryan Fuller</hasName>
-    <hasPersonId>0298188</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+  <rdf:Description rdf:nodeID="A17">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dexter_">
     <hasDescription> A Miami police forensics expert moonlights as a serial killer of criminals whom he believes have escaped justice.</hasDescription>
@@ -2276,24 +2271,11 @@
     <hasPersonId>0963341</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor">
     <owl:inverseOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A27">
-    <owl:annotatedTarget rdf:nodeID="A26"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>Brief description/summary of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#lisa_kudrow">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#web_therapy_"/>
@@ -2323,6 +2305,12 @@
     <hasPersonId>0466689</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hannibal_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
@@ -2345,13 +2333,6 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mike_henry">
-    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_cleveland_show_"/>
-    <hasBiography>   Mike Henry is an actor and producer, known for Family Guy (1999), Ted (2012) and Family Guy - A Extraordinária História de Stewie Griffin (2005). He is married to Sara Voelker. They have one child.  </hasBiography>
-    <hasName>Mike Henry</hasName>
-    <hasPersonId>1396611</hasPersonId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_blacklist_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
@@ -2366,6 +2347,13 @@
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
     <hasStoryline>A highly articulate, erudite and intelligent businessman and mastermind, "Red" Reddington, has allegedly been on the "10 Most Wanted List" of various U.S. law enforcement agencies for over 20 years. The legend is that Red is as elusive an Artiste as he is clever; Red built and controls a veritable labyrinth of creative enterprises coupled with uncanny ability to gather and finesse information at the drop of a hat. On the first day at FBI for a new female profiler fresh out of Quantico, Red offers to bandy wits with the FBI. Red promises to deliver various criminals and plots previously unknown to any branch of law enforcement... and all Red requests in return is to choose his muse. </hasStoryline>
     <hasTitle>The Blacklist </hasTitle>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mike_henry">
+    <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_cleveland_show_"/>
+    <hasBiography>   Mike Henry is an actor and producer, known for Family Guy (1999), Ted (2012) and Family Guy - A Extraordinária História de Stewie Griffin (2005). He is married to Sara Voelker. They have one child.  </hasBiography>
+    <hasName>Mike Henry</hasName>
+    <hasPersonId>1396611</hasPersonId>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_sopranos_">
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
@@ -2400,12 +2388,6 @@
     <hasName>Josh Schwartz</hasName>
     <hasPersonId>0777300</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#adam_higgs">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_"/>
@@ -2455,6 +2437,17 @@
     <hasSeriesId>tt0496424</hasSeriesId>
     <hasTitle>30 Rock </hasTitle>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#peter_nowalk">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#como_defender_um_assassino_"/>
     <hasBiography>   Peter Nowalk is a producer and writer, known for Como Defender Um Assassino (2014), Anatomia de Grey (2005) and Scandal (2012).  </hasBiography>
@@ -2492,12 +2485,6 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jeff_detsky"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#nicolas_falacci">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#núm3ros_"/>
     <hasBiography>   Nicolas Falacci is a writer and producer, known for Núm3ros (2005), Children of the Night (1991) and O Acordo (2013). He is married to Cheryl Heuton.  </hasBiography>
@@ -2529,6 +2516,12 @@
     <hasDescription> Set 97 years after a nuclear war has destroyed civilization, when a spaceship housing humanity's lone survivors sends 100 juvenile delinquents back to Earth in hopes of possibly re-populating the planet.</hasDescription>
     <hasSeriesId>tt2661044</hasSeriesId>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Documentary">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -2566,13 +2559,6 @@
     <hasPersonId>0001612</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A28">
-    <owl:annotatedTarget rdf:nodeID="A4"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <rdfs:comment>A list of tv shows where the actor appears</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jeff_detsky">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_"/>
     <hasName>Jeff Detsky</hasName>
@@ -2591,6 +2577,13 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
     <hasSeriesId>tt1954347</hasSeriesId>
     <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <owl:annotatedTarget rdf:nodeID="A28"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <rdfs:comment>A list of tv shows where the actor appears</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#peter_m._lenkov">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hawai_força_especial_"/>
@@ -2612,12 +2605,6 @@
     <hasTitle>Foi Assim que Aconteceu </hasTitle>
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#investigação_criminal:_los_angeles_">
     <hasTitle>Investigação Criminal: Los Angeles </hasTitle>
@@ -2655,30 +2642,6 @@
     <hasPersonId>0455078</hasPersonId>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dr._house_">
-    <hasDescription> An antisocial maverick doctor who specializes in diagnostic medicine does whatever it takes to solve puzzling cases that come his way using his crack team of doctors and his wits.</hasDescription>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2004</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasStoryline>The series follows the life of anti-social, pain killer addict, witty and arrogant medical doctor Gregory House with only half a muscle in his right leg. He and his team of medical doctors try to cure very ill ordinary people in the United States of America. </hasStoryline>
-    <hasTitle>Dr. House </hasTitle>
-    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_shore"/>
-    <hasSeriesId>tt0412142</hasSeriesId>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -2698,6 +2661,24 @@
     <hasStoryline>Carrie Mathison, a CIA operations officer, is on probation after carrying out an unauthorized operation in Iraq. As a result, she has been reassigned to the Counter terrorism center. Whilst in Iraq, she was warned that an American prisoner had been turned by Al-Qaeda. When Nicholas Brody, a U.S. Marine Sergeant, is rescued after being held hostage since 2003, she suspects that he is the one. While Brody is received home as a war hero, Carrie goes to any lengths necessary to catch him out. </hasStoryline>
     <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#alex_gansa"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dr._house_">
+    <hasDescription> An antisocial maverick doctor who specializes in diagnostic medicine does whatever it takes to solve puzzling cases that come his way using his crack team of doctors and his wits.</hasDescription>
+    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2004</hasPilotYear>
+    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
+    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasFinishYear>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
+    <hasStoryline>The series follows the life of anti-social, pain killer addict, witty and arrogant medical doctor Gregory House with only half a muscle in his right leg. He and his team of medical doctors try to cure very ill ordinary people in the United States of America. </hasStoryline>
+    <hasTitle>Dr. House </hasTitle>
+    <hasCreator rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#david_shore"/>
+    <hasSeriesId>tt0412142</hasSeriesId>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#scott_silveri">
     <hasSeriesCreated rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#joey_"/>
