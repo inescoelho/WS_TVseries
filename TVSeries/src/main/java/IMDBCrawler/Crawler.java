@@ -76,12 +76,11 @@ public class Crawler {
 
             seriesList.add(series);
 
-            //break;
+            // break;
         }
 
         //list series by genre
-        for (Genre genre: this.getGenreList()
-             ) {
+        for (Genre genre: this.getGenreList() ) {
             System.out.println(genre.toString());
         }
     }

@@ -1,5 +1,6 @@
 package ontology;
 
+import data.Date;
 import data.Person;
 import data.Series;
 import org.apache.jena.ontology.Individual;
@@ -35,6 +36,7 @@ public class OntologyCreator {
     private String namespace;
     private OntModel ontologyModel;
 
+    // Both peopleList and seriesList have the respective ids as keys in the HashMap!!!
     private HashMap<String, Individual> peopleList;
     private HashMap<String, Individual> seriesList;
 
@@ -145,7 +147,7 @@ public class OntologyCreator {
         }
 
         // Add series to series list
-        seriesList.put(title, newSeries);
+        seriesList.put(id, newSeries);
 
         System.out.println("Created series " + newSeries.getLocalName());
         return true;
@@ -158,7 +160,7 @@ public class OntologyCreator {
      */
     public boolean createCreator(Person creator) {
         return createPerson(false, creator.getId(), creator.getName(), creator.getBiography(),
-                            creator.getBirthday().toString());
+                            creator.getBirthday());
     }
 
     /**
@@ -167,7 +169,7 @@ public class OntologyCreator {
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
     public boolean createActor(Person actor) {
-        return createPerson(true, actor.getId(), actor.getName(), actor.getBiography(), actor.getBirthday().toString());
+        return createPerson(true, actor.getId(), actor.getName(), actor.getBiography(), actor.getBirthday());
     }
 
     /**
@@ -179,7 +181,7 @@ public class OntologyCreator {
      * @param birthDate The person's date of birth
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    private boolean createPerson(boolean actor, String id, String name, String biography, String birthDate) {
+    private boolean createPerson(boolean actor, String id, String name, String biography, Date birthDate) {
         String trimedName = name.replaceAll(" ", "_").toLowerCase();
         Individual newIndividual = null;
 
@@ -198,11 +200,15 @@ public class OntologyCreator {
         // Add actor properties
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), id);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate);
+        if (biography != null) {
+            newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
+        }
+        if (birthDate != null) {
+            newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate.toString());
+        }
 
         // Add person to the list
-        peopleList.put(name, newIndividual);
+        peopleList.put(id, newIndividual);
 
         if (actor) {
             System.out.println("Created actor " + newIndividual.getLocalName());
@@ -215,12 +221,12 @@ public class OntologyCreator {
 
     /**
      * Make an instance of the Actor class also an instance of the Creator class
-     * @param individualName The name of the actor
+     * @param actor The actor
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean makeActorCreator(String individualName) {
+    public boolean makeActorCreator(Person actor) {
 
-        Individual individual = peopleList.get(individualName);
+        Individual individual = peopleList.get(actor.getId());
         OntClass creatorClass = ontologyModel.getOntClass(namespace + "Creator");
 
         if (!individual.hasProperty(RDF.type, creatorClass)) {
@@ -234,12 +240,12 @@ public class OntologyCreator {
 
     /**
      * Make an instance of the Creator class also an instance of the Actor class
-     * @param individualName The name of the creator
+     * @param creator The creator
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
-    public boolean makeCreatorActor(String individualName) {
+    public boolean makeCreatorActor(Person creator) {
 
-        Individual individual = peopleList.get(individualName);
+        Individual individual = peopleList.get(creator.getId());
         OntClass actorClass = ontologyModel.getOntClass(namespace + "Actor");
 
         if (!individual.hasProperty(RDF.type, actorClass)) {
@@ -253,32 +259,32 @@ public class OntologyCreator {
 
     /**
      * Adds a link (property) between an actor and a tv series
-     * @param seriesName The name of the series
-     * @param actorName The name of the actor
+     * @param series The series
+     * @param actor The actor
      * @return A boolean value signalling if any errors occurred (link between the two entities already exists, for
      *         example) or if everything went well
      */
-    public boolean addSeriesToActor(String seriesName, String actorName) {
+    public boolean addSeriesToActor(Series series, Person actor) {
         // Get actor and series
-        Individual series = seriesList.get(seriesName);
-        Individual actor = peopleList.get(actorName);
+        Individual seriesIndividual = seriesList.get(series.getSeriesId());
+        Individual actorIndividual = peopleList.get(actor.getId());
 
-        return addActorCreatorToSeries(true, series, actor);
+        return addActorCreatorToSeries(true, seriesIndividual, actorIndividual);
     }
 
     /**
      * Adds a link (property) between a creator and a tv series
-     * @param seriesName The name of the series
-     * @param creatorName The name of the creator
+     * @param series The series
+     * @param creator The creator
      * @return A boolean value signalling if any errors occurred (link between the two entities already exists, for
      *         example) or if everything went well
      */
-    public boolean addSeriesToCreator(String seriesName, String creatorName) {
+    public boolean addSeriesToCreator(Series series, Person creator) {
         // Get creator and series
-        Individual series = seriesList.get(seriesName);
-        Individual creator = peopleList.get(creatorName);
+        Individual seriesIndividual = seriesList.get(series.getSeriesId());
+        Individual creatorIndividual = peopleList.get(creator.getId());
 
-        return addActorCreatorToSeries(false, series, creator);
+        return addActorCreatorToSeries(false, seriesIndividual, creatorIndividual);
     }
 
     /**
@@ -317,7 +323,7 @@ public class OntologyCreator {
 
                 Statement resId = resource.getProperty(ontologyModel.getDatatypeProperty(namespace + "hasPersonId"));
                 Statement personId = actorOrCreator.getProperty(ontologyModel.getDatatypeProperty(namespace +
-                        "hasPersonId"));
+                                                                "hasPersonId"));
 
                 // If the resources are the same
                 if (resId.getLiteral().equals(personId.getLiteral())) {
@@ -331,6 +337,16 @@ public class OntologyCreator {
         actorOrCreator.addProperty(inverseProperty, series);
 
         return true;
+    }
+
+    /**
+     * Checks if a given person already exists in the list of people
+     * @param person The person in question
+     * @return A boolean value, signalling whether or not the person in question already exists in the system
+     */
+    public boolean checkPerson(Person person) {
+
+        return peopleList.get(person.getId()) != null;
     }
 
     /**

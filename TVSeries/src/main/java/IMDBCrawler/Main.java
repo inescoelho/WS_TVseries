@@ -1,5 +1,6 @@
 package IMDBCrawler;
 
+import data.Person;
 import data.Series;
 import ontology.OntologyCreator;
 import org.apache.log4j.varia.NullAppender;
@@ -27,6 +28,7 @@ public class Main {
             System.out.println("Successfully loaded ids from file!");
         } else {
             System.out.println("Failed to load ids from file!");
+            Thread.dumpStack();
             return;
         }
 
@@ -38,6 +40,23 @@ public class Main {
         for (Series currentSeries : series) {
             // Add series
             ontologyCreator.createSeries(currentSeries);
+
+            // Add creator to series
+            ArrayList<Person> creators = currentSeries.getCreatorList();
+            for (Person currentCreator : creators) {
+
+                // First add creator to the list of people
+                if (!ontologyCreator.checkPerson(currentCreator)) {
+                    ontologyCreator.createCreator(currentCreator);
+                }
+
+                // Link the creator with the series
+                result = ontologyCreator.addSeriesToCreator(currentSeries, currentCreator);
+                if (!result) {
+                    Thread.dumpStack();
+                    return ;
+                }
+            }
         }
 
         ontologyCreator.writeModelToFile("MyTest.rdf", "RDF/XML");
