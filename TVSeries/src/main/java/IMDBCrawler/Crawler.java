@@ -46,11 +46,9 @@ public class Crawler {
             seriesURL = mainURL + entry.getValue();
             System.out.printf("Name : %s ID: %s URL: %s %n", entry.getKey(), entry.getValue(), seriesURL);
 
+            boolean state = true;
             try {
                 doc = Jsoup.connect(seriesURL).userAgent("Mozilla").get();
-
-                //get series genre
-                this.getGenre(doc, series);
 
                 //get series title, description, start and end year
                 this.getTitleAndDate(doc, series);
@@ -58,26 +56,45 @@ public class Crawler {
 
                 // get series storyline
                 auxSeriesURL = seriesURL + "/plotsummary";
-                this.getStoryline(auxSeriesURL, series);
+                state = this.getStoryline(auxSeriesURL, series);
 
                 // get series duration
-                auxSeriesURL = seriesURL + "/technical";
-                this.getDuration(auxSeriesURL, series);
+                if (state) {
+                    auxSeriesURL = seriesURL + "/technical";
+                    state = this.getDuration(auxSeriesURL, series);
+                }
 
                 // get series creators list
-                auxSeriesURL = seriesURL + "/fullcredits";
-                this.getCreators(auxSeriesURL, series);
+                if (state) {
+                    auxSeriesURL = seriesURL + "/fullcredits";
+                    state = this.getCreators(auxSeriesURL, series);
+                }
 
                 // get series actors list
-                this.getActors(auxSeriesURL, series);
+                if (state) {
+                    state = this.getActors(auxSeriesURL, series);
+                }
 
+                //get series genre
+                if (state)
+                {
+                    this.getGenre(doc, series);
+                }
             } catch (IOException var12) {
                 System.out.println("Timeout while connecting to :" + seriesURL + "!");
+                state = false;
             }
 
             //add series to list of series
-            seriesList.add(series);
-            System.out.println(series.toString());
+            if (state)
+            {
+                seriesList.add(series);
+                //System.out.println(series.toString());
+            }
+            else
+            {
+                System.out.println("OUT " + series.getTitle());
+            }
 
             //break;
         }
@@ -150,9 +167,10 @@ public class Crawler {
         series.setDescription(aux[aux.length-1] + ".");
     }
 
-    private void getStoryline(String url, Series series) {
+    private boolean getStoryline(String url, Series series) {
         Document doc;
         String storyline;
+        boolean state = true;
 
         try {
             doc = Jsoup.connect(url).userAgent("Mozilla").get();
@@ -165,12 +183,16 @@ public class Crawler {
             series.setStoryline(storyline);
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
+            state = false;
         }
+
+        return state;
     }
 
-    private void getDuration(String url, Series series) {
+    private boolean getDuration(String url, Series series) {
         Document doc;
         String duration;
+        boolean state = true;
 
         try {
             doc = Jsoup.connect(url).userAgent("Mozilla").get();
@@ -185,7 +207,10 @@ public class Crawler {
             series.setDuration(duration);
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
+            state = false;
         }
+
+        return state;
     }
 
     /**
@@ -240,8 +265,9 @@ public class Crawler {
         }
     }
 
-    private void getCreators(String auxSeriesURL, Series series) {
+    private boolean getCreators(String auxSeriesURL, Series series) {
         Document doc;
+        boolean state = true;
 
         try {
             doc = Jsoup.connect(auxSeriesURL).userAgent("Mozilla").get();
@@ -278,23 +304,30 @@ public class Crawler {
                     creator = creator.substring(stop+2);
 
                     Person person = new Person(creator, id);
-                    this.getPersonData(id, person);
+                    state = this.getPersonData(id, person);
 
-                    //System.out.println(person.toString());
-                    series.getCreatorList().add(person);
+                    if (state) {
+                        //System.out.println(person.toString());
+                        series.getCreatorList().add(person);
+                    }
+                    else
+                        return false;
                 }
             }
 
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + auxSeriesURL + "!");
+            state = false;
         }
+        return state;
     }
 
-    private void getPersonData(String id, Person person) {
+    private boolean getPersonData(String id, Person person) {
         Document doc;
         String url = "http://www.imdb.com/name/nm" + id + "/bio";
         Date birthday = null;
         String bio;
+        boolean state = true;
 
         try {
             doc = Jsoup.connect(url).userAgent("Mozilla").get();
@@ -335,7 +368,10 @@ public class Crawler {
 
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + url + "!");
+            state = false;
         }
+
+        return state;
     }
 
     private Date convertToDate(String info) {
@@ -376,8 +412,9 @@ public class Crawler {
         return birthday;
     }
 
-    private void getActors(String auxSeriesURL, Series series) {
+    private boolean getActors(String auxSeriesURL, Series series) {
         Document doc;
+        boolean state = true;
 
         try {
             doc = Jsoup.connect(auxSeriesURL).userAgent("Mozilla").get();
@@ -415,7 +452,10 @@ public class Crawler {
 
         } catch (IOException var12) {
             System.out.println("Timeout while connecting to :" + auxSeriesURL + "!");
+            state = false;
         }
+
+        return state;
     }
 
     public ArrayList<Series> getSeriesList() {
