@@ -47,6 +47,7 @@ public class Main {
 
                 // First add creator to the list of people
                 if (!ontologyCreator.checkPerson(currentCreator)) {
+                    // Add creator
                     ontologyCreator.createCreator(currentCreator);
                 }
 
@@ -57,6 +58,35 @@ public class Main {
                     return ;
                 }
             }
+
+            // Add actor to series
+            ArrayList<Person> actors = currentSeries.getActorList();
+            for (Person currentActor : actors) {
+
+                // First check if the person is already in our list
+                if (!ontologyCreator.checkPerson(currentActor)) {
+                    // Add actor
+                    ontologyCreator.createActor(currentActor);
+                } else {
+                    // If person already in our list check if is a creator
+                    if (ontologyCreator.checkCreator(currentActor)) {
+                        // Make creator actor
+                        result = ontologyCreator.makeCreatorActor(currentActor);
+                        if (!result) {
+                            Thread.dumpStack();
+                            return ;
+                        }
+                    }
+                }
+
+                // Link the actor with the series
+                result = ontologyCreator.addSeriesToActor(currentSeries, currentActor);
+                if (!result) {
+                    Thread.dumpStack();
+                    return ;
+                }
+            }
+
         }
 
         ontologyCreator.writeModelToFile("MyTest.rdf", "RDF/XML");

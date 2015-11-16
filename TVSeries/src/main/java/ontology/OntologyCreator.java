@@ -345,8 +345,30 @@ public class OntologyCreator {
      * @return A boolean value, signalling whether or not the person in question already exists in the system
      */
     public boolean checkPerson(Person person) {
-
         return peopleList.get(person.getId()) != null;
+    }
+
+    /**
+     * Checks if the given person is a creator
+     * @param creator The possible creator
+     * @return A boolean value, signalling if the given person is a creator or not
+     */
+    public boolean checkCreator(Person creator) {
+
+        Individual possibleCreator = peopleList.get(creator.getId());
+
+        if (possibleCreator == null) {
+            return false;
+        }
+
+        OntClass creatorClass = ontologyModel.getOntClass(namespace + "Creator");
+        if(creatorClass == null) {
+            Thread.dumpStack();
+            System.out.println("Could not find Creator and this should not have happened!");
+            return false;
+        }
+
+        return possibleCreator.hasProperty(RDF.type, creatorClass);
     }
 
     /**
