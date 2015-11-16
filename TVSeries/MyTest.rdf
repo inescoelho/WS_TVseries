@@ -4,84 +4,38 @@
     xmlns="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_simpsons_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1989</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>The Simpsons is an animated sitcom about the antics of a dysfunctional family called the Simpsons (surprise surprise). Homer is the oafish unhealthy beer loving father, Marge is the hardworking homemaker wife, Bart is the ten year old underachiever (and proud of it), Lisa is the unappreciated eight year old genius, and Maggie is the cute, pacifier loving silent infant. </hasStoryline>
-    <hasDescription> The satiric adventures of a working-class family in the misfit city of Springfield.</hasDescription>
-    <hasTitle>Os Simpsons </hasTitle>
-    <hasSeriesId>tt0096697</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  <rdf:Description rdf:nodeID="A0">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBiography"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sleepy_hollow_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt2647544</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasStoryline>Ichabod Crane is resurrected and pulled two and a half centuries through time to unravel a mystery that dates all the way back to the founding fathers. </hasStoryline>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasDescription> Ichabod Crane is resurrected and pulled two and a half centuries through time to unravel a mystery that dates all the way back to the founding fathers.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <hasTitle>Sleepy Hollow </hasTitle>
+  <rdf:Description rdf:nodeID="A1">
+    <owl:annotatedTarget rdf:nodeID="A2"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>Brief description/summary of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sob_suspeita_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <hasSeriesId>tt1839578</hasSeriesId>
-    <hasDescription> However, the details of the crimes--including the civilians' roles--are left a mystery.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasTitle>Sob Suspeita </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasStoryline>A billionaire software-genius named Harold Finch creates a Machine for the government that is designed to detect acts of terror before they can happen, by monitoring the entire world through every cell-phone, email and surveillance camera. Finch discovered that the machine sees everything, potential terrorist acts and violent crimes that involve ordinary people. When the government considered violent crimes between normal people "irrelevant", Finch built a back door into the system that gives him the social security number of a person involved in a future violent crime so he could act. Partnered with John Reese, an ex-CIA agent, the two work in secret to prevent violent crimes before they can happen. Eventually their activities lead to being hunted by the New York Police Department, CIA Agents in pursuit of Reese who was listed as dead, a computer hacker named Root who wants access to the Machine, and government officials who want to keep all knowledge of the Machine a complete secret. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dois_homens_e_meio_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2003</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>The Harper brothers Charlie and Alan are almost opposites but form a great team. They have little in common except their dislike for their mundane, maternally cold and domineering mother, Evelyn. Alan, a compulsively neat chiropractor and control-freak, is thrown out by his manipulative wife Judith who nevertheless gets him to pay for everything and do most jobs in the house. Charlie is a freelance jingle composer and irresistible Cassanova who lives in a luxurious beach-house and rarely gets up before noon. Charlie "temporarily" allows Alan and his son Jake, a food-obsessed, lazy school kid who shuttles between his parents, to move in with them after Alan's separation/divorce. The sitcom revolves around their conflicting lifestyles, raising Jake (who has the efficient, caring dad while having a ball with his fun-loving sugar uncle who teaches him boyish things), and bantering with Evelyn and various other friends and family. Other fairly regular characters include Charlie's cleaning lady Berta and his rich, self-confessed stalker neighbor Rose who often sneaks in to spy on Charlie. </hasStoryline>
-    <hasDescription> A hedonistic jingle writer's free-wheeling life comes to an abrupt halt when his brother and 10-year-old nephew move into his beach-front house.</hasDescription>
-    <hasTitle>Dois Homens e Meio </hasTitle>
-    <hasSeriesId>tt0369179</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#south_park_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1997</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>The curious, adventure-seeking, fourth grade group of boys, Stan, Kyle, Cartman, and Kenny, all join in in buffoonish adventures that sometimes evolve nothing. Sometimes something that was simple at the start, turns out to get out of control. Everything is odd in the small mountain town, South Park, and the boys always find something to do with it. </hasStoryline>
-    <hasDescription> Follows the misadventures of four irreverent grade-schoolers in the quiet, dysfunctional town of South Park, Colorado.</hasDescription>
-    <hasTitle>South Park </hasTitle>
-    <hasSeriesId>tt0121955</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sobrenatural_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasTitle>Sobrenatural </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <hasSeriesId>tt0460681</hasSeriesId>
-    <hasStoryline>This television drama is about two brothers, Sam and Dean, who were raised by their father, John, to hunt and kill all things that go "bump in the night" after his wife, Mary, was murdered by evil supernatural being when the boys were young. 22 years later the brothers set out on a journey, fighting evil along the way, to find their recently missing father who, when they finally meet up with, reveals he knows what killed their mother, a demon, and has found a way to track and kill it. Meanwhile, Sam starts to develop frightening abilities that include death visions, visions of people dying before it actually happens. These visions are somehow connected to the demon who murdered his mother and its mysterious plans that seem to be all about Sam. When their father dies striking a deal with the very same devil that had killed his wife, the brothers, now alone and without their mentor, are determined to finish the crusade their father started. But disturbing revelations about Sam's part in the demon's apocalyptic plans are presented when John's dying last words to Dean are revealed. </hasStoryline>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <hasDescription> Two brothers follow their father's footsteps as "hunters" fighting evil supernatural beings of many kinds including monsters, demons, and gods that roam the earth.</hasDescription>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Music">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <owl:annotatedTarget rdf:nodeID="A4"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>List of creators of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesId">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -93,695 +47,56 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <owl:annotatedTarget rdf:nodeID="A1"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <rdfs:comment>A list of tv shows where the actor appears</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#fargo_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasDescription> The all new "true crime" case of Fargo's new chapter travels back to 1979 in Sioux Falls, South Dakota and Luverne, Minnesota, where a young State Police Officer investigates a case involving a local crime gang and a major Mob syndicate.</hasDescription>
-    <hasStoryline>The all new "true crime" case of Fargo's new chapter travels back to 1979 in Sioux Falls, South Dakota and Luverne, Minnesota, where a young State Police Officer Lou Solverson, recently back from Vietnam, investigates a case involving a local crime gang and a major Mob syndicate. Helping him piece things together is his father-in-law, Sheriff Hank Larsson. The investigation will lead them to a colorful cast of characters that includes Karl Weathers, the town lawyer of Luverne, Minnesota. A Korean War vet, Karl is a flowery drunk blessed with the gift of gab and the eloquence of a true con artist. Joe Bulo, the front man for the northern expansion of a Kansas City crime syndicate. The new face of corporate crime, Joe's bringing a Walmart mentality to small town America. His number two is Mike Milligan. Part enforcer, part detective, Mike is always smiling - but the joke is usually on you. Bulo and his crew have their sights set on the Gerhardt crime family in Fargo, currently led by matriarch Floyd Gerhardt. With her husband at death's door, Floyd takes over the family business, frustrating her eldest son, Dodd Gerhardt. An impatient hothead with a cruel streak to match his ambitions, Dodd can't wait for both his parents to die so he can take over and expand their business from kingdom to empire. Bear Gerhardt is the middle son, an intimidatingly large man who, although inarticulate, is the most decent of his clan. Rye Gerhardt, the youngest of the Gerhardt clan, views himself as a big shot, but in reality he's just a small dog who barks big. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt2802850</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Fargo </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">53</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#elementar_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
-    <hasStoryline>A modern take on the cases of Sherlock Holmes, with the detective now living in New York City. </hasStoryline>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasSeriesId>tt2191671</hasSeriesId>
-    <hasTitle>Elementar </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasDescription> A modern take on the cases of Sherlock Holmes, with the detective now living in New York City.</hasDescription>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Family">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#firefly_">
-    <hasTitle>Firefly </hasTitle>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2003</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-    <hasStoryline>Captain Malcolm 'Mal' Reynolds is a former galactic war veteran who is the captain of the transport ship "Serenity". Mal and his crew, ensign Zoe Alleyne Washburne; Zoe's husband, pilot Hoban 'Wash' Washburne; muscular mercenary Jayne Cobb; young mechanic Kaylee Frye; former Alliance medical officer Simon Tam; his disturbed teenage sister River (both on the run from the interplanetary government "The Alliance"); the beautiful courtesan Inara Serra; and preacher Shepherd Book do any jobs, legal or illegal, they can find as the Serenity crew travels across the outskirts of outer space. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2002</hasPilotYear>
-    <hasDescription> Five hundred years in the future, a renegade crew aboard a small spacecraft tries to survive as they travel the unknown parts of the galaxy and evade warring factions as well as authority agents out to get them.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasSeriesId>tt0303461</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <owl:annotatedTarget rdf:nodeID="A3"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>List of actors that appear in the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre">
-    <rdfs:subClassOf rdf:nodeID="A5"/>
-    <rdfs:subClassOf rdf:nodeID="A6"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="A7"/>
-    <rdfs:subClassOf rdf:nodeID="A8"/>
-    <rdfs:subClassOf rdf:nodeID="A9"/>
-    <rdfs:subClassOf rdf:nodeID="A10"/>
-    <rdfs:subClassOf rdf:nodeID="A11"/>
-    <rdfs:subClassOf rdf:nodeID="A12"/>
-    <rdfs:subClassOf rdf:nodeID="A13"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#a_vida_é_injusta_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2006</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2000</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">30</hasEpisodeDuration>
-    <hasStoryline>An offbeat, laugh track-lacking sitcom about a bizarrely dysfunctional family, the center of which is Malcolm, the middle of the two brothers who still live at home. His eldest (and favorite) sibling, Francis, boards at military school because his parents believe it will reform him and keep him out of trouble. Malcolm often has a hard time coping with his family life, but he has more troubles to contend with when he starts receiving special treatment at school after being diagnosed as an intellectually advanced genius. </hasStoryline>
-    <hasDescription> A gifted young teen tries to survive with his dimwitted, dysfunctional family.</hasDescription>
-    <hasTitle>A Vida é Injusta </hasTitle>
-    <hasSeriesId>tt0212671</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#agent_carter_">
-    <hasTitle>Agent Carter </hasTitle>
-    <hasStoryline>The war is over and almost everyone has experienced a loss. Agent Peggy Carter has lost the love of her life. To top it off, when billionaire Howard Stark is accused of Treason, he secretly employs her to clear his name. With the help of Stark's butler, she embarks on a crazy journey full of deceit, murder and controversy with a side of wise-cracking roommates. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <hasSeriesId>tt3475734</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasPilotYear>
-    <hasDescription> When Howard Stark is accused of treason, he secretly recruits Peggy to clear his name with the help of his butler, Edwin Jarvis.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mentes_criminosas_">
-    <hasTitle>Mentes Criminosas </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt0452046</hasSeriesId>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <hasDescription> The cases of the BAU, an elite group of profilers who analyze the nation's most dangerous criminal minds in an effort to anticipate their next moves before they strike again.</hasDescription>
-    <hasStoryline>Based in Quantico, Virginia, the Behavioral Analysis Unit (BAU) is a subsection of the FBI. Called in by local police departments to assist in solving crimes of a serial and/or extremely violent nature where the perpetrator is unknown (referred to by the Unit as the unknown subject or unsub for short), the BAU uses the controversial scientific art of profiling to track and apprehend the unsub. Profiling entails coming up with basic characteristics of the unsub and the victims (referred to as the victimology), using evidence from the case and matching that information to historic precedents and psychological analyses as a means to solve the case. Because of the nature of the work conducted by the BAU - the work being time consuming and psychologically demanding - its members are fiercely loyal to the Unit and to its other members. Also because of the work's overall demanding nature, not many members of the BAU have been able to maintain a happy or stable family life. </hasStoryline>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator">
-    <rdfs:subClassOf rdf:nodeID="A4"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Western">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#scandal_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasStoryline>When you get into trouble there's only one person to call, Olivia Pope. Olivia is a professional 'fixer' who makes problems go away before anyone even knows they exist. For the moneyed, the powerful and even the President, Olivia is a legend in her field. Her spectacular success is mostly due to her unbreakable rule of always trust your gut. No matter how careful you are, when you do damage control for a living, you're bound to cause some damage to your own life. She and her crew eat, sleep, live and breathe crisis. Each week, as the team races against the clock to defuse intriguing new problems before they become full-blown disasters, they also have to deal with their own personal issues. They may call themselves 'gladiators in suits', but little by little, Olivia and her crew begin to reveal the chinks in their armor. </hasStoryline>
-    <hasDescription> A former White House Communications Director starts her own crisis management firm only to realize her clients are not the only ones with secrets.</hasDescription>
-    <hasTitle>Scandal </hasTitle>
-    <hasSeriesId>tt1837576</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person">
-    <owl:disjointWith rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:subClassOf rdf:nodeID="A14"/>
-    <rdfs:subClassOf rdf:nodeID="A15"/>
-    <rdfs:subClassOf rdf:nodeID="A16"/>
-    <rdfs:subClassOf rdf:nodeID="A17"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ruptura_total_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasDescription> A chemistry teacher diagnosed with terminal lung cancer teams up with his former student to cook and sell crystal meth.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">47</hasEpisodeDuration>
-    <hasStoryline>When chemistry teacher Walter White is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose. He lives with his teenage son, who has cerebral palsy, and his wife, in New Mexico. Determined to ensure that his family will have a secure future, Walt embarks on a career of drugs and crime. He proves to be remarkably proficient in this new world as he begins manufacturing and selling methamphetamine with one of his former students. The series tracks the impacts of a fatal diagnosis on a regular, hard working man, and explores how a fatal diagnosis affects his morality and transforms him into a major player of the drug trade. </hasStoryline>
-    <hasTitle>Ruptura Total </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2008</hasPilotYear>
-    <hasSeriesId>tt0903747</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Musical">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#investigação_criminal:_nova_orleães_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <hasStoryline>A spin-off of "NCIS" that is set in the Crescent City. The cases and lives of the Naval Criminal Investigative Service's New Orleans branch, which consists of Senior Special Agent Dwayne Cassius "King" Pride, Special Agent Christopher LaSalle, and Special Agent Meredith Brody. </hasStoryline>
-    <hasDescription> The cases and lives of the Naval Criminal Investigative Service's New Orleans branch, which consists of Senior Special Agent Dwayne Cassius "King" Pride, Special Agent Christopher LaSalle, and Special Agent Meredith Brody.</hasDescription>
-    <hasTitle>Investigação Criminal: Nova Orleães </hasTitle>
-    <hasSeriesId>tt3560084</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sport">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#a_guerra_dos_tronos_">
-    <hasTitle>A Guerra dos Tronos </hasTitle>
-    <hasStoryline>Nine noble families fight for control of the mythical land of Westeros. Political and sexual intrigue is pervasive. Robert Baratheon, King of Westeros, asks his old friend Eddard, Lord Stark, to serve as Hand of the King, or highest official. Secretly warned that the previous Hand was assassinated, Eddard accepts in order to investigate further. Meanwhile the Queen's family, the Lannisters, may be hatching a plot to take power. Across the sea, the last members of the previous and deposed ruling family, the Targaryens, are also scheming to regain the throne. The friction between the houses Stark, Lannister, Baratheon and Targaryen and with the remaining great houses Greyjoy, Tully, Arryn, Tyrell and Martell leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war and political confusion, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">56</hasEpisodeDuration>
-    <hasDescription> Several noble families fight for control of the mythical land of Westeros.</hasDescription>
-    <hasSeriesId>tt0944947</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_agentes_s.h.i.e.l.d._">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <hasDescription> The missions of the Strategic Homeland Intervention, Enforcement and Logistics Division.</hasDescription>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasStoryline>After the Battle of New York, the world has changed. It now knows not only about the Avengers, but also the powerful menaces that require those superheroes and more to face them. In response, Phil Coulson of the Strategic Homeland Intervention, Enforcement and Logistics Division assembles an elite covert team to find and deal with these threats wherever they are found. With a world rapidly becoming more bizarre and dangerous than ever before as the supervillains arise, these agents of S.H.I.E.L.D. are ready to take them on. </hasStoryline>
-    <hasTitle>Os Agentes S.H.I.E.L.D. </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasSeriesId>tt2364582</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orange_is_the_new_black_">
-    <hasDescription> The story of Piper Chapman, a woman in her thirties who is sentenced to fifteen months in prison after being convicted of a decade-old crime of transporting money to her drug-dealing girlfriend.</hasDescription>
-    <hasTitle>Orange Is the New Black </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">59</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasStoryline>The story of Piper Chapman, a woman in her thirties who is sentenced to fifteen months in prison after being convicted of a decade-old crime of transporting money to her drug-dealing girlfriend. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt2372162</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Film-Noir">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#penny_dreadful_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <hasStoryline>Explorer Sir Malcolm Murray, American gunslinger Ethan Chandler and medium Vanessa Ives unite to combat supernatural threats in Victorian London. </hasStoryline>
-    <hasDescription> Explorer Sir Malcolm Murray, American gunslinger Ethan Chandler and medium Vanessa Ives unite to combat supernatural threats in Victorian London.</hasDescription>
-    <hasTitle>Penny Dreadful </hasTitle>
-    <hasSeriesId>tt2628232</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#friends_">
-    <hasDescription> Follows the lives of six 20-something friends living in Manhattan.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasStoryline>In this 1994 sitcom, Rachel Green, Ross Geller, Monica Geller, Joey Tribbiani, Chandler Bing and Phoebe Buffay are all friends, living off of one another in the heart of NY. Over the course of 8 years, these average group of buddys go through massive mayhem, family trouble, past and future romances, fights, laughs, tears and surprises as they learn what it really means to be a friend. </hasStoryline>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2004</hasFinishYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1994</hasPilotYear>
-    <hasTitle>Friends </hasTitle>
-    <hasSeriesId>tt0108778</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#seinfeld_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1998</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1989</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Jerry Seinfeld stars in this television comedy series as himself, a comedian. The premise of this sitcom is Jerry and his friends going through everyday life, discussing various quirky situations that we can all relate to (especially if we live in New York). The eccentric personalities of the offbeat characters who make up Jerry's social circle contribute to the fun. </hasStoryline>
-    <hasDescription> The continuing misadventures of neurotic New York stand-up comedian Jerry Seinfeld and his equally neurotic New York friends.</hasDescription>
-    <hasTitle>Seinfeld </hasTitle>
-    <hasSeriesId>tt0098904</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ossos_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</hasEpisodeDuration>
-    <hasTitle>Ossos </hasTitle>
-    <hasSeriesId>tt0460627</hasSeriesId>
-    <hasStoryline>Brilliant, but socially inept, forensic anthropologist Dr. Temperence Brennan works at the Jeffersonian Institute in Washington DC. After consulting for him on a FBI case, she is approached by cocky yet charming ex-Army Ranger turned Special Agent, Seeley Booth to help the Bureau solve crimes by identifying human remains that are too far gone for standard FBI forensic investigations. Brennan's empirical, literal view of the world causes friction with Booths emotive, instinctive attitude creating a volatile relationship. However as their case load increases the symbiotic partnership produces results and with the support of Brennan's Squint Squad, murderers, past and present should be on the look out. </hasStoryline>
-    <hasDescription> And quite often, there isn't more to examine than rotten flesh or mere bones.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#house_of_cards_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">51</hasEpisodeDuration>
-    <hasStoryline>Majority House Whip Francis Underwood takes you on a long journey as he exacts his vengeance on those he feels wronged him - that is, his own cabinet members including the President of the United States himself. Dashing, cunning, methodical and vicious, Frank Underwood along with his equally manipulative yet ambiguous wife, Claire take Washington by storm through climbing the hierarchical ladder to power in this Americanized recreation of the BBC series of the same name. </hasStoryline>
-    <hasDescription> A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.</hasDescription>
-    <hasTitle>House of Cards </hasTitle>
-    <hasSeriesId>tt1856010</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#arrow_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <hasDescription> He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt2193021</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasTitle>Arrow </hasTitle>
-    <hasStoryline>Oliver Queen and his father are lost at sea when their luxury yacht sinks, apparently in a storm. His father dies, but Oliver survives for five years on an uncharted island and eventually returns home. But he wasn't alone on the island where he learned not only how to fight and survive but also of his father's corruption and unscrupulous business dealings. He returns to civilization a changed man, determined to put things right. He disguises himself with the hood of one of his mysterious island mentors, arms himself with a bow and sets about hunting down the men and women who have corrupted his city. </hasStoryline>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#gotham_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasStoryline>In crime ridden Gotham City, Thomas and Martha Wayne are murdered before young Bruce Wayne's eyes. Although the idealistic Gotham City Police Dept. detective James Gordon, and his cynical partner, Harvey Bullock, seem to solve the case quickly, things are not so simple. Inspired by Bruce's traumatized desire for justice, Gordon vows to find it amid Gotham's corruption. Thus begins Gordon's lonely quest that would set him against his own comrades and the underworld with their own deadly rivalries and mysteries. In the coming wars, innocence will be lost and compromises will be made as some criminals will fall as casualties while others will rise as supervillains. All the while, young Bruce observes this war with a growing obsession that would one day drive him to seek his own revenge as The Batman. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasDescription> The story behind Commissioner James Gordon's rise to prominence in Gotham City in the years before Batman's arrival.</hasDescription>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasSeriesId>tt3749900</hasSeriesId>
-    <hasTitle>Gotham </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#sherlock_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasSeriesId>tt1475582</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasPilotYear>
-    <hasTitle>Sherlock </hasTitle>
-    <hasStoryline>In this modernized version of the Conan Doyle characters, using his detective plots, Sherlock Holmes lives in early 21st century London and acts more cocky towards Scotland Yard's detective inspector Lestrade because he's actually less confident. Doctor Watson is now a fairly young veteran of the Afghan war, less adoring and more active. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasDescription> A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.</hasDescription>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="A6">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#csi:_nova_iorque_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasSeriesId>tt0395843</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasDescription> CSI Head Detective Mac Taylor and his team solve crimes in New York City.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasStoryline>CSI Head Detective Mac Taylor and his team solve crimes in New York City. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2004</hasPilotYear>
-    <hasTitle>CSI: Nova Iorque </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#médicos_e_estagiários_">
-    <hasStoryline>In the unreal world of Sacred Heart Hospital, intern John "J.D" Dorian learns the ways of medicine, friendship and life. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasTitle>Médicos e Estagiários </hasTitle>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasDescription>D" Dorian learns the ways of medicine, friendship and life.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2001</hasPilotYear>
-    <hasSeriesId>tt0285403</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#vikings_">
-    <hasTitle>Vikings </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <hasStoryline>The adventures of Ragnar Lothbrok: the greatest hero of his age. The series tells the saga of Ragnar's band of Viking brothers and his family as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods: legend has it that he was a direct descendant of Odin, the god of war and warriors. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#History"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#War"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasDescription> The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.</hasDescription>
-    <hasSeriesId>tt2306299</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#era_uma_vez_">
-    <hasSeriesId>tt1843230</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasTitle>Era Uma Vez </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasDescription> A woman with a troubled past is drawn to a town in Maine where fairy tales are to be believed.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasStoryline>For Emma Swan, life has been anything but a happy ending. But when she's reunited with Henry - the son she gave up for adoption ten years ago - on the night of her 28th birthday, everything changes. The now 10-year-old Henry is in desperate need of Emma's help because he believes from reading a book of fairytales that she's the daughter of Snow White and Prince Charming - who sent her away from the Enchanted Forest to be protected from a curse that was enacted by the Evil Queen. Emma initially refuses to believe a word of Henry's story but soon finds that his hometown of Storybrooke, Maine is more than it seems. Because it's in Storybrooke that all of the classic characters we know are frozen in time with no memories of their former selves - except for the Evil Queen, who is Storybrooke's mayor and Henry's adoptive mother Regina Mills. Now, as the epic "Final Battle" for the future of both worlds approaches, Emma will have to accept her destiny and uncover the mystery behind a place where fairytales are to be believed. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#jess_e_os_rapazes_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">30</hasEpisodeDuration>
-    <hasStoryline>Jess - a bubbly offbeat teacher who is known to burst into spontaneous song - catches her boyfriend with another woman, and needs a new place to live. She moves into a loft with three single guys she's never met before. Nick is a jaded law-school dropout, who usually just wants to be left alone. Schmidt is an flashy businessman, who believes he is a gift to women. Winston is a former athlete who doesn't know what to do, but really needs to win whatever it is. Can this dysfunctional group handle the "adorkable" new girl? </hasStoryline>
-    <hasDescription> Although they find her behavior very unusual, the men support her - most of the time.</hasDescription>
-    <hasTitle>Jess e os Rapazes </hasTitle>
-    <hasSeriesId>tt1826940</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#true_detective_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">55</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <hasDescription> An anthology series in which police investigations unearth the personal and professional secrets of those involved, both within and outside the law.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasStoryline>In 2012, Louisiana State Police Detectives Rust Cohle and Martin Hart are brought in to revisit a homicide case they worked in 1995. As the inquiry unfolds in present day through separate interrogations, the two former detectives narrate the story of their investigation, reopening unhealed wounds, and drawing into question their supposed solving of a bizarre ritualistic murder in 1995. The timelines braid and converge in 2012 as each man is pulled back into a world they believed they'd left behind. In learning about each other and their killer, it becomes clear that darkness lives on both sides of the law. </hasStoryline>
-    <hasSeriesId>tt2356777</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasTitle>True Detective </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#freaks_and_geeks_">
-    <hasTitle>Freaks and Geeks </hasTitle>
-    <hasStoryline>It's the 1980s and at McKinley High, there's two different groups of teenagers, the Freaks with cool and charismatic Daniel Desario and tomboy Lindsay Weir and the Geeks with Lindsay's shy younger brother Sam, gentle Bill Haverchuck, and self-proclaimed ladies' man Neal Schweiber. The show chronicles the normal teen/adolescence problems any teenager goes through including acceptance, drugs, drinking, and bullying. </hasStoryline>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1999</hasPilotYear>
-    <hasDescription> After her grandmother's death, a high school mathlete starts hanging out with a group of burnouts while her younger brother navigates his freshman year.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2000</hasFinishYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasSeriesId>tt0193676</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#chuck_">
-    <hasDescription> When a twenty-something computer geek inadvertently downloads critical government secrets into his brain, CIA and NSA assign two agents to protect him and exploit such knowledge, turning his life upside down.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2007</hasPilotYear>
-    <hasSeriesId>tt0934814</hasSeriesId>
-    <hasStoryline>Since geeky Chuck accidentally became the mental host of the Intersect, an unprecedentedly powerful computer mind containing all information available to the US government, he's a primordial national security asset and risk. So CIA and NSA each appoint a top agent to guard Chuck, and often get involved with him in spy adventures. Meanwhile his identity must be kept secret from Chuck's sister, her perfect partner Devon, both surgeons, and Chuck's goofy colleagues in Buy More, the Burbank electronics store where he works as a cover. </hasStoryline>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Chuck </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <owl:annotatedTarget rdf:nodeID="A22"/>
+    <owl:annotatedTarget rdf:nodeID="A7"/>
     <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
     <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdfs:comment>The year when the pilot episode aired. Basically the year when the tv show started</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#defesa_à_medida_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasStoryline>While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory. Mike and Harvey are a winning team. Even though Mike is a genius, he still has a lot to learn about law. And while Harvey may seem like an emotionless, cold-blooded shark, Mike's sympathy and concern for their cases and clients will help remind Harvey why he went into law in the first place. Mike's other allies in the office include the firm's best paralegal Rachel and Harvey's no-nonsense assistant Donna to help him serve justice. Proving to be an irrepressible duo and invaluable to the practice, Mike and Harvey must keep their secret from everyone including managing partner Jessica and Harvey's arch nemesis Louis, who seems intent on making Mike's life as difficult as possible. </hasStoryline>
-    <hasDescription> On the run from a drug deal gone bad, Mike Ross, a brilliant college-dropout, finds himself a job working with Harvey Specter, one of New York City's best lawyers.</hasDescription>
-    <hasTitle>Defesa à Medida </hasTitle>
-    <hasSeriesId>tt1632701</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#castle_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt1219024</hasSeriesId>
-    <hasStoryline>Richard "Rick" Castle is a millionaire playboy who recently killed off his main character when a serial killer starts killing people like he does in his books. He teams up with New York police detective Kate Beckett to solve the case. He finds inspiration in Detective Beckett and starts shadowing her for his next book. </hasStoryline>
-    <hasTitle>Castle </hasTitle>
-    <hasDescription> After a serial killer imitates the plots of his novels, successful mystery novelist Richard "Rick" Castle receives permission from the Mayor of New York City to tag along with an NYPD homicide investigation team for research purposes.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#2_miúdas_nas_lonas_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Sassy, streetwise Max works two jobs just to get by, one of which is waiting tables during the night shift at the retro-hip Williamsburg Diner. Sophisticated Caroline is an uptown trust fund princess who's having a run of bad luck that forces her to reluctantly give waitressing a shot. At first, Max sees Caroline as yet another in a long line of inept servers she must cover for, but she's surprised to find that Caroline has as much substance as she does style. When Caroline discovers Max's knack for baking amazing cupcakes, she sees a lucrative future for them, but they first need to raise the start-up money. </hasStoryline>
-    <hasDescription> Two young women waitressing at a greasy spoon diner strike up an unlikely friendship in the hopes of launching a successful business - if only they can raise the cash.</hasDescription>
-    <hasTitle>2 Miúdas nas Lonas </hasTitle>
-    <hasSeriesId>tt1845307</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#silicon_valley_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">30</hasEpisodeDuration>
-    <hasStoryline>In the high-tech gold rush of modern Silicon Valley, the people most qualified to succeed are the least capable of handling success. A comedy partially inspired by Mike Judge's own experiences as a Silicon Valley engineer in the late 1980s. </hasStoryline>
-    <hasDescription> A comedy partially inspired by Mike Judge's own experiences as a Silicon Valley engineer in the late 1980s.</hasDescription>
-    <hasTitle>Silicon Valley </hasTitle>
-    <hasSeriesId>tt2575988</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_horror_story_">
-    <hasDescription> An anthology series that centers on different characters and locations, including a haunted house, an insane asylum, a witch coven, a freak show, and a mysterious hotel.</hasDescription>
-    <hasTitle>American Horror Story </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <hasStoryline>Both physical and psychological horrors affect a decomposing family, workers and residents of an insane asylum, a coven of witches, and a cast of circus freaks in this anthology series, focusing on the themes of infidelity, sanity, oppression, and discrimination. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasSeriesId>tt1844624</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#family_guy_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1999</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>The Griffin household includes two teenagers, a cynical dog who is smarter than everyone else, and an evil baby who makes numerous attempts to eradicate his mother. Heading up this eclectic household is Peter Griffin. Peter does his best to do what's right for the family, but along the way, he makes mistakes that are the stuff of legends. </hasStoryline>
-    <hasDescription> In a wacky Rhode Island town, a dysfunctional family strive to cope with everyday life as they are thrown from one crazy scenario to another.</hasDescription>
-    <hasTitle>Family Guy </hasTitle>
-    <hasSeriesId>tt0182576</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#a_teoria_do_big_bang_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2007</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Leonard Hofstadter and Sheldon Cooper are both brilliant physicists working at Caltech in Pasadena, California. They are colleagues, best friends, and roommates, although in all capacities their relationship is always tested primarily by Sheldon's regimented, deeply eccentric, and non-conventional ways. They are also friends with their Caltech colleagues mechanical engineer Howard Wolowitz and astrophysicist Rajesh Koothrappali. The foursome spend their time working on their individual work projects, playing video games, watching science-fiction movies, or reading comic books. As they are self-professed nerds, all have little or no luck with popular women. When Penny, a pretty woman and an aspiring actress originally from Omaha, moves into the apartment across the hall from Leonard and Sheldon's, Leonard has another aspiration in life, namely to get Penny to be his girlfriend. </hasStoryline>
-    <hasDescription> A woman who moves into an apartment across the hall from two brilliant but socially awkward physicists shows them how little they know about life outside of the laboratory.</hasDescription>
-    <hasTitle>A Teoria do Big Bang </hasTitle>
-    <hasSeriesId>tt0898266</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <owl:annotatedTarget rdf:nodeID="A23"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
-    <rdfs:comment>A list of tv shows created by this creator</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#anatomia_de_grey_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">41</hasEpisodeDuration>
-    <hasStoryline>A Medical-Based drama centered around Meredith Grey, an aspiring surgeon and daughter of one of the best surgeons, Dr. Ellis Grey. Throughout the series, Meredith goes through professional and personal challenges along with fellow surgeons at Seattle Grace Hospital. </hasStoryline>
-    <hasDescription> A drama centered on the personal and professional lives of five surgical interns and their supervisors.</hasDescription>
-    <hasTitle>Anatomia de Grey </hasTitle>
-    <hasSeriesId>tt0413573</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesId"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor">
-    <rdfs:subClassOf rdf:nodeID="A18"/>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dddd">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Music">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#diários_do_vampiro_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasTitle>Diários do Vampiro </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <hasDescription> A teenage girl is torn between two vampire brothers.</hasDescription>
-    <hasSeriesId>tt1405406</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasStoryline>The vampire brothers Damon and Stefan Salvatore, eternal adolescents, having been leading "normal" lives, hiding their bloodthirsty condition, for centuries, moving on before their non-aging is noticed. They are back in the Virginia town where they became vampires. Stefan is noble, denying himself blood to avoid killing, and tries to control his evil brother Damon. Stefan falls in love with schoolgirl Elena, whose best friend is a witch, like her grandma. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#mr._robot_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">49</hasEpisodeDuration>
-    <hasStoryline>Elliot Alderson is a young cyber-security engineer living in New York, who assumes the role of a vigilante hacker by night. Elliot meets a mysterious anarchist known as "Mr. Robot" who recruits Elliot to join his team of hackers, "fsociety". Elliot, who has a social anxiety disorder and connects to people by hacking them, is intrigued but uncertain if he wants to be part of the group. The show follows Mr. Robot's attempts to engage Elliot in his mission to destroy the corporation Elliot is paid to protect. Compelled by his personal beliefs, Elliot struggles to resist the chance to take down the multinational CEOs that are running (and ruining) the world. </hasStoryline>
-    <hasDescription> Robot.</hasDescription>
-    <hasTitle>Mr. Robot </hasTitle>
-    <hasSeriesId>tt4158110</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Family">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#falling_skies_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt1462059</hasSeriesId>
-    <hasTitle>Falling Skies </hasTitle>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <hasDescription> Survivors of an alien attack on earth gather together to fight for their lives and fight back.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasStoryline>The chaotic aftermath of an alien attack has left most of the world completely incapacitated. In the six months since the initial invasion, the few survivors have banded together outside major cities to begin the difficult task of fighting back. Each day is a test of survival as citizen soldiers work to protect the people in their care while also engaging in an insurgency campaign against the occupying alien force. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
+  <rdf:Description rdf:nodeID="A9">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A8"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <rdfs:subClassOf rdf:nodeID="A11"/>
+    <rdfs:subClassOf rdf:nodeID="A12"/>
+    <rdfs:subClassOf rdf:nodeID="A13"/>
+    <rdfs:subClassOf rdf:nodeID="A14"/>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+    <rdfs:subClassOf rdf:nodeID="A16"/>
+    <rdfs:subClassOf rdf:nodeID="A17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -789,50 +104,17 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#grimm_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <hasSeriesId>tt1830617</hasSeriesId>
-    <hasStoryline>Portland detective, Nick Burkhardt, has seen some gruesome crime scenes, but nothing prepares him for the strange visions he begins seeing: seemingly regular people momentarily transforming into hideous monsters. A visit from his only living relative reveals the truth. Nick has inherited the ability to see supernatural creatures, and as a "Grimm," he is tasked with keeping the balance between mankind and the mythological. A reformed "Big Bad Wolf" becomes his greatest (and also reluctant) ally and confidant. It's not long before his work as a policeman leads Nick to the criminals he once thought were only found in fairy tales. </hasStoryline>
-    <hasTitle>Grimm </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
-    <hasDescription> A homicide detective discovers he is a descendant of hunters who fight supernatural forces.</hasDescription>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#pequenas_mentirosas_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasDescription> Four friends band together against an anonymous foe who threatens to reveal their darkest secrets, while unraveling the mystery of the murder of their best friend.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt1578873</hasSeriesId>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <hasTitle>Pequenas Mentirosas </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasPilotYear>
-    <hasStoryline>Set in the fictional town of Rosewood, Pennsylvania, the series follows the lives of four girls, Aria Montgomery, Hanna Marin, Emily Fields, and Spencer Hastings, whose clique falls apart after the disappearance of their leader, Alison DiLaurentis. One year later, the estranged friends are reunited as they begin receiving messages from a mysterious figure named "A", who threatens to expose their deepest secrets, including ones they thought only Alison knew. At first, they think it's Alison herself, but after her body is found, the girls realize that someone else is planning on ruining their perfect lives. </hasStoryline>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dexter_">
-    <hasDescription> A Miami police forensics expert moonlights as a serial killer of criminals whom he believes have escaped justice.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasStoryline>Dexter Morgan, Miami Metro Police Department blood spatter analyst, has a double life. When he's not helping the Homicide division solving murders, he spends his time hunting and killing bad guys that slip through the justice system. He spends his sun-drenched days solving crimes - and moonlit nights committing them. But not to worry, our cool-blooded Dexter doesn't kill just anyone. He reserves his homicidal hobbies to taking only the lives of other killers. </hasStoryline>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">53</hasEpisodeDuration>
-    <hasTitle>Dexter </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2006</hasPilotYear>
-    <hasSeriesId>tt0773262</hasSeriesId>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#War">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -848,17 +130,39 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A25">
-    <owl:annotatedTarget rdf:nodeID="A26"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>The title of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator">
+    <rdfs:subClassOf rdf:nodeID="A18"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Western">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
     <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+    <rdfs:subClassOf rdf:nodeID="A21"/>
+    <rdfs:subClassOf rdf:nodeID="A22"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery">
@@ -869,53 +173,37 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_originals_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>The Originals </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasDescription> A family of power-hungry thousand year old vampires look to take back the city that they built and dominate all those who have done them wrong.</hasDescription>
-    <hasSeriesId>tt2632424</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <hasStoryline>A spin-off from The Vampire Diaries and set in New Orleans, The Originals centers on the Mikaelson siblings, otherwise known as the world's original vampires: Klaus (Joseph Morgan), Elijah (Daniel Gillies), and Rebekah (Claire Holt). Now Klaus must take down his protégé, Marcel (Charles Michael Davis), who is now in charge of New Orleans, in order to re-take his city, as he originally built New Orleans. Klaus departed from the city after being chased down by his father Mikael, while it was being constructed and Marcel took charge. As Klaus has returned after many years, his ego has provoked him to become the king of the city. "Every King needs an heir" says Klaus, accepting the unborn child. The child is a first to be born to a hybrid (part vampire, part werewolf) and a werewolf (Hayley). </hasStoryline>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor">
     <owl:inverseOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#lie_to_me_-_o_rosto_da_mentira_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt1235099</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasTitle>Lie to Me - O Rosto da Mentira </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasDescription> About Cal Lightman, the world's leading deception expert who studies facial expressions and involuntary body language to expose the truth behind the lies.</hasDescription>
-    <hasStoryline>Dr. Cal Lightman teaches a course in body language and makes an honest fortune exploiting it. He's employed by various public authorities in various investigations, doing more when the police etc. fail to go the extra mile. So he can afford to constitute a team of his own, which like clients and others has to put up with his mind-games. </hasStoryline>
+  <rdf:Description rdf:nodeID="A12">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesId"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hannibal_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasSeriesId>tt2243973</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasStoryline>Explores the early relationship between the renowned psychiatrist and his patient, a young FBI criminal profiler, who is haunted by his ability to empathize with serial killers. </hasStoryline>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasDescription> Explores the early relationship between the renowned psychiatrist and his patient, a young FBI criminal profiler, who is haunted by his ability to empathize with serial killers.</hasDescription>
-    <hasTitle>Hannibal </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Musical">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sport">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated">
     <owl:inverseOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
@@ -923,238 +211,78 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#ncis:_investigação_criminal_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasSeriesId>tt0364845</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2003</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>NCIS: Investigação Criminal </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasDescription> The cases of the Naval Criminal Investigative Service's Washington DC Major Case Response Team, led by Special Agent Leroy Jethro Gibbs.</hasDescription>
-    <hasStoryline>Special Agent Leroy Jethro Gibbs is the leader of a team of special agents belonging to the NCIS (Naval Criminal Investigative Service) Major Case Response Team. Gibbs, a former Marine, is a tough investigator and a highly skilled interrogator who relies on his gut instinct as much as evidence. Gibbs' second in command is Senior Field Agent Tony DiNozzo, a womanizing, movie-quoting former Baltimore Homicide Detective, who despite being the class clown always gets the job done. The team also consists of probationary field agent Eleanor Bisbop, a former NSA agent, as well as Junior Field Agent Timothy McGee, a computer-savvy agent often mocked by DiNozzo. Assisting them are Abby Sciuto, the energetic-but-Goth lab tech who is like a daughter to Gibbs, and Dr. Donald Mallard, nicknamed Ducky, the eccentric medical examiner full of unusual stories. This team of elite agents, based in Washington, D.C., solve criminal cases involving Marine and Navy personnel and their families, sometimes traveling the United States - or the world - to do it. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#brooklyn_nine-nine_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Captain Ray Holt (Andre Braugher) takes over Brooklyn's 99th precinct, which includes Detective Jake Peralta (Andy Samberg), a talented but carefree detective who's used to doing whatever he wants. The other employees of the 99th precinct include Detective Amy Santiago (Melissa Fumero), Jake's over achieving and competitive partner; Detective Rosa Diaz (Stephanie Beatriz), a tough and kept to herself coworker; Detective Charles Boyle (Joe Lo Truglio), Jake's best friend who also has crush on Rosa; Detective Sergeant Terry Jeffords (Terry Crews), was recently taken off the field after the birth of his twin girls; and Gina Linetti (Chelsea Peretti), the precinct's sarcastic administrator. </hasStoryline>
-    <hasDescription> Jake Peralta, an immature but talented NYPD detective in Brooklyn's 99th Precinct, comes into immediate conflict with his new commanding officer, the serious and stern Captain Ray Holt.</hasDescription>
-    <hasTitle>Brooklyn Nine-Nine </hasTitle>
-    <hasSeriesId>tt2467372</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_blacklist_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt2741602</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasDescription> Elizabeth 'Liz' Keen, a new FBI profiler has her entire life uprooted when a mysterious criminal, Raymond Reddington, on the FBI's Top Ten Most Wanted List turns himself in and insists on speaking to her.</hasDescription>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasStoryline>A highly articulate, erudite and intelligent businessman and mastermind, "Red" Reddington, has allegedly been on the "10 Most Wanted List" of various U.S. law enforcement agencies for over 20 years. The legend is that Red is as elusive an Artiste as he is clever; Red built and controls a veritable labyrinth of creative enterprises coupled with uncanny ability to gather and finesse information at the drop of a hat. On the first day at FBI for a new female profiler fresh out of Quantico, Red offers to bandy wits with the FBI. Red promises to deliver various criminals and plots previously unknown to any branch of law enforcement... and all Red requests in return is to choose his muse. </hasStoryline>
-    <hasTitle>The Blacklist </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#os_sopranos_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2007</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">55</hasEpisodeDuration>
-    <hasSeriesId>tt0141842</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasDescription> New Jersey mob boss, Tony Soprano, deals with personal and professional issues in his home and business life.</hasDescription>
-    <hasTitle>Os Sopranos </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1999</hasPilotYear>
-    <hasStoryline>An innovative look at the life of fictional Mafia Capo Tony Soprano, this serial is presented largely first person, but additional perspective is conveyed by the intimate conversations Tony has with his psychotherapist. We see Tony at work, at home, and in therapy. Moments of black comedy intersperse this aggressive, adult drama, with adult language, and extreme violence. </hasStoryline>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#espião_fora_de_jogo_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasDescription> government uses his special ops training to help others in trouble.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Espião Fora de Jogo </hasTitle>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2007</hasPilotYear>
-    <hasStoryline>Michael Westen, a seasoned U.S. spy, is suddenly "burned", i.e. discredited, without any form of procedure. He survives by doing impossible jobs for desperate people in Miami, where his mother lives. Michael is usually aided by his ex-girlfriend Fiona and trusted former FBI informer Sam. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasSeriesId>tt0810788</hasSeriesId>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:nodeID="A24">
+    <owl:annotatedTarget rdf:nodeID="A5"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <rdfs:comment>A list of tv shows created by this creator</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#History">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#better_call_saul_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">47</hasEpisodeDuration>
-    <hasStoryline>Before Saul Goodman, he was Jimmy McGill. And if you're calling Jimmy, you're in real trouble. The prequel to "Breaking Bad" follows small-time attorney Jimmy McGill as he transforms into Walter White's morally challenged lawyer, Saul Goodman. </hasStoryline>
-    <hasDescription> The trials and tribulations of criminal lawyer, Saul Goodman, in the time leading up to establishing his strip-mall law office in Albuquerque, New Mexico.</hasDescription>
-    <hasTitle>Better Call Saul </hasTitle>
-    <hasSeriesId>tt3032476</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  <rdf:Description rdf:nodeID="A25">
+    <owl:annotatedTarget rdf:nodeID="A9"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <rdfs:comment>A list of tv shows where the actor appears</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#daredevil_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt3322312</hasSeriesId>
-    <hasStoryline>As a child Matt Murdock was blinded by a chemical spill in a freak accident. Instead of limiting him it gave him superhuman senses that enabled him to see the world in a unique and powerful way. Now he uses these powers to deliver justice, not only as a lawyer in his own law firm, but also as vigilante at night, stalking the streets of Hell's Kitchen as Daredevil, the man without fear. </hasStoryline>
-    <hasTitle>Daredevil </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">54</hasEpisodeDuration>
-    <hasDescription> A blind lawyer, with his other senses superhumanly enhanced, fights crime as a costumed superhero.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Film-Noir">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#under_the_dome_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Under the Dome </hasTitle>
-    <hasDescription> The trapped townsfolk must discover the secrets and purpose of the "dome" and its origins, while coming to learn more than they ever knew about each other.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt1553656</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <hasStoryline>An invisible and mysterious force field descends upon a small fictional town of Chester's Mill, Maine, USA, trapping residents inside, cut off from the rest of civilization. The trapped townsfolk must discover the secrets and purpose of the "dome" and its origins, while coming to learn more than they ever knew about each other. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#30_rock_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2006</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Elizabeth "Liz" Lemon is the executive show runner for a late night sketch comedy show called "The Girlie Show", that stars her close friend and major drama queen Jenna Maroney. When GE hires a new executive vice president for NBC named Jack Donaghy, he decides to take Liz Lemon under his wing and turn around TGS, which for years has been unable to find the proper audience it deserves. So to do so, he brings on unhinged, wildly unpredictable star Tracy Jordan to turn the series into a ratings hit. But Liz soon finds out that controlling her odd ball writing staff, the NBC page program, keeping Tracy on a short leash, and getting him to get along with Jenna proves to be one disaster after another. Will TGS ever see true success? And will Liz find the right partner to get married and start a family? </hasStoryline>
-    <hasDescription> Liz Lemon, head writer of the sketch comedy show "TGS with Tracy Jordan", must deal with an arrogant new boss and a crazy new star, all while trying to run a successful TV show without losing her mind.</hasDescription>
-    <hasTitle>30 Rock </hasTitle>
-    <hasSeriesId>tt0496424</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#american_dad!_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Stan Smith, who works for the CIA and is constantly on the alert for terrorist activity, will go to extremes to protect his beloved America from harm; as evidenced by the terror-alert color code on his fridge, and his frequent knee-jerk reaction of shooting holes in the toaster whenever the toast pops up. In addition to Stan's wife and teenage children, the Smith household has two rather unconventional members. There's Roger, the sarcastic space alien who rescued Stan from Area 51 who deeply resents the fact that he's not allowed to leave the house, and therefore, has been reduced to drinking wine and smoking cigarettes, and Klaus, a lascivious, German-speaking goldfish; the result of a CIA experiment gone seriously wrong where the CIA tried to give a fish a German man's brain. Stan's son is a dorky teenager who tries to be cool. His wife has had a past life of sex and drugs. </hasStoryline>
-    <hasDescription> The random escapades of Stan Smith, an extreme right wing CIA agent dealing with family life and keeping America safe, all in the most absurd way possible.</hasDescription>
-    <hasTitle>American Dad! </hasTitle>
-    <hasSeriesId>tt0397306</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hawai_força_especial_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasTitle>Hawai Força Especial </hasTitle>
-    <hasSeriesId>tt1600194</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasPilotYear>
-    <hasDescription> Steve's team is joined by Chin Ho Kelly, Danny "Danno" Williams, and Kono Kalakaua.</hasDescription>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">42</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <hasStoryline>Steve McGarrett comes to Hawaii to avenge his father's death but when the governor offers his own task force, he accepts. He picks up team members on the way, Danny Williams, the head detective on his father's case, Chin Ho Kelly, a former HPD Detective who was fired for accused corruption and McGarrett's father's old patrol partner, Kono Kalakaua, a Cadet at the Police Academy who's 1 week from graduating, and Captain Lou Grover, a former Chicago PD Head of SWAT. </hasStoryline>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#o_mentalista_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2015</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt1196946</hasSeriesId>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasStoryline>After a serial killer named Red John murdered Patrick Jane's wife and daughter, Jane dedicated his life to hunting down and killing Red John. To that end he gave up his lucrative pretense of being a psychic and joined the California Bureau of Investigation (CBI) as a consultant to the team responsible for investigating the Red John case, led by Senior Agent Teresa Lisbon. Using Jane's exceptional gift for observation and his mentalist tricks, the team is able to close an unprecedented number of cases, but Jane's unconventional and often outright illegal methods also bring much censure down on Lisbon's head, making his assistance both a blessing and a curse. Meanwhile, the hunt for Red John continues... </hasStoryline>
-    <hasDescription> A famous "psychic" outs himself as a fake and starts working as a consultant for the California Bureau of Investigation so he can find "Red John," the madman who killed his wife and daughter.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2008</hasPilotYear>
-    <hasTitle>O Mentalista </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_cleveland_show_">
-    <hasDescription> The adventures of the Family Guy (1999) neighbor and deli owner, Cleveland Brown.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasStoryline>This FOX animated comedy is a spin-off of the much-loved series Family Guy. The series features the adventures of Peter Griffin's neighbor Cleveland Brown. Many years ago, Cleveland made a promise to his old high school sweetheart, Donna. Cleveland, along with Cleveland Junior, move to Stoolbend, VA to start a new life with Donna and her two children. </hasStoryline>
-    <hasSeriesId>tt1195935</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasTitle>The Cleveland Show </hasTitle>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#orphan_black_">
-    <hasStoryline>SPOILER: Orphan Black follows outsider, orphan and street-wise chameleon Sarah. After witnessing a woman's suicide, Sarah assumes the stranger's identity - who happens to look just like her. Expecting to solve all her problems by cleaning out the dead woman's savings, Sarah is instead thrust headlong into a kaleidoscopic mystery as she realizes the dizzying truth - she and the dead woman are clones. As Sarah searches for answers, she discovers the chilling fact that there are more people like her out there - genetically identical individuals who were planted in unsuspecting birth parents and nurtured in completely different circumstances. With no idea who created the clones, she'll need to discover the reason in a hurry as an assassin is killing them one by one. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasSeriesId>tt2234222</hasSeriesId>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasTitle>Orphan Black </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasDescription> A streetwise hustler is pulled into a compelling conspiracy after witnessing the suicide of a girl who looks just like her.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#futurama_">
-    <hasTitle>Futurama </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">1999</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasSeriesId>tt0149460</hasSeriesId>
-    <hasStoryline>Phillip Fry is a 25-year-old pizza delivery boy whose life is going nowhere. When he accidentally freezes himself on December 31, 1999, he wakes up 1,000 years in the future and has a chance to make a fresh start. He goes to work for the Planet Express Corporation, a futuristic delivery service that transports packages to all five quadrants of the universe. His companions include the delivery ship's captain, Leela, a beautiful one-eyed female alien who kicks some serious butt, and Bender, a robot with very human flaws. </hasStoryline>
-    <hasDescription> Fry, a pizza guy is accidentally frozen in 1999 and thawed out New Year's Eve 2999.</hasDescription>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_walking_dead_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">44</hasEpisodeDuration>
-    <hasStoryline>Rick Grimes is a former Sheriff's deputy who has been in a coma for several months after being shot while on duty. When he awakens he discovers that the world has been ravished by a zombie epidemic of apocalyptic proportions, and that he seems to be the only person still alive. After returning home to discover his wife and son missing, he heads for Atlanta to search for his family. Narrowly escaping death at the hands of the zombies on arrival in Atlanta he is aided by another survivor, Glenn, who takes Rick to a camp outside the town. There Rick finds his wife Lori and his son, Carl, along with his partner/best friend Shane and a small group of survivors who struggle to fend off the zombie hordes; as well as competing with other surviving groups who are prepared to do whatever it takes to survive in this harsh new world. </hasStoryline>
-    <hasDescription> Sheriff Deputy Rick Grimes leads a group of survivors in a world overrun by zombies.</hasDescription>
-    <hasTitle>The Walking Dead </hasTitle>
-    <hasSeriesId>tt1520211</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Horror"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
+  <rdf:Description rdf:nodeID="A15">
     <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasStoryline"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_100_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasTitle>The 100 </hasTitle>
-    <hasStoryline>The series is set 97 years after a devastating nuclear war wiped out almost all life on Earth. The only known survivors are the residents of twelve space stations in Earth's orbit prior to the war. The space stations banded together to form a single massive station named "The Ark", where about 2,400 people live. Resources are scarce and all crimes no matter their nature or severity are punishable by death ("floating") unless the perpetrator is under 18 years of age. After the Ark's life support systems are found to be critically failing, one hundred juvenile prisoners are declared "expendable" and sent to the surface in a last ditch attempt to determine if Earth is habitable again. The teens arrive on a beautiful planet they've only seen from space. Confronting the dangers of this rugged new world, they struggle to form a tentative community. However they discover that not all humanity was wiped out. There are people on Earth who survived the war, called "grounders" by the 100. The Ark consists of the space stations previously representing the nations of the UK, USA, Australia, Canada, China, Japan, India, Russia, Venezuela, France, Brazil, and Uganda. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasDescription> Set 97 years after a nuclear war has destroyed civilization, when a spaceship housing humanity's lone survivors sends 100 juvenile delinquents back to Earth in hopes of possibly re-populating the planet.</hasDescription>
-    <hasSeriesId>tt2661044</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
+  <rdf:Description rdf:nodeID="A26">
+    <owl:annotatedTarget rdf:nodeID="A19"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>The title of the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesCreated"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <owl:annotatedTarget rdf:nodeID="A23"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdfs:comment>List of actors that appear in the tv show</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Documentary">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
@@ -1164,120 +292,70 @@
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#o_meu_nome_é_earl_">
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasFinishYear>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">30</hasEpisodeDuration>
-    <hasStoryline>Earl is a low-life who buys a winning lottery ticket, only to get hit by a car, losing the ticket in the process. He then realizes in the hospital that his bad luck is the result of karma in which fate punishes him for all the rotten things he's ever done in his life; therefore, he then decides to dedicate his life to making amends to all the people he has hurt in his life. </hasStoryline>
-    <hasDescription> A ne'er do well wins $100,000 in the lottery and decides to right all the wrongs from his past with his newfound realization.</hasDescription>
-    <hasTitle>O Meu Nome é Earl </hasTitle>
-    <hasSeriesId>tt0460091</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A27">
-    <owl:annotatedTarget rdf:nodeID="A19"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>List of creators of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A28">
-    <owl:annotatedTarget rdf:nodeID="A20"/>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-    <owl:annotatedSource rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdfs:comment>Brief description/summary of the tv show</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+  <rdf:Description rdf:nodeID="A14">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasFinishYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#continuum_">
-    <hasStoryline>A detective from the year 2077 finds herself trapped in present day Vancouver and searching for ruthless criminals from the future. </hasStoryline>
-    <hasDescription> A detective from the year 2077 finds herself trapped in present day Vancouver and searching for ruthless criminals from the future.</hasDescription>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2012</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Continuum </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasSeriesId>tt1954347</hasSeriesId>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">45</hasEpisodeDuration>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A14">
+  <rdf:Description rdf:nodeID="A17">
     <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBiography"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#uma_família_muito_moderna_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasStoryline>Jay Pritchett sits at the head of a large and unconventional family. Now in his second marriage to his gorgeous young wife, Gloria, Jay has been given something of a second chance. Still, old habits are hard to break, and it's trial by fire as he tries to adapt to life with the same passion and vigor that Gloria exhibits, which are matched by her precocious 12-year-old son, Manny. There are some culture clashes, a few misunderstandings, but also plenty of sweet victories along the way. Jay's grown daughter, Claire, and her husband, Phil, are the proud parents of three kids with whom they want that open, healthy, honest relationship. It's not always easy, especially when you have Haley, a teenage daughter who's growing up a little fast, Alex, a too-smart-for-her-own-good middle daughter and Luke, a scatterbrained boy. Add to this that Phil is just a big kid himself, even if he does always have the best intentions. Claire is the anchor, trying her best to run a tight ship and determined not to let her kids have the rebellious childhood she had. Claire's brother and Jay's grown son, Mitchell, is busy raising an adopted daughter, Lily, with his long term partner, Cameron. Opposites attract in this household, with Cameron having a wonderfully big personality and maybe a flare for the dramatic, while Mitchell is more buttoned-down. They balance each other out, and these doting fathers are relishing their roles as parents developing their own little family. </hasStoryline>
-    <hasDescription> Three different, but related families face trials and tribulations in their own uniquely comedic ways.</hasDescription>
-    <hasTitle>Uma Família Muito Moderna </hasTitle>
-    <hasSeriesId>tt1442437</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#fringe_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasStoryline>The FBI teams up with a formerly-institutionalized scientist - who was performing experiments on the fringe of real science - and his son to investigate weird crimes that are seemingly part of a larger pattern, and may be connected with a global company called Massive Dynamic. </hasStoryline>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2013</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">46</hasEpisodeDuration>
-    <hasTitle>Fringe </hasTitle>
-    <hasSeriesId>tt1119644</hasSeriesId>
-    <hasDescription> A female FBI agent is forced to work with an institutionalized scientist and his son in order to rationalize a brewing storm of unexplained phenomena.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2008</hasPilotYear>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Animation">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#foi_assim_que_aconteceu_">
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasDescription> A father recounts to his children, through a series of flashbacks, the journey he and his four best friends took leading up to him meeting their mother.</hasDescription>
-    <hasStoryline>The year is 2030. Ted Mosby is relaying the story of how he met his wife to his daughter and son. The story starts in the year 2005, when then twenty-seven year old architect Ted was spurred on to want to get married after his best friends from his college days at Wesleyan, lawyer Marshall Eriksen, who was his roommate at the time and kindergarten teacher Lily Aldrin, got engaged after nine years of dating each other. Ted's new quest in life was much to the dismay of his womanizing friend, Barney Stinson. But soon after Marshall and Lily's engagement, Ted believed that his life mate was going to be news reporter and aspiring news anchor Robin Scherbatsky, who, despite having had a romantic relationship with her after this time, ended up being who the kids know as their "Aunt" Robin. As Ted relays the story to his kids, the constants are that their Uncle Marshall, Aunt Lily, Uncle Barney and Aunt Robin are always in the picture and thus have something to do with how he got together with their mother. </hasStoryline>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasFinishYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">22</hasEpisodeDuration>
-    <hasSeriesId>tt0460649</hasSeriesId>
-    <hasTitle>Foi Assim que Aconteceu </hasTitle>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Romance"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#investigação_criminal:_los_angeles_">
-    <hasTitle>Investigação Criminal: Los Angeles </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasSeriesId>tt1378167</hasSeriesId>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2009</hasPilotYear>
-    <hasStoryline>The Naval Criminal Investigation Service's Office of Special Projects takes on the undercover work and the hard to crack cases in LA. Key agents are G. Callen and Sam Hanna, streets kids risen through the ranks. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasDescription> Callen and Sam Hanna, streets kids risen through the ranks.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#núm3ros_">
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2005</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
-    <hasFinishYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2010</hasFinishYear>
-    <hasDescription> Working for the FBI, a mathematician uses equations to help solve various crimes.</hasDescription>
-    <hasTitle>Núm3ros </hasTitle>
-    <hasSeriesId>tt0433309</hasSeriesId>
-    <hasStoryline>In the Los Angeles office of the Federal Bureau of Investigation, Special Agent Don Eppes and his team investigate critical and baffling crimes with a special edge. That advantage is Don's brother, Charles Eppes, a brilliant universalist mathematician who uses the science of mathematics with its complex equations to ferret out the most tricky criminals. With this team, the forces of evil learn their number is up. </hasStoryline>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdf:Description rdf:nodeID="A2">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasEpisodeDuration"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Creator"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasCreator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasBirthDate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasDescription"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasSeriesAppearance">
@@ -1290,19 +368,6 @@
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Comedy">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#como_defender_um_assassino_">
-    <hasStoryline>A sexy, suspense-driven legal thriller about a group of ambitious law students and their brilliant, mysterious criminal defense professor. They become entangled in a murder plot that will shake the entire university and change the course of their lives. </hasStoryline>
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Thriller"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Mystery"/>
-    <hasDescription> A group of ambitious law students and their brilliant criminal defense professor become involved in a twisted murder plot that promises to change the course of their lives.</hasDescription>
-    <hasSeriesId>tt3205802</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>Como Defender Um Assassino </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Crime"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#segurança_nacional_">
     <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2011</hasPilotYear>
@@ -1322,36 +387,24 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasActor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPilotYear">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasTitle"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Actor">
+    <rdfs:subClassOf rdf:nodeID="A28"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onProperty rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#hasPersonId"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#the_flash_">
-    <hasEpisodeDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#long">43</hasEpisodeDuration>
-    <hasStoryline>Barry Allen is a Central City police forensic scientist with a reasonably happy life, despite the childhood trauma of a mysterious red and yellow being killing his mother and framing his father. All that changes when a massive particle accelerator accident leads to Barry being struck by lightning in his lab. Coming out of coma nine months later, Barry and his new friends at STAR labs find that he now has the ability to move at superhuman speed. Furthermore, Barry learns that he is but one of many affected by that event, most of whom are using their powers for evil. Determined to make a difference, Barry dedicates his life to fighting such threats, as The Flash. While he gains allies he never expected, there are also secret forces determined to aid and manipulate him for their own agenda. </hasStoryline>
-    <hasDescription> With his new team and powers, Barry becomes "The Flash" and fights crime in Central City.</hasDescription>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Drama"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#SeriesGenre"/>
-    <hasTitle>The Flash </hasTitle>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Sci-Fi"/>
-    <hasPilotYear rdf:datatype="http://www.w3.org/2001/XMLSchema#long">2014</hasPilotYear>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Fantasy"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Adventure"/>
-    <hasSeriesId>tt3107288</hasSeriesId>
-    <rdf:type rdf:resource="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#Action"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#dddd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
 </rdf:RDF>

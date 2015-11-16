@@ -111,7 +111,7 @@ public class Series {
                 " Duration: " + this.getDuration() + "\n" +
                 " Description: " + this.getDescription() + "\n" +
                 " Storyline: " + this.getStoryline() + "\n" +
-                " Creators: " + this.getCreatorList().toString() +
+                " Creators: " + this.getCreatorList().toString() + "\n" +
                 " Actors: " + this.getActorList().toString();
         return result;
     }

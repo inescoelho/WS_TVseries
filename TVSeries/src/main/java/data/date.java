@@ -5,15 +5,6 @@ public class Date {
     private int month;
     private int year;
 
-
-    public Date(String y)
-    {
-        day = 0;
-        month = 0;
-        setYear(Integer.parseInt(y));
-    }
-
-
     public Date(String d, String m, String y)
     {
         setDay(Integer.parseInt(d));
