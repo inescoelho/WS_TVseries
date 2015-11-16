@@ -9,11 +9,10 @@
     <constant name="struts.action.excludePattern" value="/chat*"/>
     <constant name="struts.devMode" value="true" />
 
-    <package name="basicstruts2" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default">
     
-        <action name="login" class="application.LoginAction" method="doLogin">
-            <result name="success">index.jsp</result>
-            <result name="error">index.jsp</result>
+        <action name="login" class="actions.controller.ajax.LoginAction" method="execute">
+            <result type="json" />
         </action>
         
     </package>

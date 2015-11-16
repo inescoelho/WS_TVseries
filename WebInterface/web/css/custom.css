@@ -1,0 +1,14 @@
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
+
+.right-aligned {
+    padding-right: 10%;
+    float: right;
+}
+
+.left-aligned {
+    padding-left: 10%;
+    float: left;
+}

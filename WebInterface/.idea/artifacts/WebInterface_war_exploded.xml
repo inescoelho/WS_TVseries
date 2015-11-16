@@ -9,7 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Struts 2-2.3.20.1" />
-          <element id="library" level="project" name="Apache Jena 3.0.0" />
+          <element id="library" level="project" name="apache-jena-3.0" />
+          <element id="library" level="project" name="struts2-json-plugin-2.3.24.1" />
         </element>
       </element>
     </root>

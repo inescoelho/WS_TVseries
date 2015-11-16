@@ -1,8 +1,6 @@
 <%@ page import="actions.model.Client" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +15,6 @@
     <link href="css/fancy-navbar-theme.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 </head>
-
 <body>
 
 <!-- Top Navbar -->
@@ -26,19 +23,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="index.jsp" class="inactiveLink">Home</a>
+                    <a href="index.jsp">Home</a>
                 </li>
                 <li>
-                    <a href="contacts.jsp">Contact</a>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <a href="#"><img src="lib/images/search_icon.png"/></a>
-                        </div>
-                    </form>
-
+                    <a href="contacts.jsp" class="inactiveLink">Contact</a>
                 </li>
             </ul>
 
@@ -75,89 +63,31 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
+    <div class="row text-center">
         <div class="col-lg-12">
-            <h3>Recently Viewed</h3>
+            <h3>Movie Recommendation Application developed by</h3>
         </div>
     </div>
 
     <div class="row text-center">
-        <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="hero-feature left-aligned">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="lib/images/ines.jpg" alt="">
                 <div class="caption">
-                    <h3>Series A</h3>
+                    <h3>Inês Coelho</h3>
+
+                    <a href="mailto:ines.opcoelho@gmail.com">ines.opcoelho@gmail.com</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="hero-feature right-aligned">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="lib/images/joca.jpg" alt="">
                 <div class="caption">
-                    <h3>Series B</h3>
-                </div>
-            </div>
-        </div>
+                    <h3>Joaquim Leitão</h3>
 
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series C</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series D</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>Recommended</h3>
-        </div>
-    </div>
-
-    <div class="row text-center">
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series E</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series F</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series G</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3>Series H</h3>
+                    <a href="mailto:jocaleitao93@gmail.com">jocaleitao93@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -210,5 +140,5 @@
 </script>
 
 </body>
-</html>
 
+</html>
