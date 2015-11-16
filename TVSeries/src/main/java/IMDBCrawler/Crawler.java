@@ -68,21 +68,25 @@ public class Crawler {
                 auxSeriesURL = seriesURL + "/fullcredits";
                 this.getCreators(auxSeriesURL, series);
 
+                // get series actors list
+                this.getActors(auxSeriesURL, series);
+
             } catch (IOException var12) {
                 System.out.println("Timeout while connecting to :" + seriesURL + "!");
             }
 
-            System.out.println(series.toString());
-
+            //add series to list of series
             seriesList.add(series);
+            //System.out.println(series.toString());
 
-            // break;
+            //break;
         }
 
-        //list series by genre
-        for (Genre genre: this.getGenreList() ) {
+/*        //list series by genre
+        for (Genre genre: this.getGenreList()
+             ) {
             System.out.println(genre.toString());
-        }
+        }*/
     }
 
     private void getGenre(Document doc, Series series){
@@ -370,6 +374,48 @@ public class Crawler {
         }
 
         return birthday;
+    }
+
+    private void getActors(String auxSeriesURL, Series series) {
+        Document doc;
+
+        try {
+            doc = Jsoup.connect(auxSeriesURL).userAgent("Mozilla").get();
+
+            Element table = doc.select("table").get(2);
+            Elements rows = table.select("tr");
+            rows.remove(0);
+            //System.out.println(rows);
+
+            for (Element row: rows)
+            {
+
+                Elements columns = row.select("td");
+                Element column = columns.get(0);
+                //System.out.println(column);
+
+                if (column.toString().contains("castlist_label"))
+                    break;
+
+                Elements href = column.select("a");
+                String id = href.toString();
+                id = id.substring(17,24);
+                //System.out.println(id);
+
+                Elements img = column.select("img");
+                String name = img.attr("title");
+                //System.out.println(name);
+
+                Person person = new Person(name, id);
+                this.getPersonData(id, person);
+
+                //System.out.println(person.toString());
+                series.getActorList().add(person);
+            }
+
+        } catch (IOException var12) {
+            System.out.println("Timeout while connecting to :" + auxSeriesURL + "!");
+        }
     }
 
     public ArrayList<Series> getSeriesList() {
