@@ -47,14 +47,14 @@
       <file leaf-file-name="Crawler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0804387">
-              <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.535649">
+              <caret line="406" column="14" selection-start-line="406" selection-start-column="14" selection-end-line="406" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6619#6620#0" expanded="true" />
-                <element signature="e#6651#6652#0" expanded="true" />
-                <element signature="e#14223#14224#0" expanded="true" />
-                <element signature="e#14256#14257#0" expanded="true" />
+                <element signature="e#6617#6618#0" expanded="true" />
+                <element signature="e#6649#6650#0" expanded="true" />
+                <element signature="e#14228#14229#0" expanded="true" />
+                <element signature="e#14261#14262#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -835,15 +835,15 @@
       <workItem from="1447545176287" duration="799000" />
       <workItem from="1447546322622" duration="3771000" />
       <workItem from="1447614801965" duration="12389000" />
-      <workItem from="1447633611857" duration="5218000" />
+      <workItem from="1447633611857" duration="5799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58925000" />
+    <option name="totallyTimeSpent" value="59506000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -915,10 +915,10 @@
           <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6619#6620#0" expanded="true" />
-            <element signature="e#6651#6652#0" expanded="true" />
-            <element signature="e#14223#14224#0" expanded="true" />
-            <element signature="e#14256#14257#0" expanded="true" />
+            <element signature="e#6617#6618#0" expanded="true" />
+            <element signature="e#6649#6650#0" expanded="true" />
+            <element signature="e#14228#14229#0" expanded="true" />
+            <element signature="e#14261#14262#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1031,14 +1031,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0804387">
-          <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.535649">
+          <caret line="406" column="14" selection-start-line="406" selection-start-column="14" selection-end-line="406" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6619#6620#0" expanded="true" />
-            <element signature="e#6651#6652#0" expanded="true" />
-            <element signature="e#14223#14224#0" expanded="true" />
-            <element signature="e#14256#14257#0" expanded="true" />
+            <element signature="e#6617#6618#0" expanded="true" />
+            <element signature="e#6649#6650#0" expanded="true" />
+            <element signature="e#14228#14229#0" expanded="true" />
+            <element signature="e#14261#14262#0" expanded="true" />
           </folding>
         </state>
       </provider>

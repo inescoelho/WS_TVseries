@@ -96,7 +96,7 @@ public class Crawler {
                 System.out.println("OUT " + series.getTitle());
             }
 
-            //break;
+            break;
         }
 
 /*        //list series by genre
@@ -376,19 +376,19 @@ public class Crawler {
 
     private Date convertToDate(String info) {
         String date;
-        String day = "";
-        String month = "";
-        String year = "";
+        String day;
+        String month;
+        String year;
         Date birthday = null;
-
-        //clean first tag
-        info = info.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
-        //remove second tag
-        int stop = info.indexOf('>') + 1;
-        info = info.substring(stop);
 
         if (info.toString().contains("birth_monthday") && info.toString().contains("birth_year"))
         {
+            //clean first tag
+            info = info.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
+            //remove second tag
+            int stop = info.indexOf('>') + 1;
+            info = info.substring(stop);
+
             //get day and month
             stop = info.indexOf('<');
             date = info.substring(0, stop);
@@ -404,7 +404,7 @@ public class Crawler {
 
             //get year
             year = info.substring(0, 4);
-            System.out.println(year);
+            //System.out.println(year);
 
             birthday = new Date(day, month, year);
         }
