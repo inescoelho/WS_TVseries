@@ -44,6 +44,7 @@ public class FileLoader {
             while ( (line = bufferedReader.readLine()) != null ){
                 currentLine = line.split(",");
                 fileNameMap.put(currentLine[0], currentLine[1]);
+                System.out.println(currentLine[0]);
             }
         } catch (IOException e) {
             e.printStackTrace();

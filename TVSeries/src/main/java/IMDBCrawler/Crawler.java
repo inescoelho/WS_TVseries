@@ -9,6 +9,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,7 +75,13 @@ public class Crawler {
 
                 // get series actors list
                 if (state) {
-                    state = this.getActors(auxSeriesURL, series);
+                    try {
+                        state = this.getActors(auxSeriesURL, series);
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                        writeToFile(series);
+                        continue;
+                    }
                 }
 
                 //get series genre
@@ -94,9 +103,10 @@ public class Crawler {
             else
             {
                 System.out.println("OUT " + series.getTitle());
+                writeToFile(series);
             }
 
-            break;
+            //break;
         }
 
 /*        //list series by genre
@@ -381,7 +391,7 @@ public class Crawler {
         String year;
         Date birthday = null;
 
-        if (info.toString().contains("birth_monthday") && info.toString().contains("birth_year"))
+        if (info.contains("birth_monthday") && info.contains("birth_year"))
         {
             //clean first tag
             info = info.replace("<td class=\"label\">Date of Birth</td>\n<td> ", "");
@@ -412,7 +422,7 @@ public class Crawler {
         return birthday;
     }
 
-    private boolean getActors(String auxSeriesURL, Series series) {
+    private boolean getActors(String auxSeriesURL, Series series)  throws Exception {
         Document doc;
         boolean state = true;
 
@@ -464,5 +474,26 @@ public class Crawler {
 
     public void setSeriesList(ArrayList<Series> seriesList) {
         this.seriesList = seriesList;
+    }
+
+    private void writeToFile(Series series) {
+        boolean result;
+        try {
+            // Write to file
+            File file = new File("RemovedSeries.txt");
+            if (!file.exists()) {
+                result = file.createNewFile();
+                if (!result) {
+                    System.out.println("Failed to create log file! Message = Removed Series " + series.getTitle());
+                }
+            }
+
+            FileWriter fileWriter = new FileWriter(file.getName(), true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("Removed Series " + series.getTitle() + "\n");
+            bufferedWriter.close();
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }

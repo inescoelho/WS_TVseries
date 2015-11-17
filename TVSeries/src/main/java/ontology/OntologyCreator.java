@@ -3,11 +3,9 @@ package ontology;
 import data.Date;
 import data.Person;
 import data.Series;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDF;
 
 import java.io.FileNotFoundException;
@@ -58,6 +56,7 @@ public class OntologyCreator {
 
         peopleList = new HashMap<>();
         seriesList = new HashMap<>();
+        loadInstances();
     }
 
     /**
@@ -75,6 +74,39 @@ public class OntologyCreator {
     public void createOntologyModel(String filePath, String type) {
         createOntologyModel();
         ontologyModel.read(filePath, type);
+    }
+
+    /**
+     * Loads the instances already present in the ontology
+     */
+    private void loadInstances() {
+        //List all classes and then list all individuals
+        OntClass seriesGenreClass = ontologyModel.getOntClass(namespace + "SeriesGenre");
+        OntClass personClass = ontologyModel.getOntClass(namespace + "Person");
+
+        OntProperty hasSeriesId = ontologyModel.getOntProperty(namespace + "hasSeriesId");
+        OntProperty hasPersonId = ontologyModel.getOntProperty(namespace + "hasPersonId");
+
+        ExtendedIterator classes = ontologyModel.listClasses();
+
+        while(classes.hasNext()) {
+            OntClass currentClass = (OntClass) classes.next();
+            ExtendedIterator instances = currentClass.listInstances();
+
+            if(currentClass.hasSuperClass(personClass)) {
+                while(instances.hasNext()) {
+                    Individual currentInstance = (Individual) instances.next();
+                    peopleList.put("nm" + currentInstance.getPropertyValue(hasPersonId).toString(), currentInstance);
+
+                }
+
+            } else if (currentClass.hasSuperClass(seriesGenreClass)) {
+                while(instances.hasNext()) {
+                    Individual currentInstance = (Individual) instances.next();
+                    seriesList.put("tt" + currentInstance.getPropertyValue(hasSeriesId).toString(), currentInstance);
+                }
+            }
+        }
     }
 
     /**
@@ -112,17 +144,21 @@ public class OntologyCreator {
     private boolean createSeries(String id, String title, String description, String storyline, int duration,
                                 ArrayList<String> genres, int startYear, int finishYear) {
 
-        String trimedName = title.replaceAll(" ", "_").toLowerCase();
+        if (genres.size() == 0 ) {
+            return false;
+        }
 
-        Individual newSeries = ontologyModel.createIndividual(namespace + trimedName,
-                ontologyModel.getOntClass(namespace + "SeriesGenre"));
+        String firstGenre = genres.get(0);
+        Individual newSeries = ontologyModel.createIndividual(namespace + "tt" + id,
+                                                              ontologyModel.getOntClass(namespace + firstGenre));
 
         if (newSeries == null) {
             return false;
         }
 
         // Make this series extend its genres
-        for (String currentGenre : genres) {
+        for (int i=1; i < genres.size(); i++) {
+            String currentGenre = genres.get(i);
             OntClass currentClass = ontologyModel.getOntClass(namespace + currentGenre);
 
             // Do not add genres not supported in the ontology
@@ -147,7 +183,7 @@ public class OntologyCreator {
         }
 
         // Add series to series list
-        seriesList.put(id, newSeries);
+        seriesList.put("tt" + id, newSeries);
 
         System.out.println("Created series " + newSeries.getLocalName());
         return true;
@@ -182,14 +218,13 @@ public class OntologyCreator {
      * @return A boolean value signalling if any errors occurred or if everything went well
      */
     private boolean createPerson(boolean actor, String id, String name, String biography, Date birthDate) {
-        String trimedName = name.replaceAll(" ", "_").toLowerCase();
         Individual newIndividual = null;
 
         if (actor) {
-            newIndividual = ontologyModel.createIndividual(namespace + trimedName,
+            newIndividual = ontologyModel.createIndividual(namespace + "nm" + id,
                     ontologyModel.getOntClass(namespace + "Actor"));
         } else {
-            newIndividual = ontologyModel.createIndividual(namespace + trimedName,
+            newIndividual = ontologyModel.createIndividual(namespace + "nm" + id,
                     ontologyModel.getOntClass(namespace + "Creator"));
         }
 
@@ -198,7 +233,7 @@ public class OntologyCreator {
         }
 
         // Add actor properties
-        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), id);
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), "nm" + id);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
         if (biography != null) {
             newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
@@ -208,7 +243,7 @@ public class OntologyCreator {
         }
 
         // Add person to the list
-        peopleList.put(id, newIndividual);
+        peopleList.put("nm" + id, newIndividual);
 
         if (actor) {
             System.out.println("Created actor " + newIndividual.getLocalName());
@@ -226,7 +261,7 @@ public class OntologyCreator {
      */
     public boolean makeActorCreator(Person actor) {
 
-        Individual individual = peopleList.get(actor.getId());
+        Individual individual = peopleList.get("nm" + actor.getId());
         OntClass creatorClass = ontologyModel.getOntClass(namespace + "Creator");
 
         if (!individual.hasProperty(RDF.type, creatorClass)) {
@@ -245,7 +280,7 @@ public class OntologyCreator {
      */
     public boolean makeCreatorActor(Person creator) {
 
-        Individual individual = peopleList.get(creator.getId());
+        Individual individual = peopleList.get("nm" + creator.getId());
         OntClass actorClass = ontologyModel.getOntClass(namespace + "Actor");
 
         if (!individual.hasProperty(RDF.type, actorClass)) {
@@ -266,8 +301,8 @@ public class OntologyCreator {
      */
     public boolean addSeriesToActor(Series series, Person actor) {
         // Get actor and series
-        Individual seriesIndividual = seriesList.get(series.getSeriesId());
-        Individual actorIndividual = peopleList.get(actor.getId());
+        Individual seriesIndividual = seriesList.get("tt" + series.getSeriesId());
+        Individual actorIndividual = peopleList.get("nm" + actor.getId());
 
         return addActorCreatorToSeries(true, seriesIndividual, actorIndividual);
     }
@@ -281,8 +316,11 @@ public class OntologyCreator {
      */
     public boolean addSeriesToCreator(Series series, Person creator) {
         // Get creator and series
-        Individual seriesIndividual = seriesList.get(series.getSeriesId());
-        Individual creatorIndividual = peopleList.get(creator.getId());
+        Individual seriesIndividual = seriesList.get("tt" + series.getSeriesId());
+        Individual creatorIndividual = peopleList.get("nm" + creator.getId());
+
+        System.out.println(series.getSeriesId());
+        System.out.println(seriesIndividual + " " + creatorIndividual);
 
         return addActorCreatorToSeries(false, seriesIndividual, creatorIndividual);
     }
@@ -345,7 +383,7 @@ public class OntologyCreator {
      * @return A boolean value, signalling whether or not the person in question already exists in the system
      */
     public boolean checkPerson(Person person) {
-        return peopleList.get(person.getId()) != null;
+        return peopleList.get("nm" + person.getId()) != null;
     }
 
     /**
@@ -355,7 +393,7 @@ public class OntologyCreator {
      */
     public boolean checkCreator(Person creator) {
 
-        Individual possibleCreator = peopleList.get(creator.getId());
+        Individual possibleCreator = peopleList.get("nm" + creator.getId());
 
         if (possibleCreator == null) {
             return false;

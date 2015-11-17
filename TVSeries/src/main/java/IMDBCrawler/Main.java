@@ -5,6 +5,10 @@ import data.Series;
 import ontology.OntologyCreator;
 import org.apache.log4j.varia.NullAppender;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -19,10 +23,10 @@ public class Main {
 
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
-        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology.rdf", "RDF/XML");
+        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
 
         //load tv series list from cvs file
-        boolean result = fileLoader.loadIDsFromFile("TV_Show_Series.csv");
+        boolean result = fileLoader.loadIDsFromFile("TV_Show_Series_Reduced.csv");
 
         if (result) {
             System.out.println("Successfully loaded ids from file!");
@@ -54,8 +58,8 @@ public class Main {
                 // Link the creator with the series
                 result = ontologyCreator.addSeriesToCreator(currentSeries, currentCreator);
                 if (!result) {
-                    Thread.dumpStack();
-                    return ;
+                    writeToLogFile("Error while adding series " + currentSeries.getTitle() + " to creator " +
+                                   currentCreator.getName());
                 }
             }
 
@@ -71,24 +75,37 @@ public class Main {
                     // If person already in our list check if is a creator
                     if (ontologyCreator.checkCreator(currentActor)) {
                         // Make creator actor
-                        result = ontologyCreator.makeCreatorActor(currentActor);
-                        if (!result) {
-                            Thread.dumpStack();
-                            return ;
-                        }
+                        ontologyCreator.makeCreatorActor(currentActor);
                     }
                 }
 
                 // Link the actor with the series
                 result = ontologyCreator.addSeriesToActor(currentSeries, currentActor);
                 if (!result) {
-                    Thread.dumpStack();
-                    return ;
+                    writeToLogFile("Error while adding series " + currentSeries.getTitle() + " to actor " +
+                                   currentActor.getName());
                 }
             }
 
         }
 
-        ontologyCreator.writeModelToFile("MyTest.rdf", "RDF/XML");
+        ontologyCreator.writeModelToFile("tv_series_ontology_current.rdf", "RDF/XML");
+    }
+
+    private static void writeToLogFile(String message) {
+        try {
+            // Write to file
+            File file = new File("MyLogFile.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fileWriter = new FileWriter(file.getName(), true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(message + "\n");
+            bufferedWriter.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 }
