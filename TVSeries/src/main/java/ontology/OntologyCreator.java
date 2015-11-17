@@ -5,15 +5,14 @@ import data.Person;
 import data.Series;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.impl.IteratorFactory;
 import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDF;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * OntologyCreator class, responsible for managing an ontology, making use of the Apache Jena framework. For more
@@ -97,7 +96,6 @@ public class OntologyCreator {
                 while(instances.hasNext()) {
                     Individual currentInstance = (Individual) instances.next();
                     peopleList.put("nm" + currentInstance.getPropertyValue(hasPersonId).toString(), currentInstance);
-
                 }
 
             } else if (currentClass.hasSuperClass(seriesGenreClass)) {
@@ -220,6 +218,21 @@ public class OntologyCreator {
     private boolean createPerson(boolean actor, String id, String name, String biography, Date birthDate) {
         Individual newIndividual = null;
 
+        if (biography == null || biography.equals("")) {
+            System.out.println("False1");
+            return false;
+        }
+
+        if (id == null || id.equals("")) {
+            System.out.println("False3");
+            return false;
+        }
+
+        if (name == null || name.equals("")) {
+            System.out.println("False4");
+            return false;
+        }
+
         if (actor) {
             newIndividual = ontologyModel.createIndividual(namespace + "nm" + id,
                     ontologyModel.getOntClass(namespace + "Actor"));
@@ -235,9 +248,7 @@ public class OntologyCreator {
         // Add actor properties
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasPersonId"), "nm" + id);
         newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasName"), name);
-        if (biography != null) {
-            newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
-        }
+        newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBiography"), biography);
         if (birthDate != null) {
             newIndividual.addLiteral(ontologyModel.getProperty(namespace + "hasBirthDate"), birthDate.toString());
         }
@@ -319,9 +330,6 @@ public class OntologyCreator {
         Individual seriesIndividual = seriesList.get("tt" + series.getSeriesId());
         Individual creatorIndividual = peopleList.get("nm" + creator.getId());
 
-        System.out.println(series.getSeriesId());
-        System.out.println(seriesIndividual + " " + creatorIndividual);
-
         return addActorCreatorToSeries(false, seriesIndividual, creatorIndividual);
     }
 
@@ -347,27 +355,6 @@ public class OntologyCreator {
 
         if (series == null || actorOrCreator == null || property == null || inverseProperty == null) {
             return false;
-        }
-
-        // Check if there is already a connection between the actor/creator and the series
-        if (series.hasProperty(property)) {
-
-            Statement statement = series.getProperty(property);
-            RDFNode object = statement.getObject();
-
-            // Since this is an ObjectProperty the object can only be of type resource, but we will play it safe
-            if (object.isResource()) {
-                Resource resource = object.asResource();
-
-                Statement resId = resource.getProperty(ontologyModel.getDatatypeProperty(namespace + "hasPersonId"));
-                Statement personId = actorOrCreator.getProperty(ontologyModel.getDatatypeProperty(namespace +
-                                                                "hasPersonId"));
-
-                // If the resources are the same
-                if (resId.getLiteral().equals(personId.getLiteral())) {
-                    return false;
-                }
-            }
         }
 
         // Add the property and its inverse to both

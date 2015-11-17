@@ -98,22 +98,13 @@ public class Crawler {
             if (state)
             {
                 seriesList.add(series);
-                //System.out.println(series.toString());
             }
             else
             {
                 System.out.println("OUT " + series.getTitle());
                 writeToFile(series);
             }
-
-            //break;
         }
-
-/*        //list series by genre
-        for (Genre genre: this.getGenreList()
-             ) {
-            System.out.println(genre.toString());
-        }*/
     }
 
     private void getGenre(Document doc, Series series){
