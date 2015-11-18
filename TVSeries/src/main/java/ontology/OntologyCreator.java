@@ -4,15 +4,17 @@ import data.Date;
 import data.Person;
 import data.Series;
 import org.apache.jena.ontology.*;
-import org.apache.jena.rdf.model.*;
-import org.apache.jena.rdf.model.impl.IteratorFactory;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDF;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * OntologyCreator class, responsible for managing an ontology, making use of the Apache Jena framework. For more
@@ -95,13 +97,13 @@ public class OntologyCreator {
             if(currentClass.hasSuperClass(personClass)) {
                 while(instances.hasNext()) {
                     Individual currentInstance = (Individual) instances.next();
-                    peopleList.put("nm" + currentInstance.getPropertyValue(hasPersonId).toString(), currentInstance);
+                    peopleList.put(currentInstance.getPropertyValue(hasPersonId).toString(), currentInstance);
                 }
 
             } else if (currentClass.hasSuperClass(seriesGenreClass)) {
                 while(instances.hasNext()) {
                     Individual currentInstance = (Individual) instances.next();
-                    seriesList.put("tt" + currentInstance.getPropertyValue(hasSeriesId).toString(), currentInstance);
+                    seriesList.put(currentInstance.getPropertyValue(hasSeriesId).toString(), currentInstance);
                 }
             }
         }

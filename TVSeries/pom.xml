@@ -29,7 +29,6 @@
             <version>1.8.3</version>
         </dependency>
 
-
     </dependencies>
 
     <!-- Prevent Maven from keep changing the language level any time we add a new library -->

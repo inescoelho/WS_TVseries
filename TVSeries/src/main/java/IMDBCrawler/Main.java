@@ -23,10 +23,10 @@ public class Main {
 
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
-        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
+        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology.rdf", "RDF/XML");
 
         //load tv series list from cvs file
-        boolean result = fileLoader.loadIDsFromFile("TV_Show_Series_Reduced.csv");
+        boolean result = fileLoader.loadIDsFromFile("TV_Show_Series.csv");
 
         if (result) {
             System.out.println("Successfully loaded ids from file!");
