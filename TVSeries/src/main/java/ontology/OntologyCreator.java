@@ -11,10 +11,11 @@ import org.apache.jena.vocabulary.RDF;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.*;
 
 /**
  * OntologyCreator class, responsible for managing an ontology, making use of the Apache Jena framework. For more
@@ -40,8 +41,6 @@ public class OntologyCreator {
     private HashMap<String, Individual> seriesList;
 
     private Scanner scanner;
-
-    // FIXME: DO NOT FORGET PERSON ID IS nm0232998 AND MOVIE ID IS tt0232998!!!!!
 
     /**
      * Simple class constructor, which loads the ontology schema from a file
@@ -367,6 +366,25 @@ public class OntologyCreator {
     }
 
     /**
+     * Adds a wikipedia url to a given person on the ontology
+     * @param person The individual to which the url is going to be added
+     * @param url The url to be added
+     * @return A boolean value signalling if any errors occurred or if everything went well
+     */
+    private boolean addWikiURLToPerson(Individual person, String url) {
+
+        Property wikiURL = ontologyModel.getProperty(namespace + "hasWikiURL");
+
+        if (wikiURL == null) {
+            return false;
+        }
+
+        person.addProperty(wikiURL, url);
+
+        return true;
+    }
+
+    /**
      * Checks if a given person already exists in the list of people
      * @param person The person in question
      * @return A boolean value, signalling whether or not the person in question already exists in the system
@@ -437,5 +455,48 @@ public class OntologyCreator {
         int result = scanner.nextInt();
         scanner.close();
         return result;
+    }
+
+    /**
+     * Goes through every person in the ontology, checks if a valid wikipedia url exists for that person, and if so adds
+     * it to the person in the ontology
+     */
+    public void addWikiURLs() {
+        Individual currentIndividual;
+        String currentIndividualName;
+        OntProperty hasName = ontologyModel.getOntProperty(namespace + "hasName");
+
+        for (Object o : peopleList.entrySet()) {
+            Map.Entry pair = (Map.Entry) o;
+            currentIndividual = (Individual) pair.getValue();
+            currentIndividualName = currentIndividual.getPropertyValue(hasName).toString();
+
+            currentIndividualName = currentIndividualName.replace(" ", "_");
+
+            if (checkURL("https://en.wikipedia.org/wiki/" + currentIndividualName)) {
+                //System.out.println("Added wikiurl to individual " + currentIndividualName);
+                addWikiURLToPerson(currentIndividual, "https://en.wikipedia.org/wiki/" + currentIndividualName);
+            }
+        }
+    }
+
+    /**
+     * Checks if a given url is valid
+     * @param url The url to be checked
+     * @return A boolean value signalling if the given url is valid or not
+     */
+    private boolean checkURL(String url) {
+        try {
+            URL u = new URL(url);
+            HttpURLConnection huc = (HttpURLConnection) u.openConnection();
+            huc.setRequestMethod("GET");  //OR  huc.setRequestMethod ("HEAD");
+            huc.connect();
+
+            return huc.getResponseCode() == 200;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

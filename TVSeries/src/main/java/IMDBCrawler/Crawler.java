@@ -104,11 +104,7 @@ public class Crawler {
                 System.out.println("OUT " + series.getTitle());
                 writeToFile(series);
             }
-<<<<<<< HEAD
-
             //break;
-=======
->>>>>>> ccdd7202ced79845330bbce781bfc2ee2afad457
         }
     }
 
