@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>Test</title>
+
+	<script src="jquery.min.js"></script>
+
+	<script>
+		function testAPI() {
+			var data = {"message": "Hello World", "code": 2, "list": [1, 2, 3], "array": [2, 4, 6]};
+
+			$.ajax({  
+				type: "POST",
+				url: "http://localhost:8090/test",
+				data:  JSON.stringify(data),
+				async: true,
+				beforeSend: function (xhr){ 
+					xhr.setRequestHeader("Content-Type", "application/json");
+					xhr.setRequestHeader("Accept", "application/json")
+				},
+				success: function(data) {
+					console.log("Got " + data);
+					var banana = data["object"];
+					console.log("Got returned message " + data["message"] + " and " + data["resultCode"] +
+								" and " + banana["name"]);
+				},
+				error: function(jqXHR, exception) {
+					console.log(jqXHR.status);
+					console.log(exception);
+				},
+				complete: function(xhr, textStatus) {
+					// This should not be needed
+					console.log(xhr.status);
+					console.log(textStatus);
+				}
+			});
+		}
+
+		function getGenres() {
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:8090/getGenres",
+				async: true,
+				beforeSend: function (xhr){ 
+					xhr.setRequestHeader("Content-Type", "application/json");
+					xhr.setRequestHeader("Accept", "application/json")
+				},
+				success: function(data) {
+					console.log("Got " + data.length + " genres:");
+
+					console.log("================================================================================");
+
+					for (var i=0; i < data.length; i++) {
+						var currentGenre = data[i];
+						console.log("Genre " + currentGenre["type"] + " with " + currentGenre["series"].length +
+                                    " series");
+						if (currentGenre["series"].length > 0) {
+                            var firstSeries = currentGenre["series"][0];
+							console.log("Title of the first series in this genre is " + firstSeries[0] + " and id is " +
+                                        firstSeries[1]);
+						}
+
+						console.log("================================================================================");
+					}
+				},
+				error: function(jqXHR, exception) {
+					console.log(jqXHR.status);
+					console.log(exception);
+				}
+			});
+		}
+
+		function getSeriesInfo() {
+
+			var data = {"seriesId" : "tt1520211"};
+
+			$.ajax({
+                type: "POST",
+                url: "http://localhost:8090/getSeriesInfo",
+                data: JSON.stringify(data),
+                async: true,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.setRequestHeader("Accept", "application/json")
+                },
+                success: function (series) {
+                    console.log("Series basic data --> {id: " + series["id"] + ", title: " + series["title"] +
+                                ", description: " + series["description"] + ", storyline: " + series["storyline"] +
+                                ", episodeDuration: " + series["episodeDuration"] + ", pilotYear: " +
+                                series["pilotYear"] + ", finishYear: " + series["finishYear"] + ", actors: " +
+                                series["actors"].length + ", creators: " + series["creators"].length + "}");
+
+                    var firstActor = series["actors"][0];
+                    var firstCreator = series["creators"][0];
+
+                    console.log("First actor in the list: {name: " + firstActor[0] + ", id: " + firstActor[1] +
+                                ", imageURL (for now wikiURL but will be fixed): " + firstActor[2]);
+
+                    console.log("First creator in the list: {name: " + firstCreator[0] + ", id: " + firstCreator[1] +
+                            ", imageURL (for now wikiURL but will be fixed): " + firstCreator[2]);
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR.status);
+                    console.log(exception);
+                }
+            });
+		}
+
+		$(document).ready(function() {
+			//getGenres();
+			getSeriesInfo();
+		});
+
+	</script>
+</head>
+
+<body>
+	<h1>HELLO WORLD </h1>
+
+</body>
