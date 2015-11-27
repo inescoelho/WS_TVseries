@@ -29,7 +29,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/getGenres", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/getGenres", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody ArrayList<Genre> getGenres() {
         return ontologyHandler.getGenres();
     }
