@@ -38,13 +38,12 @@ public class Controller {
     @RequestMapping(value = "/getSeriesInfo", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Series getSeriesInfo(@RequestBody GetInfoInput inputData) {
 
-        return ontologyHandler.getSeriesInfo(inputData.getSeriesId());
+        return ontologyHandler.getSeriesInfo(inputData.getId());
     }
 
     @CrossOrigin
-    @RequestMapping(value = "getPersonInfo", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/getPersonInfo", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Person getPersonInfo(@RequestBody GetInfoInput inputData) {
-        // FIXME: Implement this!
-        return null;
+        return ontologyHandler.getPersonInfo(inputData.getId());
     }
 }

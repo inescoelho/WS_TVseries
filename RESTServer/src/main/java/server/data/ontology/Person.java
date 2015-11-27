@@ -1,5 +1,7 @@
 package server.data.ontology;
 
+import java.util.ArrayList;
+
 /**
  * Class that stores all the relevant information of a given Person to be displayed in the web interface
  */
@@ -10,15 +12,19 @@ public class Person {
     private String biography;
     private String birthDate;
     private String wikiURL;
-    private String type; // "actor", "creator" or "actorcreator"
+    // FIXME: private String imageURL; -- Optional
+    private ArrayList<String[]> seriesActed; // contains id, name and image url of the series where the person acted
+    private ArrayList<String[]> seriesCreated; // contains id, name and image url of the series created by the person
 
-    public Person(String id, String name, String biography, String birthDate, String wikiURL, String type) {
+    public Person(String id, String name, String biography, String birthDate, String wikiURL,
+                  ArrayList<String[]> seriesActed, ArrayList<String[]> seriesCreated) {
         this.id = id;
         this.name = name;
         this.biography = biography;
         this.birthDate = birthDate;
         this.wikiURL = wikiURL;
-        this.type = type;
+        this.seriesActed = seriesActed;
+        this.seriesCreated = seriesCreated;
     }
 
     public String getId() {
@@ -61,11 +67,19 @@ public class Person {
         this.wikiURL = wikiURL;
     }
 
-    public String getType() {
-        return type;
+    public ArrayList<String[]> getSeriesActed() {
+        return seriesActed;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSeriesActed(ArrayList<String[]> seriesActed) {
+        this.seriesActed = seriesActed;
+    }
+
+    public ArrayList<String[]> getSeriesCreated() {
+        return seriesCreated;
+    }
+
+    public void setSeriesCreated(ArrayList<String[]> seriesCreated) {
+        this.seriesCreated = seriesCreated;
     }
 }

@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class GetInfoInput {
 
-    private String seriesId;
+    private String id;
 
-    public GetInfoInput(@JsonProperty("seriesId") String seriesId) {
-        this.seriesId = seriesId;
+    public GetInfoInput(@JsonProperty("id") String id) {
+        this.id = id;
     }
 
-    public String getSeriesId() {
-        return seriesId;
+    public String getId() {
+        return id;
     }
 
-    public void setSeriesId(String seriesId) {
-        this.seriesId = seriesId;
+    public void setId(String id) {
+        this.id = id;
     }
 }

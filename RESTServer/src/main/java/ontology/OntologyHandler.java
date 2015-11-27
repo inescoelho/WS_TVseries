@@ -8,6 +8,7 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
+import server.data.ontology.Person;
 import server.data.ontology.Series;
 
 import java.util.ArrayList;
@@ -160,6 +161,21 @@ public class OntologyHandler {
     }
 
     /**
+     * Gets the strictly needed information about a given person, based on its id, to display in the person page
+     * @param personId The id of the person whose information is going to be retrieved
+     * @return An instance of the "Person" class, with all the needed information to display
+     */
+    public Person getPersonInfo(String personId) {
+        Individual person = peopleList.get(personId);
+
+        if (person == null) {
+            return null;
+        }
+
+        return makePersonFromIndividual(person, personId);
+    }
+
+    /**
      * Gets all the names of the series of a given genre
      * @param genreName The genre in question
      * @return An ArrayList of "String[]" objects, containing the name and the id of the each series of the specified
@@ -201,7 +217,7 @@ public class OntologyHandler {
     }
 
     /**
-     * Creates an instance of a "Series" class from a series "Individual" instance (Jena)
+     * Creates an instance of the "Series" class from a series "Individual" instance (Jena)
      * @param series The "Individual" instance
      * @param seriesId The id of the series
      * @return The created instance of the "Series" class
@@ -214,13 +230,14 @@ public class OntologyHandler {
         OntProperty hasEpisodeDuration = ontologyModel.getDatatypeProperty(namespace + "hasEpisodeDuration");
         OntProperty hasPilotYear = ontologyModel.getDatatypeProperty(namespace + "hasPilotYear");
         OntProperty hasFinishYear = ontologyModel.getDatatypeProperty(namespace + "hasFinishYear");
-        OntProperty hasActor = ontologyModel.getObjectProperty(namespace + "hasActor");
-        OntProperty hasCreator = ontologyModel.getObjectProperty(namespace + "hasCreator");
+        // FIxME: OntProperty hasImageURL = ontologyModel.getDatatypeProperty(namespace + "hasImageURL");
+
 
         // Get the values for each property
         String title = series.getPropertyValue(hasTitle).toString();
         String description = series.getPropertyValue(hasDescription).toString();
         String storyline = series.getPropertyValue(hasStoryline).toString();
+        // FIXME: String imageURL = series.getPropertyValue(hasImageURL).toString();
         int episodeDuration = getIntFromString(series.getPropertyValue(hasEpisodeDuration).toString());
 
         int pilotYear;
@@ -242,8 +259,37 @@ public class OntologyHandler {
         ArrayList<String[]> creators = getActorsOrCreatorsFromSeries(seriesId, false);
         ArrayList<String[]> actors = getActorsOrCreatorsFromSeries(seriesId, true);
 
+        // FIXME: Add imageURL
         return new Series(title, description, storyline, seriesId, episodeDuration, pilotYear, finishYear, actors,
                           creators);
+    }
+
+    /**
+     * Creates an instance of the "Person" class from a series "Individual" instance (Jena)
+     * @param person The "Individual" instance
+     * @param personId The id of the person
+     * @return The created instance of the "Person" class
+     */
+    private Person makePersonFromIndividual(Individual person, String personId) {
+        // Gather person's individual properties
+        OntProperty hasName = ontologyModel.getDatatypeProperty(namespace + "hasName");
+        OntProperty hasBiography = ontologyModel.getDatatypeProperty(namespace + "hasBiography");
+        OntProperty hasBirthDate = ontologyModel.getDatatypeProperty(namespace + "hasBirthDate");
+        OntProperty hasWikiURL = ontologyModel.getDatatypeProperty(namespace + "hasWikiURL");
+        //FIXME: OntProperty hasImageURL = ontologyModel.getDatatypeProperty(namespace + "hasImageURL");
+
+
+        String name = person.getPropertyValue(hasName).toString();
+        String biography = person.getPropertyValue(hasBiography).toString();
+        String birthDate = person.getPropertyValue(hasBirthDate).toString();
+        String wikiURL = person.getPropertyValue(hasWikiURL).toString();
+        // FIXME: String imageURL = person.getPropertyValue(hasImageURL).toString();
+
+        ArrayList<String[]> seriesCreated = getSeriesActedOrCreatedFromActor(personId, false);
+        ArrayList<String[]> seriesActed = getSeriesActedOrCreatedFromActor(personId, true);
+
+        // FIXME: Add imageURL
+        return new Person(personId, name, biography, birthDate, wikiURL, seriesActed, seriesCreated);
     }
 
     /**
@@ -294,10 +340,74 @@ public class OntologyHandler {
                 Literal personId = personIdNode.asLiteral();
                 Literal personImageURL = personImageURLNode.asLiteral();
 
-                // Remember: first position has name, second has id and third has imageURL!!
-                result.add(new String[] {personName.getString(), personId.getString(), personImageURL.getString()});
+                // Remember: first position has id, second has name and third has imageURL!!
+                result.add(new String[] {personId.getString(), personName.getString(), personImageURL.getString()});
             }
         }
+
+        qExe.close();
+        return result;
+    }
+
+    /**
+     * Gets the relevant information of all the series created by a given person or in which a given person acted
+     * @param personId The id of the person
+     * @param acted A boolean value, signalling if all the information of series acted or created should be retrieved
+     * @return An ArrayList of "String[]" objects will all the relevant information about the series acted or created
+     *         (name, id and image url)
+     */
+    private ArrayList<String[]> getSeriesActedOrCreatedFromActor(String personId, boolean acted) {
+        ArrayList<String[]> result = new ArrayList<>();
+
+        String propertyName;
+
+        if (acted) {
+            propertyName = "hasSeriesAppearance";
+        } else {
+            propertyName = "hasSeriesCreated";
+        }
+
+        String queryString =
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+                "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+                "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
+                "SELECT ?seriesTitle ?seriesID\n" +
+                "WHERE {\n" +
+                "     ?subject my:hasPersonId ?id FILTER( regex(?id, '" + personId + "') ).\n" +
+                "     ?subject my:" + propertyName + "?series.\n" +
+                "     ?series my:hasSeriesId ?seriesID.\n" +
+                "     ?series my:hasTitle ?seriesTitle.\n" +
+                // FIXME: ?series my:hasWikiURL ?personImageURL.
+                "}";
+        // FIXME: ADD PERSONIMAGEURL
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet resultSet = qExe.execSelect();
+
+        while (resultSet.hasNext()) {
+            QuerySolution querySolution = resultSet.next();
+
+            // The next variable is just here to stop Intellij from telling me I have duplicate code!
+            // (In fact the code is duplicate but I will add more stuff here)
+            int unusedVariable = 2;
+
+            RDFNode seriesTitleNode = querySolution.get("?seriesTitle");
+            RDFNode seriesIdNode = querySolution.get("?seriesID");
+            // FIXME: RDFNode seriesImageURLNode = querySolution.get("personImageURL");
+            if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral() /*FIXME: && seriesImageURLNode.isLiteral()*/ ) {
+                Literal seriesTitle = seriesTitleNode.asLiteral();
+                Literal seriesId = seriesIdNode.asLiteral();
+                // FIXME: Literal seriesImageURL = seriesImageURLNode.asLiteral();
+
+                // Remember: first position has id, second has name and third has imageURL!!
+                result.add(new String[] { seriesId.getString(), seriesTitle.getString(), "imageURL" /*FIXME: seriesImageURL.getString()*/ });
+            }
+        }
+
+        qExe.close();
         return result;
     }
 

@@ -74,7 +74,7 @@
 
 		function getSeriesInfo() {
 
-			var data = {"seriesId" : "tt1520211"};
+			var data = {"id" : "tt1520211"};
 
 			$.ajax({
                 type: "POST",
@@ -95,11 +95,11 @@
                     var firstActor = series["actors"][0];
                     var firstCreator = series["creators"][0];
 
-                    console.log("First actor in the list: {name: " + firstActor[0] + ", id: " + firstActor[1] +
-                                ", imageURL (for now wikiURL but will be fixed): " + firstActor[2]);
+                    console.log("First actor in the list: {id: " + firstActor[0] + ", name: " + firstActor[1] +
+                                ", imageURL (for now wikiURL but will be fixed): " + firstActor[2] + "}");
 
-                    console.log("First creator in the list: {name: " + firstCreator[0] + ", id: " + firstCreator[1] +
-                            ", imageURL (for now wikiURL but will be fixed): " + firstCreator[2]);
+                    console.log("First creator in the list: {id: " + firstCreator[0] + ", name: " + firstCreator[1] +
+                            ", imageURL (for now wikiURL but will be fixed): " + firstCreator[2] + "}");
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR.status);
@@ -108,9 +108,50 @@
             });
 		}
 
+        function getPersonInfo() {
+            var data = {"id" : "nm0000002"};
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8090/getPersonInfo",
+                data: JSON.stringify(data),
+                async: true,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.setRequestHeader("Accept", "application/json")
+                },
+                success: function (person) {
+                    console.log("Person basic data --> {id: " + person["id"] + ", name: " + person["name"] +
+                                ", biography: " + person["biography"] + ", birthDate: " + person["birthDate"] +
+                                ", wikiURL: " + person["wikiURL"] + ", totalSeriesAppearances: " +
+                                person["seriesActed"].length + ", totalSeriesCreated: " + person["seriesCreated"] +
+                                ", imageURL: not supported yet}");
+
+                    var firstSeriesActed = person["seriesActed"][0];
+                    var firstSeriesCreated = person["seriesCreated"][0];
+
+                    if (firstSeriesActed) {
+                        console.log("First series acted in the list: {id: " + firstSeriesActed[0] + ", name: " +
+                                    firstSeriesActed[1] + ", imageURL (for now dummy content but will be fixed): " +
+                                    firstSeriesActed[2]);
+                    }
+                    if (firstSeriesCreated) {
+                        console.log("First series created in the list: {id: " + firstSeriesCreated[0] + ", name: " +
+                                    firstSeriesCreated[1] + ", imageURL (for now dummy content but will be fixed): " +
+                                    firstSeriesCreated[2]);
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR.status);
+                    console.log(exception);
+                }
+            });
+        }
+
 		$(document).ready(function() {
 			//getGenres();
-			getSeriesInfo();
+			//getSeriesInfo();
+			getPersonInfo();
 		});
 
 	</script>
