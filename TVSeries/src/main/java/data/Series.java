@@ -14,6 +14,8 @@ public class Series {
     private String finishYear;
     private String duration;
     private ArrayList<String> genres;
+    private String image;
+    private float score;
 
     public  Series(String id)
     {
@@ -26,7 +28,9 @@ public class Series {
         startYear = "";
         finishYear = "";
         setDuration("");
-        genres = new ArrayList<>();
+        setGenres(new ArrayList<>());
+        setImage("");
+        setScore(0);
     }
 
     public String getTitle() {
@@ -108,11 +112,13 @@ public class Series {
         result = "Title: " + this.getTitle() +
                 " Start: " + this.getStartYear() +
                 " Finished: "  + this.getFinishYear() +
+                " Score: " + this.getScore() +
                 " Duration: " + this.getDuration() + "\n" +
                 " Description: " + this.getDescription() + "\n" +
                 " Storyline: " + this.getStoryline() + "\n" +
                 " Creators: " + this.getCreatorList().toString() + "\n" +
-                " Actors: " + this.getActorList().toString();
+                " Actors: " + this.getActorList().toString() + "\n" +
+                " Images: " + this.getImage();
         return result;
     }
 
@@ -122,6 +128,26 @@ public class Series {
 
     public void addGenre(Genre genre) {
         // Remove the whitespace
-        this.genres.add(genre.getType().replaceAll(" ", ""));
+        this.getGenres().add(genre.getType().replaceAll(" ", ""));
+    }
+
+    public void setGenres(ArrayList<String> genres) {
+        this.genres = genres;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

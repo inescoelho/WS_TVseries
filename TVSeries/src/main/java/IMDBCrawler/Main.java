@@ -3,14 +3,11 @@ package IMDBCrawler;
 import data.Person;
 import data.Series;
 import ontology.OntologyCreator;
-import org.apache.log4j.varia.NullAppender;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -20,10 +17,17 @@ public class Main {
 
     public static void main(String[] args)
     {
-        // Configure log4j (in our case we just ignore it) because of Jena!
+        ArrayList<Series> seriesToUpdate;
+        ArrayList<Person> personsToUpdate;
+
+        /*// Configure log4j (in our case we just ignore it) because of Jena!
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
-        updateOntology();
+        updateOntology();*/
+
+        //get IMFB additional data
+        //seriesToUpdate = getMoreIMDBSeriesInfo();
+        personsToUpdate = getMoreIMDBPersonInfo();
 
         /*
         FileLoader fileLoader = new FileLoader();
@@ -119,6 +123,52 @@ public class Main {
             bufferedWriter.close();
         } catch(IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static ArrayList<Series> getMoreIMDBSeriesInfo()
+    {
+        ArrayList<Series> seriesToUpdate = new ArrayList<>();
+
+        FileLoader fileLoader = new FileLoader();
+        Crawler crawler = new Crawler(fileLoader.getFileNameMap());
+
+        //load tv series list from cvs file
+        boolean result = fileLoader.loadIDsFromFile("TV_Show_Series.csv");
+
+        if (result) {
+            System.out.println("Successfully loaded ids from file!");
+
+            //get data from IMDB
+            crawler.getIMDBSeriesAdditionaldata();
+            return crawler.getSeriesAdditionalInfo();
+        } else {
+            System.out.println("Failed to load ids from series file!");
+            Thread.dumpStack();
+            return null;
+        }
+    }
+
+    private static ArrayList<Person> getMoreIMDBPersonInfo()
+    {
+        ArrayList<Person> personsToUpdate = new ArrayList<>();
+
+        FileLoader fileLoader = new FileLoader();
+        Crawler crawler = new Crawler(fileLoader.getFileNameMap());
+
+        //load tv series list from cvs file
+        boolean result = fileLoader.loadIDsFromFile("People_Data.csv");
+
+        if (result) {
+            System.out.println("Successfully loaded ids from file!");
+
+            //get data from IMDB
+            crawler.getIMDBPeopleAdditionaldata();
+            return crawler.getPeopleAdditionalInfo();
+        } else {
+            System.out.println("Failed to load ids from people file!");
+            Thread.dumpStack();
+            return null;
         }
     }
 }

@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="89" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="89" />
+            <state vertical-scroll-proportion="1.2826855">
+              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,18 +36,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OntologyCreator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
+      <file leaf-file-name="Crawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7082569">
-              <caret line="478" column="13" selection-start-line="478" selection-start-column="13" selection-end-line="478" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="569" column="14" selection-start-line="569" selection-start-column="14" selection-end-line="569" selection-end-column="14" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#15607#15608#0" expanded="true" />
-                <element signature="e#15675#15676#0" expanded="true" />
-                <element signature="e#17174#17175#0" expanded="true" />
-                <element signature="e#17206#17207#0" expanded="true" />
+                <element signature="e#1379#1380#0" expanded="true" />
+                <element signature="e#1422#1423#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#1670#1671#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/Person.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+              <folding>
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#912#913#0" expanded="true" />
+                <element signature="e#940#941#0" expanded="true" />
+                <element signature="e#982#983#0" expanded="true" />
+                <element signature="e#1016#1017#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Series.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/Series.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="116" column="56" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
+              <folding>
+                <element signature="e#3252#3253#0" expanded="true" />
+                <element signature="e#3288#3289#0" expanded="true" />
+                <element signature="e#3319#3320#0" expanded="true" />
+                <element signature="e#3347#3348#0" expanded="true" />
+                <element signature="e#3388#3389#0" expanded="true" />
+                <element signature="e#3422#3423#0" expanded="true" />
+                <element signature="e#3454#3455#0" expanded="true" />
+                <element signature="e#3482#3483#0" expanded="true" />
+                <element signature="e#3524#3525#0" expanded="true" />
+                <element signature="e#3558#3559#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileLoader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/FileLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,14 +130,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/TV_Show_Series.csv" />
         <option value="$PROJECT_DIR$/src/main/java/data/date.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/Date.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/Series.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/IMDBCrawler/FileLoader.java" />
         <option value="$PROJECT_DIR$/src/main/resources/TV_Show_Series_Reduced.csv" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/Series.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java" />
         <option value="$PROJECT_DIR$/src/main/java/IMDBCrawler/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java" />
       </list>
     </option>
   </component>
@@ -142,8 +189,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -265,6 +310,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -648,6 +695,9 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -732,6 +782,18 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
@@ -774,11 +836,12 @@
       <workItem from="1447771372311" duration="1176000" />
       <workItem from="1447812762355" duration="1638000" />
       <workItem from="1448487082921" duration="8488000" />
+      <workItem from="1448736037099" duration="10702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134685000" />
+    <option name="totallyTimeSpent" value="145387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -786,12 +849,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845894" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32634032" sideWeight="0.50428724" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32634032" sideWeight="0.49571276" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32620922" sideWeight="0.49571276" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24758843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -831,6 +894,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -846,11 +919,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="343" column="20" selection-start-line="343" selection-start-column="20" selection-end-line="343" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -878,11 +947,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -910,11 +975,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -923,13 +984,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -956,11 +1011,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -969,13 +1020,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,11 +1047,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="87" column="90" selection-start-line="87" selection-start-column="90" selection-end-line="87" selection-end-column="90" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1015,13 +1056,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,11 +1083,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="58" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1061,13 +1092,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,13 +1118,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,13 +1172,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,20 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/Series.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="64" selection-start-line="113" selection-start-column="53" selection-end-line="113" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-core/3.0.0/jena-core-3.0.0.jar!/org/apache/jena/ontology/OntModel.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2882353">
@@ -1238,20 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/FileLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4348624">
-          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#1807#1808#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1281,38 +1266,80 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2266667">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="89" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ontology/OntologyCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7082569">
+        <state vertical-scroll-proportion="0.73247665">
           <caret line="478" column="13" selection-start-line="478" selection-start-column="13" selection-end-line="478" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/FileLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/Series.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="56" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
+          <folding>
+            <element signature="e#3252#3253#0" expanded="true" />
+            <element signature="e#3288#3289#0" expanded="true" />
+            <element signature="e#3319#3320#0" expanded="true" />
+            <element signature="e#3347#3348#0" expanded="true" />
+            <element signature="e#3388#3389#0" expanded="true" />
+            <element signature="e#3422#3423#0" expanded="true" />
+            <element signature="e#3454#3455#0" expanded="true" />
+            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="e#3524#3525#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+          <folding>
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Crawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="569" column="14" selection-start-line="569" selection-start-column="14" selection-end-line="569" selection-end-column="14" />
+          <folding>
+            <element signature="e#1379#1380#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1670#1671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/IMDBCrawler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2826855">
+          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+          <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15607#15608#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#17174#17175#0" expanded="true" />
-            <element signature="e#17206#17207#0" expanded="true" />
           </folding>
         </state>
       </provider>

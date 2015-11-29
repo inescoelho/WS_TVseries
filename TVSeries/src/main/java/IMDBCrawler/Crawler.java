@@ -21,9 +21,11 @@ import java.util.Map;
  * Crawls the IMDB website in order to retrieve information for each serie on the hashmap
  */
 public class Crawler {
+    private HashMap<String, String> fileNameMap;
     private ArrayList<Series> seriesList;
     private ArrayList<Genre> genreList;
-    private HashMap<String, String> fileNameMap;
+    private ArrayList<Person> peopleAdditionalInfo;
+    private ArrayList<Series> seriesAdditionalInfo;
 
     /**
      * Class constructor
@@ -31,9 +33,35 @@ public class Crawler {
      * @param map list of series name and IMDB ids
      */
     public Crawler(HashMap<String, String> map) {
-        setGenreList(new ArrayList<>());
         setFileNameMap(map);
+        setGenreList(new ArrayList<>());
         setSeriesList(new ArrayList<>());
+        setPeopleAdditionalInfo(new ArrayList<>());
+        setSeriesAdditionalInfo(new ArrayList<>());
+    }
+
+    public ArrayList<Series> getSeriesList() {
+        return seriesList;
+    }
+
+    public void setSeriesList(ArrayList<Series> seriesList) {
+        this.seriesList = seriesList;
+    }
+
+    public ArrayList<Person> getPeopleAdditionalInfo() {
+        return peopleAdditionalInfo;
+    }
+
+    public void setPeopleAdditionalInfo(ArrayList<Person> peopleAdditionalInfo) {
+        this.peopleAdditionalInfo = peopleAdditionalInfo;
+    }
+
+    public ArrayList<Series> getSeriesAdditionalInfo() {
+        return seriesAdditionalInfo;
+    }
+
+    public void setSeriesAdditionalInfo(ArrayList<Series> seriesAdditionalInfo) {
+        this.seriesAdditionalInfo = seriesAdditionalInfo;
     }
 
     public void getIMDBdata() {
@@ -460,14 +488,6 @@ public class Crawler {
         return state;
     }
 
-    public ArrayList<Series> getSeriesList() {
-        return seriesList;
-    }
-
-    public void setSeriesList(ArrayList<Series> seriesList) {
-        this.seriesList = seriesList;
-    }
-
     private void writeToFile(Series series) {
         boolean result;
         try {
@@ -488,4 +508,98 @@ public class Crawler {
             exception.printStackTrace();
         }
     }
+
+    /**
+     * Crawls IMDB site in order to get series scores and images from the series in the TV_Show_Series.csv file
+     */
+    public void getIMDBSeriesAdditionaldata() {
+        String mainURL = "http://www.imdb.com/title/tt";
+        String seriesURL;
+        Series series;
+        Document doc;
+
+        for (Map.Entry<String, String> entry : getFileNameMap().entrySet()) {
+
+            series = new Series(entry.getValue());
+            seriesURL = mainURL + entry.getValue();
+            series.setTitle(entry.getKey());
+            //System.out.printf("Name : %s ID: %s URL: %s %n", entry.getKey(), entry.getValue(), seriesURL);
+
+            try {
+                doc = Jsoup.connect(seriesURL).userAgent("Mozilla").get();
+
+                //get score
+                Elements el = doc.select("span[itemprop = ratingValue]");
+                String score = el.toString();
+                //remove unwanted tags
+                score = score.replace("</span>", "");
+                int stop= score.lastIndexOf('>');
+                score = score.substring(stop+1);
+                series.setScore(Float.parseFloat(score));
+
+                //get images
+                Element el1 = doc.select("div.image").get(0).select("a").first().select("img").first();
+                String url = el1.absUrl("src");
+                series.setImage(url);
+
+                getSeriesAdditionalInfo().add(series);
+            }
+            catch (IOException var12) {
+                System.out.println("Timeout while connecting to :" + seriesURL + "!");
+                writeToFile(series);
+            }
+
+            //break;
+        }
+    }
+
+
+    /**
+     * Crawls IMDB site in order to get additional information about actors and directors in the People_Data.csv
+     */
+    public void getIMDBPeopleAdditionaldata() {
+        String url;
+        Person person;
+        Document doc;
+
+        for (Map.Entry<String, String> entry : getFileNameMap().entrySet()) {
+            String id = entry.getValue().replace("\"", "");
+            String name = entry.getKey().replace("\"", "");
+            url = "http://www.imdb.com/name/" + id + "/bio";
+            person = new Person(name, id);
+            //System.out.println(url);
+
+            try {
+                doc = Jsoup.connect(url).userAgent("Mozilla").get();
+
+                //get images
+                Elements images = doc.select("div.image");
+                if (images.size()>0)
+                {
+                    Element link = images.get(0).select("a").first().select("img").first();
+                    String image_url = link.absUrl("src");
+                    person.setImage(image_url);
+                    peopleAdditionalInfo.add(person);
+                }
+                else
+                {
+                    Elements image = doc.select("img[itemprop = image]").select("img");
+
+                    if (image.size()!=0)
+                    {
+                        Element link = image.first();
+                        String image_url = link.absUrl("src");
+                        person.setImage(image_url);
+                        peopleAdditionalInfo.add(person);
+                    }
+                }
+
+                //System.out.println(person.toString());
+            }
+            catch (IOException var12) {
+                System.out.println("Timeout while connecting to :" + url + "!");
+            }
+        }
+    }
 }
+
