@@ -238,8 +238,6 @@ public class OntologyHandler {
         String title = series.getPropertyValue(hasTitle).toString();
         String description = series.getPropertyValue(hasDescription).toString();
         String storyline = series.getPropertyValue(hasStoryline).toString();
-        String imageURL = series.getPropertyValue(hasSeriesImageURL).toString();
-        double rating = series.getPropertyValue(hasRating).asLiteral().getDouble();
         int episodeDuration = getIntFromString(series.getPropertyValue(hasEpisodeDuration).toString());
 
         int pilotYear;
@@ -256,6 +254,22 @@ public class OntologyHandler {
             finishYear = getIntFromString(series.getPropertyValue(hasFinishYear).toString());
         } else {
             finishYear = -1;
+        }
+
+        String imageURL;
+
+        if (series.getPropertyValue(hasSeriesImageURL) != null) {
+            imageURL = series.getPropertyValue(hasSeriesImageURL).toString();
+        } else {
+            imageURL = "";
+        }
+
+        double rating;
+
+        if (series.getPropertyValue(hasRating) != null) {
+            rating = series.getPropertyValue(hasRating).asLiteral().getDouble();
+        } else {
+            rating = -1;
         }
 
         ArrayList<String[]> creators = getActorsOrCreatorsFromSeries(seriesId, false);

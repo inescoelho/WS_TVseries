@@ -11,11 +11,11 @@ public class Series {
     private String title;
     private String description;
     private String storyline;
-    private String imageURL;
+    private String imageURL; // Empty string if no information if provided
     private int episodeDuration;
     private int pilotYear; // -1 if no information is provided!!!
     private int finishYear; // -1 if no information is provided!!!
-    private double rating;
+    private double rating; // -1 if no information is provied!!!
     private ArrayList<String[]> actors; // first position has name, second has id and third has imageURL
     private ArrayList<String[]> creators; // first position has name, second has id and third has imageURL
 
