@@ -355,7 +355,7 @@ public class OntologyHandler {
 
             RDFNode personNameNode = querySolution.get("?personName");
             RDFNode personIdNode = querySolution.get("?personId");
-            RDFNode personImageURLNode = querySolution.get("personImageURL");
+            RDFNode personImageURLNode = querySolution.get("?personImageURL");
             if (personNameNode.isLiteral() && personIdNode.isLiteral() && personImageURLNode.isLiteral()) {
                 Literal personName = personNameNode.asLiteral();
                 Literal personId = personIdNode.asLiteral();
@@ -394,13 +394,13 @@ public class OntologyHandler {
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                 "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
-                "SELECT ?seriesTitle ?seriesID\n" +
+                "SELECT ?seriesTitle ?seriesID ?seriesImageURL\n" +
                 "WHERE {\n" +
                 "     ?subject my:hasPersonId ?id FILTER( regex(?id, '" + personId + "') ).\n" +
                 "     ?subject my:" + propertyName + "?series.\n" +
                 "     ?series my:hasSeriesId ?seriesID.\n" +
                 "     ?series my:hasTitle ?seriesTitle.\n" +
-                "     ?series my:hasPersonImageURL ?personImageURL. " +
+                "     ?series my:hasSeriesImageURL ?seriesImageURL. " +
                 "}";
 
         Query queryObject = QueryFactory.create(queryString);
@@ -418,7 +418,7 @@ public class OntologyHandler {
 
             RDFNode seriesTitleNode = querySolution.get("?seriesTitle");
             RDFNode seriesIdNode = querySolution.get("?seriesID");
-            RDFNode seriesImageURLNode = querySolution.get("?personImageURL");
+            RDFNode seriesImageURLNode = querySolution.get("?seriesImageURL");
             if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral() && seriesImageURLNode.isLiteral() ) {
                 Literal seriesTitle = seriesTitleNode.asLiteral();
                 Literal seriesId = seriesIdNode.asLiteral();

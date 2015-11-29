@@ -131,8 +131,6 @@
                     var firstSeriesActed = person["seriesActed"][0];
                     var firstSeriesCreated = person["seriesCreated"][0];
 
-                    console.log("AQUI " + firstSeriesCreated);
-
                     if (firstSeriesActed) {
                         console.log("\n\nFirst series acted in the list: {id: " + firstSeriesActed[0] + ", name: " +
                                     firstSeriesActed[1] + ", imageURL: " + firstSeriesActed[2]);
@@ -151,8 +149,8 @@
 
 		$(document).ready(function() {
 			//getGenres();
-			//getSeriesInfo();
-			getPersonInfo();
+			getSeriesInfo();
+			// getPersonInfo();
 		});
 
 	</script>
