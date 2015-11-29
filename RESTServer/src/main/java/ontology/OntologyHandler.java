@@ -291,20 +291,27 @@ public class OntologyHandler {
         OntProperty hasBiography = ontologyModel.getDatatypeProperty(namespace + "hasBiography");
         OntProperty hasBirthDate = ontologyModel.getDatatypeProperty(namespace + "hasBirthDate");
         OntProperty hasWikiURL = ontologyModel.getDatatypeProperty(namespace + "hasWikiURL");
-        //FIXME: OntProperty hasImageURL = ontologyModel.getDatatypeProperty(namespace + "hasImageURL");
+        OntProperty hasPersonImageURL = ontologyModel.getDatatypeProperty(namespace + "hasPersonImageURL");
 
 
         String name = person.getPropertyValue(hasName).toString();
         String biography = person.getPropertyValue(hasBiography).toString();
         String birthDate = person.getPropertyValue(hasBirthDate).toString();
         String wikiURL = person.getPropertyValue(hasWikiURL).toString();
-        // FIXME: String imageURL = person.getPropertyValue(hasImageURL).toString();
+
+        String imageURL;
+        if (person.getPropertyValue(hasPersonImageURL) != null) {
+            imageURL = person.getPropertyValue(hasPersonImageURL).toString();
+        } else {
+            imageURL = "";
+        }
 
         ArrayList<String[]> seriesCreated = getSeriesActedOrCreatedFromActor(personId, false);
         ArrayList<String[]> seriesActed = getSeriesActedOrCreatedFromActor(personId, true);
 
-        // FIXME: Add imageURL
-        return new Person(personId, name, biography, birthDate, wikiURL, seriesActed, seriesCreated);
+        System.out.println("HERE " + seriesActed.size());
+
+        return new Person(personId, name, biography, birthDate, wikiURL, imageURL, seriesActed, seriesCreated);
     }
 
     /**
@@ -336,9 +343,8 @@ public class OntologyHandler {
                "?subject my:" + propertyName + "?person. " +
                "?person my:hasPersonId ?personId. " +
                "?person my:hasName ?personName. " +
-               "?person my:hasWikiURL ?personImageURL. " +
+               "?person my:hasPersonImageURL ?personImageURL. " +
                "}";
-        // FIXME: CHANGE HASWIKIURL TO IMAGE URL WHEN ACTORS HAVE IT
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -394,13 +400,14 @@ public class OntologyHandler {
                 "     ?subject my:" + propertyName + "?series.\n" +
                 "     ?series my:hasSeriesId ?seriesID.\n" +
                 "     ?series my:hasTitle ?seriesTitle.\n" +
-                // FIXME: ?series my:hasWikiURL ?personImageURL.
+                "     ?series my:hasPersonImageURL ?personImageURL. " +
                 "}";
-        // FIXME: ADD PERSONIMAGEURL
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
         ResultSet resultSet = qExe.execSelect();
+
+        System.out.println("AQUI " + resultSet.hasNext());
 
         while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
@@ -411,14 +418,14 @@ public class OntologyHandler {
 
             RDFNode seriesTitleNode = querySolution.get("?seriesTitle");
             RDFNode seriesIdNode = querySolution.get("?seriesID");
-            // FIXME: RDFNode seriesImageURLNode = querySolution.get("personImageURL");
-            if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral() /*FIXME: && seriesImageURLNode.isLiteral()*/ ) {
+            RDFNode seriesImageURLNode = querySolution.get("?personImageURL");
+            if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral() && seriesImageURLNode.isLiteral() ) {
                 Literal seriesTitle = seriesTitleNode.asLiteral();
                 Literal seriesId = seriesIdNode.asLiteral();
-                // FIXME: Literal seriesImageURL = seriesImageURLNode.asLiteral();
+                Literal seriesImageURL = seriesImageURLNode.asLiteral();
 
                 // Remember: first position has id, second has name and third has imageURL!!
-                result.add(new String[] { seriesId.getString(), seriesTitle.getString(), "imageURL" /*FIXME: seriesImageURL.getString()*/ });
+                result.add(new String[] { seriesId.getString(), seriesTitle.getString(), seriesImageURL.getString() });
             }
         }
 

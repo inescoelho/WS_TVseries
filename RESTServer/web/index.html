@@ -97,10 +97,10 @@
                     var firstCreator = series["creators"][0];
 
                     console.log("First actor in the list: {id: " + firstActor[0] + ", name: " + firstActor[1] +
-                                ", imageURL (for now wikiURL but will be fixed): " + firstActor[2] + "}");
+                                ", imageURL: " + firstActor[2] + "}");
 
                     console.log("First creator in the list: {id: " + firstCreator[0] + ", name: " + firstCreator[1] +
-                            ", imageURL (for now wikiURL but will be fixed): " + firstCreator[2] + "}");
+                            ", imageURL: " + firstCreator[2] + "}");
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR.status);
@@ -126,20 +126,20 @@
                                 ", biography: " + person["biography"] + ", birthDate: " + person["birthDate"] +
                                 ", wikiURL: " + person["wikiURL"] + ", totalSeriesAppearances: " +
                                 person["seriesActed"].length + ", totalSeriesCreated: " + person["seriesCreated"] +
-                                ", imageURL: not supported yet}");
+                                ", imageURL: " + person["imageURL"] + "}");
 
                     var firstSeriesActed = person["seriesActed"][0];
                     var firstSeriesCreated = person["seriesCreated"][0];
 
+                    console.log("AQUI " + firstSeriesCreated);
+
                     if (firstSeriesActed) {
-                        console.log("First series acted in the list: {id: " + firstSeriesActed[0] + ", name: " +
-                                    firstSeriesActed[1] + ", imageURL (for now dummy content but will be fixed): " +
-                                    firstSeriesActed[2]);
+                        console.log("\n\nFirst series acted in the list: {id: " + firstSeriesActed[0] + ", name: " +
+                                    firstSeriesActed[1] + ", imageURL: " + firstSeriesActed[2]);
                     }
                     if (firstSeriesCreated) {
-                        console.log("First series created in the list: {id: " + firstSeriesCreated[0] + ", name: " +
-                                    firstSeriesCreated[1] + ", imageURL (for now dummy content but will be fixed): " +
-                                    firstSeriesCreated[2]);
+                        console.log("\n\nFirst series created in the list: {id: " + firstSeriesCreated[0] + ", name: " +
+                                    firstSeriesCreated[1] + ", imageURL: " + firstSeriesCreated[2]);
                     }
                 },
                 error: function (jqXHR, exception) {
@@ -151,8 +151,8 @@
 
 		$(document).ready(function() {
 			//getGenres();
-			getSeriesInfo();
-			//getPersonInfo();
+			//getSeriesInfo();
+			getPersonInfo();
 		});
 
 	</script>

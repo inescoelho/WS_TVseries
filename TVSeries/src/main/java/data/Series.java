@@ -109,7 +109,8 @@ public class Series {
     public String toString() {
         String result;
 
-        result = "Title: " + this.getTitle() +
+        result = " ID: " + this.getSeriesId() +
+                " Title: " + this.getTitle() +
                 " Start: " + this.getStartYear() +
                 " Finished: "  + this.getFinishYear() +
                 " Score: " + this.getScore() +

@@ -3,6 +3,7 @@ package IMDBCrawler;
 import data.Person;
 import data.Series;
 import ontology.OntologyCreator;
+import org.apache.log4j.varia.NullAppender;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,14 +21,18 @@ public class Main {
         ArrayList<Series> seriesToUpdate;
         ArrayList<Person> personsToUpdate;
 
-        /*// Configure log4j (in our case we just ignore it) because of Jena!
+        // Configure log4j (in our case we just ignore it) because of Jena!
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
-        updateOntology();*/
+        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
 
         //get IMFB additional data
         //seriesToUpdate = getMoreIMDBSeriesInfo();
         personsToUpdate = getMoreIMDBPersonInfo();
+
+        if (personsToUpdate != null) {
+            ontologyCreator.updatePeople(personsToUpdate);
+        }
 
         /*
         FileLoader fileLoader = new FileLoader();
@@ -97,9 +102,9 @@ public class Main {
             }
 
         }
+        */
 
         ontologyCreator.writeModelToFile("tv_series_ontology_current.rdf", "RDF/XML");
-        */
     }
 
     private static void updateOntology() {
@@ -128,8 +133,6 @@ public class Main {
 
     private static ArrayList<Series> getMoreIMDBSeriesInfo()
     {
-        ArrayList<Series> seriesToUpdate = new ArrayList<>();
-
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
 
@@ -151,8 +154,6 @@ public class Main {
 
     private static ArrayList<Person> getMoreIMDBPersonInfo()
     {
-        ArrayList<Person> personsToUpdate = new ArrayList<>();
-
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
 

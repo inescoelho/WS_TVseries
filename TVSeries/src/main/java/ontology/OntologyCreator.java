@@ -481,6 +481,43 @@ public class OntologyCreator {
     }
 
     /**
+     * Update the image url information of a set of TV Series Actors and Creators in the ontology
+     * @param people The set of TV Series Actors and Creators whose information is going to be updated
+     */
+    public void updatePeople(ArrayList<Person> people) {
+        Individual currentIndividual;
+        OntProperty hasPersonImageURL = ontologyModel.getOntProperty(namespace + "hasPersonImageURL");
+
+        for (Person currentPerson : people) {
+            currentIndividual = peopleList.get(currentPerson.getId());
+            currentIndividual.addLiteral(hasPersonImageURL, currentPerson.getImage());
+        }
+    }
+
+    /**
+     * Update the rating and image url information of a set of TV Series in the ontology
+     * @param series The set of TV Series whose information is going to be updated
+     */
+    public void updateSeries(ArrayList<Series> series) {
+        Individual currentIndividual;
+        double currentScore;
+
+        // Properties to add
+        OntProperty hasRating = ontologyModel.getOntProperty(namespace + "hasRating");
+        OntProperty hasSeriesImageURL = ontologyModel.getOntProperty(namespace + "hasSeriesImageURL");
+
+        for (Series currentSeries : series) {
+            // Get individual
+            currentIndividual = seriesList.get("tt" + currentSeries.getSeriesId());
+
+            currentScore = currentSeries.getScore();
+
+            currentIndividual.addLiteral(hasRating, currentScore);
+            currentIndividual.addLiteral(hasSeriesImageURL, currentSeries.getImage());
+        }
+    }
+
+    /**
      * Checks if a given url is valid
      * @param url The url to be checked
      * @return A boolean value signalling if the given url is valid or not
