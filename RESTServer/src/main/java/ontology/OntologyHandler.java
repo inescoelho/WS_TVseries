@@ -230,14 +230,16 @@ public class OntologyHandler {
         OntProperty hasEpisodeDuration = ontologyModel.getDatatypeProperty(namespace + "hasEpisodeDuration");
         OntProperty hasPilotYear = ontologyModel.getDatatypeProperty(namespace + "hasPilotYear");
         OntProperty hasFinishYear = ontologyModel.getDatatypeProperty(namespace + "hasFinishYear");
-        // FIxME: OntProperty hasImageURL = ontologyModel.getDatatypeProperty(namespace + "hasImageURL");
+        OntProperty hasSeriesImageURL = ontologyModel.getDatatypeProperty(namespace + "hasSeriesImageURL");
+        OntProperty hasRating = ontologyModel.getDatatypeProperty(namespace + "hasRating");
 
 
         // Get the values for each property
         String title = series.getPropertyValue(hasTitle).toString();
         String description = series.getPropertyValue(hasDescription).toString();
         String storyline = series.getPropertyValue(hasStoryline).toString();
-        // FIXME: String imageURL = series.getPropertyValue(hasImageURL).toString();
+        String imageURL = series.getPropertyValue(hasSeriesImageURL).toString();
+        double rating = series.getPropertyValue(hasRating).asLiteral().getDouble();
         int episodeDuration = getIntFromString(series.getPropertyValue(hasEpisodeDuration).toString());
 
         int pilotYear;
@@ -259,9 +261,8 @@ public class OntologyHandler {
         ArrayList<String[]> creators = getActorsOrCreatorsFromSeries(seriesId, false);
         ArrayList<String[]> actors = getActorsOrCreatorsFromSeries(seriesId, true);
 
-        // FIXME: Add imageURL
-        return new Series(title, description, storyline, seriesId, episodeDuration, pilotYear, finishYear, actors,
-                          creators);
+        return new Series(title, description, storyline, seriesId, episodeDuration, pilotYear, finishYear, imageURL,
+                          rating, actors, creators);
     }
 
     /**

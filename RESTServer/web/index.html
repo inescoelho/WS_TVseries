@@ -89,7 +89,8 @@
                     console.log("Series basic data --> {id: " + series["id"] + ", title: " + series["title"] +
                                 ", description: " + series["description"] + ", storyline: " + series["storyline"] +
                                 ", episodeDuration: " + series["episodeDuration"] + ", pilotYear: " +
-                                series["pilotYear"] + ", finishYear: " + series["finishYear"] + ", actors: " +
+                                series["pilotYear"] + ", finishYear: " + series["finishYear"] + ", image: " +
+                                series["imageURL"] + ", rating: " + series["rating"] + ", actors: " +
                                 series["actors"].length + ", creators: " + series["creators"].length + "}");
 
                     var firstActor = series["actors"][0];
@@ -150,8 +151,8 @@
 
 		$(document).ready(function() {
 			//getGenres();
-			//getSeriesInfo();
-			getPersonInfo();
+			getSeriesInfo();
+			//getPersonInfo();
 		});
 
 	</script>
