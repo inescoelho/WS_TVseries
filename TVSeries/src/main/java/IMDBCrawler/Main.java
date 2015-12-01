@@ -26,13 +26,18 @@ public class Main {
 
         OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
 
+        ontologyCreator.updatePerson("nm0534409");
+
         //get IMFB additional data
         //seriesToUpdate = getMoreIMDBSeriesInfo();
+        /*
         personsToUpdate = getMoreIMDBPersonInfo();
 
         if (personsToUpdate != null) {
             ontologyCreator.updatePeople(personsToUpdate);
         }
+
+        */
 
         /*
         FileLoader fileLoader = new FileLoader();

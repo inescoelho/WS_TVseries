@@ -480,6 +480,15 @@ public class OntologyCreator {
         }
     }
 
+    public void updatePerson(String personID) {
+        Individual individual = peopleList.get(personID);
+
+        if (individual != null) {
+            OntProperty hasName = ontologyModel.getDatatypeProperty(namespace + "hasName");
+            individual.addLiteral(hasName, "Bill Macy");
+        }
+    }
+
     /**
      * Update the image url information of a set of TV Series Actors and Creators in the ontology
      * @param people The set of TV Series Actors and Creators whose information is going to be updated
