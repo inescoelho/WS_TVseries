@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
+                <ul class="nav nav-sidebar" id="listGenres">
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -47,16 +47,6 @@
     </div>
 
     <script>
-        $.urlParam = function(name){
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            if (results==null){
-                return null;
-            }
-            else{
-                return results[1] || 0;
-            }
-        }
-
         function getGenres() {
             $.ajax({
                 type: "GET",
@@ -73,7 +63,7 @@
 
                     for (var i=0; i < data.length; i++) {
                         var currentGenre = data[i];
-                        $('div>div>div>ul').append("<li><a href='listSeries?category=" + currentGenre["type"] + "'>"
+                        $('#listGenres').append("<li><a href='listSeries?category=" + currentGenre["type"] + "'>"
                                 + currentGenre["type"] + "</a></li>");
                     }
                 },
