@@ -1,17 +1,16 @@
 package ontology;
 
 import org.apache.jena.ontology.*;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.util.iterator.ExtendedIterator;
-import server.data.ontology.Genre;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.iterator.ExtendedIterator;
+import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -273,8 +272,7 @@ public class OntologyHandler {
 
         if (series.getPropertyValue(hasRating) != null) {
             rating = series.getPropertyValue(hasRating).asLiteral().getDouble();
-            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-            rating = Double.valueOf(decimalFormat.format(rating));
+            rating = Math.floor(rating * 100) / 100;
         } else {
             rating = -1;
         }
