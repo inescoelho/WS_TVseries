@@ -116,7 +116,10 @@ public class OntologyHandler {
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                 "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
-                "SELECT ?subject WHERE { ?subject rdfs:subClassOf my:SeriesGenre }";
+                "SELECT ?subject WHERE { " +
+                "?subject rdfs:subClassOf my:SeriesGenre. " +
+                "?subject a ?class. " +
+                "} ORDER BY ASC(?class)";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -194,7 +197,8 @@ public class OntologyHandler {
                 "?subject rdf:type my:" + genreName + ". " +
                 "?subject my:hasTitle ?title. " +
                 "?subject my:hasSeriesId ?id. " +
-                "}";
+                "?subject my:hasRating ?rating. " +
+                "} ORDER BY DESC(?rating) ?title";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -359,7 +363,7 @@ public class OntologyHandler {
                "?person my:hasPersonId ?personId. " +
                "?person my:hasName ?personName. " +
                "?person my:hasPersonImageURL ?personImageURL. " +
-               "}";
+               "} ORDER BY ASC(?personName)";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -416,7 +420,7 @@ public class OntologyHandler {
                 "     ?series my:hasSeriesId ?seriesID.\n" +
                 "     ?series my:hasTitle ?seriesTitle.\n" +
                 "     ?series my:hasSeriesImageURL ?seriesImageURL. " +
-                "}";
+                "} ORDER BY ASC(?seriesTitle)";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
