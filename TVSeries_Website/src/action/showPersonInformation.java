@@ -1,5 +1,6 @@
 package action;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,17 +11,17 @@ import java.io.IOException;
 /**
  * Created by user on 01/12/2015.
  */
-@WebServlet("/actor")
+@WebServlet("/person")
 public class showPersonInformation extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* String seriesID = req.getParameter("id");
-        req.setAttribute("seriesID", seriesID);
+        String personID = req.getParameter("id");
+        req.setAttribute("personID", personID);
         //System.out.println(category);
 
-        RequestDispatcher rd = req.getRequestDispatcher("series.jsp");
-        rd.forward(req, resp);*/
+        RequestDispatcher rd = req.getRequestDispatcher("person.jsp");
+        rd.forward(req, resp);
     }
 
 }

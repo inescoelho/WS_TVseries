@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-2">
             <div class="thumbnail">
-                <a href="actor.jsp">
+                <a href="person.jsp">
                     <img src="http://i.imgur.com/d9AZyDt.jpg" alt="...">
                 </a>
 
@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-2">
             <div class="thumbnail">
-                <a href="actor.jsp">
+                <a href="person.jsp">
                     <img src="http://i.imgur.com/d9AZyDt.jpg" alt="...">
                 </a>
 

@@ -24,7 +24,6 @@
         <p><b>Actors: </b></p>
     </div>
 
-
     <script>
         function getSeriesInfo() {
 
