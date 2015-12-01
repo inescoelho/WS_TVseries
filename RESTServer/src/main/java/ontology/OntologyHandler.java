@@ -11,6 +11,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -268,6 +269,8 @@ public class OntologyHandler {
 
         if (series.getPropertyValue(hasRating) != null) {
             rating = series.getPropertyValue(hasRating).asLiteral().getDouble();
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            rating = Double.valueOf(decimalFormat.format(rating));
         } else {
             rating = -1;
         }
