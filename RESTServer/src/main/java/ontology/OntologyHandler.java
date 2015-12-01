@@ -296,8 +296,17 @@ public class OntologyHandler {
 
         String name = person.getPropertyValue(hasName).toString();
         String biography = person.getPropertyValue(hasBiography).toString();
+        biography = biography.replace("\"", "");
+        biography = biography.replace("\\", "");
+
         String birthDate = person.getPropertyValue(hasBirthDate).toString();
-        String wikiURL = person.getPropertyValue(hasWikiURL).toString();
+        String wikiURL;
+
+        if (person.getPropertyValue(hasWikiURL) != null) {
+            wikiURL = person.getPropertyValue(hasWikiURL).toString();
+        } else {
+            wikiURL = "";
+        }
 
         String imageURL;
         if (person.getPropertyValue(hasPersonImageURL) != null) {
@@ -308,8 +317,6 @@ public class OntologyHandler {
 
         ArrayList<String[]> seriesCreated = getSeriesActedOrCreatedFromActor(personId, false);
         ArrayList<String[]> seriesActed = getSeriesActedOrCreatedFromActor(personId, true);
-
-        System.out.println("HERE " + seriesActed.size());
 
         return new Person(personId, name, biography, birthDate, wikiURL, imageURL, seriesActed, seriesCreated);
     }
@@ -406,8 +413,6 @@ public class OntologyHandler {
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
         ResultSet resultSet = qExe.execSelect();
-
-        System.out.println("AQUI " + resultSet.hasNext());
 
         while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();

@@ -103,25 +103,6 @@
                                     "</div>");
                         }
                     }
-/*
-                    for (var actor = 0; actor < series["actors"].length; actor ++)
-                    {
-                        $('#actors').append(
-                                "<div class=\"row\">" +
-                                "<div class=\"col-md-3 col-md-offset-2\">" +
-                                "<div class=\"text-center\" id=\"actorsImage\"" + actor + "\">" +
-                                "<a href=person?id=" + series["actors"][actor][0] + ">" +
-                                "<img src=" + series["actors"][actor][2] + ">" +
-                                "</a>" +
-                                "</div>" +
-                                "</div>" +
-                                "<div class=\"col-md-7\">" +
-                                "<a href=person?id=" + series["actors"][actor][0] + ">" +
-                                "<p>" + series["actors"][actor][1] + "</p>" +
-                                "</a>" +
-                                "</div>" +
-                                "</div>");
-                    }*/
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR.status);
