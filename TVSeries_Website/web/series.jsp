@@ -3,114 +3,102 @@
 
 <t:wrapper>
 
-    <div class="series-header">
-        <h1 class="series-title">Series Name</h1>
-    </div>
+    <div class="series-header" id="seriesTitle"></div>
 
     <div class="row">
 
         <!-- left column -->
         <div class="col-md-4">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="...">
-            </div>
+            <div class="text-center" id="seriesImage"></div>
         </div>
 
         <!-- right column -->
-        <div class="col-md-8">
-            <p>2010-2014</p>
-            <b>Storyline: </b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet magna at ipsum luctus volutpat non pellentesque odio. Fusce faucibus mi at condimentum finibus.
-        </div>
+        <div class="col-md-8" id="rightInfo"></div>
     </div>
 
-    <div class="container">
-        <p><b>Description: </b></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet magna at ipsum luctus volutpat non pellentesque odio.
-            Fusce faucibus mi at condimentum finibus. Cras quis nibh pulvinar, accumsan lorem non, facilisis neque.
-            Curabitur sit amet lobortis eros, nec blandit ex. Nulla quis leo posuere erat dapibus varius.
-            Nam placerat, diam eget tempor malesuada, dolor ante finibus dolor, quis sodales magna nibh mollis arcu.
-            Aliquam odio nisl, aliquam ac lorem ut, commodo pellentesque nibh.
-            Fusce iaculis, erat in congue aliquam, turpis leo ullamcorper ex, et facilisis leo tellus vitae justo. Donec nec sodales lorem, et iaculis ipsum.</p>
-        <p>Sed efficitur, felis et euismod ornare, sapien mauris sodales tortor, nec finibus odio dui sed eros.
-            Vivamus in enim at erat accumsan efficitur. In hac habitasse platea dictumst.
-            Sed scelerisque porttitor dolor, in accumsan dolor condimentum a. Integer pellentesque pellentesque varius.
-            Etiam non dolor eu mauris cursus luctus. Cras iaculis leo in tellus pharetra, at aliquet diam posuere.
-            Vestibulum efficitur ipsum libero, in maximus sapien tincidunt at.</p>
-    </div>
-
-    <div class="container">
+    <div class="container" id="creators">
         <p><b>Created by: </b></p>
-        <div class="row">
-            <!-- left column -->
-            <div class="col-md-3 col-md-offset-2">
-                <div class="text-center">
-                    <img src="//placehold.it/100" class="avatar img-circle" alt="...">
-                </div>
-            </div>
-
-            <!-- right column -->
-            <div class="col-md-7">
-                <p>Name</p>
-            </div>
-        </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="actors">
         <p><b>Actors: </b></p>
-        <div class="row">
-            <!-- left column -->
-            <div class="col-md-3 col-md-offset-2">
-                <div class="text-center">
-                    <img src="//placehold.it/100" class="avatar img-circle" alt="...">
-                </div>
-            </div>
-
-            <!-- right column -->
-            <div class="col-md-7">
-                <p>Name</p>
-            </div>
-        </div>
-        <div class="row">
-            <!-- left column -->
-            <div class="col-md-3 col-md-offset-2">
-                <div class="text-center">
-                    <img src="//placehold.it/100" class="avatar img-circle" alt="...">
-                </div>
-            </div>
-
-            <!-- right column -->
-            <div class="col-md-7">
-                <p>Name</p>
-            </div>
-        </div>
     </div>
 
 
     <script>
-        function getGenres() {
+        function getSeriesInfo() {
+
+            var data = {"id" : "${requestScope.seriesID}"};
+
             $.ajax({
-                type: "GET",
-                url: "http://localhost:8090/getGenres",
+                type: "POST",
+                url: "http://localhost:8090/getSeriesInfo",
+                data: JSON.stringify(data),
                 async: true,
-                beforeSend: function (xhr){
+                beforeSend: function (xhr) {
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.setRequestHeader("Accept", "application/json")
                 },
-                success: function(data) {
-                    console.log("Got " + data.length + " genres:");
+                success: function (series) {
+                    $('#seriesTitle').append("<h1 class=\"series-title\">" + series["title"] + "</h1>");
+                    $('#seriesImage').append("<img src=" + series["imageURL"] + "class=\"avatar img-circle\" alt=\"...\">");
+                    if (series["finishYear"] != "-1")
+                        $('#rightInfo').append("<p>" + series["pilotYear"] + "-" + series["finishYear"] + "</p>");
+                    else
+                        $('#rightInfo').append("<p>" + series["pilotYear"] + "-</p>");
+                    $('#rightInfo').append("<p><b>Storyline: </b>" + series["description"] + "</p>");
+                    $('#rightInfo').append("<p><b>Duration: </b>" + series["episodeDuration"] + " min</p>");
+                    $('#rightInfo').append("<p><b>Rating: </b>" + series["rating"] + "</p>");
+                    $('#rightInfo').append("<p><b>Description: </b>" + series["storyline"] + "</p>");
 
-                    console.log("================================================================================");
+                    for (var creator = 0; creator < series["creators"].length; creator ++)
+                    {
+                        $('#creators').append(
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-md-3 col-md-offset-2\">" +
+                                        "<div class=\"text-center\" id=\"creatorImage\"" + creator + "\">" +
+                                            "<a href=person?id=" + series["creators"][creator][0] + ">" +
+                                                "<img src=" + series["creators"][creator][2] + ">" +
+                                            "</a>" +
+                                        "</div>" +
+                                    "</div>" +
+                                    "<div class=\"col-md-7\">" +
+                                        "<a href=person?id=" + series["creators"][creator][0] + ">" +
+                                            "<p>" + series["creators"][creator][1] + "</p>" +
+                                        "</a>" +
+                                    "</div>" +
+                                "</div>");
+                    }
 
-                    for (var i=0; i < data.length; i++) {
-                        var currentGenre = data[i];
-                        $('div>div>div>ul').append("<li><a href='listSeries?category=" + currentGenre["type"] + "'>"
-                                + currentGenre["type"] + "</a></li>");
+                    for (var actor = 0; actor < series["actors"].length; actor ++)
+                    {
+                        $('#actors').append(
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-md-3 col-md-offset-2\">" +
+                                        "<div class=\"text-center\" id=\"actorsImage\"" + actor + "\">" +
+                                            "<a href=person?id=" + series["actors"][actor][0] + ">" +
+                                                "<img src=" + series["actors"][actor][2] + ">" +
+                                            "</a>" +
+                                        "</div>" +
+                                    "</div>" +
+                                    "<div class=\"col-md-7\">" +
+                                        "<a href=person?id=" + series["actors"][actor][0] + ">" +
+                                            "<p>" + series["actors"][actor][1] + "</p>" +
+                                        "</a>" +
+                                    "</div>" +
+                                "</div>");
                     }
                 },
-                error: function(jqXHR, exception) {
+                error: function (jqXHR, exception) {
                     console.log(jqXHR.status);
                     console.log(exception);
                 }
             });
         }
+
+        $(document).ready(function() {
+            getGenres();
+            getSeriesInfo();
+        });
+    </script>
 </t:wrapper>
