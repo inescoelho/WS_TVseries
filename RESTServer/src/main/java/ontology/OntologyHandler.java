@@ -299,9 +299,14 @@ public class OntologyHandler {
         biography = biography.replace("\"", "");
         biography = biography.replace("\\", "");
 
-        String birthDate = person.getPropertyValue(hasBirthDate).toString();
-        String wikiURL;
+        String birthDate;
+        if (person.getPropertyValue(hasBirthDate) != null) {
+            birthDate = person.getPropertyValue(hasBirthDate).toString();
+        }else {
+            birthDate = "";
+        }
 
+        String wikiURL;
         if (person.getPropertyValue(hasWikiURL) != null) {
             wikiURL = person.getPropertyValue(hasWikiURL).toString();
         } else {
