@@ -60,8 +60,6 @@ public class OntologyHandler {
         peopleList = new HashMap<>();
         seriesList = new HashMap<>();
         loadInstances();
-
-
     }
 
     /**
