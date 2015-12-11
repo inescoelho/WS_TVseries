@@ -2,6 +2,8 @@ package server.application;
 
 import ontology.OntologyHandler;
 import org.springframework.web.bind.annotation.*;
+import server.data.SearchInput;
+import server.data.SearchResult;
 import server.data.ontology.Genre;
 import server.data.GetInfoInput;
 import server.data.ontology.Person;
@@ -45,5 +47,13 @@ public class Controller {
     @RequestMapping(value = "/getPersonInfo", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Person getPersonInfo(@RequestBody GetInfoInput inputData) {
         return ontologyHandler.getPersonInfo(inputData.getId());
+    }
+
+    @CrossOrigin
+    @RequestMapping(value="/search", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody SearchResult performSearch(@RequestBody SearchInput searchInput) {
+        System.out.println("Got query " + searchInput.getQuery());
+
+        return ontologyHandler.performSearch(searchInput.getQuery());
     }
 }

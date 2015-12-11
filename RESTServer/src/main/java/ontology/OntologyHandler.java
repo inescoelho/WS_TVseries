@@ -7,13 +7,13 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import server.data.ResultObject;
+import server.data.SearchResult;
 import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * OntologyHandler class, responsible for managing an ontology, making use of the Apache Jena framework. For more
@@ -38,6 +38,13 @@ public class OntologyHandler {
     private HashMap<String, Individual> peopleList;
     private HashMap<String, Individual> seriesList;
 
+    private final String queryPrefix =
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+            "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n";
+
     /**
      * Simple class constructor, which loads the ontology schema from a file
      * @param filePath The path to the file containing the ontology schema
@@ -53,6 +60,8 @@ public class OntologyHandler {
         peopleList = new HashMap<>();
         seriesList = new HashMap<>();
         loadInstances();
+
+
     }
 
     /**
@@ -110,11 +119,7 @@ public class OntologyHandler {
      */
     public ArrayList<Genre> getGenres() {
 
-        String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-                "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
+        String queryString = queryPrefix +
                 "SELECT ?subject WHERE { " +
                 "?subject rdfs:subClassOf my:SeriesGenre. " +
                 "?subject a ?class. " +
@@ -185,12 +190,7 @@ public class OntologyHandler {
      *         genre
      */
     private ArrayList<String[]> getSeriesNamesInGenre(String genreName) {
-        String queryString =
-                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-                "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
+        String queryString = queryPrefix +
                 "SELECT ?title ?id " +
                 "WHERE { " +
                 "?subject rdf:type my:" + genreName + ". " +
@@ -348,12 +348,7 @@ public class OntologyHandler {
             propertyName = "hasCreator";
         }
 
-        String queryString =
-               "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-               "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-               "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-               "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-               "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
+        String queryString = queryPrefix +
                "SELECT ?personName ?personId ?personImageURL " +
                "WHERE { " +
                "?subject my:hasSeriesId ?id FILTER( regex(?id, '" + seriesId + "') ). " +
@@ -408,12 +403,7 @@ public class OntologyHandler {
             propertyName = "hasSeriesCreated";
         }
 
-        String queryString =
-                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-                "PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>\n" +
+        String queryString = queryPrefix +
                 "SELECT ?seriesTitle ?seriesID ?seriesImageURL\n" +
                 "WHERE {\n" +
                 "     ?subject my:hasPersonId ?id FILTER( regex(?id, '" + personId + "') ).\n" +
@@ -465,5 +455,217 @@ public class OntologyHandler {
         int result = scanner.nextInt();
         scanner.close();
         return result;
+    }
+
+    public SearchResult performSearch(String query) {
+
+        // genre comedy
+
+        StringTokenizer stringTokenizer = new StringTokenizer(query);
+        ResultObject resultObject = new ResultObject();
+        boolean hasSetTarget = false;
+        boolean isStoring = false;
+        String buffer = "";
+        CategoryType lastCategory = null;
+
+        while (stringTokenizer.hasMoreTokens()) {
+            String word = stringTokenizer.nextToken().toLowerCase();
+
+            // Check if category
+            CategoryType type = isCategory(word);
+
+            if (type != CategoryType.NOT_FOUND_TYPE) {
+                lastCategory = type;
+            }
+
+            switch(type) {
+                case SERIES:
+                    System.out.println("Got series key word " + word);
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(true);
+                        hasSetTarget = true;
+                    }
+
+                    break;
+
+                case PERSON:
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(false);
+                        hasSetTarget = true;
+                    }
+                    // FIXME: ADD to people list; Maybe add to actors or creators depending on previous categories
+                    break;
+
+                case ACTOR:
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(false);
+                        hasSetTarget = true;
+                    }
+                    break;
+
+                case CREATOR:
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(false);
+                        hasSetTarget = true;
+                    }
+                    break;
+
+                case GENRE:
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(true);
+                        hasSetTarget = true;
+                    }
+                    break;
+
+                case GENRE_TYPE:
+
+                    if (isStoring) {
+                        // FIXME: PROCESS STORED STUFF
+
+                        isStoring = false;
+                    }
+
+                    System.out.println("Got genre type " + word);
+                    if (!hasSetTarget) {
+                        resultObject.setSeries(true);
+                        hasSetTarget = true;
+                    }
+                    resultObject.addToGenreList(word);
+                    break;
+
+                case NOT_FOUND_TYPE:
+                    if (!isStoring) {
+                        isStoring = true;
+                        buffer = "";
+                    }
+                    buffer += word + " ";
+                    break;
+
+            }
+        }
+
+        if (isStoring) {
+            // FIXME: Handle this
+            processBuffer(buffer, lastCategory, resultObject);
+
+            System.out.println("Got stored " + buffer);
+        }
+
+        System.out.println(resultObject);
+        System.out.println("==================================================================");
+
+        return null;
+    }
+
+    private void processBuffer(String buffer, CategoryType lastCategory, ResultObject resultObject) {
+
+        switch (lastCategory) {
+            case ACTOR:
+
+                break;
+            case CREATOR:
+
+                break;
+            case SERIES:
+
+                break;
+
+        }
+
+    }
+
+    private CategoryType isCategory(String word) {
+
+        // Check if series
+        if (Strings.seriesSynonyms.contains(word)) {
+            return CategoryType.SERIES;
+        }
+
+        // Check if genre
+        if (Strings.genresSynonyms.contains(word)) {
+            return CategoryType.GENRE;
+        }
+
+        // Check if specific genre
+        List<String> genres = getGenresNames();
+        if (genres.contains(word)) {
+            return CategoryType.GENRE_TYPE;
+        }
+
+        // Check if actor
+        if (Strings.actorSynonyms.contains(word)) {
+            return CategoryType.ACTOR;
+        }
+
+        // Check if creator
+        if (Strings.creatorSynonyms.contains(word)) {
+            return CategoryType.CREATOR;
+        }
+
+        return CategoryType.NOT_FOUND_TYPE;
+    }
+
+    private List<String> getGenresNames() {
+        String queryString = queryPrefix +
+                "SELECT ?subject WHERE { " +
+                "?subject rdfs:subClassOf my:SeriesGenre. " +
+                "?subject a ?class. " +
+                "} ORDER BY ASC(?class)";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+        List<String> genres = new ArrayList<>();
+
+        while(results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode subjectNode = result.get("?subject");
+
+            if (subjectNode.isResource()) {
+                Resource subject = subjectNode.asResource();
+                String genreName = subject.getLocalName().toLowerCase();
+
+                if (!genres.contains(genreName)) {
+                    genres.add(genreName);
+                }
+            }
+        }
+
+        return genres;
     }
 }
