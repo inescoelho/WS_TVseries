@@ -30,3 +30,25 @@ Analisar palavra a palavra
 4) Ver instância de pessoas
 
 until/before, since/after, starring/featuring/wth, and, or, birth/birthdate (since, until)
+
+1) Pesquisar séries
+	comedy
+	comedy adventure
+	comedy adventure family... (titulo)
+	comedy adventure ... state (finished/completed/ended)
+	comdey adventure ... state (running/airing)
+
+	titulo
+	titulo with/starring/featuring actor <actor1> and/or <actor2>... (born in/after/until)
+	titulo with/created creator <creator1> and/or <creator2>... (born in/after/until)
+	titulo with/starring/featuring/created <person1> and/or <person2>... (born in/after/until)
+
+	titulo since/from/starting/beginning <date>
+	titulo ended/finished/until <date>
+
+2) Pesquisar pessoas (actores/criadores)
+	<nome> (born in/after/until)
+	actor/creator <nome> (born in/after/until)
+	actor/creator <nome> from <series> (born in/after/until)
+	actor(s)/creator(s) <series> (born in/after/until)
+	actor(s)/creator(s) <series> (started/finished in/after/until)

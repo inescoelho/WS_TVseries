@@ -1,5 +1,6 @@
 package ontology;
 
+import org.apache.jena.atlas.json.io.parserjavacc.javacc.Token;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
@@ -38,6 +39,9 @@ public class OntologyHandler {
     private HashMap<String, Individual> peopleList;
     private HashMap<String, Individual> seriesList;
 
+    private List<String> genres;
+    private ResultObject resultObject;
+
     private final String queryPrefix =
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
@@ -60,6 +64,8 @@ public class OntologyHandler {
         peopleList = new HashMap<>();
         seriesList = new HashMap<>();
         loadInstances();
+
+        genres = getGenresNames();
     }
 
     /**
@@ -457,185 +463,207 @@ public class OntologyHandler {
 
     public SearchResult performSearch(String query) {
 
-        // genre comedy
+        query = query.toLowerCase();
 
-        StringTokenizer stringTokenizer = new StringTokenizer(query);
-        ResultObject resultObject = new ResultObject();
-        boolean hasSetTarget = false;
-        boolean isStoring = false;
+        StringTokenizer tokenizer = new StringTokenizer(query);
+        resultObject = new ResultObject();
+        TokenType past = null;
         String buffer = "";
-        CategoryType lastCategory = null;
 
-        while (stringTokenizer.hasMoreTokens()) {
-            String word = stringTokenizer.nextToken().toLowerCase();
+        while (tokenizer.hasMoreTokens()) {
+            String word = tokenizer.nextToken();
 
-            // Check if category
-            CategoryType type = isCategory(word);
+            TokenType type = isCategory(word);
 
-            if (type != CategoryType.NOT_FOUND_TYPE) {
-                lastCategory = type;
-            }
-
-            switch(type) {
+            switch (type) {
                 case SERIES:
-                    System.out.println("Got series key word " + word);
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(true);
-                        hasSetTarget = true;
-                    }
-
-                    break;
-
-                case PERSON:
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(false);
-                        hasSetTarget = true;
-                    }
-                    // FIXME: ADD to people list; Maybe add to actors or creators depending on previous categories
-                    break;
-
-                case ACTOR:
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(false);
-                        hasSetTarget = true;
-                    }
-                    break;
-
-                case CREATOR:
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(false);
-                        hasSetTarget = true;
-                    }
-                    break;
-
                 case GENRE:
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(true);
-                        hasSetTarget = true;
-                    }
+                    buffer = processBuffer(buffer, past, type);
+                    past = TokenType.SERIES;
+                    resultObject.setSeries(true);
                     break;
 
                 case GENRE_TYPE:
-
-                    if (isStoring) {
-                        // FIXME: PROCESS STORED STUFF
-
-                        isStoring = false;
-                    }
-
-                    System.out.println("Got genre type " + word);
-                    if (!hasSetTarget) {
-                        resultObject.setSeries(true);
-                        hasSetTarget = true;
-                    }
+                    buffer = processBuffer(buffer, past, type);
+                    past = TokenType.SERIES;
+                    resultObject.setSeries(true);
                     resultObject.addToGenreList(word);
                     break;
 
-                case NOT_FOUND_TYPE:
-                    if (!isStoring) {
-                        isStoring = true;
-                        buffer = "";
-                    }
-                    buffer += word + " ";
+                case ACTOR:
+                    buffer = processBuffer(buffer, past, type);
+                    past = TokenType.ACTOR;
+                    resultObject.setPerson(true);
+                    resultObject.setActor(true);
                     break;
 
+                case CREATOR:
+                    buffer = processBuffer(buffer, past, type);
+                    past = TokenType.CREATOR;
+                    resultObject.setPerson(true);
+                    resultObject.setCreator(true);
+                    break;
+
+                case NOT_FOUND_TYPE:
+                    buffer += word + " ";
+                    break;
             }
         }
 
-        if (isStoring) {
-            // FIXME: Handle this
-            processBuffer(buffer, lastCategory, resultObject);
-
-            System.out.println("Got stored " + buffer);
-        }
+        processBuffer(buffer, past, null);
 
         System.out.println(resultObject);
-        System.out.println("==================================================================");
+
+        return processResultObject();
+    }
+
+    private String processBuffer(String buffer, TokenType past, TokenType current) {
+        TokenType type;
+
+        if (buffer.length() == 0) {
+            return "";
+        }
+
+        if (past == null) {
+            // Consider current
+            type = current;
+        } else {
+            // Consider past
+            type = past;
+        }
+
+        buffer = buffer.trim();
+        // Analyse
+        if (type == TokenType.GENRE || type == TokenType.GENRE_TYPE || type == TokenType.SERIES) {
+            resultObject.addSeriesTitle(buffer);
+        } else if(type == TokenType.ACTOR) {
+            resultObject.addActor(buffer);
+        } else if (type == TokenType.CREATOR) {
+            resultObject.addCreator(buffer);
+        } else if (type == TokenType.PERSON) {
+            resultObject.addPerson(buffer);
+        } else if (type == null) {
+            // No past nor current
+            resultObject.setPerson(true);
+            resultObject.setSeries(true);
+            resultObject.addPerson(buffer);
+            resultObject.addSeriesTitle(buffer);
+        }
+
+        return "";
+    }
+
+    private SearchResult processResultObject() {
+
+        ArrayList<String[]> series = new ArrayList<>();
+        ArrayList<String[]> actors = new ArrayList<>();
+        ArrayList<String[]> creators = new ArrayList<>();
+        ArrayList<String[]> people = new ArrayList<>();
+
+        if (resultObject.isSeries()) {
+            // Search series FIXME: Filter by people (actors, creators and people)
+            for (String seriesTitle : resultObject.getSeriesTiles()) {
+                ArrayList<String[]> currentSeriesFound = searchSeries(seriesTitle);
+
+                for (String[] aCurrentSeriesFound : currentSeriesFound) {
+                    series.add(aCurrentSeriesFound);
+                }
+            }
+
+            if (series.size() == 0) {
+                System.out.println("Could not find any series!!!");
+            }
+            for (String[] currentSeries : series) {
+                System.out.println("Found Series " + currentSeries[0] + " " + currentSeries[1]);
+            }
+        }
+
+        if (resultObject.isActor()) {
+            // Search actor
+            for (String actorName : resultObject.getActorsList()) {
+                ArrayList<String[]> currentActorsFound = searchActors(actorName);
+
+                for (String[] aCurrentActor : currentActorsFound) {
+                    actors.add(aCurrentActor);
+                }
+
+                if (actors.size() == 0) {
+                    System.out.println("Could not find any actors!!!");
+                }
+                for (String[] currentActor : actors) {
+                    System.out.println("Found Actor " + currentActor[0] + " " + currentActor[1]);
+                }
+            }
+        }
+
+        if (resultObject.isCreator()) {
+            // Search creator
+            for (String creatorName : resultObject.getCreatorsList()) {
+                ArrayList<String[]> currentCreatorsFound = searchCreators(creatorName);
+
+                for (String[] aCurrentCreator : currentCreatorsFound) {
+                    creators.add(aCurrentCreator);
+                }
+
+                if (creators.size() == 0) {
+                    System.out.println("Could not find any creators!!!");
+                }
+                for (String[] currentCreator : creators) {
+                    System.out.println("Found Creator " + currentCreator[0] + " " + currentCreator[1]);
+                }
+            }
+        }
+
+        if (resultObject.isPerson()) {
+            // Search people
+            for (String name : resultObject.getPeopleList()) {
+                ArrayList<String[]> currentPeopleFound = searchPeople(name);
+
+                for (String[] aCurrentPerson : currentPeopleFound) {
+                    people.add(aCurrentPerson);
+                }
+
+                if (people.size() == 0) {
+                    System.out.println("Could not find any people!!!");
+                }
+                for (String[] currentPerson : people) {
+                    System.out.println("Found Person " + currentPerson[0] + " " + currentPerson[1]);
+                }
+            }
+        }
 
         return null;
     }
 
-    private void processBuffer(String buffer, CategoryType lastCategory, ResultObject resultObject) {
+    private TokenType isCategory(String word) {
 
-        switch (lastCategory) {
-            case ACTOR:
-
-                break;
-            case CREATOR:
-
-                break;
-            case SERIES:
-
-                break;
-
-        }
-
-    }
-
-    private CategoryType isCategory(String word) {
-
-        // Check if series
+        // Check if series keyword
         if (Strings.seriesSynonyms.contains(word)) {
-            return CategoryType.SERIES;
+            return TokenType.SERIES;
         }
 
-        // Check if genre
+        // Check if genre keyword
         if (Strings.genresSynonyms.contains(word)) {
-            return CategoryType.GENRE;
+            return TokenType.GENRE;
         }
 
         // Check if specific genre
         List<String> genres = getGenresNames();
         if (genres.contains(word)) {
-            return CategoryType.GENRE_TYPE;
+            return TokenType.GENRE_TYPE;
         }
 
-        // Check if actor
+        // Check if actor keyword
         if (Strings.actorSynonyms.contains(word)) {
-            return CategoryType.ACTOR;
+            return TokenType.ACTOR;
         }
 
-        // Check if creator
+        // Check if creator keyword
         if (Strings.creatorSynonyms.contains(word)) {
-            return CategoryType.CREATOR;
+            return TokenType.CREATOR;
         }
 
-        return CategoryType.NOT_FOUND_TYPE;
+        return TokenType.NOT_FOUND_TYPE;
     }
 
     private List<String> getGenresNames() {
@@ -665,5 +693,199 @@ public class OntologyHandler {
         }
 
         return genres;
+    }
+
+    private ArrayList<String[]> searchPeople(String name) {
+        ArrayList<String[]> peopleList = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?personName ?personID " +
+                "WHERE {\n" +
+                "     ?person my:hasPersonId ?personID .\n" +
+                "     ?person my:hasName ?personName FILTER regex(?personName, '" + name + "', 'i') .\n" +
+                "} ORDER BY ASC(?personName)";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode personNameNode = result.get("?personName");
+            RDFNode personIdNode = result.get("?personID");
+            String[] temp = new String[2];
+
+            if (personNameNode.isLiteral() && personIdNode.isLiteral()) {
+                Literal personName = personNameNode.asLiteral();
+                String person_name = personName.getString();
+
+                Literal personId = personIdNode.asLiteral();
+                String person_id = personId.getString().toLowerCase();
+
+                temp[0] = person_name;
+                temp[1] = person_id;
+
+                peopleList.add(temp);
+            }
+        }
+
+        return peopleList;
+    }
+
+    private ArrayList<String[]> searchCreators(String name) {
+        ArrayList<String[]> creatorsList = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?creatorName ?creatorID " +
+                "WHERE {\n" +
+                "     ?creator rdf:type my:Creator .\n" +
+                "     ?creator my:hasPersonId ?creatorID .\n" +
+                "     ?creator my:hasName ?creatorName FILTER regex(?creatorName, '" + name + "', 'i') .\n" +
+                "} ORDER BY ASC(?creatorName)";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode creatorNameNode = result.get("?creatorName");
+            RDFNode creatorIdNode = result.get("?creatorID");
+            String[] temp = new String[2];
+
+            if (creatorNameNode.isLiteral() && creatorIdNode.isLiteral()) {
+                Literal creatorName = creatorNameNode.asLiteral();
+                String creator_name = creatorName.getString();
+
+                Literal creatorId = creatorIdNode.asLiteral();
+                String creator_id = creatorId.getString().toLowerCase();
+
+                temp[0] = creator_name;
+                temp[1] = creator_id;
+
+                creatorsList.add(temp);
+            }
+        }
+
+        return creatorsList;
+    }
+
+    private ArrayList<String[]> searchActors(String name) {
+        ArrayList<String[]> actorsList = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?actorName ?actorID " +
+                "WHERE {\n" +
+                "     ?actor rdf:type my:Actor .\n" +
+                "     ?actor my:hasPersonId ?actorID .\n" +
+                "     ?actor my:hasName ?actorName FILTER regex(?actorName, '" + name + "', 'i') .\n" +
+                "} ORDER BY ASC(?actorName)";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode actorNameNode = result.get("?actorName");
+            RDFNode actorIdNode = result.get("?actorID");
+            String[] temp = new String[2];
+
+            if (actorNameNode.isLiteral() && actorIdNode.isLiteral()) {
+                Literal actorName = actorNameNode.asLiteral();
+                String actor_name = actorName.getString();
+
+                Literal actorId = actorIdNode.asLiteral();
+                String actor_id = actorId.getString().toLowerCase();
+
+                temp[0] = actor_name;
+                temp[1] = actor_id;
+
+                actorsList.add(temp);
+            }
+        }
+
+        return actorsList;
+    }
+
+    private ArrayList<String[]> searchSeries(String title) {
+        ArrayList<String[]> seriesList = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?seriesTitle ?seriesID " +
+                "WHERE {\n" +
+                "     ?series my:hasSeriesId ?seriesID.\n" +
+                "     ?series my:hasTitle ?seriesTitle FILTER regex(?seriesTitle, '" + title + "', 'i') .\n";
+
+        // Add genre
+        for (String currentGenre : resultObject.getGenreList()) {
+            // Convert genre type to upper string, handling special cases
+            if (currentGenre.equals("sci-fi")) {
+                currentGenre = "Sci-Fi";
+            } else if (currentGenre.equals("film-noir")) {
+                currentGenre = "Film-Noir";
+            } else {
+                currentGenre = Character.toUpperCase(currentGenre.charAt(0)) + currentGenre.substring(1);
+            }
+
+            queryString += "     ?series rdf:type my:" + currentGenre + " .\n";
+        }
+
+        // Add actors, creators and people
+        if (resultObject.isActor()) {
+            // Add restriction - Series must have actors
+            int counter = 0;
+            for (String actorName : resultObject.getActorsList()) {
+                queryString += "     ?series my:hasActor ?actor" + counter + " .\n";
+                queryString += "     ?actor" + counter + " my:hasName ?actorName FILTER regex(?actorName, '"  +
+                        actorName + "', 'i') .\n";
+                counter++;
+            }
+        }
+
+        if (resultObject.isCreator()) {
+            // Add restriction - Series must have creators
+            int counter = 0;
+            for (String creatorName : resultObject.getCreatorsList()) {
+                queryString += "     ?series my:hasCreator ?creator" + counter + " .\n";
+                queryString += "     ?creator" + counter + " my:hasName ?creatorName FILTER regex(?creatorName, '"  +
+                        creatorName + "', 'i') .\n";
+                counter++;
+            }
+        }
+
+        if (resultObject.isPerson()) {
+            // Add restriction - Series must have actors or creators
+        }
+
+        queryString += "} ORDER BY ASC(?seriesTitle)";
+
+        System.out.println("\n===============================\n" + queryString + "\n");
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode seriesTitleNode = result.get("?seriesTitle");
+            RDFNode seriesIdNode = result.get("?seriesID");
+            String[] temp = new String[2];
+
+            if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral()) {
+                Literal seriesTitle = seriesTitleNode.asLiteral();
+                String series_title = seriesTitle.getString();
+
+                Literal seriesId = seriesIdNode.asLiteral();
+                String series_id = seriesId.getString().toLowerCase();
+
+                temp[0] = series_title;
+                temp[1] = series_id;
+
+                seriesList.add(temp);
+            }
+        }
+
+        return seriesList;
     }
 }

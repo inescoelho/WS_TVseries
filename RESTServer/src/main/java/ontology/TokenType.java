@@ -1,6 +1,6 @@
 package ontology;
 
-public enum CategoryType {
+public enum TokenType {
 
     SERIES,
     PERSON,
@@ -8,6 +8,5 @@ public enum CategoryType {
     CREATOR,
     GENRE,
     GENRE_TYPE,
-    DATE,
     NOT_FOUND_TYPE
 }

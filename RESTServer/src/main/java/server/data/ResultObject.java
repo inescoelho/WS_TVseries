@@ -13,6 +13,9 @@ public class ResultObject {
     private List<String> creatorsList;
     private List<String> peopleList;
     private boolean isSeries;
+    private boolean isPerson;
+    private boolean isCreator;
+    private boolean isActor;
 
     public ResultObject() {
         genreList = new ArrayList<>();
@@ -34,8 +37,8 @@ public class ResultObject {
         return peopleList;
     }
 
-    public void setPeopleList(List<String> peopleList) {
-        this.peopleList = peopleList;
+    public void addPerson(String person) {
+        this.peopleList.add(person);
     }
 
     public List<String> getCreatorsList() {
@@ -71,8 +74,39 @@ public class ResultObject {
     }
 
     public String toString() {
-        return "{\n\tSeries: " + isSeries + ",\n\tGenreList: " + Arrays.toString(genreList.toArray()) +
+        return "{\n\tSeries: " + isSeries +
+                ",\n\tPerson: " + isPerson +
+                ",\n\tCreator: " + isCreator +
+                ",\n\tActor: " + isActor +
+                ",\n\tGenreList: " + Arrays.toString(genreList.toArray()) +
                 ",\n\tSeriesTitles: " + Arrays.toString(seriesTiles.toArray()) +
+                ",\n\tActorsList: " + Arrays.toString(actorsList.toArray()) +
+                ",\n\tCreatorsList:" + Arrays.toString(creatorsList.toArray()) +
+                ",\n\tPeopleList: " + Arrays.toString(peopleList.toArray()) +
                 "\n}";
+    }
+
+    public boolean isPerson() {
+        return isPerson;
+    }
+
+    public void setPerson(boolean person) {
+        isPerson = person;
+    }
+
+    public boolean isCreator() {
+        return isCreator;
+    }
+
+    public void setCreator(boolean creator) {
+        isCreator = creator;
+    }
+
+    public boolean isActor() {
+        return isActor;
+    }
+
+    public void setActor(boolean actor) {
+        isActor = actor;
     }
 }
