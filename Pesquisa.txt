@@ -15,7 +15,9 @@ serie comedy uma familia muito moderna featuring jim parsons
 
 serie comedy o mundo de jim featuring jim bellushi
 
-uma familia muito moderna
+uma familia muito moderna comedy
+
+comedy uma familia muito moderna actor
 
 uma familia muito moderna with jim parsons
 
@@ -39,9 +41,9 @@ until/before, since/after, starring/featuring/wth, and, or, birth/birthdate (sin
 	comdey adventure ... state (running/airing)
 
 	titulo
-	titulo with/starring/featuring actor <actor1> and/or <actor2>... (born in/after/until)
-	titulo with/created creator <creator1> and/or <creator2>... (born in/after/until)
-	titulo with/starring/featuring/created <person1> and/or <person2>... (born in/after/until)
+	titulo with/starring/featuring actor <actor1> and <actor2>... (born in/after/until)
+	titulo with/created creator <creator1> and <creator2>... (born in/after/until)
+	titulo with/starring/featuring/created <person1> and <person2>... (born in/after/until)
 
 	titulo since/from/starting/beginning <date>
 	titulo ended/finished/until <date>
