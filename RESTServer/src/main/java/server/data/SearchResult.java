@@ -7,6 +7,10 @@ public class SearchResult {
     private ArrayList<String[]> series;// String[2] - first is name, second is id
     private ArrayList<String[]> people;
 
+    public SearchResult() {
+
+    }
+
     public SearchResult(ArrayList<String[]> series, ArrayList<String[]> people) {
         this.series = series;
         this.people = people;

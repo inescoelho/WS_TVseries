@@ -632,7 +632,11 @@ public class OntologyHandler {
             }
         }
 
-        return null;
+        SearchResult searchResult = new SearchResult();
+        searchResult.setSeries(series);
+        searchResult.setPeople(people);
+
+        return searchResult;
     }
 
     private TokenType isCategory(String word) {
