@@ -429,10 +429,6 @@ public class OntologyHandler {
             RDFNode seriesIdNode = querySolution.get("?seriesID");
             RDFNode seriesImageURLNode = querySolution.get("?seriesImageURL");
             if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral() && seriesImageURLNode.isLiteral() ) {
-                // The next variable is just here to stop Intellij from telling me I have duplicate code!
-                // (In fact the code is duplicate but I will add more stuff here)
-                int unusedVariable = 2;
-
                 Literal seriesTitle = seriesTitleNode.asLiteral();
                 Literal seriesId = seriesIdNode.asLiteral();
                 Literal seriesImageURL = seriesImageURLNode.asLiteral();
