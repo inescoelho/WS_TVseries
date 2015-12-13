@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SearchResult {
 
-    private ArrayList<String[]> series;// String[2] - first is name, second is id
+    private ArrayList<String[]> series;// String[2] - first is name, second is id, third is imageurl
     private ArrayList<String[]> people;
 
     public SearchResult() {

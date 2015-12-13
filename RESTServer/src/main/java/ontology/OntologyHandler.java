@@ -493,15 +493,19 @@ public class OntologyHandler {
                 case ACTOR:
                     buffer = processBuffer(buffer, past, type);
                     past = TokenType.ACTOR;
-                    resultObject.setPerson(true);
                     resultObject.setActor(true);
                     break;
 
                 case CREATOR:
                     buffer = processBuffer(buffer, past, type);
                     past = TokenType.CREATOR;
-                    resultObject.setPerson(true);
                     resultObject.setCreator(true);
+                    break;
+
+                case PERSON:
+                    buffer = processBuffer(buffer, past, type);
+                    past = TokenType.PERSON;
+                    resultObject.setPerson(true);
                     break;
 
                 case NOT_FOUND_TYPE:
@@ -515,6 +519,42 @@ public class OntologyHandler {
         System.out.println(resultObject);
 
         return processResultObject();
+    }
+
+    private TokenType isCategory(String word) {
+
+        // Check if series keyword
+        if (Strings.seriesSynonyms.contains(word)) {
+            return TokenType.SERIES;
+        }
+
+        // Check if genre keyword
+        if (Strings.genresSynonyms.contains(word)) {
+            return TokenType.GENRE;
+        }
+
+        // Check if specific genre
+        List<String> genres = getGenresNames();
+        if (genres.contains(word)) {
+            return TokenType.GENRE_TYPE;
+        }
+
+        // Check if actor keyword
+        if (Strings.actorSynonyms.contains(word)) {
+            return TokenType.ACTOR;
+        }
+
+        // Check if creator keyword
+        if (Strings.creatorSynonyms.contains(word)) {
+            return TokenType.CREATOR;
+        }
+
+        // Check if person keyword
+        if (Strings.personSynonyms.contains(word)) {
+            return TokenType.PERSON;
+        }
+
+        return TokenType.NOT_FOUND_TYPE;
     }
 
     private String processBuffer(String buffer, TokenType past, TokenType current) {
@@ -561,21 +601,172 @@ public class OntologyHandler {
         ArrayList<String[]> people = new ArrayList<>();
 
         if (resultObject.isSeries()) {
-            // Search series FIXME: Filter by people (actors, creators and people)
-            for (String seriesTitle : resultObject.getSeriesTiles()) {
-                ArrayList<String[]> currentSeriesFound = searchSeries(seriesTitle);
+            // Search series
 
-                for (String[] aCurrentSeriesFound : currentSeriesFound) {
-                    series.add(aCurrentSeriesFound);
+            List<String> actorsList = resultObject.getActorsList();
+            List<String> creatorsList = resultObject.getCreatorsList();
+
+            if (resultObject.getSeriesTiles().size() > 0) {
+
+                for (String seriesTitle : resultObject.getSeriesTiles()) {
+
+                    boolean firstTime = true;
+                    ArrayList<String[]> seriesWhatever = new ArrayList<>();
+
+                    for (String currentPerson : resultObject.getPeopleList()) {
+                        actorsList.add(currentPerson);
+                        ArrayList<String[]> currentSeriesFound1 = searchSeries(seriesTitle, actorsList, creatorsList);
+                        actorsList.remove(currentPerson);
+
+                        creatorsList.add(currentPerson);
+                        ArrayList<String[]> currentSeriesFound2 = searchSeries(seriesTitle, actorsList, creatorsList);
+                        creatorsList.remove(currentPerson);
+
+                        // Join currentSeriesFound1 and currentSeriesFound2
+                        for (String[] temp : currentSeriesFound2) {
+                            boolean contains = false;
+
+                            for (String[] temp2 : currentSeriesFound1) {
+                                if (temp2[1].equals(temp[1])) {
+                                    contains = true;
+                                    break;
+                                }
+                            }
+
+                            if (!contains) {
+                                currentSeriesFound1.add(temp);
+                            }
+                        }
+
+                        // Intersect what we have in currentSeriesFound with what is already stored in "series"
+                        if (firstTime) {
+                            // Just add to seriesWhatever
+                            for (String[] temp : currentSeriesFound1) {
+                                seriesWhatever.add(temp);
+                            }
+
+                            firstTime = false;
+                        } else {
+                            // Merge them and if nothing in common set series to empty and just break
+                            boolean somethingInCommon = false;
+                            ArrayList<Integer> indexesToRemove = new ArrayList<>();
+                            for (String[] temp : seriesWhatever) {
+
+                                boolean common = false;
+                                for (String[] temp2 : currentSeriesFound1) {
+                                    if (temp[1].equals(temp2[1])) {
+                                        somethingInCommon = true;
+                                        common = true;
+                                    }
+                                }
+
+                                if (!common) {
+                                    indexesToRemove.add(seriesWhatever.indexOf(temp));
+                                }
+                            }
+
+                            if (!somethingInCommon) {
+                                seriesWhatever = new ArrayList<>();
+                                break;
+                            } else {
+                                for (int i : indexesToRemove) {
+                                    seriesWhatever.remove(i);
+                                }
+                            }
+                        }
+                    }
+
+                    // Just add to series
+                    for (String[] temp : seriesWhatever) {
+                        series.add(temp);
+                    }
+                }
+
+            } else {
+
+                if (!resultObject.isPerson()) {
+                    ArrayList<String[]> currentSeriesFound = searchSeries("", actorsList, creatorsList);
+
+                    for (String[] aCurrentSeriesFound : currentSeriesFound) {
+                        series.add(aCurrentSeriesFound);
+                    }
+                } else {
+
+                    boolean firstTime = true;
+
+                    for (String currentPerson : resultObject.getPeopleList()) {
+                        actorsList.add(currentPerson);
+                        ArrayList<String[]> currentSeriesFound1 = searchSeries("", actorsList, creatorsList);
+                        actorsList.remove(currentPerson);
+
+                        creatorsList.add(currentPerson);
+                        ArrayList<String[]> currentSeriesFound2 = searchSeries("", actorsList, creatorsList);
+                        creatorsList.remove(currentPerson);
+
+                        // Join currentSeriesFound1 and currentSeriesFound2
+                        for (String[] temp : currentSeriesFound2) {
+                            boolean contains = false;
+
+                            for (String[] temp2 : currentSeriesFound1) {
+                                if (temp2[1].equals(temp[1])) {
+                                    contains = true;
+                                    break;
+                                }
+                            }
+
+                            if (!contains) {
+                                currentSeriesFound1.add(temp);
+                            }
+                        }
+
+                        // Intersect what we have in currentSeriesFound with what is already stored in "series"
+                        if (firstTime) {
+                            // Just add to series
+                            for (String[] temp : currentSeriesFound1) {
+                                series.add(temp);
+                            }
+
+                            firstTime = false;
+                        } else {
+                            // Merge them and if nothing in common set series to empty and just break
+                            boolean somethingInCommon = false;
+                            ArrayList<Integer> indexesToRemove = new ArrayList<>();
+                            for (String[] temp : series) {
+
+                                boolean common = false;
+                                for (String[] temp2 : currentSeriesFound1) {
+                                    if (temp[1].equals(temp2[1])) {
+                                        somethingInCommon = true;
+                                        common = true;
+                                    }
+                                }
+
+                                if (!common) {
+                                    indexesToRemove.add(series.indexOf(temp));
+                                }
+                            }
+
+                            if (!somethingInCommon) {
+                                series = new ArrayList<>();
+                                break;
+                            } else {
+                                for (int i : indexesToRemove) {
+                                    series.remove(i);
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
             if (series.size() == 0) {
                 System.out.println("Could not find any series!!!");
+            } else {
+                for (String[] currentSeries : series) {
+                    System.out.println("Found Series " + currentSeries[0] + " " + currentSeries[1]);
+                }
             }
-            for (String[] currentSeries : series) {
-                System.out.println("Found Series " + currentSeries[0] + " " + currentSeries[1]);
-            }
+
         }
 
         if (resultObject.isActor()) {
@@ -622,13 +813,13 @@ public class OntologyHandler {
                 for (String[] aCurrentPerson : currentPeopleFound) {
                     people.add(aCurrentPerson);
                 }
+            }
 
-                if (people.size() == 0) {
-                    System.out.println("Could not find any people!!!");
-                }
-                for (String[] currentPerson : people) {
-                    System.out.println("Found Person " + currentPerson[0] + " " + currentPerson[1]);
-                }
+            if (people.size() == 0) {
+                System.out.println("Could not find any people!!!");
+            }
+            for (String[] currentPerson : people) {
+                System.out.println("Found Person " + currentPerson[0] + " " + currentPerson[1]);
             }
         }
 
@@ -637,37 +828,6 @@ public class OntologyHandler {
         searchResult.setPeople(people);
 
         return searchResult;
-    }
-
-    private TokenType isCategory(String word) {
-
-        // Check if series keyword
-        if (Strings.seriesSynonyms.contains(word)) {
-            return TokenType.SERIES;
-        }
-
-        // Check if genre keyword
-        if (Strings.genresSynonyms.contains(word)) {
-            return TokenType.GENRE;
-        }
-
-        // Check if specific genre
-        List<String> genres = getGenresNames();
-        if (genres.contains(word)) {
-            return TokenType.GENRE_TYPE;
-        }
-
-        // Check if actor keyword
-        if (Strings.actorSynonyms.contains(word)) {
-            return TokenType.ACTOR;
-        }
-
-        // Check if creator keyword
-        if (Strings.creatorSynonyms.contains(word)) {
-            return TokenType.CREATOR;
-        }
-
-        return TokenType.NOT_FOUND_TYPE;
     }
 
     private List<String> getGenresNames() {
@@ -703,11 +863,14 @@ public class OntologyHandler {
         ArrayList<String[]> peopleList = new ArrayList<>();
 
         String queryString = queryPrefix +
-                "SELECT ?personName ?personID " +
+                "SELECT ?personName ?personID ?personImageURL " +
                 "WHERE {\n" +
                 "     ?person my:hasPersonId ?personID .\n" +
+                "     ?person my:hasPersonImageURL ?personImageURL .\n" +
                 "     ?person my:hasName ?personName FILTER regex(?personName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?personName)";
+
+        // System.out.println("\n===============================================\n" + queryString + "\n");
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -717,7 +880,8 @@ public class OntologyHandler {
             QuerySolution result = results.next();
             RDFNode personNameNode = result.get("?personName");
             RDFNode personIdNode = result.get("?personID");
-            String[] temp = new String[2];
+            RDFNode personImageUrlNode = result.get("?personImageURL");
+            String[] temp = new String[3];
 
             if (personNameNode.isLiteral() && personIdNode.isLiteral()) {
                 Literal personName = personNameNode.asLiteral();
@@ -726,8 +890,15 @@ public class OntologyHandler {
                 Literal personId = personIdNode.asLiteral();
                 String person_id = personId.getString().toLowerCase();
 
+                String image_url = "";
+                if (personImageUrlNode.isLiteral()) {
+                    Literal imageUrl = personImageUrlNode.asLiteral();
+                    image_url = imageUrl.getString();
+                }
+
                 temp[0] = person_name;
                 temp[1] = person_id;
+                temp[2] = image_url;
 
                 peopleList.add(temp);
             }
@@ -740,10 +911,11 @@ public class OntologyHandler {
         ArrayList<String[]> creatorsList = new ArrayList<>();
 
         String queryString = queryPrefix +
-                "SELECT ?creatorName ?creatorID " +
+                "SELECT ?creatorName ?creatorID ?creatorImageURL " +
                 "WHERE {\n" +
                 "     ?creator rdf:type my:Creator .\n" +
                 "     ?creator my:hasPersonId ?creatorID .\n" +
+                "     ?creator my:hasPersonURL ?creatorImageURL .\n" +
                 "     ?creator my:hasName ?creatorName FILTER regex(?creatorName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?creatorName)";
 
@@ -755,7 +927,8 @@ public class OntologyHandler {
             QuerySolution result = results.next();
             RDFNode creatorNameNode = result.get("?creatorName");
             RDFNode creatorIdNode = result.get("?creatorID");
-            String[] temp = new String[2];
+            RDFNode creatorImageNode = result.get("?creatorImageURL");
+            String[] temp = new String[3];
 
             if (creatorNameNode.isLiteral() && creatorIdNode.isLiteral()) {
                 Literal creatorName = creatorNameNode.asLiteral();
@@ -764,8 +937,15 @@ public class OntologyHandler {
                 Literal creatorId = creatorIdNode.asLiteral();
                 String creator_id = creatorId.getString().toLowerCase();
 
+                String image_url = "";
+                if (creatorImageNode.isLiteral()) {
+                    Literal imageUrl = creatorImageNode.asLiteral();
+                    image_url = imageUrl.getString();
+                }
+
                 temp[0] = creator_name;
                 temp[1] = creator_id;
+                temp[2] = image_url;
 
                 creatorsList.add(temp);
             }
@@ -778,10 +958,11 @@ public class OntologyHandler {
         ArrayList<String[]> actorsList = new ArrayList<>();
 
         String queryString = queryPrefix +
-                "SELECT ?actorName ?actorID " +
+                "SELECT ?actorName ?actorID ?actorImageURL " +
                 "WHERE {\n" +
                 "     ?actor rdf:type my:Actor .\n" +
                 "     ?actor my:hasPersonId ?actorID .\n" +
+                "     ?actor my:hasPersonImageURL ?actorImageURL .\n" +
                 "     ?actor my:hasName ?actorName FILTER regex(?actorName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?actorName)";
 
@@ -793,7 +974,8 @@ public class OntologyHandler {
             QuerySolution result = results.next();
             RDFNode actorNameNode = result.get("?actorName");
             RDFNode actorIdNode = result.get("?actorID");
-            String[] temp = new String[2];
+            RDFNode actorImageNode = result.get("?actorImageURL");
+            String[] temp = new String[3];
 
             if (actorNameNode.isLiteral() && actorIdNode.isLiteral()) {
                 Literal actorName = actorNameNode.asLiteral();
@@ -802,8 +984,15 @@ public class OntologyHandler {
                 Literal actorId = actorIdNode.asLiteral();
                 String actor_id = actorId.getString().toLowerCase();
 
+                String image_url = "";
+                if (actorImageNode.isLiteral()) {
+                    Literal imageUrl = actorImageNode.asLiteral();
+                    image_url = imageUrl.getString();
+                }
+
                 temp[0] = actor_name;
                 temp[1] = actor_id;
+                temp[2] = image_url;
 
                 actorsList.add(temp);
             }
@@ -812,14 +1001,21 @@ public class OntologyHandler {
         return actorsList;
     }
 
-    private ArrayList<String[]> searchSeries(String title) {
+    private ArrayList<String[]> searchSeries(String title, List<String> actors, List<String> creators) {
         ArrayList<String[]> seriesList = new ArrayList<>();
+        int counter = 0;
 
         String queryString = queryPrefix +
-                "SELECT ?seriesTitle ?seriesID " +
+                "SELECT ?seriesTitle ?seriesID ?imageURL " +
                 "WHERE {\n" +
-                "     ?series my:hasSeriesId ?seriesID.\n" +
-                "     ?series my:hasTitle ?seriesTitle FILTER regex(?seriesTitle, '" + title + "', 'i') .\n";
+                "     ?series my:hasSeriesId ?seriesID .\n" +
+                "     ?series my:hasSeriesImageURL ?imageURL .\n";
+
+        if (!title.equals("")) {
+            queryString += "     ?series my:hasTitle ?seriesTitle FILTER regex(?seriesTitle, '" + title + "', 'i') .\n";
+        } else {
+            queryString += "     ?series my:hasTitle ?seriesTitle .\n";
+        }
 
         // Add genre
         for (String currentGenre : resultObject.getGenreList()) {
@@ -835,11 +1031,10 @@ public class OntologyHandler {
             queryString += "     ?series rdf:type my:" + currentGenre + " .\n";
         }
 
-        // Add actors, creators and people
-        if (resultObject.isActor()) {
+        // Add actors, creators
+        if (actors.size() > 0) {
             // Add restriction - Series must have actors
-            int counter = 0;
-            for (String actorName : resultObject.getActorsList()) {
+            for (String actorName : actors) {
                 queryString += "     ?series my:hasActor ?actor" + counter + " .\n";
                 queryString += "     ?actor" + counter + " my:hasName ?actorName FILTER regex(?actorName, '"  +
                         actorName + "', 'i') .\n";
@@ -847,24 +1042,18 @@ public class OntologyHandler {
             }
         }
 
-        if (resultObject.isCreator()) {
+        if (creators.size() > 0) {
             // Add restriction - Series must have creators
-            int counter = 0;
-            for (String creatorName : resultObject.getCreatorsList()) {
+            for (String creatorName : creators) {
                 queryString += "     ?series my:hasCreator ?creator" + counter + " .\n";
                 queryString += "     ?creator" + counter + " my:hasName ?creatorName FILTER regex(?creatorName, '"  +
                         creatorName + "', 'i') .\n";
                 counter++;
             }
         }
-
-        if (resultObject.isPerson()) {
-            // Add restriction - Series must have actors or creators
-        }
-
         queryString += "} ORDER BY ASC(?seriesTitle)";
 
-        System.out.println("\n===============================\n" + queryString + "\n");
+        //System.out.println("\n===============================\n" + queryString + "\n");
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -874,7 +1063,8 @@ public class OntologyHandler {
             QuerySolution result = results.next();
             RDFNode seriesTitleNode = result.get("?seriesTitle");
             RDFNode seriesIdNode = result.get("?seriesID");
-            String[] temp = new String[2];
+            RDFNode seriesImageNode = result.get("?imageURL");
+            String[] temp = new String[3];
 
             if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral()) {
                 Literal seriesTitle = seriesTitleNode.asLiteral();
@@ -883,8 +1073,15 @@ public class OntologyHandler {
                 Literal seriesId = seriesIdNode.asLiteral();
                 String series_id = seriesId.getString().toLowerCase();
 
+                String image_url = "";
+                if (seriesImageNode.isLiteral()) {
+                    Literal imageUrl = seriesImageNode.asLiteral();
+                    image_url = imageUrl.getString();
+                }
+
                 temp[0] = series_title;
                 temp[1] = series_id;
+                temp[2] = image_url;
 
                 seriesList.add(temp);
             }

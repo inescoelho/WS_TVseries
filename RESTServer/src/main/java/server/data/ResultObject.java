@@ -38,7 +38,9 @@ public class ResultObject {
     }
 
     public void addPerson(String person) {
-        this.peopleList.add(person);
+        if(!peopleList.contains(person) && !creatorsList.contains(person) && !actorsList.contains(person)) {
+            peopleList.add(person);
+        }
     }
 
     public List<String> getCreatorsList() {
@@ -46,7 +48,13 @@ public class ResultObject {
     }
 
     public void addCreator(String creator) {
-        this.creatorsList.add(creator);
+        if (!creatorsList.contains(creator)) {
+            this.creatorsList.add(creator);
+
+            if (peopleList.contains(creator)) {
+                peopleList.remove(creator);
+            }
+        }
     }
 
     public List<String> getActorsList() {
@@ -54,7 +62,13 @@ public class ResultObject {
     }
 
     public void addActor(String actor) {
-        this.actorsList.add(actor);
+        if (!actorsList.contains(actor)) {
+            this.actorsList.add(actor);
+
+            if (peopleList.contains(actor)) {
+                peopleList.remove(actor);
+            }
+        }
     }
 
     public List<String> getSeriesTiles() {
@@ -62,7 +76,9 @@ public class ResultObject {
     }
 
     public void addSeriesTitle(String title) {
-        this.seriesTiles.add(title);
+        if (!seriesTiles.contains(title)) {
+            this.seriesTiles.add(title);
+        }
     }
 
     public List<String> getGenreList() {
@@ -70,7 +86,9 @@ public class ResultObject {
     }
 
     public void addToGenreList(String genre) {
-        this.genreList.add(genre);
+        if (!genreList.contains(genre)) {
+            this.genreList.add(genre);
+        }
     }
 
     public String toString() {
