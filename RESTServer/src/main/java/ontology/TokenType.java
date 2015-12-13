@@ -8,5 +8,6 @@ public enum TokenType {
     CREATOR,
     GENRE,
     GENRE_TYPE,
+    AND,
     NOT_FOUND_TYPE
 }

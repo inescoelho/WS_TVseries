@@ -508,6 +508,11 @@ public class OntologyHandler {
                     resultObject.setPerson(true);
                     break;
 
+                case AND:
+                    buffer = processBuffer(buffer, past, type);
+                    type = past;
+                    break;
+
                 case NOT_FOUND_TYPE:
                     buffer += word + " ";
                     break;
@@ -552,6 +557,11 @@ public class OntologyHandler {
         // Check if person keyword
         if (Strings.personSynonyms.contains(word)) {
             return TokenType.PERSON;
+        }
+
+        // Check if and keyword
+        if (Strings.andSynonyms.contains(word)) {
+            return TokenType.AND;
         }
 
         return TokenType.NOT_FOUND_TYPE;

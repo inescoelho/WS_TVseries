@@ -11,4 +11,5 @@ public class Strings {
     public static List<String> actorSynonyms = Arrays.asList("actor", "actors", "starring", "featuring");
     public static List<String> creatorSynonyms = Arrays.asList("creator", "creators", "created");
     public static List<String> personSynonyms = Arrays.asList("person", "people", "with");
+    public static List<String> andSynonyms = Arrays.asList("and");
 }
