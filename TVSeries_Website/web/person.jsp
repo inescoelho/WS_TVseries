@@ -16,7 +16,9 @@
         <div class="col-md-8" id="rightInfo"></div>
     </div>
 
-    <div class="container" id="seriesInfo"></div>
+    <div class="container" id="seriesInfo">
+        <div class="spacer">&nbsp;</div>
+    </div>
 
     <script>
         function getPersonInfo() {
