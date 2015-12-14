@@ -509,6 +509,14 @@ public class OntologyHandler {
                     type = past;
                     break;
 
+                case BEGIN:
+                case END:
+                case BETWEEN:
+                case STILL_RUNNING:
+                    buffer = processBuffer(buffer, past, type);
+                    past = type;
+                    break;
+
                 case NOT_FOUND_TYPE:
                     buffer += word + " ";
                     break;
@@ -560,6 +568,26 @@ public class OntologyHandler {
             return TokenType.AND;
         }
 
+        // Check if beginning date
+        if (Strings.beginDateSynonyms.contains(word)) {
+            return TokenType.BEGIN;
+        }
+
+        // Check if end date
+        if (Strings.endDateSynonyms.contains(word)) {
+            return TokenType.END;
+        }
+
+        // Check if between
+        if (Strings.betweenSynonyms.contains(word)) {
+            return TokenType.BETWEEN;
+        }
+
+        // Check if still running
+        if (Strings.stillRunningSynonyms.contains(word)) {
+            return TokenType.STILL_RUNNING;
+        }
+
         return TokenType.NOT_FOUND_TYPE;
     }
 
@@ -593,6 +621,24 @@ public class OntologyHandler {
             resultObject.addCreator(buffer);
         } else if (type == TokenType.PERSON) {
             resultObject.addPerson(buffer);
+        } else if (type == TokenType.BEGIN) {
+            // buffer has an int
+            int year = getIntFromString(buffer);
+            resultObject.setStartedYear(year);
+        } else if (type == TokenType.END) {
+            // buffer has an int
+            int year = getIntFromString(buffer);
+            resultObject.setFinishYear(year);
+        } else if (type == TokenType.BETWEEN) {
+            int startYear, finishYear;
+            String[] temp = buffer.split(" ");
+            startYear = getIntFromString(temp[0]);
+            finishYear = getIntFromString(temp[1]);
+
+            resultObject.setStartedYear(startYear);
+            resultObject.setFinishYear(finishYear);
+        } else if (type == TokenType.STILL_RUNNING) {
+
         } else if (type == null) {
             // No past nor current
             resultObject.setPerson(true);
@@ -1054,6 +1100,18 @@ public class OntologyHandler {
             }
 
             queryString += "     ?series rdf:type my:" + currentGenre + " .\n";
+        }
+
+        // Add starting year
+        if (resultObject.getStartedYear()> -1) {
+            queryString += "     ?series my:hasPilotYear ?pilotYear FILTER(?pilotYear >= " +
+                    resultObject.getStartedYear() + ") .\n";
+        }
+
+        // Add finish year
+        if (resultObject.getFinishYear()> -1) {
+            queryString += "     ?series my:hasFinishYear ?finishYear FILTER(?finishYear <= " +
+                    resultObject.getFinishYear() + ") .\n";
         }
 
         // Add actors, creators

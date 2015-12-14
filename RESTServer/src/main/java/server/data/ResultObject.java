@@ -16,6 +16,8 @@ public class ResultObject {
     private boolean isPerson;
     private boolean isCreator;
     private boolean isActor;
+    private int startedYear;
+    private int finishYear;
 
     public ResultObject() {
         genreList = new ArrayList<>();
@@ -23,6 +25,8 @@ public class ResultObject {
         actorsList = new ArrayList<>();
         creatorsList = new ArrayList<>();
         peopleList = new ArrayList<>();
+        startedYear = -1;
+        finishYear = -1;
     }
 
     public boolean isSeries() {
@@ -126,5 +130,21 @@ public class ResultObject {
 
     public void setActor(boolean actor) {
         isActor = actor;
+    }
+
+    public int getStartedYear() {
+        return startedYear;
+    }
+
+    public void setStartedYear(int startedYear) {
+        this.startedYear = startedYear;
+    }
+
+    public int getFinishYear() {
+        return finishYear;
+    }
+
+    public void setFinishYear(int finishYear) {
+        this.finishYear = finishYear;
     }
 }
