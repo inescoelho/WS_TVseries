@@ -516,6 +516,57 @@ public class OntologyHandler {
                     past = type;
                     break;
 
+                case SCORE:
+                    buffer = processBuffer(buffer, past, type);
+                    resultObject.setScore(ResultObject.ScoreSearch.SET);
+
+                    // Read next token
+                    if (tokenizer.hasMoreTokens()) {
+                        word = tokenizer.nextToken();
+                        past = type;
+                        type = isCategory(word);
+
+                        // Number -- Score equal
+                        if (type == TokenType.NOT_FOUND_TYPE) {
+                            resultObject.setScore(ResultObject.ScoreSearch.SET_EQUAL);
+                            buffer = processBuffer(word + " ", past, type);
+                        } else if (type == TokenType.EQUAL) {
+                            resultObject.setScore(ResultObject.ScoreSearch.SET_EQUAL);
+
+                            if (tokenizer.hasMoreTokens()) {
+                                word = tokenizer.nextToken(); // Read number
+                                TokenType type1 = isCategory(word);
+                                if (type1 == TokenType.NOT_FOUND_TYPE) {
+                                    buffer = processBuffer(word + " ", past, type1);
+                                }
+                            }
+                        } else if (type == TokenType.LOWER){
+                            resultObject.setScore(ResultObject.ScoreSearch.SET_LOWER);
+
+                            if (tokenizer.hasMoreTokens()) {
+                                word = tokenizer.nextToken(); // Read number
+                                TokenType type1 = isCategory(word);
+                                if (type1 == TokenType.NOT_FOUND_TYPE) {
+                                    buffer = processBuffer(word + " ", past, type1);
+                                }
+                            }
+                        } else if (type == TokenType.HIGHER) {
+                            resultObject.setScore(ResultObject.ScoreSearch.SET_HIGHER);
+
+                            System.out.println("AQUI ");
+
+                            if (tokenizer.hasMoreTokens()) {
+                                word = tokenizer.nextToken(); // Read number
+                                TokenType type1 = isCategory(word);
+                                if (type1 == TokenType.NOT_FOUND_TYPE) {
+                                    buffer = processBuffer(word + " ", past, type1);
+                                }
+                            }
+                        }
+                    }
+
+                    break;
+
                 case NOT_FOUND_TYPE:
                     buffer += word + " ";
                     break;
@@ -582,6 +633,26 @@ public class OntologyHandler {
             return TokenType.BETWEEN;
         }
 
+        // Check if score
+        if (Strings.scoreSynonyms.contains(word)) {
+            return TokenType.SCORE;
+        }
+
+        // Check if lower
+        if (Strings.lowerSynonyms.contains(word)) {
+            return TokenType.LOWER;
+        }
+
+        // Check if higher
+        if (Strings.higherSynonyms.contains(word)) {
+            return TokenType.HIGHER;
+        }
+
+        // Check if equal
+        if (Strings.equalSynonyms.contains(word)) {
+            return TokenType.EQUAL;
+        }
+
         return TokenType.NOT_FOUND_TYPE;
     }
 
@@ -599,7 +670,19 @@ public class OntologyHandler {
         } else {
             // Consider past
             type = past;
+
+            if (past == TokenType.SCORE) {
+                // Current is not going to be null and will always have the type
+                if (current == TokenType.NOT_FOUND_TYPE) {
+                    // Buffer has the value
+                    float value = Float.valueOf(buffer.replaceAll("[^\\d.]+|\\.(?!\\d)", ""));
+                    resultObject.setScoreValue(value);
+                }
+
+                return "";
+            }
         }
+
 
         if (buffer.length() == 0) {
             if (type == TokenType.BEGIN) {
@@ -661,7 +744,15 @@ public class OntologyHandler {
             List<String> actorsList = resultObject.getActorsList();
             List<String> creatorsList = resultObject.getCreatorsList();
 
-            if (resultObject.getSeriesTiles().size() > 0) {
+            if (checkIfEquals(resultObject.getSeriesTiles(), resultObject.getPeopleList())) {
+
+                for (String seriesTitle : resultObject.getSeriesTiles()) {
+                    ArrayList<String[]> currentSeriesFound = searchSeries(seriesTitle, actorsList, creatorsList);
+                    for (String[] temp : currentSeriesFound) {
+                        series.add(temp);
+                    }
+                }
+            } else if (resultObject.getSeriesTiles().size() > 0) {
 
                 for (String seriesTitle : resultObject.getSeriesTiles()) {
 
@@ -1119,6 +1210,21 @@ public class OntologyHandler {
             queryString += "     ?series my:hasFinishYear ?finishYear .\n";
         }
 
+        // Add score
+        if (resultObject.getScore() != ResultObject.ScoreSearch.NOT_SET) {
+            if (resultObject.getScore() == ResultObject.ScoreSearch.SET ||
+                resultObject.getScore() == ResultObject.ScoreSearch.SET_EQUAL) {
+                queryString += "     ?series my:hasRating ?rating FILTER(?rating == " + resultObject.getScoreValue() +
+                               ") .\n";
+            } else if (resultObject.getScore() == ResultObject.ScoreSearch.SET_LOWER) {
+                queryString += "     ?series my:hasRating ?rating FILTER(?rating < " + resultObject.getScoreValue() +
+                        ") .\n";
+            } else if (resultObject.getScore() == ResultObject.ScoreSearch.SET_HIGHER) {
+                queryString += "     ?series my:hasRating ?rating FILTER(?rating > " + resultObject.getScoreValue() +
+                        ") .\n";
+            }
+        }
+
         // Add actors, creators
         if (actors.size() > 0) {
             // Add restriction - Series must have actors
@@ -1139,6 +1245,7 @@ public class OntologyHandler {
                 counter++;
             }
         }
+
         queryString += "} ORDER BY ASC(?seriesTitle)";
 
         System.out.println("\n===============================\n" + queryString + "\n");
@@ -1176,5 +1283,18 @@ public class OntologyHandler {
         }
 
         return seriesList;
+    }
+
+    private boolean checkIfEquals(List<String> list1, List<String> list2) {
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+
+        for (int i=0; i<list1.size(); i++) {
+            if (!list1.get(i).equals(list2.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }

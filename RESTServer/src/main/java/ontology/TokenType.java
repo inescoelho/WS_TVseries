@@ -12,5 +12,9 @@ public enum TokenType {
     BEGIN,
     END,
     BETWEEN,
+    SCORE,
+    LOWER,
+    HIGHER,
+    EQUAL,
     NOT_FOUND_TYPE
 }

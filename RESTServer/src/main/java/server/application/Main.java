@@ -12,7 +12,7 @@ public class Main {
     public static void testSearch() {
         OntologyHandler ontologyHandler = new OntologyHandler("tv_series_ontology_current.rdf", "RDF/XML");
 
-        ontologyHandler.performSearch("series comedy started");
+        ontologyHandler.performSearch("series comedy score higher 4.0 with jim parsons and johnny galecki");
         //ontologyHandler.performSearch("sci-fi orphan action");
         //ontologyHandler.performSearch("series uma família muito moderna comedy");
         //ontologyHandler.performSearch("series uma família muito moderna actor jim parsons");

@@ -1,6 +1,7 @@
 package ontology;
 
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,4 +18,9 @@ public class Strings {
     public static List<String> endDateSynonyms = Arrays.asList("ended", "finished", "until", "end", "to", "finale",
                                                                "terminated", "canceled");
     public static List<String> betweenSynonyms = Arrays.asList("between");
+    public static List<String> scoreSynonyms = Arrays.asList("score", "rating");
+    public static List<String> equalSynonyms = Arrays.asList("equal", "same");
+    public static List<String> lowerSynonyms = Arrays.asList("lower", "shorter", "smaller");
+    public static List<String> higherSynonyms = Arrays.asList("higher", "bigger");
+
 }

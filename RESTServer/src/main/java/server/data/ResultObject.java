@@ -7,10 +7,34 @@ import java.util.List;
 
 public class ResultObject {
 
+    public float getScoreValue() {
+        return scoreValue;
+    }
+
+    public void setScoreValue(float scoreValue) {
+        this.scoreValue = scoreValue;
+    }
+
+    public ScoreSearch getScore() {
+        return score;
+    }
+
+    public void setScore(ScoreSearch score) {
+        this.score = score;
+    }
+
     public enum Running {
         NOT_SET,
         STILL_RUNNING,
-        ALREADY_FINISHED;
+        ALREADY_FINISHED,
+    }
+
+    public enum ScoreSearch {
+        NOT_SET,
+        SET,
+        SET_LOWER,
+        SET_HIGHER,
+        SET_EQUAL,
     }
 
     private List<String> genreList;
@@ -24,7 +48,9 @@ public class ResultObject {
     private boolean isActor;
     private int startedYear;
     private int finishYear;
-    private Enum stillRunning;
+    private Running stillRunning;
+    private ScoreSearch score;
+    private float scoreValue;
 
 
     public ResultObject() {
@@ -105,16 +131,25 @@ public class ResultObject {
     }
 
     public String toString() {
-        return "{\n\tSeries: " + isSeries +
-                ",\n\tPerson: " + isPerson +
-                ",\n\tCreator: " + isCreator +
-                ",\n\tActor: " + isActor +
-                ",\n\tGenreList: " + Arrays.toString(genreList.toArray()) +
-                ",\n\tSeriesTitles: " + Arrays.toString(seriesTiles.toArray()) +
-                ",\n\tActorsList: " + Arrays.toString(actorsList.toArray()) +
-                ",\n\tCreatorsList:" + Arrays.toString(creatorsList.toArray()) +
-                ",\n\tPeopleList: " + Arrays.toString(peopleList.toArray()) +
-                "\n}";
+        String result = "{\n\tSeries: " + isSeries +
+                        ",\n\tPerson: " + isPerson +
+                        ",\n\tCreator: " + isCreator +
+                        ",\n\tActor: " + isActor +
+                        ",\n\tGenreList: " + Arrays.toString(genreList.toArray()) +
+                        ",\n\tSeriesTitles: " + Arrays.toString(seriesTiles.toArray()) +
+                        ",\n\tActorsList: " + Arrays.toString(actorsList.toArray()) +
+                        ",\n\tCreatorsList:" + Arrays.toString(creatorsList.toArray()) +
+                        ",\n\tPeopleList: " + Arrays.toString(peopleList.toArray()) +
+                        ",\n\tRunning: " + stillRunning +
+                        ",\n\tScore: " + score;
+
+        if (score != ScoreSearch.NOT_SET) {
+            result += ",\n\tScoreValue: " + scoreValue;
+        }
+
+        result += "\n}";
+
+        return result;
     }
 
     public boolean isPerson() {
@@ -157,7 +192,7 @@ public class ResultObject {
         this.finishYear = finishYear;
     }
 
-    public Enum getStillRunning() {
+    public Running getStillRunning() {
         return stillRunning;
     }
 

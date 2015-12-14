@@ -48,9 +48,17 @@ until/before, since/after, starring/featuring/wth, and, or, birth/birthdate (sin
 	titulo since/from/starting/beginning <date>
 	titulo ended/finished/until <date>
 
+	score bigger
+	score equal
+	score lower
+
 2) Pesquisar pessoas (actores/criadores)
 	<nome> (born in/after/until)
 	actor/creator <nome> (born in/after/until)
 	actor/creator <nome> from <series> (born in/after/until)
 	actor(s)/creator(s) <series> (born in/after/until)
 	actor(s)/creator(s) <series> (started/finished in/after/until)
+
+	born year
+	born before year
+	born after year
