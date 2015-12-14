@@ -60,5 +60,3 @@ until/before, since/after, starring/featuring/wth, and, or, birth/birthdate (sin
 	actor(s)/creator(s) <series> (started/finished in/after/until)
 
 	born year
-	born before year
-	born after year

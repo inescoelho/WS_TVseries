@@ -16,5 +16,6 @@ public enum TokenType {
     LOWER,
     HIGHER,
     EQUAL,
+    BORN,
     NOT_FOUND_TYPE
 }

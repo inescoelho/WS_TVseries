@@ -7,22 +7,6 @@ import java.util.List;
 
 public class ResultObject {
 
-    public float getScoreValue() {
-        return scoreValue;
-    }
-
-    public void setScoreValue(float scoreValue) {
-        this.scoreValue = scoreValue;
-    }
-
-    public ScoreSearch getScore() {
-        return score;
-    }
-
-    public void setScore(ScoreSearch score) {
-        this.score = score;
-    }
-
     public enum Running {
         NOT_SET,
         STILL_RUNNING,
@@ -35,6 +19,11 @@ public class ResultObject {
         SET_LOWER,
         SET_HIGHER,
         SET_EQUAL,
+    }
+
+    public enum BirthYear {
+        NOT_SET,
+        SET,
     }
 
     private List<String> genreList;
@@ -51,7 +40,8 @@ public class ResultObject {
     private Running stillRunning;
     private ScoreSearch score;
     private float scoreValue;
-
+    private BirthYear brithYear;
+    private int bornYearValue;
 
     public ResultObject() {
         genreList = new ArrayList<>();
@@ -146,6 +136,10 @@ public class ResultObject {
         if (score != ScoreSearch.NOT_SET) {
             result += ",\n\tScoreValue: " + scoreValue;
         }
+        result += ",\n\tBirthYear: " + brithYear;
+        if (brithYear != BirthYear.NOT_SET) {
+            result += ",\n\tBirthYearValue: " + bornYearValue;
+        }
 
         result += "\n}";
 
@@ -202,5 +196,37 @@ public class ResultObject {
         } else {
             this.stillRunning = Running.ALREADY_FINISHED;
         }
+    }
+
+    public float getScoreValue() {
+        return scoreValue;
+    }
+
+    public void setScoreValue(float scoreValue) {
+        this.scoreValue = scoreValue;
+    }
+
+    public ScoreSearch getScore() {
+        return score;
+    }
+
+    public void setScore(ScoreSearch score) {
+        this.score = score;
+    }
+
+    public BirthYear getBrithYear() {
+        return brithYear;
+    }
+
+    public void setBrithYear(BirthYear brithYear) {
+        this.brithYear = brithYear;
+    }
+
+    public int getBornYearValue() {
+        return bornYearValue;
+    }
+
+    public void setBornYearValue(int bornYearValue) {
+        this.bornYearValue = bornYearValue;
     }
 }

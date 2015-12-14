@@ -23,4 +23,6 @@ public class Strings {
     public static List<String> lowerSynonyms = Arrays.asList("lower", "shorter", "smaller");
     public static List<String> higherSynonyms = Arrays.asList("higher", "bigger");
 
+    public static List<String> bornSynonyms = Arrays.asList("born");
+
 }

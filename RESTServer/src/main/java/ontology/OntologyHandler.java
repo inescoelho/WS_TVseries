@@ -553,8 +553,6 @@ public class OntologyHandler {
                         } else if (type == TokenType.HIGHER) {
                             resultObject.setScore(ResultObject.ScoreSearch.SET_HIGHER);
 
-                            System.out.println("AQUI ");
-
                             if (tokenizer.hasMoreTokens()) {
                                 word = tokenizer.nextToken(); // Read number
                                 TokenType type1 = isCategory(word);
@@ -562,6 +560,23 @@ public class OntologyHandler {
                                     buffer = processBuffer(word + " ", past, type1);
                                 }
                             }
+                        }
+                    }
+
+                    break;
+
+                case BORN:
+                    buffer = processBuffer(buffer, past, type);
+                    resultObject.setBrithYear(ResultObject.BirthYear.SET);
+
+                    // Read next token
+                    if (tokenizer.hasMoreTokens()) {
+                        word = tokenizer.nextToken();
+                        past = type;
+                        type = isCategory(word);
+
+                        if (type == TokenType.NOT_FOUND_TYPE) {
+                            buffer = processBuffer(word + " ", past, type);
                         }
                     }
 
@@ -653,6 +668,11 @@ public class OntologyHandler {
             return TokenType.EQUAL;
         }
 
+        // Check if born
+        if (Strings.bornSynonyms.contains(word)) {
+            return TokenType.BORN;
+        }
+
         return TokenType.NOT_FOUND_TYPE;
     }
 
@@ -677,6 +697,15 @@ public class OntologyHandler {
                     // Buffer has the value
                     float value = Float.valueOf(buffer.replaceAll("[^\\d.]+|\\.(?!\\d)", ""));
                     resultObject.setScoreValue(value);
+                }
+
+                return "";
+            } else if (past == TokenType.BORN) {
+                // Current is not going to be null and will always have the type
+                if (current == TokenType.NOT_FOUND_TYPE) {
+                    // buffer has the value
+                    int value = getIntFromString(buffer);
+                    resultObject.setBornYearValue(value);
                 }
 
                 return "";
@@ -1166,7 +1195,7 @@ public class OntologyHandler {
         int counter = 0;
 
         String queryString = queryPrefix +
-                "SELECT ?seriesTitle ?seriesID ?imageURL " +
+                "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL " +
                 "WHERE {\n" +
                 "     ?series my:hasSeriesId ?seriesID .\n" +
                 "     ?series my:hasSeriesImageURL ?imageURL .\n";
@@ -1223,6 +1252,14 @@ public class OntologyHandler {
                 queryString += "     ?series my:hasRating ?rating FILTER(?rating > " + resultObject.getScoreValue() +
                         ") .\n";
             }
+        }
+
+        // Add born year
+        if (resultObject.getBrithYear() != ResultObject.BirthYear.NOT_SET) {
+            queryString += "     ?series my:hasActor ?actor" + counter + " .\n" +
+                           "     ?actor" + counter + " my:hasBirthDate ?birthDate FILTER regex(?birthDate, '" +
+                           resultObject.getBornYearValue() + "', 'i') .\n";
+            counter++;
         }
 
         // Add actors, creators
