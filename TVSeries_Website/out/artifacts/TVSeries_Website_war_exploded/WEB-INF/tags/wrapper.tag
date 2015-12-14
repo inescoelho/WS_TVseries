@@ -24,9 +24,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="index.jsp">Home</a></li>
             </ul>
-            <form class="navbar-form navbar-right" action="searchResult.jsp" role="search">
+            <form class="navbar-form navbar-right" action="search" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="searchQuery">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>

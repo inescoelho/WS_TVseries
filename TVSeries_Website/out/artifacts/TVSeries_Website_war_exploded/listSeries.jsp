@@ -13,6 +13,7 @@
 
     <script>
         function getSeriesFromGenre() {
+
             $.ajax({
                 type: "GET",
                 url: "http://localhost:8090/getGenres",
