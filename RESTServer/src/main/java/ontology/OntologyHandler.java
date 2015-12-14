@@ -572,7 +572,12 @@ public class OntologyHandler {
 
         if (past == null) {
             // Consider current
-            type = current;
+            if (current == TokenType.PERSON) {
+                type = TokenType.SERIES;
+                resultObject.setSeries(true);
+            } else {
+                type = current;
+            }
         } else {
             // Consider past
             type = past;
