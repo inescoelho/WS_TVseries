@@ -38,7 +38,7 @@
                                         "<div class=\"col-md-3 col-md-offset-2\">" +
                                             "<div class=\"text-center\" id=\"seriesImage\"" + currentSeries + "\">" +
                                                 "<a href=series?id=" + currentSeries[1] + ">" +
-                                                    "<img src=" + currentSeries[2] + ">" +
+                                                    "<img src=" + currentSeries[2] + "width=\"250\" height=\"200\">" +
                                                  "</a>" +
                                             "</div>" +
                                         "</div>" +
@@ -66,7 +66,7 @@
                                         "<div class=\"col-md-3 col-md-offset-2\">" +
                                             "<div class=\"text-center\" id=\"personImage\"" + currentPerson + "\">" +
                                                 "<a href=person?id=" + currentPerson[1] + ">" +
-                                                    "<img src=" + currentPerson[2] + ">" +
+                                                    "<img src=" + currentPerson[2] + "width=\"250\" height=\"200\">" +
                                                 "</a>" +
                                             "</div>" +
                                         "</div>" +

@@ -40,7 +40,7 @@
                 },
                 success: function (series) {
                     $('#seriesTitle').append("<h1 class=\"series-title\">" + series["title"] + "</h1>");
-                    $('#seriesImage').append("<img src=" + series["imageURL"] + "class=\"avatar img-circle\" alt=\"...\">");
+                    $('#seriesImage').append("<img src=" + series["imageURL"] + "width=\"400\" height=\"300\">");
                     if (series["finishYear"] != "-1")
                         $('#rightInfo').append("<p>" + series["pilotYear"] + "-" + series["finishYear"] + "</p>");
                     else
@@ -57,7 +57,7 @@
                                     "<div class=\"col-md-3 col-md-offset-2\">" +
                                         "<div class=\"text-center\" id=\"creatorImage\"" + creator + "\">" +
                                             "<a href=person?id=" + series["creators"][creator][0] + ">" +
-                                                "<img src=" + series["creators"][creator][2] + ">" +
+                                                "<img src=" + series["creators"][creator][2] + "width=\"150\" height=\"100\">" +
                                             "</a>" +
                                         "</div>" +
                                     "</div>" +
@@ -76,7 +76,7 @@
                                     "<div class=\"col-md-3 col-md-offset-2\">" +
                                         "<div class=\"text-center\" id=\"actorsImage\"" + actor + "\">" +
                                             "<a href=person?id=" + series["actors"][actor][0] + ">" +
-                                                "<img src=" + series["actors"][actor][2] + ">" +
+                                                "<img src=" + series["actors"][actor][2] + "width=\"150\" height=\"100\">" +
                                             "</a>" +
                                         "</div>" +
                                     "</div>" +

@@ -34,9 +34,11 @@
                 },
                 success: function (person) {
                     $('#personName').append("<h1 class=\"actor-title\">" + person["name"] + "</h1>");
-                    $('#personImage').append("<img src=" + person["imageURL"] + "class=\"img-responsive\" alt=\"Responsive image\">");
-                    $('#rightInfo').append("<p><b>Birthday: </b>" + person["birthDate"] + "</p>");
-                    $('#rightInfo').append("<p><b>Biography: </b>" + person["biography"] + "</p>");
+                    $('#personImage').append("<img src=" + person["imageURL"] + "width=\"300\" height=\"240\">");
+                    if(person["birthDate"] != "")
+                        $('#rightInfo').append("<p><b>Birthday: </b>" + person["birthDate"] + "</p>");
+                    if(person["biography"] != "")
+                        $('#rightInfo').append("<p><b>Biography: </b>" + person["biography"] + "</p>");
                     if (person["wikiURL"] != "")
                         $('#rightInfo').append("<p><a href=" + person["wikiURL"] + ">More info</a></p>");
 
@@ -68,7 +70,7 @@
                                         "<div class=\"col-md-3 col-md-offset-2\">" +
                                             "<div class=\"text-center\" id=\"creatorImage\"" + creator + "\">" +
                                                 "<a href=series?id=" + person["seriesCreated"][creator][0] + ">" +
-                                                    "<img src=" + person["seriesCreated"][creator][2] + ">" +
+                                                    "<img src=" + person["seriesCreated"][creator][2] + "width=\"150\" height=\"100\">" +
                                                 "</a>" +
                                             "</div>" +
                                         "</div>" +
@@ -91,7 +93,7 @@
                                         "<div class=\"col-md-3 col-md-offset-2\">" +
                                             "<div class=\"text-center\" id=\"actorImage\"" + actor + "\">" +
                                                 "<a href=series?id=" + person["seriesActed"][actor][0] + ">" +
-                                                     "<img src=" + person["seriesActed"][actor][2] + ">" +
+                                                     "<img src=" + person["seriesActed"][actor][2] + "width=\"150\" height=\"100\">" +
                                                 "</a>" +
                                             "</div>" +
                                         "</div>" +
