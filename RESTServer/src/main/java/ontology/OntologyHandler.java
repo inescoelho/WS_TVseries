@@ -572,7 +572,7 @@ public class OntologyHandler {
 
         if (past == null) {
             // Consider current
-            if (current == TokenType.PERSON) {
+            if (current == TokenType.PERSON || current == TokenType.ACTOR || current == TokenType.CREATOR) {
                 type = TokenType.SERIES;
                 resultObject.setSeries(true);
             } else {
@@ -938,9 +938,11 @@ public class OntologyHandler {
                 "WHERE {\n" +
                 "     ?creator rdf:type my:Creator .\n" +
                 "     ?creator my:hasPersonId ?creatorID .\n" +
-                "     ?creator my:hasPersonURL ?creatorImageURL .\n" +
+                "     ?creator my:hasPersonImageURL ?creatorImageURL .\n" +
                 "     ?creator my:hasName ?creatorName FILTER regex(?creatorName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?creatorName)";
+
+        //System.out.println("\n===============================\n" + queryString + "\n");
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);

@@ -15,7 +15,7 @@ public class Series {
     private int episodeDuration;
     private int pilotYear; // -1 if no information is provided!!!
     private int finishYear; // -1 if no information is provided!!!
-    private double rating; // -1 if no information is provied!!!
+    private double rating; // -1 if no information is provided!!!
     private ArrayList<String[]> actors; // first position has name, second has id and third has imageURL
     private ArrayList<String[]> creators; // first position has name, second has id and third has imageURL
 
