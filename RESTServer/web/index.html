@@ -150,7 +150,7 @@
 		function performSearch() {
 			//var data = {"query" : "series comedy action sci-fi jim parsons"};
             //var data = {"query" : "genre comedy action adventure jim parsons"};
-            var data = {"query" : "actor jim parsons"};
+            var data = {"query" : "series comedy"};
 
 
             $.ajax({
@@ -163,7 +163,20 @@
                     xhr.setRequestHeader("Accept", "application/json")
                 },
                 success: function (data) {
-                    console.log("Got data");
+                    console.log("Series Found: " + data["series"].length);
+                    console.log("People Found: " + data["people"].length);
+
+                    if (data["series"].length > 0) {
+                        var firstSeries = data["series"][0];
+                        console.log("First series found: {'Name': '" + firstSeries[0] + "', 'Id': '" + firstSeries[1] +
+                                    "', 'ImageURL': '" + firstSeries[2] + "'}");
+                    }
+
+                    if (data["people"].length > 0) {
+                        var firstPerson = data["people"][0];
+                        console.log("First person found: {'Name': '" + firstPerson[0] + "', 'Id': '" + firstPerson[1] +
+                                "', 'ImageURL': '" + firstPerson[2] + "'}");
+                    }
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR.status);
