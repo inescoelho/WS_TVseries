@@ -7,6 +7,12 @@ import java.util.List;
 
 public class ResultObject {
 
+    public enum Running {
+        NOT_SET,
+        STILL_RUNNING,
+        ALREADY_FINISHED;
+    }
+
     private List<String> genreList;
     private List<String> seriesTiles;
     private List<String> actorsList;
@@ -18,6 +24,8 @@ public class ResultObject {
     private boolean isActor;
     private int startedYear;
     private int finishYear;
+    private Enum stillRunning;
+
 
     public ResultObject() {
         genreList = new ArrayList<>();
@@ -27,6 +35,7 @@ public class ResultObject {
         peopleList = new ArrayList<>();
         startedYear = -1;
         finishYear = -1;
+        stillRunning = Running.NOT_SET;
     }
 
     public boolean isSeries() {
@@ -146,5 +155,17 @@ public class ResultObject {
 
     public void setFinishYear(int finishYear) {
         this.finishYear = finishYear;
+    }
+
+    public Enum getStillRunning() {
+        return stillRunning;
+    }
+
+    public void setStillRunning(boolean stillRunning) {
+        if (stillRunning) {
+            this.stillRunning = Running.STILL_RUNNING;
+        } else {
+            this.stillRunning = Running.ALREADY_FINISHED;
+        }
     }
 }

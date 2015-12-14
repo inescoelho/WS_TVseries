@@ -12,6 +12,5 @@ public enum TokenType {
     BEGIN,
     END,
     BETWEEN,
-    STILL_RUNNING,
     NOT_FOUND_TYPE
 }

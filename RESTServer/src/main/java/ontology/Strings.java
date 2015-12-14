@@ -13,9 +13,8 @@ public class Strings {
     public static List<String> personSynonyms = Arrays.asList("person", "people", "with");
     public static List<String> andSynonyms = Arrays.asList("and");
     public static List<String> beginDateSynonyms = Arrays.asList("starting", "since", "from", "beginning", "start",
-                                                                 "pilot", "started");
+                                                                 "pilot", "started", "running", "airing");
     public static List<String> endDateSynonyms = Arrays.asList("ended", "finished", "until", "end", "to", "finale",
                                                                "terminated", "canceled");
     public static List<String> betweenSynonyms = Arrays.asList("between");
-    public static List<String> stillRunningSynonyms = Arrays.asList("running", "airing");
 }

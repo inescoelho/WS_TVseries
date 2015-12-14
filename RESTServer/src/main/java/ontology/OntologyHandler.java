@@ -512,7 +512,6 @@ public class OntologyHandler {
                 case BEGIN:
                 case END:
                 case BETWEEN:
-                case STILL_RUNNING:
                     buffer = processBuffer(buffer, past, type);
                     past = type;
                     break;
@@ -583,20 +582,11 @@ public class OntologyHandler {
             return TokenType.BETWEEN;
         }
 
-        // Check if still running
-        if (Strings.stillRunningSynonyms.contains(word)) {
-            return TokenType.STILL_RUNNING;
-        }
-
         return TokenType.NOT_FOUND_TYPE;
     }
 
     private String processBuffer(String buffer, TokenType past, TokenType current) {
         TokenType type;
-
-        if (buffer.length() == 0) {
-            return "";
-        }
 
         if (past == null) {
             // Consider current
@@ -609,6 +599,16 @@ public class OntologyHandler {
         } else {
             // Consider past
             type = past;
+        }
+
+        if (buffer.length() == 0) {
+            if (type == TokenType.BEGIN) {
+                resultObject.setStillRunning(true);
+            } else if (type == TokenType.END) {
+                resultObject.setStillRunning(false);
+            }
+
+            return "";
         }
 
         buffer = buffer.trim();
@@ -637,8 +637,6 @@ public class OntologyHandler {
 
             resultObject.setStartedYear(startYear);
             resultObject.setFinishYear(finishYear);
-        } else if (type == TokenType.STILL_RUNNING) {
-
         } else if (type == null) {
             // No past nor current
             resultObject.setPerson(true);
@@ -1106,12 +1104,19 @@ public class OntologyHandler {
         if (resultObject.getStartedYear()> -1) {
             queryString += "     ?series my:hasPilotYear ?pilotYear FILTER(?pilotYear >= " +
                     resultObject.getStartedYear() + ") .\n";
+        } else if (resultObject.getStillRunning() == ResultObject.Running.STILL_RUNNING) {
+            // Add series has started - Has pilot year but does not have finish year
+            queryString += "     ?series my:hasPilotYear ?pilotYear .\n";
+            queryString += "     FILTER NOT EXISTS { ?series my:hasFinishYear ?finishYear } .\n";
         }
 
         // Add finish year
         if (resultObject.getFinishYear()> -1) {
-            queryString += "     ?series my:hasFinishYear ?finishYear FILTER(?finishYear <= " +
+            queryString += "?series my:hasFinishYear ?finishYear FILTER(?finishYear <= " +
                     resultObject.getFinishYear() + ") .\n";
+        } else if (resultObject.getStillRunning() == ResultObject.Running.ALREADY_FINISHED) {
+            // Add series has finished
+            queryString += "     ?series my:hasFinishYear ?finishYear .\n";
         }
 
         // Add actors, creators
@@ -1136,7 +1141,7 @@ public class OntologyHandler {
         }
         queryString += "} ORDER BY ASC(?seriesTitle)";
 
-        //System.out.println("\n===============================\n" + queryString + "\n");
+        System.out.println("\n===============================\n" + queryString + "\n");
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
