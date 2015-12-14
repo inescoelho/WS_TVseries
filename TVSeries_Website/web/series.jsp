@@ -17,10 +17,12 @@
     </div>
 
     <div class="container" id="creators">
+        <div class="spacer">&nbsp;</div>
         <p><b>Created by: </b></p>
     </div>
 
     <div class="container" id="actors">
+        <div class="spacer">&nbsp;</div>
         <p><b>Actors: </b></p>
     </div>
 
