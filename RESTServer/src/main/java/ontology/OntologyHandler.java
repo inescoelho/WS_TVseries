@@ -619,6 +619,7 @@ public class OntologyHandler {
                     boolean firstTime = true;
                     ArrayList<String[]> seriesWhatever = new ArrayList<>();
 
+                    // Search for people
                     for (String currentPerson : resultObject.getPeopleList()) {
                         actorsList.add(currentPerson);
                         ArrayList<String[]> currentSeriesFound1 = searchSeries(seriesTitle, actorsList, creatorsList);
@@ -684,6 +685,13 @@ public class OntologyHandler {
 
                     // Just add to series
                     for (String[] temp : seriesWhatever) {
+                        series.add(temp);
+                    }
+
+                    // Just search without people (if no people them seriesWhatever is empty, so the previous for does
+                    // not execute
+                    ArrayList<String[]> currentSeriesFound = searchSeries(seriesTitle, actorsList, creatorsList);
+                    for (String[] temp : currentSeriesFound) {
                         series.add(temp);
                     }
                 }
