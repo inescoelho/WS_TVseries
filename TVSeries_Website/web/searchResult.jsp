@@ -3,6 +3,9 @@
 
 <t:wrapper>
 
+    <div id="error">
+    </div>
+
     <div id="series">
     </div>
 
@@ -26,6 +29,11 @@
                 success: function (data) {
                     console.log("Series Found: " + data["series"].length);
                     console.log("People Found: " + data["people"].length);
+
+                    if (data["series"].length == 0 && data["people"].length == 0) {
+                        $('#error').append("<h1>No results found!</h1>");
+                        $('#error').append("<h3>Yes, this is a feature...</h3>");
+                    }
 
                     if (data["series"].length > 0) {
                         $('#series').append("<h1>Series</h1>");
