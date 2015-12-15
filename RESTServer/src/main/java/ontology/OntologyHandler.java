@@ -511,9 +511,17 @@ public class OntologyHandler {
 
                 case BEGIN:
                 case END:
-                case BETWEEN:
                     buffer = processBuffer(buffer, past, type);
                     past = type;
+                    break;
+
+                case BETWEEN:
+                    buffer = processBuffer(buffer, past, type);
+                    if (past == TokenType.BEGIN) {
+                        past = TokenType.START_BETWEEN;
+                    } else if (past == TokenType.END){
+                        past = TokenType.END_BETWEEN;
+                    }
                     break;
 
                 case SCORE:
@@ -588,7 +596,7 @@ public class OntologyHandler {
             }
         }
 
-        processBuffer(buffer, past, null);
+        processBuffer(buffer, past, null, true);
 
         System.out.println(resultObject);
 
@@ -677,6 +685,10 @@ public class OntologyHandler {
     }
 
     private String processBuffer(String buffer, TokenType past, TokenType current) {
+        return processBuffer(buffer, past, current, false);
+    }
+
+    private String processBuffer(String buffer, TokenType past, TokenType current, boolean last) {
         TokenType type;
 
         if (past == null) {
@@ -712,11 +724,10 @@ public class OntologyHandler {
             }
         }
 
-
         if (buffer.length() == 0) {
-            if (type == TokenType.BEGIN) {
+            if (last && type == TokenType.BEGIN) {
                 resultObject.setStillRunning(true);
-            } else if (type == TokenType.END) {
+            } else if (last && type == TokenType.END) {
                 resultObject.setStillRunning(false);
             }
 
@@ -736,19 +747,25 @@ public class OntologyHandler {
         } else if (type == TokenType.BEGIN) {
             // buffer has an int
             int year = getIntFromString(buffer);
-            resultObject.setStartedYear(year);
+            resultObject.setStartedYear(new int[] {year});
         } else if (type == TokenType.END) {
             // buffer has an int
             int year = getIntFromString(buffer);
-            resultObject.setFinishYear(year);
-        } else if (type == TokenType.BETWEEN) {
-            int startYear, finishYear;
+            resultObject.setFinishYear(new int[] {year});
+        } else if (type == TokenType.START_BETWEEN) {
+            int startYear1, startYear2;
             String[] temp = buffer.split(" ");
-            startYear = getIntFromString(temp[0]);
-            finishYear = getIntFromString(temp[1]);
+            startYear1 = getIntFromString(temp[0]);
+            startYear2 = getIntFromString(temp[1]);
 
-            resultObject.setStartedYear(startYear);
-            resultObject.setFinishYear(finishYear);
+            resultObject.setStartedYear(new int[] {startYear1, startYear2});
+        } else if (type == TokenType.END_BETWEEN) {
+            int finishYear1, finishYear2;
+            String[] temp = buffer.split(" ");
+            finishYear1 = getIntFromString(temp[0]);
+            finishYear2 = getIntFromString(temp[1]);
+
+            resultObject.setFinishYear(new int[] {finishYear1, finishYear2});
         } else if (type == null) {
             // No past nor current
             resultObject.setPerson(true);
@@ -845,8 +862,8 @@ public class OntologyHandler {
                                 seriesWhatever = new ArrayList<>();
                                 break;
                             } else {
-                                for (int i : indexesToRemove) {
-                                    seriesWhatever.remove(i);
+                                for (int i=indexesToRemove.size()-1; i >= 0; i--) {
+                                    series.remove((int)indexesToRemove.get(i));
                                 }
                             }
                         }
@@ -937,8 +954,9 @@ public class OntologyHandler {
                                 series = new ArrayList<>();
                                 break;
                             } else {
-                                for (int i : indexesToRemove) {
-                                    series.remove(i);
+
+                                for (int i=indexesToRemove.size()-1; i >= 0; i--) {
+                                    series.remove((int)indexesToRemove.get(i));
                                 }
                             }
                         }
@@ -957,42 +975,47 @@ public class OntologyHandler {
         }
 
         if (resultObject.isActor()) {
+            int sizeBefore = people.size();
             // Search actor
             for (String actorName : resultObject.getActorsList()) {
                 ArrayList<String[]> currentActorsFound = searchActors(actorName);
 
                 for (String[] aCurrentActor : currentActorsFound) {
-                    actors.add(aCurrentActor);
+                    people.add(aCurrentActor);
                 }
 
-                if (actors.size() == 0) {
+                if (people.size() == sizeBefore) {
                     System.out.println("Could not find any actors!!!");
                 }
-                for (String[] currentActor : actors) {
-                    System.out.println("Found Actor " + currentActor[0] + " " + currentActor[1]);
+
+                for (int i = sizeBefore; i < people.size(); i++) {
+                    System.out.println("Found Actor " + people.get(i)[0] + " " + people.get(i)[1]);
                 }
             }
         }
 
         if (resultObject.isCreator()) {
+            int sizeBefore = people.size();
             // Search creator
             for (String creatorName : resultObject.getCreatorsList()) {
                 ArrayList<String[]> currentCreatorsFound = searchCreators(creatorName);
 
                 for (String[] aCurrentCreator : currentCreatorsFound) {
-                    creators.add(aCurrentCreator);
+                    people.add(aCurrentCreator);
                 }
 
-                if (creators.size() == 0) {
+                if (people.size() == sizeBefore) {
                     System.out.println("Could not find any creators!!!");
                 }
-                for (String[] currentCreator : creators) {
-                    System.out.println("Found Creator " + currentCreator[0] + " " + currentCreator[1]);
+
+                for (int i = sizeBefore; i < people.size(); i++) {
+                    System.out.println("Found Creator " + people.get(i)[0] + " " + people.get(i)[1]);
                 }
             }
         }
 
         if (resultObject.isPerson()) {
+            int sizeBefore = people.size();
             // Search people
             for (String name : resultObject.getPeopleList()) {
                 ArrayList<String[]> currentPeopleFound = searchPeople(name);
@@ -1002,11 +1025,12 @@ public class OntologyHandler {
                 }
             }
 
-            if (people.size() == 0) {
+            if (people.size() == sizeBefore) {
                 System.out.println("Could not find any people!!!");
             }
-            for (String[] currentPerson : people) {
-                System.out.println("Found Person " + currentPerson[0] + " " + currentPerson[1]);
+
+            for (int i = sizeBefore; i < people.size(); i++) {
+                System.out.println("Found Person " + people.get(i)[0] + " " + people.get(i)[1]);
             }
         }
 
@@ -1221,26 +1245,46 @@ public class OntologyHandler {
         }
 
         // Add starting year
-        if (resultObject.getStartedYear()> -1) {
-            queryString += "     ?series my:hasPilotYear ?pilotYear FILTER(?pilotYear >= " +
-                    resultObject.getStartedYear() + ") .\n";
-        } else if (resultObject.getStillRunning() == ResultObject.Running.STILL_RUNNING) {
+        if (resultObject.getStartedYear() != null && resultObject.getStartedYear().length > 0) {
+
+            if (resultObject.getStartedYear().length >= 1) {
+                queryString += "     ?series my:hasPilotYear ?pilotYear FILTER(?pilotYear >= " +
+                        resultObject.getStartedYear()[0] + ") .\n";
+            }
+
+            if (resultObject.getStartedYear().length >= 2) {
+                queryString += "     ?series my:hasPilotYear ?pilotYear FILTER(?pilotYear <= " +
+                        resultObject.getStartedYear()[1] + ") .\n";
+            }
+
+        } else if (resultObject.getStillRunning() != null &&
+                   resultObject.getStillRunning() == ResultObject.Running.STILL_RUNNING) {
             // Add series has started - Has pilot year but does not have finish year
             queryString += "     ?series my:hasPilotYear ?pilotYear .\n";
             queryString += "     FILTER NOT EXISTS { ?series my:hasFinishYear ?finishYear } .\n";
         }
 
         // Add finish year
-        if (resultObject.getFinishYear()> -1) {
-            queryString += "?series my:hasFinishYear ?finishYear FILTER(?finishYear <= " +
-                    resultObject.getFinishYear() + ") .\n";
-        } else if (resultObject.getStillRunning() == ResultObject.Running.ALREADY_FINISHED) {
+        if (resultObject.getFinishYear() !=  null && resultObject.getFinishYear().length > 0) {
+
+            if (resultObject.getFinishYear().length >= 1) {
+                queryString += "      ?series my:hasFinishYear ?finishYear FILTER(?finishYear >= " +
+                        resultObject.getFinishYear()[0] + ") .\n";
+            }
+
+            if (resultObject.getFinishYear().length >= 2) {
+                queryString += "      ?series my:hasFinishYear ?finishYear FILTER(?finishYear <= " +
+                        resultObject.getFinishYear()[1] + ") .\n";
+            }
+
+        } else if (resultObject.getStillRunning() != null &&
+                   resultObject.getStillRunning() == ResultObject.Running.ALREADY_FINISHED) {
             // Add series has finished
             queryString += "     ?series my:hasFinishYear ?finishYear .\n";
         }
 
         // Add score
-        if (resultObject.getScore() != ResultObject.ScoreSearch.NOT_SET) {
+        if (resultObject.getScore() != null && resultObject.getScore() != ResultObject.ScoreSearch.NOT_SET) {
             if (resultObject.getScore() == ResultObject.ScoreSearch.SET ||
                 resultObject.getScore() == ResultObject.ScoreSearch.SET_EQUAL) {
                 queryString += "     ?series my:hasRating ?rating FILTER(?rating == " + resultObject.getScoreValue() +
@@ -1255,7 +1299,8 @@ public class OntologyHandler {
         }
 
         // Add born year
-        if (resultObject.getBrithYear() != ResultObject.BirthYear.NOT_SET) {
+        if (resultObject.getBrithYear() != null && resultObject.getBrithYear() != ResultObject.BirthYear.NOT_SET) {
+            System.out.println("HERE " + resultObject.getBrithYear());
             queryString += "     ?series my:hasActor ?actor" + counter + " .\n" +
                            "     ?actor" + counter + " my:hasBirthDate ?birthDate FILTER regex(?birthDate, '" +
                            resultObject.getBornYearValue() + "', 'i') .\n";
@@ -1267,8 +1312,8 @@ public class OntologyHandler {
             // Add restriction - Series must have actors
             for (String actorName : actors) {
                 queryString += "     ?series my:hasActor ?actor" + counter + " .\n";
-                queryString += "     ?actor" + counter + " my:hasName ?actorName FILTER regex(?actorName, '"  +
-                        actorName + "', 'i') .\n";
+                queryString += "     ?actor" + counter + " my:hasName ?actorName" + counter +
+                        " FILTER regex(?actorName" + counter + ", '"  + actorName + "', 'i') .\n";
                 counter++;
             }
         }
@@ -1277,8 +1322,8 @@ public class OntologyHandler {
             // Add restriction - Series must have creators
             for (String creatorName : creators) {
                 queryString += "     ?series my:hasCreator ?creator" + counter + " .\n";
-                queryString += "     ?creator" + counter + " my:hasName ?creatorName FILTER regex(?creatorName, '"  +
-                        creatorName + "', 'i') .\n";
+                queryString += "     ?creator" + counter + " my:hasName ?creatorName" + counter +
+                        " FILTER regex(?creatorName" + counter +", '"  + creatorName + "', 'i') .\n";
                 counter++;
             }
         }
@@ -1324,6 +1369,8 @@ public class OntologyHandler {
 
     private boolean checkIfEquals(List<String> list1, List<String> list2) {
         if (list1.size() != list2.size()) {
+            return false;
+        } else if (list1.size() == 0 || list2.size() == 0) {
             return false;
         }
 

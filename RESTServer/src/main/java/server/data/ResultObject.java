@@ -35,8 +35,8 @@ public class ResultObject {
     private boolean isPerson;
     private boolean isCreator;
     private boolean isActor;
-    private int startedYear;
-    private int finishYear;
+    private int[] startedYear;
+    private int[] finishYear;
     private Running stillRunning;
     private ScoreSearch score;
     private float scoreValue;
@@ -49,8 +49,8 @@ public class ResultObject {
         actorsList = new ArrayList<>();
         creatorsList = new ArrayList<>();
         peopleList = new ArrayList<>();
-        startedYear = -1;
-        finishYear = -1;
+        startedYear = null;
+        finishYear = null;
         stillRunning = Running.NOT_SET;
     }
 
@@ -130,6 +130,8 @@ public class ResultObject {
                         ",\n\tActorsList: " + Arrays.toString(actorsList.toArray()) +
                         ",\n\tCreatorsList:" + Arrays.toString(creatorsList.toArray()) +
                         ",\n\tPeopleList: " + Arrays.toString(peopleList.toArray()) +
+                        ",\n\tStartYear: " + Arrays.toString(startedYear) +
+                        ",\n\tFinishYear: " + Arrays.toString(finishYear) +
                         ",\n\tRunning: " + stillRunning +
                         ",\n\tScore: " + score;
 
@@ -170,19 +172,19 @@ public class ResultObject {
         isActor = actor;
     }
 
-    public int getStartedYear() {
+    public int[] getStartedYear() {
         return startedYear;
     }
 
-    public void setStartedYear(int startedYear) {
+    public void setStartedYear(int[] startedYear) {
         this.startedYear = startedYear;
     }
 
-    public int getFinishYear() {
+    public int[] getFinishYear() {
         return finishYear;
     }
 
-    public void setFinishYear(int finishYear) {
+    public void setFinishYear(int[] finishYear) {
         this.finishYear = finishYear;
     }
 
@@ -191,6 +193,7 @@ public class ResultObject {
     }
 
     public void setStillRunning(boolean stillRunning) {
+        System.out.println("AQUI " + stillRunning);
         if (stillRunning) {
             this.stillRunning = Running.STILL_RUNNING;
         } else {
