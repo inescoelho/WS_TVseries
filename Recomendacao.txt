@@ -1,3 +1,6 @@
 1) Genero, Criadores (Basta ter um criador em comum), Actores (A partir das séries vistas sacar os géneros em comum, criadores e actores. Pegar nas pessoas vistas, adicionar aos criadores e actores em comum e ver os géneros das suas séries comuns aos que já existem. Atribuir um peso a cada uma das 3 variáveis, que é multiplicado pelo número de ocorrências. Começar na que tiver maior peso e descer a partir daí)
 2) Apresentamos séries do mesmo género das vistas com maior score que ainda não foram vistas
 3) Se não há histórico mostrar séries com maior score
+
+Pesquisa so na pagina principal?
+Recomendação só de séries?
