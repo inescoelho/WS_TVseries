@@ -1287,7 +1287,7 @@ public class OntologyHandler {
         if (resultObject.getScore() != null && resultObject.getScore() != ResultObject.ScoreSearch.NOT_SET) {
             if (resultObject.getScore() == ResultObject.ScoreSearch.SET ||
                 resultObject.getScore() == ResultObject.ScoreSearch.SET_EQUAL) {
-                queryString += "     ?series my:hasRating ?rating FILTER(?rating == " + resultObject.getScoreValue() +
+                queryString += "     ?series my:hasRating ?rating FILTER(?rating = " + resultObject.getScoreValue() +
                                ") .\n";
             } else if (resultObject.getScore() == ResultObject.ScoreSearch.SET_LOWER) {
                 queryString += "     ?series my:hasRating ?rating FILTER(?rating < " + resultObject.getScoreValue() +
