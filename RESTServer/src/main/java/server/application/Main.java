@@ -7,25 +7,19 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static class Teste{
-        ArrayList<String[]> a;
-
-        Teste() {
-            a = new ArrayList<>();
-            a.add(new String[] {"ola", "adeus"});
-        }
-    }
-
     public static void main(String[] args) {
         //testSearch();
-        Teste temp = new Teste();
-        System.out.println("Before " + temp.a);
-        test(temp);
-        System.out.println("AFTER " + temp.a.contains(new String[] {"ola", "adeus"}));
-    }
+        String temp = "tt00002350";
+        String inicio = temp.substring(0, 2);
+        String fim = temp.substring(2);
 
-    public static void test(Teste temp) {
-        temp.a.add(new String[] {"ola", "adeus"});
+        System.out.println("INICIO " + inicio + " " + fim);
+
+        while (fim.charAt(0) == '0') {
+            fim = fim.substring(1);
+        }
+
+        System.out.println("GOT " + fim);
     }
 
     public static void testSearch() {

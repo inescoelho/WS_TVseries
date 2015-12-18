@@ -7,6 +7,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import server.data.GetMostPopularSeriesNotSeenReturn;
 import server.data.ResultObject;
 import server.data.OperationResult;
 import server.data.ontology.Genre;
@@ -1426,10 +1427,11 @@ public class OntologyHandler {
         OperationResult operationResult = new OperationResult();
 
         if (lastChecked.size() == 0) {
-            // numItemsRecommend
             handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         } else {
-            // FIXME: Change this!
+            // FIXME: Do more shit here
+
+
             handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         }
 
@@ -1444,7 +1446,10 @@ public class OntologyHandler {
         }
 
         // Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
-        // Get most popular series
+
+        //================================================ Series =====================================================
+
+        // Get "remainingSeries" (6 by default) most popular series that have not been seen by the user
         ArrayList<String[]> mostPopularSeries = getMostPopularSeriesNotSeen(lastChecked);
 
         int i = 0;
@@ -1457,22 +1462,174 @@ public class OntologyHandler {
             i++;
         }
 
-        // Now, use the remaining ones to get the actors
-        //List<String[]> remainingSubSetMostPopularSeries = mostPopularSeries.subList(remainingSeries, mostPopularSeries.size());
-        // TODO: Upate ontology to have number of people in the series; Populate that and then use it to randomly select
-        //       people from the series
+        //================================================ Actors =====================================================
+
+        if (i >= mostPopularSeries.size()) {
+            // We have no more series that the user hasn't seen -- Go back to the top and we will pick the actors from
+            // there
+            i = 0;
+        }
+
+        // Get "remainingPeople" (4 by default) from the next "remainingPeople" most rated series that the user has not
+        // yet seen (do not forget that, if we entered in the previous if statement then we will be doing this in the
+        // "remainingPeople" most rated series, but that's life, we have to search somewhere)
+        count = 0;
+        ArrayList<String> seriesIds = new ArrayList<>();
+        while (i < mostPopularSeries.size() && count < remainingPeople) {
+            seriesIds.add(mostPopularSeries.get(i)[1]);
+            count++;
+            i++;
+        }
+
+        // Get random people from this list of series
+        getRandomPeopleFromSeries(operationResult, seriesIds, remainingPeople);
+    }
+
+    private void getRandomPeopleFromSeries(OperationResult operationResult, ArrayList<String> seriesIds,
+                                           int remainingPeople) {
+
+        // Get a list of people in the mentioned series
+        int currentNumberPeople = 0;
+        while (currentNumberPeople < remainingPeople) {
+            String[] temp = getRandomPersonFromSeries(seriesIds);
+
+            boolean result = operationResult.addPerson(temp);
+            if (result) {
+                currentNumberPeople++;
+            }
+        }
+
+    }
+
+    private String[] getRandomPersonFromSeries(ArrayList<String> seriesIds) {
+
+        OntProperty hasTotalNumberOfPeople = ontologyModel.getDatatypeProperty(namespace + "hasTotalNumberOfPeople");
+
+        String queryString = queryPrefix +
+                "SELECT ?creatorName ?creatorId ?creatorImageURL ?actorName ?actorId ?actorImageURL \n" +
+                "WHERE {\n";
+
+        boolean firstTime = true;
+        int partialNumberOfPeople = 0;
+        for (String id : seriesIds) {
+
+            Individual currentSeries = seriesList.get(id);
+            RDFNode hasTotalNumberOfPeopleNode = currentSeries.getPropertyValue(hasTotalNumberOfPeople);
+            if (hasTotalNumberOfPeopleNode.isLiteral()) {
+                Literal hasTotalNumberOfPeopleLiteral = hasTotalNumberOfPeopleNode.asLiteral();
+                partialNumberOfPeople += hasTotalNumberOfPeopleLiteral.getInt();
+            }
+
+            if (!firstTime) {
+                queryString += "     UNION\n";
+            } else {
+                firstTime = false;
+            }
+
+            // Filter initial id with 0
+            String topId = id.substring(0, 2);
+            String remainingId = id.substring(2);
+            while (remainingId.charAt(0) == '0') {
+                remainingId = remainingId.substring(1);
+            }
+
+            queryString +=
+                    "     {\n" +
+                    "          ?subject my:hasSeriesId ?id FILTER( regex(?id, '" + topId + remainingId + "') ) .\n" +
+                    "          {\n" +
+                    "                    ?subject my:hasActor ?actor .\n" +
+                    "                    ?actor my:hasPersonId ?actorId .\n" +
+                    "                    ?actor my:hasName ?actorName .\n" +
+                    "                    OPTIONAL{ ?actor my:hasPersonImageURL ?actorImageURL . } \n" +
+                    "          }\n" +
+                    "          UNION \n" +
+                    "          {\n" +
+                    "                    ?subject my:hasCreator ?creator .\n" +
+                    "                    ?creator my:hasName ?creatorName .\n" +
+                    "                    ?creator my:hasPersonId ?creatorId .\n" +
+                    "                    OPTIONAL{ ?creator my:hasPersonImageURL ?creatorImageURL . } \n" +
+                    "           } .\n" +
+                    "     }\n";
+
+        }
+
+
+        Random random = new Random();
+        queryString += "} OFFSET " + random.nextInt(partialNumberOfPeople) + " LIMIT 1";
+
+        System.out.println("\n" + queryString + "\n===================================================================");
+
+
+        /**
+         * Correr a query, depois para o resultado que der (só vai dar uma linha) ver se temos actor ou criador
+         * (nos 3 campos) e no que houver extrair a informação
+         */
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        if (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode creatorNameNode = result.get("?creatorName");
+            RDFNode creatorIdNode = result.get("?creatorId");
+            RDFNode creatorImageNode = result.get("?creatorImageURL");
+            RDFNode actorNameNode = result.get("?actorName");
+            RDFNode actorIdNode = result.get("?actorId");
+            RDFNode actorImageNode = result.get("?actorImageURL");
+
+            String[] temp = new String[3];
+
+            String image = "";
+            String name;
+            String id;
+
+            if (creatorNameNode != null && creatorNameNode.isLiteral() &&
+                    creatorIdNode != null && creatorIdNode.isLiteral()) {
+                Literal creatorNameLiteral = creatorNameNode.asLiteral();
+                Literal creatorIdLiteral = creatorIdNode.asLiteral();
+
+                name = creatorNameLiteral.getString();
+                id = creatorIdLiteral.getString();
+
+                if (creatorImageNode != null && creatorImageNode.isLiteral()) {
+                    Literal creatorImageURLLiteral = creatorImageNode.asLiteral();
+                    image = creatorImageURLLiteral.getString();
+                }
+
+            } else {
+                Literal actorNameLiteral = actorNameNode.asLiteral();
+                Literal actorIdLiteral = actorIdNode.asLiteral();
+
+                name = actorNameLiteral.getString();
+                id = actorIdLiteral.getString();
+
+                if (actorImageNode != null && actorImageNode.isLiteral()) {
+                    Literal actorImageURLLiteral = actorImageNode.asLiteral();
+                    image = actorImageURLLiteral.getString();
+                }
+            }
+
+            temp[0] = name;
+            temp[1] = id;
+            temp[2] = image;
+
+            return temp;
+        }
+
+        return null;
     }
 
     private ArrayList<String[]> getMostPopularSeriesNotSeen(ArrayList<String> lastChecked) {
         ArrayList<String[]> popularSeries = new ArrayList<>();
 
         String queryString = queryPrefix +
-                "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL " +
+                "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL ?numberPeople \n" +
                 "WHERE {\n" +
                 "     ?series my:hasSeriesId ?seriesID .\n" +
                 "     ?series my:hasTitle ?seriesTitle .\n" +
                 "     ?series my:hasSeriesImageURL ?imageURL .\n" +
                 "     ?series my:hasRating ?seriesRating .\n" +
+                "     ?series my:hasTotalNumberOfPeople ?numberPeople .\n" +
                 "} ORDER BY DESC(?seriesRating)";
 
         Query queryObject = QueryFactory.create(queryString);
