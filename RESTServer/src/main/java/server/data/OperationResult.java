@@ -2,16 +2,16 @@ package server.data;
 
 import java.util.ArrayList;
 
-public class SearchResult {
+public class OperationResult {
 
     private ArrayList<String[]> series;// String[2] - first is name, second is id, third is imageurl
     private ArrayList<String[]> people;
 
-    public SearchResult() {
+    public OperationResult() {
 
     }
 
-    public SearchResult(ArrayList<String[]> series, ArrayList<String[]> people) {
+    public OperationResult(ArrayList<String[]> series, ArrayList<String[]> people) {
         this.series = series;
         this.people = people;
     }

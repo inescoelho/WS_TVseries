@@ -1,6 +1,5 @@
 package ontology;
 
-import org.apache.jena.atlas.json.io.parserjavacc.javacc.Token;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
@@ -9,7 +8,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
 import server.data.ResultObject;
-import server.data.SearchResult;
+import server.data.OperationResult;
 import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
@@ -457,7 +456,7 @@ public class OntologyHandler {
         return result;
     }
 
-    public SearchResult performSearch(String query) {
+    public OperationResult performSearch(String query) {
 
         query = query.toLowerCase();
 
@@ -506,7 +505,6 @@ public class OntologyHandler {
 
                 case AND:
                     buffer = processBuffer(buffer, past, type);
-                    type = past;
                     break;
 
                 case BEGIN:
@@ -541,6 +539,9 @@ public class OntologyHandler {
                         } else if (type == TokenType.EQUAL) {
                             resultObject.setScore(ResultObject.ScoreSearch.SET_EQUAL);
 
+                            buffer = processMoreTokens(tokenizer, past, buffer);
+
+                            /*
                             if (tokenizer.hasMoreTokens()) {
                                 word = tokenizer.nextToken(); // Read number
                                 TokenType type1 = isCategory(word);
@@ -548,9 +549,13 @@ public class OntologyHandler {
                                     buffer = processBuffer(word + " ", past, type1);
                                 }
                             }
+                            */
                         } else if (type == TokenType.LOWER){
                             resultObject.setScore(ResultObject.ScoreSearch.SET_LOWER);
 
+                            buffer = processMoreTokens(tokenizer, past, buffer);
+
+                            /*
                             if (tokenizer.hasMoreTokens()) {
                                 word = tokenizer.nextToken(); // Read number
                                 TokenType type1 = isCategory(word);
@@ -558,9 +563,13 @@ public class OntologyHandler {
                                     buffer = processBuffer(word + " ", past, type1);
                                 }
                             }
+                            */
                         } else if (type == TokenType.HIGHER) {
                             resultObject.setScore(ResultObject.ScoreSearch.SET_HIGHER);
 
+                            buffer = processMoreTokens(tokenizer, past, buffer);
+
+                            /*
                             if (tokenizer.hasMoreTokens()) {
                                 word = tokenizer.nextToken(); // Read number
                                 TokenType type1 = isCategory(word);
@@ -568,6 +577,7 @@ public class OntologyHandler {
                                     buffer = processBuffer(word + " ", past, type1);
                                 }
                             }
+                            */
                         }
                     }
 
@@ -603,6 +613,18 @@ public class OntologyHandler {
         return processResultObject();
     }
 
+    private String processMoreTokens(StringTokenizer tokenizer, TokenType past, String buffer) {
+        String word;
+        if (tokenizer.hasMoreTokens()) {
+            word = tokenizer.nextToken(); // Read number
+            TokenType type1 = isCategory(word);
+            if (type1 == TokenType.NOT_FOUND_TYPE) {
+                buffer = processBuffer(word + " ", past, type1);
+            }
+        }
+        return buffer;
+    }
+
     private TokenType isCategory(String word) {
 
         // Check if series keyword
@@ -616,7 +638,6 @@ public class OntologyHandler {
         }
 
         // Check if specific genre
-        List<String> genres = getGenresNames();
         if (genres.contains(word)) {
             return TokenType.GENRE_TYPE;
         }
@@ -777,11 +798,9 @@ public class OntologyHandler {
         return "";
     }
 
-    private SearchResult processResultObject() {
+    private OperationResult processResultObject() {
 
         ArrayList<String[]> series = new ArrayList<>();
-        ArrayList<String[]> actors = new ArrayList<>();
-        ArrayList<String[]> creators = new ArrayList<>();
         ArrayList<String[]> people = new ArrayList<>();
 
         if (resultObject.isSeries()) {
@@ -1034,11 +1053,11 @@ public class OntologyHandler {
             }
         }
 
-        SearchResult searchResult = new SearchResult();
-        searchResult.setSeries(series);
-        searchResult.setPeople(people);
+        OperationResult operationResult = new OperationResult();
+        operationResult.setSeries(series);
+        operationResult.setPeople(people);
 
-        return searchResult;
+        return operationResult;
     }
 
     private List<String> getGenresNames() {
@@ -1380,5 +1399,29 @@ public class OntologyHandler {
             }
         }
         return true;
+    }
+
+
+    public OperationResult performRecommendation(ArrayList<String> lastChecked) {
+
+        if (lastChecked.size() == 0) {
+            return handleEmptyRecommendation();
+        }
+
+
+        return handleEmptyRecommendation();
+    }
+
+    private OperationResult handleEmptyRecommendation() {
+        // Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
+        ArrayList<String> mostPopularSeries = getMostPopularSeries();
+    }
+
+    private ArrayList<String> getMostPopularSeries() {
+        String queryString = queryPrefix +
+                "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL " +
+                "WHERE {\n" +
+                "     ?series my:hasSeriesId ?seriesID .\n" +
+                "     ?series my:hasSeriesImageURL ?imageURL .\n";
     }
 }

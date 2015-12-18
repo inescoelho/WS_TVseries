@@ -52,6 +52,7 @@ public class ResultObject {
         startedYear = null;
         finishYear = null;
         stillRunning = Running.NOT_SET;
+        bornYearValue = 1;
     }
 
     public boolean isSeries() {

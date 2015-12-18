@@ -3,13 +3,11 @@ package server.application;
 import ontology.OntologyHandler;
 import org.springframework.web.bind.annotation.*;
 import server.data.SearchInput;
-import server.data.SearchResult;
+import server.data.OperationResult;
 import server.data.ontology.Genre;
 import server.data.GetInfoInput;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
-import server.data.test.InputData;
-import server.data.test.OutputData;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,25 +16,19 @@ import java.util.ArrayList;
 public class Controller {
 
     private OntologyHandler ontologyHandler;
-    private ArrayList<String> lastPeopleChecked;
-    private ArrayList<String> lastSeriesChecked;
+    private ArrayList<String> lastChecked;
 
     private final String lastPeopleCheckedFile = "src\\main\\resources\\lastPeopleChecked.txt";
     private final String lastSeriesCheckedFile = "src\\main\\resources\\lastSeriesChecked.txt";
 
+    private final int lastItemsChecked = 10;
+
     public Controller() {
         ontologyHandler = new OntologyHandler("tv_series_ontology_current.rdf", "RDF/XML");
 
+        lastChecked = new ArrayList<>();
         loadPeople();
         loadSeries();
-    }
-
-    @CrossOrigin
-    @RequestMapping(value = "/test", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody OutputData HelloWorld(@RequestBody InputData inputData) {
-        System.out.println("Got message: " + inputData);
-
-        return new OutputData(inputData.getMessage() + " Returned", inputData.getCode() + 1);
     }
 
     @CrossOrigin
@@ -61,21 +53,35 @@ public class Controller {
 
     @CrossOrigin
     @RequestMapping(value="/search", method = RequestMethod.POST, produces = "application/json")
-    public @ResponseBody SearchResult performSearch(@RequestBody SearchInput searchInput) {
+    public @ResponseBody OperationResult performSearch(@RequestBody SearchInput searchInput) {
         System.out.println("Got query " + searchInput.getQuery());
 
         return ontologyHandler.performSearch(searchInput.getQuery());
     }
 
+    @CrossOrigin
+    @RequestMapping(value="/recommendation", method = RequestMethod.GET, produces = "applications/json")
+    public @ResponseBody OperationResult performRecommendation() {
+        return ontologyHandler.performRecommendation(lastChecked);
+    }
+
     private void addSeriesToChecked(String id) {
-        addToChecked(id, lastSeriesCheckedFile, lastSeriesChecked);
+        addToChecked(id, true, lastChecked);
     }
 
     private void addPersonToChecked(String id) {
-        addToChecked(id, lastPeopleCheckedFile, lastPeopleChecked);
+        addToChecked(id, false, lastChecked);
     }
 
-    private void addToChecked(String id, String path, ArrayList<String> buffer) {
+    private void addToChecked(String id, boolean series, ArrayList<String> buffer) {
+        String path;
+
+        if (series) {
+            path = lastSeriesCheckedFile;
+        } else {
+            path = lastPeopleCheckedFile;
+        }
+
         // Check if series already exist
         if (buffer.contains(id)) {
             buffer.remove(id);
@@ -83,10 +89,10 @@ public class Controller {
 
         buffer.add(id);
         // Save to file
-        saveCheckedToFile(path, buffer);
+        saveCheckedToFile(path, buffer, series);
     }
 
-    private void saveCheckedToFile(String path, ArrayList<String> buffer) {
+    private void saveCheckedToFile(String path, ArrayList<String> buffer, boolean series) {
         String write;
         try {
             File file = new File(path);
@@ -99,6 +105,11 @@ public class Controller {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
             for (String current : buffer) {
+                if (series && current.contains("nm")) {
+                    continue;
+                } else if (!series && current.contains("tt")) {
+                    continue;
+                }
                 write = current + "\n";
                 fileOutputStream.write(write.getBytes());
             }
@@ -111,17 +122,21 @@ public class Controller {
     }
 
     private void loadPeople() {
-        lastPeopleChecked = new ArrayList<>();
-        loadChecked(lastPeopleCheckedFile, lastPeopleChecked);
+        loadChecked(false, lastChecked);
     }
 
     private void loadSeries() {
-        lastSeriesChecked = new ArrayList<>();
-        loadChecked(lastSeriesCheckedFile, lastSeriesChecked);
+        loadChecked(true, lastChecked);
     }
 
-    private void loadChecked(String path, ArrayList<String> buffer) {
-        String line;
+    private void loadChecked(boolean series, ArrayList<String> buffer) {
+        String line, path;
+
+        if (series) {
+            path = lastSeriesCheckedFile;
+        } else {
+            path = lastPeopleCheckedFile;
+        }
 
         try {
             File file = new File(path);

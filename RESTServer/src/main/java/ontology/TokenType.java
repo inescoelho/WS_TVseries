@@ -14,6 +14,8 @@ public enum TokenType {
     BETWEEN,
     START_BETWEEN,
     END_BETWEEN,
+    START_BORN_BETWEEN,
+    END_BORN_BETWEEN,
     SCORE,
     LOWER,
     HIGHER,

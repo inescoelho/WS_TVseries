@@ -1,6 +1,15 @@
-1) Genero, Criadores (Basta ter um criador em comum), Actores (A partir das séries vistas sacar os géneros em comum, criadores e actores. Pegar nas pessoas vistas, adicionar aos criadores e actores em comum e ver os géneros das suas séries comuns aos que já existem. Atribuir um peso a cada uma das 3 variáveis, que é multiplicado pelo número de ocorrências. Começar na que tiver maior peso e descer a partir daí)
-2) Apresentamos séries do mesmo género das vistas com maior score que ainda não foram vistas
-3) Se não há histórico mostrar séries com maior score
+Primeira situação: Histórico vazio -- 50-50
+	Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
 
-Pesquisa so na pagina principal?
-Recomendação só de séries?
+Ultimas pessoas e séries vistas:
+	Dividir em ultimas pessoas + ultimas series; Sacar as séries das pessoas, meter num array
+
+	Sacar séries em comum das pessoas - Se houverem séries em comum que ainda nao foram vistas incluir nas séries recomendadas (max 3) -- Se sobrarem encher os outros
+
+	Pegar no array de séries das pessoas, ordenar por score e procurar a série com maior score ainda nao vista (max 2)
+
+	Pegar nas séries vistas e sacar actores em comum que ainda nao tenham sido vistos (max 3)
+
+	Pegar nas series vistas e sacar os generos em comum e sacar series com maior score desses generos mais frequentes, séries do mais frequente, etc (max 2)
+
+	Caso sem histórico
