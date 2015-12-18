@@ -25,4 +25,4 @@ WHERE {
        ?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt1219024') ) .
        ?subject my:hasTitle ?seriesName .
       {?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-}
+} USE RANDOM OFFSET BASED ON NUMBER OF ACTORS (Determined in jena). LIMIT IS ALWAYS 1
