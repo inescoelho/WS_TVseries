@@ -178,6 +178,7 @@ public class OntologyHandler {
      */
     public Person getPersonInfo(String personId) {
         Individual person = peopleList.get(personId);
+        System.out.println("HERE " + person);
 
         if (person == null) {
             return null;
@@ -194,13 +195,14 @@ public class OntologyHandler {
      */
     private ArrayList<String[]> getSeriesNamesInGenre(String genreName) {
         String queryString = queryPrefix +
-                "SELECT ?title ?id " +
-                "WHERE { " +
-                "?subject rdf:type my:" + genreName + ". " +
-                "?subject my:hasTitle ?title. " +
-                "?subject my:hasSeriesId ?id. " +
-                "?subject my:hasRating ?rating. " +
-                "} ORDER BY DESC(?rating) ?title";
+                "SELECT ?title ?id ?imageURL \n" +
+                "WHERE { \n" +
+                "?subject rdf:type my:" + genreName + " .\n " +
+                "?subject my:hasTitle ?title .\n " +
+                "?subject my:hasSeriesId ?id .\n " +
+                "?subject my:hasSeriesImageURL ?rating .\n " +
+                "OPTIONAL { ?subject my:hasSeriesImageURL ?imageURL . }\n " +
+                "} ORDER BY DESC(?rating) ?title\n";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -212,11 +214,17 @@ public class OntologyHandler {
 
             RDFNode titleNode = result.get("?title");
             RDFNode idNode = result.get("?id");
+            RDFNode seriesImageURLNode = result.get("?imageURL");
             if (titleNode.isLiteral() && idNode.isLiteral()) {
                 Literal currentSeries = titleNode.asLiteral();
                 Literal currentSeriesId = idNode.asLiteral();
 
-                seriesInCategory.add(new String[] {currentSeries.getString(), currentSeriesId.getString()});
+                String imageURL = "";
+                if (seriesImageURLNode != null && seriesImageURLNode.isLiteral()) {
+                    imageURL = seriesImageURLNode.asLiteral().getString();
+                }
+
+                seriesInCategory.add(new String[] {currentSeries.getString(), currentSeriesId.getString(), imageURL});
             }
         }
 
@@ -352,18 +360,21 @@ public class OntologyHandler {
         }
 
         String queryString = queryPrefix +
-               "SELECT ?personName ?personId ?personImageURL " +
-               "WHERE { " +
-               "?subject my:hasSeriesId ?id FILTER( regex(?id, '" + seriesId + "') ). " +
-               "?subject my:" + propertyName + "?person. " +
-               "?person my:hasPersonId ?personId. " +
-               "?person my:hasName ?personName. " +
-               "?person my:hasPersonImageURL ?personImageURL. " +
-               "} ORDER BY ASC(?personName)";
+               "SELECT ?personName ?personId ?personImageURL \n" +
+               "WHERE { \n" +
+               "       ?subject my:hasSeriesId ?id FILTER( regex(?id, '" + seriesId + "') ) .\n" +
+               "       ?subject my:" + propertyName + " ?person .\n" +
+               "       ?person my:hasPersonId ?personId .\n" +
+               "       ?person my:hasName ?personName .\n" +
+               "       OPTIONAL { ?person my:hasPersonImageURL ?personImageURL . }\n" +
+               "} ORDER BY ASC(?personName)\n";
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
         ResultSet resultSet = qExe.execSelect();
+
+        if (!actor)
+            System.out.println("\n====================================================\n" + queryString + "\n\n");
 
         while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
@@ -371,16 +382,22 @@ public class OntologyHandler {
             RDFNode personNameNode = querySolution.get("?personName");
             RDFNode personIdNode = querySolution.get("?personId");
             RDFNode personImageURLNode = querySolution.get("?personImageURL");
-            if (personNameNode.isLiteral() && personIdNode.isLiteral() && personImageURLNode.isLiteral()) {
+            if (personNameNode.isLiteral() && personIdNode.isLiteral()) {
                 Literal personName = personNameNode.asLiteral();
                 Literal personId = personIdNode.asLiteral();
-                Literal personImageURL = personImageURLNode.asLiteral();
+
+                String personImageUrl = "";
+                if (personImageURLNode != null && personImageURLNode.isLiteral()) {
+                    Literal personImageURL = personImageURLNode.asLiteral();
+                    personImageUrl = personImageURL.getString();
+                }
+
                 if (personName.getString().equals("")) {
                     System.out.println("HERE ");
                 }
 
                 // Remember: first position has id, second has name and third has imageURL!!
-                result.add(new String[] {personId.getString(), personName.getString(), personImageURL.getString()});
+                result.add(new String[] {personId.getString(), personName.getString(), personImageUrl});
             }
         }
 
@@ -410,7 +427,7 @@ public class OntologyHandler {
                 "SELECT ?seriesTitle ?seriesID ?seriesImageURL\n" +
                 "WHERE {\n" +
                 "     ?subject my:hasPersonId ?id FILTER( regex(?id, '" + personId + "') ).\n" +
-                "     ?subject my:" + propertyName + "?series.\n" +
+                "     ?subject my:" + propertyName + " ?series.\n" +
                 "     ?series my:hasSeriesId ?seriesID.\n" +
                 "     ?series my:hasTitle ?seriesTitle.\n" +
                 "     ?series my:hasSeriesImageURL ?seriesImageURL. " +
@@ -1402,26 +1419,96 @@ public class OntologyHandler {
     }
 
 
-    public OperationResult performRecommendation(ArrayList<String> lastChecked) {
+    public OperationResult performRecommendation(ArrayList<String> lastChecked, int numItemsToCheck,
+                                                 int numSeriesToRecommend, int numPeopleToRecommend) {
+
+        OperationResult operationResult = new OperationResult();
 
         if (lastChecked.size() == 0) {
-            return handleEmptyRecommendation();
+            // numItemsRecommend
+            handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
+        } else {
+            // FIXME: Change this!
+            handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         }
 
-
-        return handleEmptyRecommendation();
+        return operationResult;
     }
 
-    private OperationResult handleEmptyRecommendation() {
+    private void handleEmptyRecommendation(ArrayList<String> lastChecked, OperationResult operationResult,
+                                           int remainingSeries, int remainingPeople) {
+
+        if ( (remainingSeries + remainingPeople) == 0) {
+            return ;
+        }
+
         // Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
-        ArrayList<String> mostPopularSeries = getMostPopularSeries();
+        // Get most popular series
+        ArrayList<String[]> mostPopularSeries = getMostPopularSeriesNotSeen(lastChecked);
+
+        int i = 0;
+        int count = 0;
+        while (i < mostPopularSeries.size() && count < remainingSeries) {
+            boolean result = operationResult.addSeries(mostPopularSeries.get(i));
+            if (result) {
+                count++;
+            }
+            i++;
+        }
+
+        // Now, use the remaining ones to get the actors
+        //List<String[]> remainingSubSetMostPopularSeries = mostPopularSeries.subList(remainingSeries, mostPopularSeries.size());
     }
 
-    private ArrayList<String> getMostPopularSeries() {
+    private ArrayList<String[]> getMostPopularSeriesNotSeen(ArrayList<String> lastChecked) {
+        ArrayList<String[]> popularSeries = new ArrayList<>();
+
         String queryString = queryPrefix +
                 "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL " +
                 "WHERE {\n" +
                 "     ?series my:hasSeriesId ?seriesID .\n" +
-                "     ?series my:hasSeriesImageURL ?imageURL .\n";
+                "     ?series my:hasTitle ?seriesTitle .\n" +
+                "     ?series my:hasSeriesImageURL ?imageURL .\n" +
+                "     ?series my:hasRating ?seriesRating .\n" +
+                "} ORDER BY DESC(?seriesRating)";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode seriesTitleNode = result.get("?seriesTitle");
+            RDFNode seriesIdNode = result.get("?seriesID");
+            RDFNode seriesImageNode = result.get("?imageURL");
+            String[] temp = new String[3];
+
+            if (seriesTitleNode.isLiteral() && seriesIdNode.isLiteral()) {
+                Literal seriesTitle = seriesTitleNode.asLiteral();
+                String series_title = seriesTitle.getString();
+
+                Literal seriesId = seriesIdNode.asLiteral();
+                String series_id = seriesId.getString().toLowerCase();
+
+                if (lastChecked.contains(series_id)){
+                    // Series already seen
+                    continue;
+                }
+
+                String image_url = "";
+                if (seriesImageNode.isLiteral()) {
+                    Literal imageUrl = seriesImageNode.asLiteral();
+                    image_url = imageUrl.getString();
+                }
+
+                temp[0] = series_title;
+                temp[1] = series_id;
+                temp[2] = image_url;
+
+                popularSeries.add(temp);
+            }
+        }
+
+        return popularSeries;
     }
 }

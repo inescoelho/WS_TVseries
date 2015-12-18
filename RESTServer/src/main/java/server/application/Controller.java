@@ -21,7 +21,9 @@ public class Controller {
     private final String lastPeopleCheckedFile = "src\\main\\resources\\lastPeopleChecked.txt";
     private final String lastSeriesCheckedFile = "src\\main\\resources\\lastSeriesChecked.txt";
 
-    private final int lastItemsChecked = 10;
+    private final int lastItemsChecked = 20;
+    private final int recommendedSeries = 6;
+    private final int recommendedPeople = 4;
 
     public Controller() {
         ontologyHandler = new OntologyHandler("tv_series_ontology_current.rdf", "RDF/XML");
@@ -52,7 +54,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(value="/search", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/search", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody OperationResult performSearch(@RequestBody SearchInput searchInput) {
         System.out.println("Got query " + searchInput.getQuery());
 
@@ -60,9 +62,9 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(value="/recommendation", method = RequestMethod.GET, produces = "applications/json")
-    public @ResponseBody OperationResult performRecommendation() {
-        return ontologyHandler.performRecommendation(lastChecked);
+    @RequestMapping(value = "/getRecommendation", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody OperationResult getRecommendation() {
+        return ontologyHandler.performRecommendation(lastChecked, lastItemsChecked, recommendedSeries, recommendedPeople);
     }
 
     private void addSeriesToChecked(String id) {

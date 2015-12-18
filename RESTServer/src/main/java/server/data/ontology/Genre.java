@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Genre {
     private String type;
-    private ArrayList<String[]> series; // String[2] - first is name, second is id
+    private ArrayList<String[]> series; // String[3] - first is name, second is id, third is image url
 
     public Genre(String tp)
     {

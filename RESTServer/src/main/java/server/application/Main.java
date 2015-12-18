@@ -3,10 +3,29 @@ package server.application;
 
 import ontology.OntologyHandler;
 
+import java.util.ArrayList;
+
 public class Main {
 
+    public static class Teste{
+        ArrayList<String[]> a;
+
+        Teste() {
+            a = new ArrayList<>();
+            a.add(new String[] {"ola", "adeus"});
+        }
+    }
+
     public static void main(String[] args) {
-        testSearch();
+        //testSearch();
+        Teste temp = new Teste();
+        System.out.println("Before " + temp.a);
+        test(temp);
+        System.out.println("AFTER " + temp.a.contains(new String[] {"ola", "adeus"}));
+    }
+
+    public static void test(Teste temp) {
+        temp.a.add(new String[] {"ola", "adeus"});
     }
 
     public static void testSearch() {

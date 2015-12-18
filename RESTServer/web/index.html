@@ -8,188 +8,33 @@
 	<script src="jquery.min.js"></script>
 
 	<script>
-		function testAPI() {
-			var data = {"message": "Hello World", "code": 2, "list": [1, 2, 3], "array": [2, 4, 6]};
-
-			$.ajax({  
-				type: "POST",
-				url: "http://localhost:8090/test",
-				data:  JSON.stringify(data),
-				async: true,
-				beforeSend: function (xhr){ 
-					xhr.setRequestHeader("Content-Type", "application/json");
-					xhr.setRequestHeader("Accept", "application/json")
-				},
-				success: function(data) {
-					console.log("Got " + data);
-					var banana = data["object"];
-					console.log("Got returned message " + data["message"] + " and " + data["resultCode"] +
-								" and " + banana["name"]);
-				},
-				error: function(jqXHR, exception) {
-					console.log(jqXHR.status);
-					console.log(exception);
-				},
-				complete: function(xhr, textStatus) {
-					// This should not be needed
-					console.log(xhr.status);
-					console.log(textStatus);
-				}
-			});
-		}
-
-		function getGenres() {
-			$.ajax({
-				type: "GET",
-				url: "http://localhost:8090/getGenres",
-				async: true,
-				beforeSend: function (xhr){ 
-					xhr.setRequestHeader("Content-Type", "application/json");
-					xhr.setRequestHeader("Accept", "application/json")
-				},
-				success: function(data) {
-					console.log("Got " + data.length + " genres:");
-
-					console.log("================================================================================");
-
-					for (var i=0; i < data.length; i++) {
-						var currentGenre = data[i];
-						console.log("Genre " + currentGenre["type"] + " with " + currentGenre["series"].length +
-                                    " series");
-						if (currentGenre["series"].length > 0) {
-                            var firstSeries = currentGenre["series"][0];
-							console.log("Title of the first series in this genre is " + firstSeries[0] + " and id is " +
-                                        firstSeries[1]);
-						}
-
-						console.log("================================================================================");
-					}
-				},
-				error: function(jqXHR, exception) {
-					console.log(jqXHR.status);
-					console.log(exception);
-				}
-			});
-		}
-
-		function getSeriesInfo() {
-
-			var data = {"id" : "tt1520211"};
-
-			$.ajax({
-                type: "POST",
-                url: "http://localhost:8090/getSeriesInfo",
-                data: JSON.stringify(data),
-                async: true,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                    xhr.setRequestHeader("Accept", "application/json")
-                },
-                success: function (series) {
-                    console.log("Series basic data --> {id: " + series["id"] + ", title: " + series["title"] +
-                                ", description: " + series["description"] + ", storyline: " + series["storyline"] +
-                                ", episodeDuration: " + series["episodeDuration"] + ", pilotYear: " +
-                                series["pilotYear"] + ", finishYear: " + series["finishYear"] + ", image: " +
-                                series["imageURL"] + ", rating: " + series["rating"] + ", actors: " +
-                                series["actors"].length + ", creators: " + series["creators"].length + "}");
-
-                    var firstActor = series["actors"][0];
-                    var firstCreator = series["creators"][0];
-
-                    console.log("First actor in the list: {id: " + firstActor[0] + ", name: " + firstActor[1] +
-                                ", imageURL: " + firstActor[2] + "}");
-
-                    console.log("First creator in the list: {id: " + firstCreator[0] + ", name: " + firstCreator[1] +
-                            ", imageURL: " + firstCreator[2] + "}");
-                },
-                error: function (jqXHR, exception) {
-                    console.log(jqXHR.status);
-                    console.log(exception);
-                }
-            });
-		}
-
-        function getPersonInfo() {
-            var data = {"id" : "nm0000002"};
-
+        function performRecommendation() {
             $.ajax({
-                type: "POST",
-                url: "http://localhost:8090/getPersonInfo",
-                data: JSON.stringify(data),
+                type: "GET",
+                url: "http://localhost:8090/getRecommendation",
                 async: true,
-                beforeSend: function (xhr) {
+                beforeSend: function (xhr){
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.setRequestHeader("Accept", "application/json")
                 },
-                success: function (person) {
-                    console.log("Person basic data --> {id: " + person["id"] + ", name: " + person["name"] +
-                                ", biography: " + person["biography"] + ", birthDate: " + person["birthDate"] +
-                                ", wikiURL: " + person["wikiURL"] + ", totalSeriesAppearances: " +
-                                person["seriesActed"].length + ", totalSeriesCreated: " + person["seriesCreated"] +
-                                ", imageURL: " + person["imageURL"] + "}");
+                success: function(data) {
+                    console.log("Got data " + data);
 
-                    var firstSeriesActed = person["seriesActed"][0];
-                    var firstSeriesCreated = person["seriesCreated"][0];
+                    var series = data["series"];
 
-                    if (firstSeriesActed) {
-                        console.log("\n\nFirst series acted in the list: {id: " + firstSeriesActed[0] + ", name: " +
-                                    firstSeriesActed[1] + ", imageURL: " + firstSeriesActed[2]);
-                    }
-                    if (firstSeriesCreated) {
-                        console.log("\n\nFirst series created in the list: {id: " + firstSeriesCreated[0] + ", name: " +
-                                    firstSeriesCreated[1] + ", imageURL: " + firstSeriesCreated[2]);
+                    for (var i=0; i < series.length; i++) {
+                        console.log("Got series: " + series[i][0] + " " + series[i][1] +  " " + series[i][2]);
                     }
                 },
-                error: function (jqXHR, exception) {
+                error: function(jqXHR, exception) {
                     console.log(jqXHR.status);
                     console.log(exception);
                 }
             });
         }
 
-		function performSearch() {
-			//var data = {"query" : "series comedy action sci-fi jim parsons"};
-            //var data = {"query" : "genre comedy action adventure jim parsons"};
-            var data = {"query" : "series comedy"};
-
-
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8090/search",
-                data: JSON.stringify(data),
-                async: true,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                    xhr.setRequestHeader("Accept", "application/json")
-                },
-                success: function (data) {
-                    console.log("Series Found: " + data["series"].length);
-                    console.log("People Found: " + data["people"].length);
-
-                    if (data["series"].length > 0) {
-                        var firstSeries = data["series"][0];
-                        console.log("First series found: {'Name': '" + firstSeries[0] + "', 'Id': '" + firstSeries[1] +
-                                    "', 'ImageURL': '" + firstSeries[2] + "'}");
-                    }
-
-                    if (data["people"].length > 0) {
-                        var firstPerson = data["people"][0];
-                        console.log("First person found: {'Name': '" + firstPerson[0] + "', 'Id': '" + firstPerson[1] +
-                                "', 'ImageURL': '" + firstPerson[2] + "'}");
-                    }
-                },
-                error: function (jqXHR, exception) {
-                    console.log(jqXHR.status);
-                    console.log(exception);
-                }
-            });
-		}
-
 		$(document).ready(function() {
-			//getGenres();
-			// getSeriesInfo();
-			// getPersonInfo();
-			performSearch();
+			performRecommendation();
 		});
 
 	</script>
