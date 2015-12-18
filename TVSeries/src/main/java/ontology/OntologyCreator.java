@@ -6,6 +6,8 @@ import data.Series;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDF;
 
@@ -523,6 +525,40 @@ public class OntologyCreator {
 
             currentIndividual.addLiteral(hasRating, currentScore);
             currentIndividual.addLiteral(hasSeriesImageURL, currentSeries.getImage());
+        }
+    }
+
+    /**
+     * Added to support new SeriesGenre attribute: totalNumberOfPeople (represents the total number of actors and
+     * creators of the series)
+     */
+    public void updateSeriesActors() {
+        int currentSeriesTotalNumberOfPeople;
+
+        OntProperty hasTotalNumberOfPeople = ontologyModel.getDatatypeProperty(namespace + "hasTotalNumberOfPeople");
+        OntProperty hasActor = ontologyModel.getObjectProperty(namespace + "hasActor");
+        OntProperty hasCreator = ontologyModel.getObjectProperty(namespace + "hasCreator");
+
+        for (Object object : seriesList.entrySet()) {
+            Map.Entry pair = (Map.Entry) object;
+            Individual seriesIndividual = (Individual) pair.getValue();
+
+            currentSeriesTotalNumberOfPeople = 0;
+
+            StmtIterator stmtIterator = seriesIndividual.listProperties(hasActor);
+            while (stmtIterator.hasNext()) {
+                stmtIterator.next();
+                currentSeriesTotalNumberOfPeople++;
+            }
+
+            // Creators
+            stmtIterator = seriesIndividual.listProperties(hasCreator);
+            while (stmtIterator.hasNext()) {
+                stmtIterator.next();
+                currentSeriesTotalNumberOfPeople++;
+            }
+
+            seriesIndividual.addLiteral(hasTotalNumberOfPeople, currentSeriesTotalNumberOfPeople);
         }
     }
 

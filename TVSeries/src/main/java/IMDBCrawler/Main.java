@@ -18,26 +18,12 @@ public class Main {
 
     public static void main(String[] args)
     {
-        ArrayList<Series> seriesToUpdate;
-        ArrayList<Person> personsToUpdate;
-
         // Configure log4j (in our case we just ignore it) because of Jena!
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
         OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
 
-        ontologyCreator.updatePerson("nm0534409");
-
-        //get IMFB additional data
-        //seriesToUpdate = getMoreIMDBSeriesInfo();
-        /*
-        personsToUpdate = getMoreIMDBPersonInfo();
-
-        if (personsToUpdate != null) {
-            ontologyCreator.updatePeople(personsToUpdate);
-        }
-
-        */
+        ontologyCreator.updateSeriesActors();
 
         /*
         FileLoader fileLoader = new FileLoader();
