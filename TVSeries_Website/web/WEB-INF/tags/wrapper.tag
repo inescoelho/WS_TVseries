@@ -42,9 +42,33 @@
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                  <jsp:doBody/>
+
+                <div class="spacer">&nbsp;</div>
+                <div class="spacer">&nbsp;</div>
+
+                    <div class="jumbotron">
+                        <h1>Recommended</h1>
+                        <div class="spacer">&nbsp;</div>
+
+                        <div class="row row-offcanvas" id="recommendedSeries">
+                            <div class="col-md-2">
+                                <div class="thumbnail">
+                                    <a href="default.asp">
+                                        <img src="http://i.imgur.com/d9AZyDt.jpg" alt="...">
+                                    </a>
+                                    <div class="caption">
+                                        <h3>Thumbnail label</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
             </div>
         </div>
     </div>
+
 
     <script>
         function getGenres() {

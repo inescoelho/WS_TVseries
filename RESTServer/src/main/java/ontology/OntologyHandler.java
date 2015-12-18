@@ -311,22 +311,23 @@ public class OntologyHandler {
 
 
         String name = person.getPropertyValue(hasName).toString();
-        String biography = person.getPropertyValue(hasBiography).toString();
-        biography = biography.replace("\"", "");
-        biography = biography.replace("\\", "");
 
-        String birthDate;
-        if (person.getPropertyValue(hasBirthDate) != null) {
-            birthDate = person.getPropertyValue(hasBirthDate).toString();
-        }else {
-            birthDate = "";
+        String biography = "";
+        if (person.getPropertyValue(hasBiography) != null) {
+            biography = person.getPropertyValue(hasBiography).toString();
+            biography = biography.replace("\"", "");
+            biography = biography.replace("\\", "");
         }
 
-        String wikiURL;
+
+        String birthDate = "";
+        if (person.getPropertyValue(hasBirthDate) != null) {
+            birthDate = person.getPropertyValue(hasBirthDate).toString();
+        }
+
+        String wikiURL = "";
         if (person.getPropertyValue(hasWikiURL) != null) {
             wikiURL = person.getPropertyValue(hasWikiURL).toString();
-        } else {
-            wikiURL = "";
         }
 
         String imageURL;

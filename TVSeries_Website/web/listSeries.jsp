@@ -3,12 +3,13 @@
 
 <t:wrapper>
 
-    <div class="page-header">
-        <h1>Series from category ${requestScope.category}</h1>
-    </div>
+    <div>
+        <div class="page-header">
+            <h1>Series from category ${requestScope.category}</h1>
+        </div>
 
-    <div class="container col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1">
-         <div class="list-group" id="listOfSeriesFromCategory"></div>
+        <div id="series">
+        </div>
     </div>
 
     <script>
@@ -30,8 +31,23 @@
                         {
                             for (var j=0; j < currentGenre["series"].length; j++)
                             {
-                                $('#listOfSeriesFromCategory').append("<a class=\"list-group-item\" href='series?id=" + currentGenre["series"][j][1]
-                                        + "'>" + currentGenre["series"][j][0] + "</a>");
+                                var currentSeries = currentGenre["series"][j];
+
+                                $('#series').append(
+                                        "<div class=\"row\">" +
+                                            "<div class=\"col-md-3 col-md-offset-2\">" +
+                                                "<div class=\"text-center\" id=\"seriesImage\"" + currentSeries + "\">" +
+                                                    "<a href=series?id=" + currentSeries[1] + ">" +
+                                                        "<img src=" + currentSeries[2] + "width=\"250\" height=\"200\">" +
+                                                    "</a>" +
+                                                "</div>" +
+                                            "</div>" +
+                                            "<div class=\"col-md-7\">" +
+                                                "<a href=series?id=" + currentSeries[1] + ">" +
+                                                    "<p>" + currentSeries[0] + "</p>" +
+                                                "</a>" +
+                                            "</div>" +
+                                        "</div>");
                             }
 
                         }

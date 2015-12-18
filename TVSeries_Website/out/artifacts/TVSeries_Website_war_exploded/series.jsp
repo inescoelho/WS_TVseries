@@ -16,10 +16,14 @@
         <div class="col-md-8" id="rightInfo"></div>
     </div>
 
+    <div class="spacer">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
     <div class="container" id="creators">
         <p><b>Created by: </b></p>
     </div>
 
+    <div class="spacer">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
     <div class="container" id="actors">
         <p><b>Actors: </b></p>
     </div>
@@ -71,6 +75,9 @@
 
                     for (var actor = 0; actor < series["actors"].length; actor ++)
                     {
+                        if (series["actors"][actor][2] == "")
+                            series["actors"][actor][2] ="http://i.imgur.com/0zxp2G8.jpg";
+
                         $('#actors').append(
                                 "<div class=\"row\">" +
                                     "<div class=\"col-md-3 col-md-offset-2\">" +

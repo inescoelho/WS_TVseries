@@ -16,8 +16,9 @@
         <div class="col-md-8" id="rightInfo"></div>
     </div>
 
+    <div class="spacer">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
     <div class="container" id="seriesInfo">
-        <div class="spacer">&nbsp;</div>
     </div>
 
     <script>
