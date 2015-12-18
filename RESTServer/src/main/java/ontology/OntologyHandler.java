@@ -1458,6 +1458,8 @@ public class OntologyHandler {
 
         // Now, use the remaining ones to get the actors
         //List<String[]> remainingSubSetMostPopularSeries = mostPopularSeries.subList(remainingSeries, mostPopularSeries.size());
+        // TODO: Upate ontology to have number of people in the series; Populate that and then use it to randomly select
+        //       people from the series
     }
 
     private ArrayList<String[]> getMostPopularSeriesNotSeen(ArrayList<String> lastChecked) {

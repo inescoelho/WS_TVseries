@@ -13,3 +13,16 @@ Ultimas pessoas e séries vistas:
 	Pegar nas series vistas e sacar os generos em comum e sacar series com maior score desses generos mais frequentes, séries do mais frequente, etc (max 2)
 
 	Caso sem histórico
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>
+SELECT ?subject ?seriesName ?actor ?creator
+WHERE { 
+       ?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt1219024') ) .
+       ?subject my:hasTitle ?seriesName .
+      {?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
+}
