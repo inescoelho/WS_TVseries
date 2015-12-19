@@ -20,23 +20,31 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>
-{
-	SELECT ?subject ?seriesName ?actor ?creator
-	WHERE { 
-	       ?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt1219024') ) .
-	       ?subject my:hasTitle ?seriesName .
-	       { ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-	}
+SELECT ?subject ?seriesName ?actor ?creator
+WHERE {
+		{
+			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt1219024') ) .
+			?subject my:hasTitle ?seriesName .
+			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
+		}
+		UNION
+		{
+			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt375355') ) .
+			?subject my:hasTitle ?seriesName .
+			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
+		}
+		UNION
+		{
+			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt375355') ) .
+			?subject my:hasTitle ?seriesName .
+			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
+		}
+		UNION
+		{
+			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt182576') ) .
+			?subject my:hasTitle ?seriesName .
+			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
+		}
+} OFFSET 20 LIMIT 1
 
-}
-UNION
-{
-	SELECT ?subject ?seriesName ?actor ?creator
-	WHERE { 
-	       ?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt0375355') ) .
-	       ?subject my:hasTitle ?seriesName .
-	       { ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-	}
-}
-
-USE RANDOM OFFSET BASED ON NUMBER OF ACTORS (Determined in jena). LIMIT IS ALWAYS 1
+USE RANDOM OFFSET BASED ON NUMBER OF ACTORS (Determined in jena). LIMIT IS ALWAYS 
