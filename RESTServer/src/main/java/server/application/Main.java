@@ -7,6 +7,15 @@ public class Main {
 
     public static void main(String[] args) {
         //testSearch();
+
+        int finish = 2;
+        int start = 0;
+        int i;
+
+        for (i=0; i< 100; i++) {
+            int result = (int) (Math.random() * (finish - start) + start);
+            System.out.println(result);
+        }
     }
 
     public static void testSearch() {

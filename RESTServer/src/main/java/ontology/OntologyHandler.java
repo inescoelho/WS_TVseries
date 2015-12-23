@@ -13,7 +13,8 @@ import server.data.OperationResult;
 import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
-import server.data.utils.PeopleSeriesFrequency;
+import server.data.utils.PersonFromSeriesFrequency;
+import server.data.utils.SeriesFromPeopleFrequency;
 
 import java.util.*;
 
@@ -290,8 +291,8 @@ public class OntologyHandler {
             rating = -1;
         }
 
-        ArrayList<String[]> creators = getActorsOrCreatorsFromSeries(seriesId, false);
-        ArrayList<String[]> actors = getActorsOrCreatorsFromSeries(seriesId, true);
+        ArrayList<String[]> creators = getActorsOrCreatorsFromSeries(seriesId, false, null);
+        ArrayList<String[]> actors = getActorsOrCreatorsFromSeries(seriesId, true, null);
 
         return new Series(title, description, storyline, seriesId, episodeDuration, pilotYear, finishYear, imageURL,
                           rating, actors, creators);
@@ -349,10 +350,12 @@ public class OntologyHandler {
      * Gets the relevant information of all the actors or creators in a given series
      * @param seriesId The id of the series
      * @param actor A boolean value, signalling if all the information of actors or creators should be retrieved
+     * @param lastChecked The list with historical data of the people and series checked by the user
      * @return An ArrayList of "String[]" objects will all the relevant information about the actors or creators (name,
      *         id and image url)
      */
-    private ArrayList<String[]> getActorsOrCreatorsFromSeries(String seriesId, boolean actor) {
+    private ArrayList<String[]> getActorsOrCreatorsFromSeries(String seriesId, boolean actor,
+                                                              ArrayList<String> lastChecked) {
         ArrayList<String[]> result = new ArrayList<>();
         String propertyName;
 
@@ -376,8 +379,7 @@ public class OntologyHandler {
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
         ResultSet resultSet = qExe.execSelect();
 
-        if (!actor)
-            System.out.println("\n====================================================\n" + queryString + "\n\n");
+        // System.out.println("\n====================================================\n" + queryString + "\n\n");
 
         while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
@@ -395,12 +397,10 @@ public class OntologyHandler {
                     personImageUrl = personImageURL.getString();
                 }
 
-                if (personName.getString().equals("")) {
-                    System.out.println("HERE ");
-                }
-
                 // Remember: first position has id, second has name and third has imageURL!!
-                result.add(new String[] {personId.getString(), personName.getString(), personImageUrl});
+                if (lastChecked == null || !lastChecked.contains(personId.getString())) {
+                    result.add(new String[]{personId.getString(), personName.getString(), personImageUrl});
+                }
             }
         }
 
@@ -1402,10 +1402,10 @@ public class OntologyHandler {
             // Now, for each person in the peopleIds list, get their series, counting their frequency and store it in an
             // array
             if (peopleIds != null && peopleIds.size() > 0) {
-                ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency = getPeopleSeriesFrequency(peopleIds);
+                ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency = getPeopleSeriesFrequency(peopleIds);
 
                 // Sort this array by score in descending order
-                Collections.sort(peopleSeriesFrequency, (o1, o2) -> {
+                Collections.sort(seriesFromPeopleFrequency, (o1, o2) -> {
                     if (o2.getSeriesRating() > o1.getSeriesRating())
                         return 1;
                     else if (o2.getSeriesRating() == o1.getSeriesRating()) {
@@ -1414,14 +1414,20 @@ public class OntologyHandler {
                     return -1;
                 });
 
-                for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+                for (SeriesFromPeopleFrequency current : seriesFromPeopleFrequency) {
                     System.out.println(current);
                 }
 
-                System.out.println("==========================================SETP1====================================");
-                performRecommendationStep1(operationResult, lastChecked, peopleSeriesFrequency);
-                System.out.println("==========================================SETP2====================================");
-                performRecommendationStep2(operationResult, lastChecked, peopleSeriesFrequency);
+                System.out.println("==========================================STEP1==================================");
+                performRecommendationStep1(operationResult, lastChecked, seriesFromPeopleFrequency);
+
+                System.out.println("==========================================STEP2==================================");
+                performRecommendationStep2(operationResult, lastChecked, seriesFromPeopleFrequency);
+            }
+
+            if (seriesIds != null && seriesIds.size() > 0) {
+                System.out.println("==========================================STEP3==================================");
+                performRecommendationStep3(operationResult, lastChecked, seriesIds);
             }
 
             // Perform last recommendation step
@@ -1458,9 +1464,9 @@ public class OntologyHandler {
         return new PeopleAndSeries(people, series);
     }
 
-    private ArrayList<PeopleSeriesFrequency> getPeopleSeriesFrequency(ArrayList<String> peopleIds) {
+    private ArrayList<SeriesFromPeopleFrequency> getPeopleSeriesFrequency(ArrayList<String> peopleIds) {
 
-        ArrayList<PeopleSeriesFrequency> result = new ArrayList<>();
+        ArrayList<SeriesFromPeopleFrequency> result = new ArrayList<>();
 
         for (String personId : peopleIds) {
             // Get the series from the person and add it to the result ArrayList
@@ -1479,7 +1485,8 @@ public class OntologyHandler {
         return result;
     }
 
-    private int addToOperationResult(OperationResult operationResult, PeopleSeriesFrequency current, int added) {
+    private int addSeriesToOperationResult(OperationResult operationResult, SeriesFromPeopleFrequency current,
+                                           int added) {
         String[] temp = new String[3];
         temp[0] = current.getSeriesTitle();
         temp[1] = current.getSeriesId();
@@ -1493,15 +1500,63 @@ public class OntologyHandler {
         return added;
     }
 
+    private boolean addPersonToOperationResult(OperationResult operationResult, PersonFromSeriesFrequency current) {
+        String[] temp = new String[3];
+        temp[0] = current.getPersonName();
+        temp[1] = current.getPersonId();
+        temp[2] = current.getPersonImageURL();
+
+        return operationResult.addPerson(temp);
+    }
+
+    private void addRandomPeopleToOperationResult(OperationResult operationResult,
+                                                  ArrayList<PersonFromSeriesFrequency> peopleInCommonNotSeen,
+                                                  int start, int finish, int limitPeopleAdd) {
+        int added = 0;
+
+        while (added < limitPeopleAdd) {
+            int index = (int) (Math.random() * (finish - start) + start);
+
+            if (addPersonToOperationResult(operationResult, peopleInCommonNotSeen.get(index))) {
+                System.out.println("Added " + peopleInCommonNotSeen.get(index).getPersonId() + " with name " +
+                        peopleInCommonNotSeen.get(index).getPersonName());
+                added++;
+            }
+        }
+    }
+
+    private void mergeActorsCreators(ArrayList<String[]> actors, ArrayList<String[]> creators,
+                                     ArrayList<PersonFromSeriesFrequency> peopleList) {
+
+        boolean exists;
+
+        // Start with actors
+        for (String[] currentActor : actors) {
+            exists = false;
+
+            for (PersonFromSeriesFrequency currentPerson : peopleList) {
+                if (currentPerson.getPersonId().equals(currentActor[1])) {
+                    exists = true;
+                    currentPerson.increaseFrequency();
+                    break;
+                }
+            }
+
+            if (!exists) {
+                peopleList.add(new PersonFromSeriesFrequency(currentActor[1], currentActor[0], currentActor[2]));
+            }
+        }
+    }
+
     private void performRecommendationStep1(OperationResult operationResult, ArrayList<String> lastChecked,
-                                            ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency) {
+                                            ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency) {
         // Get series in common (frequency > 1) that have not been seen and add them to the list of series to
         // recommend (in operationResult) -- Max 3
 
         int MAX_LIMIT = 3;
         int added = 0;
 
-        for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+        for (SeriesFromPeopleFrequency current : seriesFromPeopleFrequency) {
 
             if (added >= MAX_LIMIT) {
                 return;
@@ -1512,21 +1567,21 @@ public class OntologyHandler {
 
                 // Check if current series has been checked and we can still add more series
                 if (!lastChecked.contains(current.getSeriesId())) {
-                    added = addToOperationResult(operationResult, current, added);
+                    added = addSeriesToOperationResult(operationResult, current, added);
                 }
             }
         }
     }
 
     private void performRecommendationStep2(OperationResult operationResult, ArrayList<String> lastChecked,
-                                            ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency) {
-        // Go through the ordered array of peopleSeriesFrequency and get the top 2 series with higher score that
+                                            ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency) {
+        // Go through the ordered array of seriesFromPeopleFrequency and get the top 2 series with higher score that
         // have not been seen and recommend them
 
         int MAX_LIMIT = 2;
         int added = 0;
 
-        for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+        for (SeriesFromPeopleFrequency current : seriesFromPeopleFrequency) {
 
             if (added >= MAX_LIMIT) {
                 return;
@@ -1534,9 +1589,81 @@ public class OntologyHandler {
 
             // Check if current series has been seen
             if (!lastChecked.contains(current.getSeriesId())) {
-                added = addToOperationResult(operationResult, current, added);
+                added = addSeriesToOperationResult(operationResult, current, added);
             }
         }
+    }
+
+    private void performRecommendationStep3(OperationResult operationResult, ArrayList<String> lastChecked,
+                                            ArrayList<String> seriesIds) {
+
+        // Recommend actors in common from the last viewed series that have not been checked nor recommended yet
+        // In fact gonna do something different
+
+        int MAX_LIMIT = 3;
+        ArrayList<PersonFromSeriesFrequency> peopleInCommonNotSeen = new ArrayList<>();
+        ArrayList<String[]> actorsNotSeenCurrentSeries;
+        ArrayList<String[]> creatorsNotSeenCurrentSeries;
+
+        if (seriesIds == null || seriesIds.size() == 0) {
+            return ;
+        }
+
+
+        for (String seriesId : seriesIds) {
+            // Get list of actors and creators not already seen from the current series
+            actorsNotSeenCurrentSeries = getActorsOrCreatorsFromSeries(seriesId, true, lastChecked);
+            creatorsNotSeenCurrentSeries = getActorsOrCreatorsFromSeries(seriesId, false, lastChecked);
+
+            // Merge these two arrays into the "peopleInCommonNotSeen" array
+            mergeActorsCreators(actorsNotSeenCurrentSeries, creatorsNotSeenCurrentSeries, peopleInCommonNotSeen);
+        }
+
+        // Sort the array by frequency in descending order
+        Collections.sort(peopleInCommonNotSeen, (o1, o2) -> o2.getFrequency() - o1.getFrequency());
+
+        // Now process this array as stated: From the people with frequency higher than one get up to 2 random people
+        // From the rest of the people get 1 random person (or more, if less than 2 people have frequency > 1)
+        if (peopleInCommonNotSeen.size() == 0) {
+            return ;
+        }
+
+        if (peopleInCommonNotSeen.get(0).getFrequency() > 1) {
+            int lastIndex =  peopleInCommonNotSeen.size();
+
+            for(int i=0; i < peopleInCommonNotSeen.size(); i++) {
+                if (peopleInCommonNotSeen.get(i).getFrequency() == 1) {
+                    lastIndex = i+1;
+                    break;
+                }
+            }
+
+            if (lastIndex == 1) {
+                // Only one case -- Don't bother checking if we were able to add because we only have one possibility
+                addPersonToOperationResult(operationResult, peopleInCommonNotSeen.get(0));
+            } else if (lastIndex == 2) {
+                // Only two cases -- Don't bother checking if we were able to add because we only have one possibility
+                addPersonToOperationResult(operationResult, peopleInCommonNotSeen.get(1));
+                addPersonToOperationResult(operationResult, peopleInCommonNotSeen.get(2));
+
+                // Generate another random person with frequency = 1
+                addRandomPeopleToOperationResult(operationResult, peopleInCommonNotSeen, lastIndex,
+                        peopleInCommonNotSeen.size(), 1);
+
+            } else {
+                // Generate 2 random people with frequency > 1
+                addRandomPeopleToOperationResult(operationResult, peopleInCommonNotSeen, 0, lastIndex, MAX_LIMIT-1);
+
+                // Generate another random person with frequency = 1
+                addRandomPeopleToOperationResult(operationResult, peopleInCommonNotSeen, lastIndex,
+                        peopleInCommonNotSeen.size(), 1);
+            }
+        } else {
+            // No people with frequency higher than 1 - Get 3 random people
+            addRandomPeopleToOperationResult(operationResult, peopleInCommonNotSeen, 0, peopleInCommonNotSeen.size(),
+                                             MAX_LIMIT);
+        }
+
     }
 
     private void performLastRecommendationStep(ArrayList<String> lastChecked, OperationResult operationResult,
@@ -1603,17 +1730,17 @@ public class OntologyHandler {
         return seriesFromPerson;
     }
 
-    private void addToPeopleSeriesFrequency(ArrayList<PeopleSeriesFrequency> result, String seriesId, String seriesName,
-                                            String seriesImageURL , double seriesRating) {
+    private void addToPeopleSeriesFrequency(ArrayList<SeriesFromPeopleFrequency> result, String seriesId,
+                                            String seriesName, String seriesImageURL , double seriesRating) {
 
-        for (PeopleSeriesFrequency current : result) {
+        for (SeriesFromPeopleFrequency current : result) {
             if (current.getSeriesId().equals(seriesId)) {
                 current.increaseFrequency();
                 return;
             }
         }
 
-        result.add(new PeopleSeriesFrequency(seriesId, seriesRating, seriesName, seriesImageURL));
+        result.add(new SeriesFromPeopleFrequency(seriesId, seriesRating, seriesName, seriesImageURL));
     }
 
     private void handleEmptyRecommendation(ArrayList<String> lastChecked, OperationResult operationResult,
@@ -1734,8 +1861,6 @@ public class OntologyHandler {
 
         Random random = new Random();
         queryString += "} OFFSET " + random.nextInt(partialNumberOfPeople) + " LIMIT 1";
-
-        // System.out.println("\n" + queryString + "\n===================================================================");
 
 
         /**

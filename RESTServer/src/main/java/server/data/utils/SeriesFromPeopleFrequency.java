@@ -1,13 +1,14 @@
 package server.data.utils;
 
-public class PeopleSeriesFrequency {
+public class SeriesFromPeopleFrequency {
+
     private String seriesId;
     private String seriesTitle;
     private String seriesImageURL;
     private int frequency;
     private double seriesRating;
 
-    public PeopleSeriesFrequency(String seriesId, double seriesRating, String seriesTitle, String seriesImageURL) {
+    public SeriesFromPeopleFrequency(String seriesId, double seriesRating, String seriesTitle, String seriesImageURL) {
         this.seriesId = seriesId;
         this.seriesRating = seriesRating;
         this.seriesTitle = seriesTitle;

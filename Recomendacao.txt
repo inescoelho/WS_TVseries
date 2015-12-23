@@ -8,11 +8,11 @@ Ultimas pessoas e séries vistas:
 
 	Pegar no array de séries das pessoas, ordenar por score e procurar a série com maior score ainda nao vista (max 2) -- DONE
 
-	Pegar nas séries vistas e sacar actores em comum que ainda nao tenham sido vistos (max 3)
+	Pegar nas séries vistas e sacar actores em comum que ainda nao tenham sido vistos (max 3) -- Vou fazer algo parecido com o que fizémos no passo anterior para as séries: Vou sacar os actores das séries vistas e contar a frequência deles. Depois ordeno isso por frequência. Se houverem actores com frequência superior a 1 então tiro 2 random dai e o outro e random de entre os que tem score 1. Caso contrário, se só houverem actores com frequencia 1, então e sacar 3 random e pronto -- DONE
 
 	Pegar nas series vistas e sacar os generos em comum e sacar series com maior score desses generos mais frequentes, séries do mais frequente, etc (max 2)
 
-	Caso sem histórico
+	Caso sem histórico -- DONE
 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
