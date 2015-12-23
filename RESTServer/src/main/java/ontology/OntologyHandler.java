@@ -7,12 +7,13 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import server.data.GetMostPopularSeriesNotSeenReturn;
+import server.data.utils.PeopleAndSeries;
 import server.data.ResultObject;
 import server.data.OperationResult;
 import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
+import server.data.utils.PeopleSeriesFrequency;
 
 import java.util.*;
 
@@ -854,20 +855,7 @@ public class OntologyHandler {
                         creatorsList.remove(currentPerson);
 
                         // Join currentSeriesFound1 and currentSeriesFound2
-                        for (String[] temp : currentSeriesFound2) {
-                            boolean contains = false;
-
-                            for (String[] temp2 : currentSeriesFound1) {
-                                if (temp2[1].equals(temp[1])) {
-                                    contains = true;
-                                    break;
-                                }
-                            }
-
-                            if (!contains) {
-                                currentSeriesFound1.add(temp);
-                            }
-                        }
+                        joinSeries(currentSeriesFound2, currentSeriesFound1);
 
                         // Intersect what we have in currentSeriesFound with what is already stored in "series"
                         if (firstTime) {
@@ -946,20 +934,7 @@ public class OntologyHandler {
                         creatorsList.remove(currentPerson);
 
                         // Join currentSeriesFound1 and currentSeriesFound2
-                        for (String[] temp : currentSeriesFound2) {
-                            boolean contains = false;
-
-                            for (String[] temp2 : currentSeriesFound1) {
-                                if (temp2[1].equals(temp[1])) {
-                                    contains = true;
-                                    break;
-                                }
-                            }
-
-                            if (!contains) {
-                                currentSeriesFound1.add(temp);
-                            }
-                        }
+                        joinSeries(currentSeriesFound2, currentSeriesFound1);
 
                         // Intersect what we have in currentSeriesFound with what is already stored in "series"
                         if (firstTime) {
@@ -1079,6 +1054,24 @@ public class OntologyHandler {
         return operationResult;
     }
 
+    private void joinSeries(ArrayList<String[]> series1, ArrayList<String[]> series2) {
+
+        for (String[] temp : series1) {
+            boolean contains = false;
+
+            for (String[] temp2 : series2) {
+                if (temp2[1].equals(temp[1])) {
+                    contains = true;
+                    break;
+                }
+            }
+
+            if (!contains) {
+                series2.add(temp);
+            }
+        }
+    }
+
     private List<String> getGenresNames() {
         String queryString = queryPrefix +
                 "SELECT ?subject WHERE { " +
@@ -1130,27 +1123,8 @@ public class OntologyHandler {
             RDFNode personNameNode = result.get("?personName");
             RDFNode personIdNode = result.get("?personID");
             RDFNode personImageUrlNode = result.get("?personImageURL");
-            String[] temp = new String[3];
 
-            if (personNameNode.isLiteral() && personIdNode.isLiteral()) {
-                Literal personName = personNameNode.asLiteral();
-                String person_name = personName.getString();
-
-                Literal personId = personIdNode.asLiteral();
-                String person_id = personId.getString().toLowerCase();
-
-                String image_url = "";
-                if (personImageUrlNode.isLiteral()) {
-                    Literal imageUrl = personImageUrlNode.asLiteral();
-                    image_url = imageUrl.getString();
-                }
-
-                temp[0] = person_name;
-                temp[1] = person_id;
-                temp[2] = image_url;
-
-                peopleList.add(temp);
-            }
+            addPersonToList(personNameNode, personIdNode, personImageUrlNode, peopleList);
         }
 
         return peopleList;
@@ -1179,27 +1153,8 @@ public class OntologyHandler {
             RDFNode creatorNameNode = result.get("?creatorName");
             RDFNode creatorIdNode = result.get("?creatorID");
             RDFNode creatorImageNode = result.get("?creatorImageURL");
-            String[] temp = new String[3];
 
-            if (creatorNameNode.isLiteral() && creatorIdNode.isLiteral()) {
-                Literal creatorName = creatorNameNode.asLiteral();
-                String creator_name = creatorName.getString();
-
-                Literal creatorId = creatorIdNode.asLiteral();
-                String creator_id = creatorId.getString().toLowerCase();
-
-                String image_url = "";
-                if (creatorImageNode.isLiteral()) {
-                    Literal imageUrl = creatorImageNode.asLiteral();
-                    image_url = imageUrl.getString();
-                }
-
-                temp[0] = creator_name;
-                temp[1] = creator_id;
-                temp[2] = image_url;
-
-                creatorsList.add(temp);
-            }
+            addPersonToList(creatorNameNode, creatorIdNode, creatorImageNode, creatorsList);
         }
 
         return creatorsList;
@@ -1226,30 +1181,36 @@ public class OntologyHandler {
             RDFNode actorNameNode = result.get("?actorName");
             RDFNode actorIdNode = result.get("?actorID");
             RDFNode actorImageNode = result.get("?actorImageURL");
-            String[] temp = new String[3];
 
-            if (actorNameNode.isLiteral() && actorIdNode.isLiteral()) {
-                Literal actorName = actorNameNode.asLiteral();
-                String actor_name = actorName.getString();
-
-                Literal actorId = actorIdNode.asLiteral();
-                String actor_id = actorId.getString().toLowerCase();
-
-                String image_url = "";
-                if (actorImageNode.isLiteral()) {
-                    Literal imageUrl = actorImageNode.asLiteral();
-                    image_url = imageUrl.getString();
-                }
-
-                temp[0] = actor_name;
-                temp[1] = actor_id;
-                temp[2] = image_url;
-
-                actorsList.add(temp);
-            }
+            addPersonToList(actorNameNode, actorIdNode, actorImageNode, actorsList);
         }
 
         return actorsList;
+    }
+
+    private void addPersonToList(RDFNode nameNode, RDFNode idNode, RDFNode imageNode, ArrayList<String[]> list) {
+        String[] temp = new String[3];
+
+        if (nameNode.isLiteral() && idNode.isLiteral()) {
+
+            Literal name = nameNode.asLiteral();
+            String personName = name.getString();
+
+            Literal id = idNode.asLiteral();
+            String person_id = id.getString().toLowerCase();
+
+            String image_url = "";
+            if (imageNode != null && imageNode.isLiteral()) {
+                Literal imageUrl = imageNode.asLiteral();
+                image_url = imageUrl.getString();
+            }
+
+            temp[0] = personName;
+            temp[1] = person_id;
+            temp[2] = image_url;
+
+            list.add(temp);
+        }
     }
 
     private ArrayList<String[]> searchSeries(String title, List<String> actors, List<String> creators) {
@@ -1271,12 +1232,16 @@ public class OntologyHandler {
         // Add genre
         for (String currentGenre : resultObject.getGenreList()) {
             // Convert genre type to upper string, handling special cases
-            if (currentGenre.equals("sci-fi")) {
-                currentGenre = "Sci-Fi";
-            } else if (currentGenre.equals("film-noir")) {
-                currentGenre = "Film-Noir";
-            } else {
-                currentGenre = Character.toUpperCase(currentGenre.charAt(0)) + currentGenre.substring(1);
+            switch (currentGenre) {
+                case "sci-fi":
+                    currentGenre = "Sci-Fi";
+                    break;
+                case "film-noir":
+                    currentGenre = "Film-Noir";
+                    break;
+                default:
+                    currentGenre = Character.toUpperCase(currentGenre.charAt(0)) + currentGenre.substring(1);
+                    break;
             }
 
             queryString += "     ?series rdf:type my:" + currentGenre + " .\n";
@@ -1338,7 +1303,6 @@ public class OntologyHandler {
 
         // Add born year
         if (resultObject.getBrithYear() != null && resultObject.getBrithYear() != ResultObject.BirthYear.NOT_SET) {
-            System.out.println("HERE " + resultObject.getBrithYear());
             queryString += "     ?series my:hasActor ?actor" + counter + " .\n" +
                            "     ?actor" + counter + " my:hasBirthDate ?birthDate FILTER regex(?birthDate, '" +
                            resultObject.getBornYearValue() + "', 'i') .\n";
@@ -1429,13 +1393,227 @@ public class OntologyHandler {
         if (lastChecked.size() == 0) {
             handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         } else {
-            // FIXME: Do more shit here
 
+            // Go to the last "numItemsToCheck" items of the lastChecked array and get the people and the series.
+            PeopleAndSeries peopleAndSeries = getSeriesAndPeopleFromLastChecked(lastChecked, numItemsToCheck);
+            ArrayList<String> peopleIds = peopleAndSeries.getPeopleList();
+            ArrayList<String> seriesIds = peopleAndSeries.getSeriesList();
 
-            handleEmptyRecommendation(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
+            // Now, for each person in the peopleIds list, get their series, counting their frequency and store it in an
+            // array
+            if (peopleIds != null && peopleIds.size() > 0) {
+                ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency = getPeopleSeriesFrequency(peopleIds);
+
+                // Sort this array by score in descending order
+                Collections.sort(peopleSeriesFrequency, (o1, o2) -> {
+                    if (o2.getSeriesRating() > o1.getSeriesRating())
+                        return 1;
+                    else if (o2.getSeriesRating() == o1.getSeriesRating()) {
+                        return o2.getFrequency() - o1.getFrequency();
+                    }
+                    return -1;
+                });
+
+                for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+                    System.out.println(current);
+                }
+
+                System.out.println("==========================================SETP1====================================");
+                performRecommendationStep1(operationResult, lastChecked, peopleSeriesFrequency);
+                System.out.println("==========================================SETP2====================================");
+                performRecommendationStep2(operationResult, lastChecked, peopleSeriesFrequency);
+            }
+
+            // Perform last recommendation step
+            performLastRecommendationStep(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         }
 
         return operationResult;
+    }
+
+    private PeopleAndSeries getSeriesAndPeopleFromLastChecked(ArrayList<String> lastChecked, int numItemsToCheck) {
+
+        if (lastChecked == null || lastChecked.size() == 0) {
+            return null;
+        }
+
+        int i = lastChecked.size()-1;
+        ArrayList<String> series = new ArrayList<>();
+        ArrayList<String> people = new ArrayList<>();
+        while (i >= 0 && numItemsToCheck >= 0) {
+            String temp = lastChecked.get(i);
+
+            if(temp.contains("tt")) {
+                // Series
+                series.add(temp);
+            } else {
+                // People
+                people.add(temp);
+            }
+
+            i--;
+            numItemsToCheck--;
+        }
+
+        return new PeopleAndSeries(people, series);
+    }
+
+    private ArrayList<PeopleSeriesFrequency> getPeopleSeriesFrequency(ArrayList<String> peopleIds) {
+
+        ArrayList<PeopleSeriesFrequency> result = new ArrayList<>();
+
+        for (String personId : peopleIds) {
+            // Get the series from the person and add it to the result ArrayList
+            ArrayList<String[]> personSeries = getSeriesFromPerson(personId);
+
+            for (String[] currentSeries : personSeries) {
+                String seriesId = currentSeries[0];
+                double seriesRating = Double.parseDouble(currentSeries[1]);
+                String seriesTitle = currentSeries[2];
+                String seriesImageURL = currentSeries[3];
+
+                addToPeopleSeriesFrequency(result, seriesId, seriesTitle, seriesImageURL, seriesRating);
+            }
+        }
+
+        return result;
+    }
+
+    private int addToOperationResult(OperationResult operationResult, PeopleSeriesFrequency current, int added) {
+        String[] temp = new String[3];
+        temp[0] = current.getSeriesTitle();
+        temp[1] = current.getSeriesId();
+        temp[2] = current.getSeriesImageURL();
+
+        boolean result = operationResult.addSeries(temp);
+        if (result) {
+            System.out.println("Added " + current.getSeriesTitle());
+            return added+1;
+        }
+        return added;
+    }
+
+    private void performRecommendationStep1(OperationResult operationResult, ArrayList<String> lastChecked,
+                                            ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency) {
+        // Get series in common (frequency > 1) that have not been seen and add them to the list of series to
+        // recommend (in operationResult) -- Max 3
+
+        int MAX_LIMIT = 3;
+        int added = 0;
+
+        for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+
+            if (added >= MAX_LIMIT) {
+                return;
+            }
+
+            // Check if series has more than one person
+            if (current.getFrequency() > 1) {
+
+                // Check if current series has been checked and we can still add more series
+                if (!lastChecked.contains(current.getSeriesId())) {
+                    added = addToOperationResult(operationResult, current, added);
+                }
+            }
+        }
+    }
+
+    private void performRecommendationStep2(OperationResult operationResult, ArrayList<String> lastChecked,
+                                            ArrayList<PeopleSeriesFrequency> peopleSeriesFrequency) {
+        // Go through the ordered array of peopleSeriesFrequency and get the top 2 series with higher score that
+        // have not been seen and recommend them
+
+        int MAX_LIMIT = 2;
+        int added = 0;
+
+        for (PeopleSeriesFrequency current : peopleSeriesFrequency) {
+
+            if (added >= MAX_LIMIT) {
+                return;
+            }
+
+            // Check if current series has been seen
+            if (!lastChecked.contains(current.getSeriesId())) {
+                added = addToOperationResult(operationResult, current, added);
+            }
+        }
+    }
+
+    private void performLastRecommendationStep(ArrayList<String> lastChecked, OperationResult operationResult,
+                                               int numSeriesToRecommend, int numPeopleToRecommend) {
+        int remainingSeries = numSeriesToRecommend - operationResult.getSeries().size();
+        if (remainingSeries < 0) {
+            remainingSeries = 0;
+        }
+        int remainingPeople = numPeopleToRecommend - operationResult.getPeople().size();
+        if (remainingPeople < 0) {
+            remainingPeople = 0;
+        }
+        handleEmptyRecommendation(lastChecked, operationResult, remainingSeries, remainingPeople);
+    }
+
+    /**
+     * Gets all the series information from a given person
+     * @param personId The id of the person
+     * @return A list of String[] objects, containing the id of the series, rating, title and imageurl
+     */
+    private ArrayList<String[]> getSeriesFromPerson(String personId) {
+        ArrayList<String[]> seriesFromPerson = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT DISTINCT ?seriesId ?seriesRating ?seriesTitle ?seriesImageURL\n" +
+                "WHERE {\n" +
+                "     ?series my:hasSeriesId ?seriesId .\n" +
+                "     ?series my:hasRating ?seriesRating .\n" +
+                "     ?series my:hasTitle ?seriesTitle .\n" +
+                "     OPTIONAL {?series my:hasSeriesImageURL ?seriesImageURL . }\n" +
+                "     ?person my:hasPersonId ?personId FILTER regex(?personId, '" + personId + "') .\n" +
+                "     { ?series my:hasActor ?person . } UNION { ?series my:hasCreator ?person . }\n" +
+                "}";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode seriesIdNode = result.get("?seriesId");
+            RDFNode seriesRatingNode = result.get("?seriesRating");
+            RDFNode seriesTitleNode = result.get("?seriesTitle");
+            RDFNode seriesImageURLNode = result.get("?seriesImageURL");
+
+            if (seriesIdNode != null && seriesIdNode.isLiteral() && seriesRatingNode != null &&
+                    seriesRatingNode.isLiteral() && seriesTitleNode != null && seriesTitleNode.isLiteral()) {
+                Literal seriesIdLiteral = seriesIdNode.asLiteral();
+                Literal seriesRatingLiteral = seriesRatingNode.asLiteral();
+                Literal seriesTitleLiteral = seriesTitleNode.asLiteral();
+
+                String[] temp = new String[4];
+                temp[0] = seriesIdLiteral.getString();
+                temp[1] = String.valueOf(seriesRatingLiteral.getDouble());
+                temp[2] = seriesTitleLiteral.getString();
+                temp[3] = "";
+                if (seriesImageURLNode != null && seriesImageURLNode.isLiteral()) {
+                    temp[3] = seriesImageURLNode.asLiteral().getString();
+                }
+                seriesFromPerson.add(temp);
+            }
+        }
+
+        return seriesFromPerson;
+    }
+
+    private void addToPeopleSeriesFrequency(ArrayList<PeopleSeriesFrequency> result, String seriesId, String seriesName,
+                                            String seriesImageURL , double seriesRating) {
+
+        for (PeopleSeriesFrequency current : result) {
+            if (current.getSeriesId().equals(seriesId)) {
+                current.increaseFrequency();
+                return;
+            }
+        }
+
+        result.add(new PeopleSeriesFrequency(seriesId, seriesRating, seriesName, seriesImageURL));
     }
 
     private void handleEmptyRecommendation(ArrayList<String> lastChecked, OperationResult operationResult,
@@ -1557,7 +1735,7 @@ public class OntologyHandler {
         Random random = new Random();
         queryString += "} OFFSET " + random.nextInt(partialNumberOfPeople) + " LIMIT 1";
 
-        System.out.println("\n" + queryString + "\n===================================================================");
+        // System.out.println("\n" + queryString + "\n===================================================================");
 
 
         /**
@@ -1577,46 +1755,33 @@ public class OntologyHandler {
             RDFNode actorIdNode = result.get("?actorId");
             RDFNode actorImageNode = result.get("?actorImageURL");
 
-            String[] temp = new String[3];
-
-            String image = "";
-            String name;
-            String id;
-
             if (creatorNameNode != null && creatorNameNode.isLiteral() &&
                     creatorIdNode != null && creatorIdNode.isLiteral()) {
-                Literal creatorNameLiteral = creatorNameNode.asLiteral();
-                Literal creatorIdLiteral = creatorIdNode.asLiteral();
-
-                name = creatorNameLiteral.getString();
-                id = creatorIdLiteral.getString();
-
-                if (creatorImageNode != null && creatorImageNode.isLiteral()) {
-                    Literal creatorImageURLLiteral = creatorImageNode.asLiteral();
-                    image = creatorImageURLLiteral.getString();
-                }
-
+                return processPerson(creatorNameNode, creatorIdNode, creatorImageNode);
             } else {
-                Literal actorNameLiteral = actorNameNode.asLiteral();
-                Literal actorIdLiteral = actorIdNode.asLiteral();
-
-                name = actorNameLiteral.getString();
-                id = actorIdLiteral.getString();
-
-                if (actorImageNode != null && actorImageNode.isLiteral()) {
-                    Literal actorImageURLLiteral = actorImageNode.asLiteral();
-                    image = actorImageURLLiteral.getString();
-                }
+                return processPerson(actorNameNode, actorIdNode, actorImageNode);
             }
-
-            temp[0] = name;
-            temp[1] = id;
-            temp[2] = image;
-
-            return temp;
         }
 
         return null;
+    }
+
+    private String[] processPerson(RDFNode nameNode, RDFNode idNode, RDFNode imageNode) {
+
+        String[] temp = new String[3];
+
+        Literal nameLiteral = nameNode.asLiteral();
+        Literal idLiteral = idNode.asLiteral();
+
+        temp[0] = nameLiteral.getString();
+        temp[1] = idLiteral.getString();
+        temp[2] = "";
+
+        if (imageNode != null && imageNode.isLiteral()) {
+            Literal imageURLLiteral = imageNode.asLiteral();
+            temp[2] = imageURLLiteral.getString();
+        }
+        return temp;
     }
 
     private ArrayList<String[]> getMostPopularSeriesNotSeen(ArrayList<String> lastChecked) {
@@ -1656,7 +1821,7 @@ public class OntologyHandler {
                 }
 
                 String image_url = "";
-                if (seriesImageNode.isLiteral()) {
+                if (seriesImageNode != null && seriesImageNode.isLiteral()) {
                     Literal imageUrl = seriesImageNode.asLiteral();
                     image_url = imageUrl.getString();
                 }

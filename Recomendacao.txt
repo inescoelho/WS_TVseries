@@ -2,11 +2,11 @@ Primeira situação: Histórico vazio -- 50-50
 	Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
 
 Ultimas pessoas e séries vistas:
-	Dividir em ultimas pessoas + ultimas series; Sacar as séries das pessoas, meter num array
+	Dividir em ultimas pessoas + ultimas series; Sacar as séries das pessoas, meter num array -- DONE
 
-	Sacar séries em comum das pessoas - Se houverem séries em comum que ainda nao foram vistas incluir nas séries recomendadas (max 3) -- Se sobrarem encher os outros
+	Sacar séries em comum das pessoas - Se houverem séries em comum que ainda nao foram vistas incluir nas séries recomendadas (max 3) -- Se sobrarem encher os outros (Acho que vou cagar nisto de encher os outros) -- DONE
 
-	Pegar no array de séries das pessoas, ordenar por score e procurar a série com maior score ainda nao vista (max 2)
+	Pegar no array de séries das pessoas, ordenar por score e procurar a série com maior score ainda nao vista (max 2) -- DONE
 
 	Pegar nas séries vistas e sacar actores em comum que ainda nao tenham sido vistos (max 3)
 

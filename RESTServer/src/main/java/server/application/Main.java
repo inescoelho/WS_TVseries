@@ -3,23 +3,10 @@ package server.application;
 
 import ontology.OntologyHandler;
 
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
         //testSearch();
-        String temp = "tt00002350";
-        String inicio = temp.substring(0, 2);
-        String fim = temp.substring(2);
-
-        System.out.println("INICIO " + inicio + " " + fim);
-
-        while (fim.charAt(0) == '0') {
-            fim = fim.substring(1);
-        }
-
-        System.out.println("GOT " + fim);
     }
 
     public static void testSearch() {

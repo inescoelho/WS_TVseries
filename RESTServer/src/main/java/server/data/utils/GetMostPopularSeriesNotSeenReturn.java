@@ -1,4 +1,4 @@
-package server.data;
+package server.data.utils;
 
 
 import java.util.ArrayList;
