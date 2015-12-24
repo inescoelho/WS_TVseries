@@ -7,6 +7,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import server.data.utils.GenreFromSeriesFrequency;
 import server.data.utils.PeopleAndSeries;
 import server.data.ResultObject;
 import server.data.OperationResult;
@@ -181,13 +182,61 @@ public class OntologyHandler {
      */
     public Person getPersonInfo(String personId) {
         Individual person = peopleList.get(personId);
-        System.out.println("HERE " + person);
 
         if (person == null) {
             return null;
         }
 
         return makePersonFromIndividual(person, personId);
+    }
+
+    /**
+     * Gets all the genres of a given series
+     * @param seriesId The id of the series
+     * @return An ArrayList of "String" objects, containing the list of genres for the given series
+     */
+    private ArrayList<String> getGenresFromSeries(String seriesId) {
+        ArrayList<String> seriesGenres = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?genre \n" +
+                "WHERE {\n" +
+                "       ?series my:hasSeriesId ?seriesId FILTER regex(?seriesId, '" + seriesId +"') .\n";
+
+        // Add genres
+        String currentGenre = genres.get(0);
+        currentGenre = currentGenre.substring(0, 1).toUpperCase() + currentGenre.substring(1);
+        queryString += "       {\n" +
+                "          ?series rdf:type my:" + currentGenre + " .\n" +
+                "          BIND('" + currentGenre + "'^^xsd:string as ?genre) .\n" +
+                "       }\n";
+
+        for (int i=1; i < genres.size(); i++) {
+            currentGenre = genres.get(i);
+            currentGenre = currentGenre.substring(0, 1).toUpperCase() + currentGenre.substring(1);
+            queryString += "       UNION {\n" +
+                    "          ?series rdf:type my:" + currentGenre + " .\n" +
+                    "          BIND('" + currentGenre + "'^^xsd:string as ?genre) .\n" +
+                    "       }\n";
+        }
+        queryString += "}";
+
+        //System.out.println("======================\n" + queryString + "\n====================================");
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet resultSet = qExe.execSelect();
+
+        while (resultSet.hasNext()) {
+            QuerySolution result = resultSet.next();
+            RDFNode genreNode = result.get("?genre");
+
+            if (genreNode != null && genreNode.isLiteral()) {
+                Literal genreLiteral = genreNode.asLiteral();
+                seriesGenres.add(genreLiteral.getString());
+            }
+        }
+        return seriesGenres;
     }
 
     /**
@@ -199,12 +248,12 @@ public class OntologyHandler {
     private ArrayList<String[]> getSeriesNamesInGenre(String genreName) {
         String queryString = queryPrefix +
                 "SELECT ?title ?id ?imageURL \n" +
-                "WHERE { \n" +
-                "?subject rdf:type my:" + genreName + " .\n " +
-                "?subject my:hasTitle ?title .\n " +
-                "?subject my:hasSeriesId ?id .\n " +
-                "?subject my:hasSeriesImageURL ?rating .\n " +
-                "OPTIONAL { ?subject my:hasSeriesImageURL ?imageURL . }\n " +
+                "WHERE {\n" +
+                "       ?subject rdf:type my:" + genreName + " .\n " +
+                "       ?subject my:hasTitle ?title .\n " +
+                "       ?subject my:hasSeriesId ?id .\n " +
+                "       ?subject my:hasSeriesImageURL ?rating .\n " +
+                "       OPTIONAL { ?subject my:hasSeriesImageURL ?imageURL . }\n " +
                 "} ORDER BY DESC(?rating) ?title\n";
 
         Query queryObject = QueryFactory.create(queryString);
@@ -1402,6 +1451,7 @@ public class OntologyHandler {
             // Now, for each person in the peopleIds list, get their series, counting their frequency and store it in an
             // array
             if (peopleIds != null && peopleIds.size() > 0) {
+                // This function call lasts forever
                 ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency = getPeopleSeriesFrequency(peopleIds);
 
                 // Sort this array by score in descending order
@@ -1413,10 +1463,6 @@ public class OntologyHandler {
                     }
                     return -1;
                 });
-
-                for (SeriesFromPeopleFrequency current : seriesFromPeopleFrequency) {
-                    System.out.println(current);
-                }
 
                 System.out.println("==========================================STEP1==================================");
                 performRecommendationStep1(operationResult, lastChecked, seriesFromPeopleFrequency);
@@ -1430,9 +1476,23 @@ public class OntologyHandler {
                 performRecommendationStep3(operationResult, lastChecked, seriesIds);
             }
 
+            System.out.println("==========================================STEP4==================================");
+            performRecommendationStep4(operationResult, lastChecked, numItemsToCheck);
+
             // Perform last recommendation step
             performLastRecommendationStep(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         }
+
+
+        /*
+        for (String[] temp : operationResult.getPeople()) {
+            System.out.println("Going to recommend person " + Arrays.toString(temp));
+        }
+
+        for (String[] temp : operationResult.getSeries()) {
+            System.out.println("Going to recommend series " + Arrays.toString(temp));
+        }
+        */
 
         return operationResult;
     }
@@ -1527,15 +1587,21 @@ public class OntologyHandler {
 
     private void mergeActorsCreators(ArrayList<String[]> actors, ArrayList<String[]> creators,
                                      ArrayList<PersonFromSeriesFrequency> peopleList) {
+        // Start with actors
+        mergePeople(actors, peopleList);
 
+        // Do the same for the creators
+        mergePeople(creators, peopleList);
+    }
+
+    private void mergePeople(ArrayList<String[]> people, ArrayList<PersonFromSeriesFrequency> peopleList) {
         boolean exists;
 
-        // Start with actors
-        for (String[] currentActor : actors) {
+        for (String[] currentActor : people) {
             exists = false;
 
             for (PersonFromSeriesFrequency currentPerson : peopleList) {
-                if (currentPerson.getPersonId().equals(currentActor[1])) {
+                if (currentPerson.getPersonId().equals(currentActor[0])) {
                     exists = true;
                     currentPerson.increaseFrequency();
                     break;
@@ -1543,9 +1609,10 @@ public class OntologyHandler {
             }
 
             if (!exists) {
-                peopleList.add(new PersonFromSeriesFrequency(currentActor[1], currentActor[0], currentActor[2]));
+                peopleList.add(new PersonFromSeriesFrequency(currentActor[0], currentActor[1], currentActor[2]));
             }
         }
+
     }
 
     private void performRecommendationStep1(OperationResult operationResult, ArrayList<String> lastChecked,
@@ -1553,7 +1620,7 @@ public class OntologyHandler {
         // Get series in common (frequency > 1) that have not been seen and add them to the list of series to
         // recommend (in operationResult) -- Max 3
 
-        int MAX_LIMIT = 3;
+        int MAX_LIMIT = 2;
         int added = 0;
 
         for (SeriesFromPeopleFrequency current : seriesFromPeopleFrequency) {
@@ -1619,14 +1686,14 @@ public class OntologyHandler {
             mergeActorsCreators(actorsNotSeenCurrentSeries, creatorsNotSeenCurrentSeries, peopleInCommonNotSeen);
         }
 
-        // Sort the array by frequency in descending order
-        Collections.sort(peopleInCommonNotSeen, (o1, o2) -> o2.getFrequency() - o1.getFrequency());
-
         // Now process this array as stated: From the people with frequency higher than one get up to 2 random people
         // From the rest of the people get 1 random person (or more, if less than 2 people have frequency > 1)
         if (peopleInCommonNotSeen.size() == 0) {
             return ;
         }
+
+        // Sort the array by frequency in descending order
+        Collections.sort(peopleInCommonNotSeen, (o1, o2) -> o2.getFrequency() - o1.getFrequency());
 
         if (peopleInCommonNotSeen.get(0).getFrequency() > 1) {
             int lastIndex =  peopleInCommonNotSeen.size();
@@ -1666,6 +1733,61 @@ public class OntologyHandler {
 
     }
 
+    private void performRecommendationStep4(OperationResult operationResult, ArrayList<String> lastChecked,
+                                            int numItemsToCheck) {
+
+        // Get the genres from the recently viewed series, rate them by frequency, sort them in descending order and
+        // then select the 2 most popular genres and for each genre recommend one series with highest score that has not
+        // already been seen
+        String genre1, genre2;
+
+        // Get the series from the last "numItemsToCheck" from the arrayList of lastChecked
+        ArrayList<String> seriesIds = getSeriesIdsFromLastChecked(lastChecked, numItemsToCheck);
+
+        // Get the genres from these series and count their frequency
+        ArrayList<GenreFromSeriesFrequency> genresList = countGenresFromSeries(seriesIds);
+
+        if (genresList.size() == 0) {
+            return ;
+        }
+
+        // Sort the array by frequency in descending order
+        Collections.sort(genresList, (o1, o2) -> o2.getFrequency() - o1.getFrequency());
+
+        // Select the two most popular genres
+        if (genresList.size() == 1) {
+            genre1 = genresList.get(0).getGenreName();
+            genre2 = "";
+        } else {
+            genre1 = genresList.get(0).getGenreName();
+            genre2 = genresList.get(1).getGenreName();
+        }
+
+        // For each genre get the series with highest score
+        ArrayList<String[]> series1NotSeen = getSeriesNotSeenHighestScoreOfGenre(genre1, lastChecked);
+        ArrayList<String[]> series2NotSeen = null;
+
+        if (!genre2.equals("")) {
+            series2NotSeen = getSeriesNotSeenHighestScoreOfGenre(genre2, lastChecked);
+        }
+
+        // Add them to the list of series to recommend
+        for (String[] aSeries1NotSeen : series1NotSeen) {
+            if (operationResult.addSeries(aSeries1NotSeen)) {
+                System.out.println("Added " + Arrays.toString(aSeries1NotSeen));
+                break;
+            }
+        }
+        if (series2NotSeen != null ) {
+            for (String[] aSeries2NotSeen : series2NotSeen) {
+                if (operationResult.addSeries(aSeries2NotSeen)) {
+                    System.out.println("Added " + Arrays.toString(aSeries2NotSeen));
+                    break;
+                }
+            }
+        }
+    }
+
     private void performLastRecommendationStep(ArrayList<String> lastChecked, OperationResult operationResult,
                                                int numSeriesToRecommend, int numPeopleToRecommend) {
         int remainingSeries = numSeriesToRecommend - operationResult.getSeries().size();
@@ -1677,6 +1799,100 @@ public class OntologyHandler {
             remainingPeople = 0;
         }
         handleEmptyRecommendation(lastChecked, operationResult, remainingSeries, remainingPeople);
+    }
+
+    private ArrayList<String[]> getSeriesNotSeenHighestScoreOfGenre(String genre, ArrayList<String> lastChecked) {
+
+        ArrayList<String[]> seriesNotSeen = new ArrayList<>();
+
+        String queryString = queryPrefix +
+                "SELECT ?seriesId ?seriesTitle ?seriesImageURL \n" +
+                "WHERE {\n" +
+                "     ?series my:hasSeriesId ?seriesId .\n" +
+                "     ?series rdf:type my:" + genre + " .\n" +
+                "     ?series my:hasTitle ?seriesTitle .\n" +
+                "     ?series my:hasRating ?seriesRating .\n" +
+                "     OPTIONAL { ?series my:hasSeriesImageURL ?seriesImageURL . }\n" +
+                "} ORDER BY DESC(?seriesRating) \n";
+
+        Query queryObject = QueryFactory.create(queryString);
+        QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
+        ResultSet results = qExe.execSelect();
+
+        while (results.hasNext()) {
+            QuerySolution result = results.next();
+            RDFNode seriesIdNode = result.get("?seriesId");
+            RDFNode seriesTitleNode = result.get("?seriesTitle");
+            RDFNode seriesImageURLNode = result.get("?seriesImageURL");
+
+            if (seriesIdNode != null && seriesIdNode.isLiteral() && seriesTitleNode != null &&
+                    seriesTitleNode.isLiteral()) {
+                Literal seriesIdLiteral = seriesIdNode.asLiteral();
+                Literal seriesTitleLiteral = seriesTitleNode.asLiteral();
+
+                String seriesId = seriesIdLiteral.getString();
+                String seriesTitle = seriesTitleLiteral.getString();
+
+                if (!lastChecked.contains(seriesId)) {
+                    String seriesImageURL = "";
+
+                    if (seriesImageURLNode != null && seriesImageURLNode.isLiteral()) {
+                        Literal seriesImageURLLiteral = seriesImageURLNode.asLiteral();
+                        seriesImageURL = seriesImageURLLiteral.getString();
+                    }
+
+                    seriesNotSeen.add(new String[] {seriesTitle, seriesId, seriesImageURL});
+                }
+            }
+        }
+        return seriesNotSeen;
+    }
+
+    private ArrayList<String> getSeriesIdsFromLastChecked(ArrayList<String> lastChecked, int numSeriesToSelect) {
+
+        int i=lastChecked.size()-1;
+        int count=0;
+        ArrayList<String> seriesIds = new ArrayList<>();
+
+        while ((i > 0) && (count < numSeriesToSelect)) {
+            String current = lastChecked.get(i);
+
+            if (current.contains("tt")) {
+                seriesIds.add(current);
+                count++;
+            }
+
+            i--;
+        }
+        return seriesIds;
+    }
+
+    private ArrayList<GenreFromSeriesFrequency> countGenresFromSeries(ArrayList<String> seriesIds) {
+        ArrayList<GenreFromSeriesFrequency> genreList = new ArrayList<>();
+        boolean exists;
+
+        for (String currentSeriesId : seriesIds) {
+            ArrayList<String> seriesGenres = getGenresFromSeries(currentSeriesId);
+
+            // Merge this list to genreList
+            for (String currentGenre : seriesGenres) {
+                exists = false;
+
+                for (GenreFromSeriesFrequency current : genreList) {
+                    if (current.getGenreName().equals(currentGenre)) {
+                        exists = true;
+                        current.increaseFrequency();
+                        break;
+                    }
+                }
+
+                if (!exists) {
+                    genreList.add(new GenreFromSeriesFrequency(currentGenre));
+                }
+            }
+        }
+
+        return genreList;
     }
 
     /**

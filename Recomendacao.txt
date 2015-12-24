@@ -4,7 +4,7 @@ Primeira situação: Histórico vazio -- 50-50
 Ultimas pessoas e séries vistas:
 	Dividir em ultimas pessoas + ultimas series; Sacar as séries das pessoas, meter num array -- DONE
 
-	Sacar séries em comum das pessoas - Se houverem séries em comum que ainda nao foram vistas incluir nas séries recomendadas (max 3) -- Se sobrarem encher os outros (Acho que vou cagar nisto de encher os outros) -- DONE
+	Sacar séries em comum das pessoas - Se houverem séries em comum que ainda nao foram vistas incluir nas séries recomendadas (max 2) -- Se sobrarem encher os outros (Acho que vou cagar nisto de encher os outros) -- DONE
 
 	Pegar no array de séries das pessoas, ordenar por score e procurar a série com maior score ainda nao vista (max 2) -- DONE
 
@@ -13,38 +13,3 @@ Ultimas pessoas e séries vistas:
 	Pegar nas series vistas e sacar os generos em comum e sacar series com maior score desses generos mais frequentes, séries do mais frequente, etc (max 2)
 
 	Caso sem histórico -- DONE
-
-
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX my: <http://www.semanticweb.org/tv/series/ontologies/Tv-Series-Ontology#>
-SELECT ?subject ?seriesName ?actor ?creator
-WHERE {
-		{
-			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt1219024') ) .
-			?subject my:hasTitle ?seriesName .
-			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-		}
-		UNION
-		{
-			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt375355') ) .
-			?subject my:hasTitle ?seriesName .
-			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-		}
-		UNION
-		{
-			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt375355') ) .
-			?subject my:hasTitle ?seriesName .
-			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-		}
-		UNION
-		{
-			?subject my:hasSeriesId ?id FILTER( regex(?id, 'tt182576') ) .
-			?subject my:hasTitle ?seriesName .
-			{ ?subject my:hasActor ?actor} UNION {?subject my:hasCreator ?creator} .
-		}
-} OFFSET 20 LIMIT 1
-
-USE RANDOM OFFSET BASED ON NUMBER OF ACTORS (Determined in jena). LIMIT IS ALWAYS 
