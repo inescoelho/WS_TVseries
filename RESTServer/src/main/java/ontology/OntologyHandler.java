@@ -252,7 +252,7 @@ public class OntologyHandler {
                 "       ?subject rdf:type my:" + genreName + " .\n " +
                 "       ?subject my:hasTitle ?title .\n " +
                 "       ?subject my:hasSeriesId ?id .\n " +
-                "       ?subject my:hasSeriesImageURL ?rating .\n " +
+                "       ?subject my:hasRating ?rating .\n " +
                 "       OPTIONAL { ?subject my:hasSeriesImageURL ?imageURL . }\n " +
                 "} ORDER BY DESC(?rating) ?title\n";
 
@@ -482,7 +482,7 @@ public class OntologyHandler {
                 "     ?subject my:" + propertyName + " ?series.\n" +
                 "     ?series my:hasSeriesId ?seriesID.\n" +
                 "     ?series my:hasTitle ?seriesTitle.\n" +
-                "     ?series my:hasSeriesImageURL ?seriesImageURL. " +
+                "     OPTIONAL { ?series my:hasSeriesImageURL ?seriesImageURL }. " +
                 "} ORDER BY ASC(?seriesTitle)";
 
         Query queryObject = QueryFactory.create(queryString);
@@ -607,46 +607,13 @@ public class OntologyHandler {
                             buffer = processBuffer(word + " ", past, type);
                         } else if (type == TokenType.EQUAL) {
                             resultObject.setScore(ResultObject.ScoreSearch.SET_EQUAL);
-
                             buffer = processMoreTokens(tokenizer, past, buffer);
-
-                            /*
-                            if (tokenizer.hasMoreTokens()) {
-                                word = tokenizer.nextToken(); // Read number
-                                TokenType type1 = isCategory(word);
-                                if (type1 == TokenType.NOT_FOUND_TYPE) {
-                                    buffer = processBuffer(word + " ", past, type1);
-                                }
-                            }
-                            */
                         } else if (type == TokenType.LOWER){
                             resultObject.setScore(ResultObject.ScoreSearch.SET_LOWER);
-
                             buffer = processMoreTokens(tokenizer, past, buffer);
-
-                            /*
-                            if (tokenizer.hasMoreTokens()) {
-                                word = tokenizer.nextToken(); // Read number
-                                TokenType type1 = isCategory(word);
-                                if (type1 == TokenType.NOT_FOUND_TYPE) {
-                                    buffer = processBuffer(word + " ", past, type1);
-                                }
-                            }
-                            */
                         } else if (type == TokenType.HIGHER) {
                             resultObject.setScore(ResultObject.ScoreSearch.SET_HIGHER);
-
                             buffer = processMoreTokens(tokenizer, past, buffer);
-
-                            /*
-                            if (tokenizer.hasMoreTokens()) {
-                                word = tokenizer.nextToken(); // Read number
-                                TokenType type1 = isCategory(word);
-                                if (type1 == TokenType.NOT_FOUND_TYPE) {
-                                    buffer = processBuffer(word + " ", past, type1);
-                                }
-                            }
-                            */
                         }
                     }
 
@@ -677,7 +644,7 @@ public class OntologyHandler {
 
         processBuffer(buffer, past, null, true);
 
-        System.out.println(resultObject);
+        //System.out.println(resultObject);
 
         return processResultObject();
     }
@@ -1157,7 +1124,7 @@ public class OntologyHandler {
                 "SELECT ?personName ?personID ?personImageURL " +
                 "WHERE {\n" +
                 "     ?person my:hasPersonId ?personID .\n" +
-                "     ?person my:hasPersonImageURL ?personImageURL .\n" +
+                "     OPTIONAL { ?person my:hasPersonImageURL ?personImageURL } .\n" +
                 "     ?person my:hasName ?personName FILTER regex(?personName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?personName)";
 
@@ -1187,7 +1154,7 @@ public class OntologyHandler {
                 "WHERE {\n" +
                 "     ?creator rdf:type my:Creator .\n" +
                 "     ?creator my:hasPersonId ?creatorID .\n" +
-                "     ?creator my:hasPersonImageURL ?creatorImageURL .\n" +
+                "     OPTIONAL { ?creator my:hasPersonImageURL ?creatorImageURL }.\n" +
                 "     ?creator my:hasName ?creatorName FILTER regex(?creatorName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?creatorName)";
 
@@ -1217,7 +1184,7 @@ public class OntologyHandler {
                 "WHERE {\n" +
                 "     ?actor rdf:type my:Actor .\n" +
                 "     ?actor my:hasPersonId ?actorID .\n" +
-                "     ?actor my:hasPersonImageURL ?actorImageURL .\n" +
+                "     OPTIONAL { ?actor my:hasPersonImageURL ?actorImageURL }.\n" +
                 "     ?actor my:hasName ?actorName FILTER regex(?actorName, '" + name + "', 'i') .\n" +
                 "} ORDER BY ASC(?actorName)";
 
@@ -1270,7 +1237,7 @@ public class OntologyHandler {
                 "SELECT DISTINCT ?seriesTitle ?seriesID ?imageURL " +
                 "WHERE {\n" +
                 "     ?series my:hasSeriesId ?seriesID .\n" +
-                "     ?series my:hasSeriesImageURL ?imageURL .\n";
+                "     OPTIONAL { ?series my:hasSeriesImageURL ?imageURL } .\n";
 
         if (!title.equals("")) {
             queryString += "     ?series my:hasTitle ?seriesTitle FILTER regex(?seriesTitle, '" + title + "', 'i') .\n";
@@ -1381,7 +1348,7 @@ public class OntologyHandler {
 
         queryString += "} ORDER BY ASC(?seriesTitle)";
 
-        System.out.println("\n===============================\n" + queryString + "\n");
+        //System.out.println("\n===============================\n" + queryString + "\n");
 
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
@@ -2133,7 +2100,7 @@ public class OntologyHandler {
                 "WHERE {\n" +
                 "     ?series my:hasSeriesId ?seriesID .\n" +
                 "     ?series my:hasTitle ?seriesTitle .\n" +
-                "     ?series my:hasSeriesImageURL ?imageURL .\n" +
+                "     OPTIONAL { ?series my:hasSeriesImageURL ?imageURL }.\n" +
                 "     ?series my:hasRating ?seriesRating .\n" +
                 "     ?series my:hasTotalNumberOfPeople ?numberPeople .\n" +
                 "} ORDER BY DESC(?seriesRating)";
