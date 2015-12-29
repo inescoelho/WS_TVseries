@@ -525,6 +525,11 @@ public class OntologyHandler {
         return result;
     }
 
+    /**
+     * Main method to handle the search service. Starting point for this service
+     * @param query The search query entered by the user
+     * @return An "OperationResult" instance, with the series and people found according to the user's query
+     */
     public OperationResult performSearch(String query) {
 
         query = query.toLowerCase();
@@ -661,6 +666,12 @@ public class OntologyHandler {
         return buffer;
     }
 
+    /**
+     * Identifies search keywords (aka Categories). All the keywords are stored in the ontology.Strings class. Also
+     * identifies genre names obtained from the ontology and stored in the "genres" class attribute
+     * @param word The word introduced by the user that is currently being processed
+     * @return The type of the word identified
+     */
     private TokenType isCategory(String word) {
 
         // Check if series keyword
@@ -1923,14 +1934,20 @@ public class OntologyHandler {
         return seriesFromPerson;
     }
 
+    /**
+     * Handles the basic recommendation step, applied as the last recommendation step or as the only recommendation step
+     * when the user has not seen any item
+     * @param lastChecked An ArrayList with the ids of the items checked by the user
+     * @param operationResult The OperationResult object, to be returned as the result of the recommendation operation
+     * @param remainingSeries The number of series that still need to be recommended
+     * @param remainingPeople The number of people that still need to be recommneded
+     */
     private void handleEmptyRecommendation(ArrayList<String> lastChecked, OperationResult operationResult,
                                            int remainingSeries, int remainingPeople) {
 
         if ( (remainingSeries + remainingPeople) == 0) {
             return ;
         }
-
-        // Sacar as 10 séries mais populares; Random para 6 séries e das outras 4 ir sacar actor random
 
         //================================================ Series =====================================================
 
@@ -2038,15 +2055,12 @@ public class OntologyHandler {
 
         }
 
-
+        // Random offset
         Random random = new Random();
         queryString += "} OFFSET " + random.nextInt(partialNumberOfPeople) + " LIMIT 1";
 
-
-        /**
-         * Correr a query, depois para o resultado que der (só vai dar uma linha) ver se temos actor ou criador
-         * (nos 3 campos) e no que houver extrair a informação
-         */
+        // Run the query and get its result. The result will only have one line, so we simply need to check if we have
+        // an actor or creator and extract the information (3 fields) from either one of them
         Query queryObject = QueryFactory.create(queryString);
         QueryExecution qExe = QueryExecutionFactory.create(queryObject, ontologyModel);
         ResultSet results = qExe.execSelect();
@@ -2089,6 +2103,12 @@ public class OntologyHandler {
         return temp;
     }
 
+    /**
+     * Analyses the ArrayList with the last series and people checked and returns an ArrayList of String[] objects
+     * containing the required information about the series that have not already been seen (title, id and image url)
+     * @param lastChecked The ArrayList with the ids of the items (series and people) already seen
+     * @return The ArraList with the series that have not already been seen
+     */
     private ArrayList<String[]> getMostPopularSeriesNotSeen(ArrayList<String> lastChecked) {
         ArrayList<String[]> popularSeries = new ArrayList<>();
 
