@@ -7,13 +7,13 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import server.data.utils.GenreFromSeriesFrequency;
-import server.data.utils.PeopleAndSeries;
-import server.data.ResultObject;
 import server.data.OperationResult;
+import server.data.ResultObject;
 import server.data.ontology.Genre;
 import server.data.ontology.Person;
 import server.data.ontology.Series;
+import server.data.utils.GenreFromSeriesFrequency;
+import server.data.utils.PeopleAndSeries;
 import server.data.utils.PersonFromSeriesFrequency;
 import server.data.utils.SeriesFromPeopleFrequency;
 
@@ -75,7 +75,7 @@ public class OntologyHandler {
      * Creates a default ontology model
      */
     public void createOntologyModel() {
-        ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF);
     }
 
     /**
@@ -354,13 +354,13 @@ public class OntologyHandler {
      * @return The created instance of the "Person" class
      */
     private Person makePersonFromIndividual(Individual person, String personId) {
+
         // Gather person's individual properties
         OntProperty hasName = ontologyModel.getDatatypeProperty(namespace + "hasName");
         OntProperty hasBiography = ontologyModel.getDatatypeProperty(namespace + "hasBiography");
         OntProperty hasBirthDate = ontologyModel.getDatatypeProperty(namespace + "hasBirthDate");
         OntProperty hasWikiURL = ontologyModel.getDatatypeProperty(namespace + "hasWikiURL");
         OntProperty hasPersonImageURL = ontologyModel.getDatatypeProperty(namespace + "hasPersonImageURL");
-
 
         String name = person.getPropertyValue(hasName).toString();
 
@@ -370,7 +370,6 @@ public class OntologyHandler {
             biography = biography.replace("\"", "");
             biography = biography.replace("\\", "");
         }
-
 
         String birthDate = "";
         if (person.getPropertyValue(hasBirthDate) != null) {
@@ -465,6 +464,7 @@ public class OntologyHandler {
      *         (name, id and image url)
      */
     private ArrayList<String[]> getSeriesActedOrCreatedFromActor(String personId, boolean acted) {
+
         ArrayList<String[]> result = new ArrayList<>();
 
         String propertyName;
@@ -491,7 +491,6 @@ public class OntologyHandler {
 
         while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
-
 
             RDFNode seriesTitleNode = querySolution.get("?seriesTitle");
             RDFNode seriesIdNode = querySolution.get("?seriesID");
@@ -1101,7 +1100,7 @@ public class OntologyHandler {
 
     private List<String> getGenresNames() {
         String queryString = queryPrefix +
-                "SELECT ?subject WHERE { " +
+                "SELECT DISTINCT ?subject WHERE { " +
                 "?subject rdfs:subClassOf my:SeriesGenre. " +
                 "?subject a ?class. " +
                 "} ORDER BY ASC(?class)";

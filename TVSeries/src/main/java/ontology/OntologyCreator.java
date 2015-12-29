@@ -362,7 +362,7 @@ public class OntologyCreator {
 
         // Add the property and its inverse to both
         series.addProperty(property, actorOrCreator);
-        actorOrCreator.addProperty(inverseProperty, series);
+        //actorOrCreator.addProperty(inverseProperty, series);
 
         return true;
     }
