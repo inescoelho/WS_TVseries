@@ -1,0 +1,54 @@
+- como é que passas a informação que eu te dou do web crawler para a ontologia?
+	Esta é um bocado chata de explicar, mas pronto :P
+
+	Basicamente tu passas-me uma lista de séries e uma lista de géneros. Dentro da lista de séries cada série tinha a sua informação básica (título, id, ano de estreia, etc) juntamente com uma lista de géneros aos quais a série pertencia e uma lista de actores e criadores da série. Estes dois últimos eram listas de objectos da classe pessoa, contendo a informação básica de uma pessoa (nome, id, data de nascimento, etc).
+
+	Para passar isto para a ontologia bastou analisar as séries que se encontravam na lista de séries. Assim, para cada série fazia os seguintes passos:
+		- Criar um novo indivíduo para representar a série em questão. Este indivíduo, para além de extender a classe "SeriesGenre" (classe mãe de todos os tipos de série) extendia também a classe que representava cada um dos géneros aos quais a série pertencia. Este indivíduo era então "populado" com a informação relativa à serie em questão (id, título, etc), sem incluir a sua lista de actores ou criadores.
+
+		- Uma vez "populado" o indivíduo com a informação base da série passava à análise dos seus criadores. Assim, percorrendo a lista de criadores da série, verificava se o criador em questão já existia na ontologia ou não, e caso não existisse  criava um novo indíviduo descendente de "Creator" e com a usa informação básica (nome, id, etc). Uma vez concluído este passo procedia à ligação do criador à série e da série ao criador, criando as propriedades "hasCreator" e "hasSeriesCreated" de cada um dos indivíduos em questão
+
+		- Este último passo repetia-se para cada elemento da lista de actores da série. Uma vez terminado possuía já, para a série a analisar, a sua informação básica e a sua lista de actores e criadores, já inseridos na ontologia.
+
+- o que é que sao os RDF/RDFs da nossa ontologia?
+- qual o OWL que usamos na nossa ontologia? Foi o OWL LITE? E, pelo que eu percebi, o OWL é a cena da cardinalidade e do inverso. quais sao os comandos que usamos disto? vale a pena enumerá-los?
+	(Vou juntar a resposta a estas duas perguntas porque acho que assim se percebe melhor a relação entre RDF; RDFS e OWL)
+
+	O RDF só nos permite definir tripolos "resource, value, propery". Tipicamente, tanto os resources como os values são identificados por URIs, para teres identificadores únicos das suas entidades. No RDF não há o conceito de classe nem de hirearquia. O mais próximo que tens disso é o conceito de tipo, onde podes definir que uma instância é do tipo de uma classe para dizeres que aquela instância é uma instância daquela classe. No entanto não podes definir hierarquia entre as classes nem ranges ou domínios para as tuas propriedades. Simplesmente tens uma lista de triplos que podes usar para criar grafos direccionais muito simples que descrevem os dados e as propriedades entre eles, de uma forma muito simples.
+
+	Com RDFS já podes melhorar um bocado isto. Por um lado podes definir hierarquias de classes e de propriedades (já passas a ter os comandos "rdfs:subClassOf" e "rdfs:subPropertyOf") e isso já te ajuda a organizar melhor os conceitos. Para além disso podes definir domínios e ranges para as propriedades, fazendo com que uma dada propriedade só possa ser aplicada sobre elementos de um dado conjunto de classes, tendo como "destino" (ou range) elementos de outro conjunto de classes (que pode ser o mesmo que o domínio). No entanto há ainda coisas que não podes definir, como por exemplo relações entre classes (classes equivalentes, disjuntas...) ou entre propriedades (propriedades equivalentes, simétricas, inversas...)
+
+	Para isso usamos OWL 1.0. O OWL 1.0 tem três "níveis" diferentes: OWL LITE, OWL DL e OWL Full. O principal objectivo do OWL é definir ontologias compatíveis com a world wide web.
+
+	Como é de esperar o OWL LITE é o mais simples de todos. O OWL LITE introduz a classe "owl:Thing", a partir da qual todas as outras classes descendem, introduzindo ainda a classe "owl:Nothing", que é a classe vazia. No que diz respeito às relações entre classes e propriedades, o OWL LITE introduz a relação de equivalência (tanto para classes como para propriedades e para instâncias de classes) e de diferença (para as classes). Introduz ainda noções de propriedades transitivas, inversas, simétricas, funcionais e inversefunctional, bem como algumas noções de cardinalidade no domínio e range das propriedades. No que respeita à cardinalidade o OWL LITE só permite minCardinality, maxCardinality e cardinality (penso que é o "exactly") com valores 0 ou 1. Para valores superiores é preciso usar OWL Full (penso que OWL DL também suporta mas não tenho a certeza). No projecto penso que usamos OWL DL porque temos algumas propriedades com cardinalidade some, como é o caso do número de actores e criadores de cada série ou o número de séries de cada pessoa (embora muitas delas tenham cardinalidade maior ou exactamente igual a 1). Estive a ver aqui "https://ragrawal.wordpress.com/2007/02/20/difference-between-owl-lite-dl-and-full/" e não me parece que estejamos a utilizar coisas específicas do OWL Full, como por exemplo termos classes que são instancias ou propriedades ao mesmo tempo.
+
+- sabes o que é SEMANTIC ANNOTATORS? Acho que nao usamos nada disto, deveriamos ter usado? :P
+	É a tal cena das anotações nas páginas web, não usamos isso.
+
+- qual a triple store que usamos?
+	Triple store que vem por defeito com o Jena, não sei ao certo como é que o Jena implementa isso internamente.
+
+- temos uma secçao no relatorio, Modulos, que supostamente é para explicarmos os algoritmos usados, SPARQL SWRL e reasoners. Nós usamos SWRL no trabalho ou so SPARQL? Em termos de algoritmos explicamos como fazemos a pesquisa semantica? E os reasoners - estão relacionados com a recomendaçao, certo?
+	SWRL penso que não usamos, SPARQL usamos de certeza.
+
+	SWRL é usado para expressar regras e lógica semântica e nós aqui não temos grande coisa disso (na verdade não temos nada). A ideia do SWRL é ter coisas do género:
+		hasParent(?x1, ?x2) ^ hasBrother(?x2, ?x3) => hasUncle(?x1, ?x3)
+	Isto é algo que não temos aqui, não só fruto da relativa simplicidade da nossa estrutura de classes, como também fruto do tema que estamos a tratar (Para adicionar este tipo de regras acho que teríamos que adicionar mais classes e conceitos que em nada ajudariam a pesquisa ou a recomendação semântica)
+
+	Relativamente a algoritmos acho que faz sentido explicar como fazemos a pesquisa e a recomendação, que são os principais algoritmos que tivémos que fazer.
+
+	A ideia dos reasoners é olharem para o esquema de classes, propriedades e regras definidos para uma dada ontologia e fazerem as seguintes tarefas:
+		- Detectarem inconsistências, quer ao nível de definições de classes, quer ao nível de restrições feitas a essas classes (por exemplo dizermos que todas as instâncias de uma dada classe têm que ter pelo menos uma dada propriedade mas depois essa classe não pertencer ao domínio da propriedade), quer ao nível de propriedades e regras definidas, ou ainda no que diz respeito às instâncias de cada classe (o erro mais frequente que tivemos: Dizermos que todos os membros da classe pessoa têm que ter um nome, por exemplo, e depois teres indivíduos da classe pessoa sem nome)
+
+		- Analisarem as regras definidas e inferirem sobre propriedades que possam não estar explicitamente definidas no esquema das classes mas que, face às regras definidas, podem ser inferidas (isto não tem directamente a ver com o exemplo em cima do pai e do tio. Aqui estou a referir-me a coisas do tipo: Dizeres que a classe "Telemovel" tem obrigatoriamente uma relação do tipo "hasProcessor" e depois teres uma regra que te diz que tudo o que tem processadores e subclasse de "Computador". Aqui não precisamos de ver nenhuma instância para saber que tudo o que é "Telemóvel" também é "Computador")
+
+		- Analisarem as regras definidas e, face às instâncias inseridas na ontologia, infereirem sobre propriedades das instâncias (Aqui sim já entra o exemplo do pai e do tio)
+
+	Tipicamente os reasoners trabalham para atingir um dado objectivo, compreendendo dois tipos de funcionamento:
+		- Backward Chaining -> A ideia deste método é partir do objectivo que se pretende atingir e procurar consequentes que permitam satisfazer esse objectivo, tentando chegar a esses consequentes a partir dos seus antecendentes e dos dados que existem. Tipicamente um reasoner com este método procura nas regras disponíveis até encontrar uma cujo consequente seja igual ao seu objectivo. Depois analisa o antecendente que permite chegar a esse consequente. Se o antecendente for verdadeiro então termina, caso contrário adiciona esse antecendente à sua lista de objectivos e volta a analisar as regras todas.
+
+		- Forward Chaining -> A ideia aqui é o reasoner partir dos dados (classes, instâncias e regras que existam) e utilizar as regras existentes para ir fazendo inferências que lhe permitam extrair novo conhecimento até que o seu objectivo seja atingido. Para isso os reasoners tipicamente percorrem as regras uma a uma, procurando uma cujo antecedente seja verdadeiro. Quando tal regra é encontrada essa regra é aplicada e o seu consequente é adicionado ao conhecimento existente e o processo continua.
+
+	Efectivamente isto parece-me que pode ser utilizado para a pesquisa, e até para a recomendação. O Jena tem suporte para modelos de inferência que podem ser criados a partir do modelo da ontologia carregado a partir do ficheiro xml. A utilização mais frequente deste modelo de inferências é para validar a ontologia quanto a inconsistências e assim (o que já fazíamos no protegé, por isso não achei que valesse a pena estar a meter isso no servidor, mas também se pode adicionar, e se ele detectar inconsistências simplesmente matamos o servidor REST e pronto). Para além disso, os motores de inferência são muito úteis para derivarem novas regras e propriedades a partir do modelo existente.
+
+	Na verdade, olhando para o nosso modelo (e se o corrermos no Protegé com o reasoner) não temos nenhuma inferência que dele possa ser extraída que justifique a utilização de um modelo de inferências no Jena: Temos as séries e as pessoas, todas as propriedades relevantes para a aplicação estão evidenciadas no modelo porque têm que estar, não há grande coisa para inferir.
