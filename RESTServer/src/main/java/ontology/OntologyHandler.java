@@ -127,7 +127,7 @@ public class OntologyHandler {
     public ArrayList<Genre> getGenres() {
 
         String queryString = queryPrefix +
-                "SELECT ?subject WHERE { " +
+                "SELECT DISTINCT ?subject WHERE { " +
                 "?subject rdfs:subClassOf my:SeriesGenre. " +
                 "?subject a ?class. " +
                 "} ORDER BY ASC(?class)";
@@ -1118,7 +1118,7 @@ public class OntologyHandler {
                 Resource subject = subjectNode.asResource();
                 String genreName = subject.getLocalName().toLowerCase();
 
-                if (!genres.contains(genreName)) {
+                if (!genres.contains(genreName) && !genreName.equals("Thing") && !genreName.equals("Nothing")) {
                     genres.add(genreName);
                 }
             }
