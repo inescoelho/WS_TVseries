@@ -1421,16 +1421,6 @@ public class OntologyHandler {
                 // This function call lasts forever
                 ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency = getPeopleSeriesFrequency(peopleIds);
 
-                // Sort this array by score in descending order
-                Collections.sort(seriesFromPeopleFrequency, (o1, o2) -> {
-                    if (o2.getSeriesRating() > o1.getSeriesRating())
-                        return 1;
-                    else if (o2.getSeriesRating() == o1.getSeriesRating()) {
-                        return o2.getFrequency() - o1.getFrequency();
-                    }
-                    return -1;
-                });
-
                 System.out.println("==========================================STEP1==================================");
                 performRecommendationStep1(operationResult, lastChecked, seriesFromPeopleFrequency);
 
@@ -1449,7 +1439,6 @@ public class OntologyHandler {
             // Perform last recommendation step
             performLastRecommendationStep(lastChecked, operationResult, numSeriesToRecommend, numPeopleToRecommend);
         }
-
 
         /*
         for (String[] temp : operationResult.getPeople()) {
@@ -1493,7 +1482,7 @@ public class OntologyHandler {
 
     private ArrayList<SeriesFromPeopleFrequency> getPeopleSeriesFrequency(ArrayList<String> peopleIds) {
 
-        ArrayList<SeriesFromPeopleFrequency> result = new ArrayList<>();
+        Map<String, SeriesFromPeopleFrequency> result = new HashMap<>();
 
         for (String personId : peopleIds) {
             // Get the series from the person and add it to the result ArrayList
@@ -1501,15 +1490,36 @@ public class OntologyHandler {
 
             for (String[] currentSeries : personSeries) {
                 String seriesId = currentSeries[0];
-                double seriesRating = Double.parseDouble(currentSeries[1]);
-                String seriesTitle = currentSeries[2];
-                String seriesImageURL = currentSeries[3];
 
-                addToPeopleSeriesFrequency(result, seriesId, seriesTitle, seriesImageURL, seriesRating);
+                // Update hashmap
+                if (result.containsKey(seriesId)) {
+                    SeriesFromPeopleFrequency current = result.get(seriesId);
+                    current.increaseFrequency();
+
+                    result.put(seriesId, current);
+                } else {
+                    double seriesRating = Double.parseDouble(currentSeries[1]);
+                    String seriesTitle = currentSeries[2];
+                    String seriesImageURL = currentSeries[3];
+
+                    result.put(seriesId, new SeriesFromPeopleFrequency(seriesId, seriesRating, seriesTitle, seriesImageURL));
+                }
             }
         }
 
-        return result;
+        // Convert result to an ordered array list and return it: Sort this array by score in descending order
+        ArrayList<SeriesFromPeopleFrequency> resultAsList = new ArrayList<>(result.values());
+
+        Collections.sort(resultAsList, (o1, o2) -> {
+            if (o2.getSeriesRating() > o1.getSeriesRating())
+                return 1;
+            else if (o2.getSeriesRating() == o1.getSeriesRating()) {
+                return o2.getFrequency() - o1.getFrequency();
+            }
+            return -1;
+        });
+
+        return resultAsList;
     }
 
     private int addSeriesToOperationResult(OperationResult operationResult, SeriesFromPeopleFrequency current,
@@ -1911,19 +1921,6 @@ public class OntologyHandler {
         }
 
         return seriesFromPerson;
-    }
-
-    private void addToPeopleSeriesFrequency(ArrayList<SeriesFromPeopleFrequency> result, String seriesId,
-                                            String seriesName, String seriesImageURL , double seriesRating) {
-
-        for (SeriesFromPeopleFrequency current : result) {
-            if (current.getSeriesId().equals(seriesId)) {
-                current.increaseFrequency();
-                return;
-            }
-        }
-
-        result.add(new SeriesFromPeopleFrequency(seriesId, seriesRating, seriesName, seriesImageURL));
     }
 
     private void handleEmptyRecommendation(ArrayList<String> lastChecked, OperationResult operationResult,
