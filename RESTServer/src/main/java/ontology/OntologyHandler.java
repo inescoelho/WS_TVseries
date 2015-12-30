@@ -1118,7 +1118,7 @@ public class OntologyHandler {
                 Resource subject = subjectNode.asResource();
                 String genreName = subject.getLocalName().toLowerCase();
 
-                if (!genres.contains(genreName) && !genreName.equals("Thing") && !genreName.equals("Nothing")) {
+                if (!genres.contains(genreName) && !genreName.equals("thing") && !genreName.equals("nothing")) {
                     genres.add(genreName);
                 }
             }
