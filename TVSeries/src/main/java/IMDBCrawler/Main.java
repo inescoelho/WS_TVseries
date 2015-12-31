@@ -21,11 +21,6 @@ public class Main {
         // Configure log4j (in our case we just ignore it) because of Jena!
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
-        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
-
-        ontologyCreator.updateSeriesActors();
-
-        /*
         FileLoader fileLoader = new FileLoader();
         Crawler crawler = new Crawler(fileLoader.getFileNameMap());
         OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology.rdf", "RDF/XML");
@@ -93,15 +88,10 @@ public class Main {
             }
 
         }
-        */
-
-        ontologyCreator.writeModelToFile("tv_series_ontology_current.rdf", "RDF/XML");
-    }
-
-    private static void updateOntology() {
-        OntologyCreator ontologyCreator = new OntologyCreator("tv_series_ontology_current.rdf", "RDF/XML");
 
         ontologyCreator.addWikiURLs();
+        ontologyCreator.updateSeriesActors();
+
         ontologyCreator.writeModelToFile("tv_series_ontology_current.rdf", "RDF/XML");
     }
 

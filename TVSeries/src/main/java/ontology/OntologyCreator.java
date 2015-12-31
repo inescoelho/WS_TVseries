@@ -482,52 +482,6 @@ public class OntologyCreator {
         }
     }
 
-    public void updatePerson(String personID) {
-        Individual individual = peopleList.get(personID);
-
-        if (individual != null) {
-            OntProperty hasName = ontologyModel.getDatatypeProperty(namespace + "hasName");
-            individual.addLiteral(hasName, "Bill Macy");
-        }
-    }
-
-    /**
-     * Update the image url information of a set of TV Series Actors and Creators in the ontology
-     * @param people The set of TV Series Actors and Creators whose information is going to be updated
-     */
-    public void updatePeople(ArrayList<Person> people) {
-        Individual currentIndividual;
-        OntProperty hasPersonImageURL = ontologyModel.getOntProperty(namespace + "hasPersonImageURL");
-
-        for (Person currentPerson : people) {
-            currentIndividual = peopleList.get(currentPerson.getId());
-            currentIndividual.addLiteral(hasPersonImageURL, currentPerson.getImage());
-        }
-    }
-
-    /**
-     * Update the rating and image url information of a set of TV Series in the ontology
-     * @param series The set of TV Series whose information is going to be updated
-     */
-    public void updateSeries(ArrayList<Series> series) {
-        Individual currentIndividual;
-        double currentScore;
-
-        // Properties to add
-        OntProperty hasRating = ontologyModel.getOntProperty(namespace + "hasRating");
-        OntProperty hasSeriesImageURL = ontologyModel.getOntProperty(namespace + "hasSeriesImageURL");
-
-        for (Series currentSeries : series) {
-            // Get individual
-            currentIndividual = seriesList.get("tt" + currentSeries.getSeriesId());
-
-            currentScore = currentSeries.getScore();
-
-            currentIndividual.addLiteral(hasRating, currentScore);
-            currentIndividual.addLiteral(hasSeriesImageURL, currentSeries.getImage());
-        }
-    }
-
     /**
      * Added to support new SeriesGenre attribute: totalNumberOfPeople (represents the total number of actors and
      * creators of the series)
