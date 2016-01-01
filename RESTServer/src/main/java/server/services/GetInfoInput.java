@@ -1,4 +1,4 @@
-package server.utils.services;
+package server.services;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
