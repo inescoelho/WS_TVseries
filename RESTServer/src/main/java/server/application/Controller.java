@@ -2,12 +2,12 @@ package server.application;
 
 import ontology.OntologyHandler;
 import org.springframework.web.bind.annotation.*;
-import server.data.SearchInput;
-import server.data.OperationResult;
-import server.data.ontology.Genre;
-import server.data.GetInfoInput;
-import server.data.ontology.Person;
-import server.data.ontology.Series;
+import server.utils.services.SearchInput;
+import server.utils.services.OperationResult;
+import ontology.data.Genre;
+import server.utils.services.GetInfoInput;
+import ontology.data.Person;
+import ontology.data.Series;
 
 import java.io.*;
 import java.util.ArrayList;

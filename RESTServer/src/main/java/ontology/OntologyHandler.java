@@ -7,15 +7,17 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import server.data.OperationResult;
-import server.data.ResultObject;
-import server.data.ontology.Genre;
-import server.data.ontology.Person;
-import server.data.ontology.Series;
-import server.data.utils.GenreFromSeriesFrequency;
-import server.data.utils.PeopleAndSeries;
-import server.data.utils.PersonFromSeriesFrequency;
-import server.data.utils.SeriesFromPeopleFrequency;
+import server.utils.services.OperationResult;
+import server.utils.services.ResultObject;
+import ontology.data.Genre;
+import ontology.data.Person;
+import ontology.data.Series;
+import server.utils.GenreFromSeriesFrequency;
+import server.utils.services.PeopleAndSeries;
+import server.utils.PersonFromSeriesFrequency;
+import server.utils.SeriesFromPeopleFrequency;
+import server.utils.Strings;
+import server.utils.TokenType;
 
 import java.util.*;
 
@@ -666,7 +668,7 @@ public class OntologyHandler {
     }
 
     /**
-     * Identifies search keywords (aka Categories). All the keywords are stored in the ontology.Strings class. Also
+     * Identifies search keywords (aka Categories). All the keywords are stored in the server.utils.Strings class. Also
      * identifies genre names obtained from the ontology and stored in the "genres" class attribute
      * @param word The word introduced by the user that is currently being processed
      * @return The type of the word identified
