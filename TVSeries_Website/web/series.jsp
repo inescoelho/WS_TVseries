@@ -44,6 +44,10 @@
                 },
                 success: function (series) {
                     $('#seriesTitle').append("<h1 class=\"series-title\">" + series["title"] + "</h1>");
+
+                    if (series["imageURL"] == "")
+                        series["imageURL"] ="http://i.imgur.com/0zxp2G8.jpg";
+
                     $('#seriesImage').append("<img src=" + series["imageURL"] + "width=\"400\" height=\"300\">");
                     if (series["finishYear"] != "-1")
                         $('#rightInfo').append("<p>" + series["pilotYear"] + "-" + series["finishYear"] + "</p>");
@@ -56,6 +60,9 @@
 
                     for (var creator = 0; creator < series["creators"].length; creator ++)
                     {
+                        if (series["creators"][creator][2] == "")
+                            series["creators"][creator][2] ="http://i.imgur.com/0zxp2G8.jpg";
+
                         $('#creators').append(
                                 "<div class=\"row\">" +
                                     "<div class=\"col-md-3 col-md-offset-2\">" +
@@ -105,6 +112,7 @@
         $(document).ready(function() {
             getGenres();
             getSeriesInfo();
+            performRecommendation();
         });
     </script>
 </t:wrapper>

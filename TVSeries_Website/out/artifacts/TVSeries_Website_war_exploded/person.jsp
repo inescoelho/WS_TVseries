@@ -37,6 +37,10 @@
                 },
                 success: function (person) {
                     $('#personName').append("<h1 class=\"actor-title\">" + person["name"] + "</h1>");
+
+                    if (person["imageURL"] == "")
+                        person["imageURL"] ="http://i.imgur.com/0zxp2G8.jpg";
+
                     $('#personImage').append("<img src=" + person["imageURL"] + "width=\"300\" height=\"240\">");
                     if(person["birthDate"] != "")
                         $('#rightInfo').append("<p><b>Birthday: </b>" + person["birthDate"] + "</p>");
@@ -44,6 +48,7 @@
                         $('#rightInfo').append("<p><b>Biography: </b>" + person["biography"] + "</p>");
                     if (person["wikiURL"] != "")
                         $('#rightInfo').append("<p><a href=" + person["wikiURL"] + ">More info</a></p>");
+
 
                     console.log("Person basic data --> {id: " + person["id"] + ", name: " + person["name"] +
                     ", biography: " + person["biography"] + ", birthDate: " + person["birthDate"] +
@@ -119,6 +124,7 @@
         $(document).ready(function() {
             getGenres();
             getPersonInfo();
+            performRecommendation();
         });
     </script>
 </t:wrapper>

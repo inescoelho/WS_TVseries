@@ -63,6 +63,7 @@
         $(document).ready(function() {
             getSeriesFromGenre();
             getGenres();
+            performRecommendation();
         });
     </script>
 </t:wrapper>

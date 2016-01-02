@@ -51,16 +51,6 @@
                         <div class="spacer">&nbsp;</div>
 
                         <div class="row row-offcanvas" id="recommendedSeries">
-                            <div class="col-md-2">
-                                <div class="thumbnail">
-                                    <a href="default.asp">
-                                        <img src="http://i.imgur.com/d9AZyDt.jpg" alt="...">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Thumbnail label</h3>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -89,6 +79,65 @@
                         var currentGenre = data[i];
                         $('#listGenres').append("<li><a href='listSeries?category=" + currentGenre["type"] + "'>"
                                 + currentGenre["type"] + "</a></li>");
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR.status);
+                    console.log(exception);
+                }
+            });
+        }
+
+        function performRecommendation() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8090/getRecommendation",
+                async: true,
+                beforeSend: function (xhr){
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.setRequestHeader("Accept", "application/json")
+                },
+                success: function(data) {
+
+                    var series = data["series"];
+                    console.log("Got " + series.length + " series");
+
+                    for (var i=0; i < series.length; i++) {
+                        console.log("Got series: " + series[i][0] + " " + series[i][1] +  " " + series[i][2]);
+
+                        $('#recommendedSeries').append(
+                                "<div class=\"col-md-1\">" +
+                                    "<div class=\"thumbnail\">" +
+                                        "<a href=series?id=" + series[i][1] + ">" +
+                                            "<img src=" + series[i][2] + "width=\"150\" height=\"100\">" +
+                                        "</a>" +
+                                        "<div class=\"caption\">" +
+                                            series[i][0] +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>");
+                    }
+
+                    var people = data["people"];
+                    console.log("Got " + people.length + " people");
+
+                    for (i=0; i < people.length; i++) {
+                        console.log("Got person: " + people[i][0] + " " + people[i][1] +  " " + people[i][2]);
+
+                        if (people[i][2] == "")
+                            people[i][2] ="http://i.imgur.com/0zxp2G8.jpg";
+
+                        $('#recommendedSeries').append(
+                                "<div class=\"col-md-1\">" +
+                                    "<div class=\"thumbnail\">" +
+                                        "<a href=person?id=" + people[i][1] + ">" +
+                                            "<img src=" + people[i][2] + "width=\"150\" height=\"100\">" +
+                                        "</a>" +
+                                        "<div class=\"caption\">" +
+                                            people[i][0] +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>");
                     }
                 },
                 error: function(jqXHR, exception) {

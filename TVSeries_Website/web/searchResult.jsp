@@ -41,6 +41,9 @@
                         for (var i = 0; i < data["series"].length; i++) {
                             var currentSeries = data["series"][i];
 
+                            if (currentSeries[2] == "")
+                                currentSeries[2] ="http://i.imgur.com/0zxp2G8.jpg";
+
                             $('#series').append(
                                     "<div class=\"row\">" +
                                         "<div class=\"col-md-3 col-md-offset-2\">" +
@@ -101,6 +104,7 @@
         $(document).ready(function() {
             getGenres();
             getSearchResult();
+            performRecommendation();
         });
     </script>
 </t:wrapper>

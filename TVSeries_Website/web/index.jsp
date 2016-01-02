@@ -10,6 +10,7 @@
     <script>
         $(document).ready(function() {
             getGenres();
+            performRecommendation();
         });
     </script>
 </t:wrapper>
