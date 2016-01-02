@@ -1433,19 +1433,19 @@ public class OntologyHandler {
                 // This function call lasts forever
                 ArrayList<SeriesFromPeopleFrequency> seriesFromPeopleFrequency = getPeopleSeriesFrequency(peopleIds);
 
-                System.out.println("==========================================STEP1==================================");
+                //System.out.println("==========================================STEP1==================================");
                 performRecommendationStep1(operationResult, lastChecked, seriesFromPeopleFrequency);
 
-                System.out.println("==========================================STEP2==================================");
+                //System.out.println("==========================================STEP2==================================");
                 performRecommendationStep2(operationResult, lastChecked, seriesFromPeopleFrequency);
             }
 
             if (seriesIds != null && seriesIds.size() > 0) {
-                System.out.println("==========================================STEP3==================================");
+                //System.out.println("==========================================STEP3==================================");
                 performRecommendationStep3(operationResult, lastChecked, seriesIds);
             }
 
-            System.out.println("==========================================STEP4==================================");
+            //System.out.println("==========================================STEP4==================================");
             performRecommendationStep4(operationResult, lastChecked, numItemsToCheck);
 
             // Perform last recommendation step
@@ -1763,14 +1763,14 @@ public class OntologyHandler {
         // Add them to the list of series to recommend
         for (String[] aSeries1NotSeen : series1NotSeen) {
             if (operationResult.addSeries(aSeries1NotSeen)) {
-                System.out.println("Added " + Arrays.toString(aSeries1NotSeen));
+                //System.out.println("Added " + Arrays.toString(aSeries1NotSeen));
                 break;
             }
         }
         if (series2NotSeen != null ) {
             for (String[] aSeries2NotSeen : series2NotSeen) {
                 if (operationResult.addSeries(aSeries2NotSeen)) {
-                    System.out.println("Added " + Arrays.toString(aSeries2NotSeen));
+                    //System.out.println("Added " + Arrays.toString(aSeries2NotSeen));
                     break;
                 }
             }

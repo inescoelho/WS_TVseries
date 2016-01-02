@@ -18,7 +18,7 @@ public class performSearch extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String searchQuery = req.getParameter("searchQuery");
         req.setAttribute("searchQuery", searchQuery);
-        //System.out.println(category);
+        //System.out.println(searchQuery);
 
         RequestDispatcher rd = req.getRequestDispatcher("searchResult.jsp");
         rd.forward(req, resp);
